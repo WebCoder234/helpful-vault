@@ -1,139 +1,132 @@
-<title>Uselful Vault</title>
-<body><nav class="links">
-  <div>
-    <a href="calculator.html">Calculator</a>
-    <a href="pla.html">Planets</a>
-    <a href="project3.html">Project 3</a>
-    <a href="project2.html">Project 2</a>
-  </div>
-  <br />
-  <div>
-    <a href="stopwatch.html">Stopwatch</a>
-    <a href="m.html">m</a>
-    <a href="t.html">t</a>
-    <a href="draw.html">draw</a>
-    <a href="r.html">r</a>
-  </div>
-  <br />
-  <div>
-    <a href="w.html">w</a>
-    <a href="time.html">time</a>
-    <a href="13.html">13</a>
-    <a href="draw3.html">draw3</a>
-  </div>
-</nav></body>
-body {
-  font-family: Arial, sans-serif;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Useful Vault</title>
+  <style>
+    body {
+      
+  font-family: sans-serif, sans-serif;
   background-color: #f6fffc;
-  color: #333;
-  text-align: center;
-  margin-top: 150px;
+  color: rgb(66, 67, 69);
+
+      text-align: center;
+      margin-top: 150px;
+    }
+
+    img {
+      background-color: #B9F0EF;
+      height: 100px;
+      width: 100px;
+      border-radius: 8px;
+    }
+
+    button {
+      border: none;
+      border-radius: 4px;
+      background-color: #FF6363;
+      color: aliceblue;
+    }
+
+    h1, h3 {
+      color: rgb(44, 42, 42);
+      font-family: sans-serif;
+    }
+
+ 
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
-nav {
-  text-align: center;
-}
-
-nav a {
-  color: #666666;
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: #03A9F4;
-}
-
-.links {
+.image-column {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.links div {
-  margin-bottom: 20px;
+.image-column img {
+  margin-bottom: 10px;
+}
+h6 {
+  margin-bottom: 5px;
+}
+  
+.image-grid a {
+  color: rgb(44, 42, 42);
 }
 
-.links div a {
-  margin-right: 20px;
+.image-grid a:hover {
+  color: rgb(66, 67, 69);
 }
 
-h1, h3 {
-  color: #333;
-  font-family: Arial, sans-serif;
-}
+</style>
+</head>
+<body>
+  <h1>Welcome to the Useful Vault</h1>
+  <h3>You can find many useful tools on my website</h3>
+<div class="image-grid">
+<a href="calculator.html">
+    <div class="image-column">
+      <img src="calculator.png" alt="Calculator">
+      <h6>Circumference Calculator</h6>
+    </div>
+</a>
+<a href="project2.html">
+    <div class="image-column">
+      <img src="agecalc.png" alt="Age Calculator">
+      <h6>Age Calculator</h6>
+    </div>
+</a>
+<a href="m.html">
+    <div class="image-column">
+      <img src="m.png" alt="Length Conversion">
+      <h6>Length Conversion</h6>
+    </div>
+</a>
+<a href="t.html">
+    <div class="image-column">
+      <img src="t.png" alt="Random Password Generator">
+      <h6>Random Password Generator</h6>
+    </div>
+</a>
+<a href="r.html">
+    <div class="image-column">
+      <img src="r.png" alt="Temperature Converter">
+      <h6>Temperature Converter</h6>
+    </div>
+</a>
+<a href="w.html">
+    <div class="image-column">
+      <img src="w.png" alt="Mass Converter">
+      <h6>Mass Converter</h6>
+    </div>
+</a>
+<a href="time.html">
+    <div class="image-column">
+      <img src="time.png" alt="Clock">
+      <h6>Clock</h6>
+    </div>
+</a>
+<a href="13.html">
+    <div class="image-column">
+      <img src="13.png" alt="Notes">
+      <h6>Notes</h6>
+    </div>
+</a>
 
-h5 {
-  font-size: smaller;
-  color: #666666;
-}
+<br><br><br>
 
-a[href*="calculator.html"] {
-  background-color: #4CAF50;
-  padding: 10px;
-  border-radius: 5px;
-}
+<h5>Contact Us: 
+<br>helpfulvault@gmail.com</h5>
 
-a[href*="pla.html"] {
-  background-color: #2196F3;
-  padding: 10px;
-  border-radius: 5px;
-}
+<script>
 
-a[href*="project3.html"] {
-  background-color: #FF9800;
-  padding: 10px;
-  border-radius: 5px;
-}
+</script>
 
-a[href*="project2.html"] {
-  background-color: #8BC34A;
-  padding: 10px;
-  border-radius: 5px;
-}
+</body>
+</html>
 
-a[href*="stopwatch.html"] {
-  background-color: #FFC107;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-a[href*="m.html"] {
-  background-color: #66D9EF;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-a[href*="t.html"] {
-  background-color: #8E24AA;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-a[href*="draw.html"] {
-  background-color: #FF9800;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-a[href*="r.html"] {
-  background-color: #4CAF50;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-a[href*="w.html"] {
-  background-color: #FFC107;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-a[href*="time.html"] {
-  background-color: #8BC34A;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-a[href*="13.html"] {
-background-color: #8E24AA; 
-padding:10px; 
-border-radius :5px; 
-}
