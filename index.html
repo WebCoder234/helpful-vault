@@ -4,67 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Useful Vault</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Welcome to the Useful Vault</h1>
   <h3>You can find many useful tools on my website</h3>
-  <div class="image-grid">
-    <div class="image-column">
-      <img src="calculator.png" alt="Calculator">
-      <h6>Circumference Calculator</h6>
-    </div>
-    <div class="image-column">
-      <img src="agecalc.png" alt="Age Calculator">
-      <h6>Age Calculator</h6>
-    </div>
-    <div class="image-column">
-      <img src="m.png" alt="Length Conversion">
-      <h6>Length Conversion</h6>
-    </div>
-    <div class="image-column">
-      <img src="t.png" alt="Random Password Generator">
-      <h6>Random Password Generator</h6>
-    </div>
-    <div class="image-column">
-      <img src="r.png" alt="Temperature Converter">
-      <h6>Temperature Converter</h6>
-    </div>
-    <div class="image-column">
-      <img src="w.png" alt="Mass Converter">
-      <h6>Mass Converter</h6>
-    </div>
-    <div class="image-column">
-      <img src="time.png" alt="Clock">
-      <h6>Clock</h6>
-    </div>
-    <div class="image-column">
-      <img src="13.png" alt="Notes">
-      <h6>Notes</h6>
-    </div>
-  </div>
-
-  <!-- Add more divs for each tool here -->
-
-  <!-- Contact Us -->
-  <br><br><br><br>
+  <nav class="links">
+    <ul>
+      <li><a href="calculator.html">Circumference Calculator</a></li>
+      <li><a href="age-calculator.html">Age Calculator</a></li>
+      <li><a href="length-converter.html">Length Conversion</a></li>
+      <li><a href="random-password-generator.html">Random Password Generator</a></li>
+      <br />
+      <li><a href="draw.html">Stopwatch</a></li>
+      <li><a href="temperature-converter.html">Temperature Converter</a></li>
+      <li><a href="mass-converter.html">Mass Converter</a></li>
+      <br />
+      <li><a href="time.html">Clock</a></li>
+      <li><a href="notes.html">Notes</a></li>
+      <li><a href="draw3.html">Drawpad</a></li>
+    </ul>
+  </nav>
   <h5>Contact Us: 
-    helpfulvault@gmail.com</h5>
-
-<script>
-
-</script>
-
-</body>
-</html>
-
-<!-- style.css file -->
-body {
-  font-family: sans-serif;
+    helpfulvault@gmail.com
+  </h5>
+<style>body {
+  font-family: Arial, sans-serif;
   background-color: #f6fffc;
   color: rgb(66, 67, 69);
   text-align: center;
   margin-top: 150px;
+}
+
+img {
+  background-color: #B9F0EF;
+  height: 100px;
+  width: 100px;
+  border-radius: 8px;
+}
+
+button {
+  border: none;
+  border-radius: 4px;
+  background-color: #FF6363;
+  color: aliceblue;
+}
+
+h1, h3 {
+  color: rgb(44, 42, 42);
+  font-family: Arial, sans-serif;
 }
 
 .image-grid {
@@ -83,6 +71,27 @@ body {
   margin-bottom: 10px;
 }
 
-.image-grid h6 {
+h6 {
   margin-bottom: 5px;
 }
+
+.links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.links li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.links a {
+  color: #666666;
+}
+
+.links a:hover {
+  color: #03A9F4;
+}</style>
+</body>
+</html>
