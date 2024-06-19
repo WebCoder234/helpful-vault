@@ -37,70 +37,127 @@
   <h5>Contact Us: 
     helpfulvault@gmail.com
   </h5>
-<style>body {
+<style>
+  body {
   font-family: Arial, sans-serif;
   background-color: #f6fffc;
-  color: rgb(66, 67, 69);
+  color: #333;
   text-align: center;
   margin-top: 150px;
 }
 
-img {
-  background-color: #B9F0EF;
-  height: 100px;
-  width: 100px;
-  border-radius: 8px;
+nav {
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
 }
 
-button {
-  border: none;
-  border-radius: 4px;
-  background-color: #FF6363;
-  color: aliceblue;
+nav a {
+  color: #666666;
+  text-decoration: none;
 }
 
-h1, h3 {
-  color: rgb(44, 42, 42);
-  font-family: Arial, sans-serif;
+nav a:hover {
+  color: #03A9F4;
 }
 
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.image-column {
+.links {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.image-column img {
-  margin-bottom: 10px;
+.links div {
+  margin-bottom: 20px;
 }
 
-h6 {
-  margin-bottom: 5px;
-}
-
-.links ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.links li {
-  display: inline-block;
+.links div a {
   margin-right: 20px;
 }
 
-.links a {
+h1, h3 {
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+h5 {
+  font-size: smaller;
   color: #666666;
 }
 
-.links a:hover {
-  color: #03A9F4;
-}</style>
+a[href*="calculator.html"] {
+  background-color: #4CAF50;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+a[href*="pla.html"] {
+  background-color: #2196F3;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+a[href*="project3.html"] {
+  background-color: #FF9800;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+a[href*="project2.html"] {
+  background-color: #8BC34A;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+a[href*="stopwatch.html"] {
+  background-color: #FFC107;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+a[href*="m.html"] {
+background-color :#66D9EF; 
+padding :10px; 
+border-radius :5px; 
+}
+a[href*="t.html"] {
+background-color :#8E24AA; 
+padding :10px; 
+border-radius :5px; 
+}
+a[href*="draw.html"] {
+background-color :#FF9800; 
+padding :10px; 
+border-radius :5px; 
+}
+a[href*="r.html"] {
+background-color :#4CAF50; 
+padding :10px; 
+border-radius :5px; 
+}
+a[href*="w.html"] {
+background-color :#FFC107; 
+padding :10px; 
+border-radius :5px; 
+}
+a[href*="time.html"] {
+background-color :#8BC34A; 
+padding :10px; 
+border-radius :5px; 
+}
+a[href*="13.html"] {
+background-color :#8E24AA; 
+padding :10px; 
+border-radius :5px; 
+}
+
+.top-navbar{
+    position:relative;}
+.top-navbar::after{
+    content:"";
+    position:absolute;
+    bottom:-1.2em;width:-1.2em;height:.6em;background-color:#ccc;border-top-left-radius:.3em;border-top-right-radius:.3em;border-bottom-right-radius:.3em;border-bottom-left-radius:.3em;display:block}
+</style>
 </body>
 </html>
