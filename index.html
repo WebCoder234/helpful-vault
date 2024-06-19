@@ -7,32 +7,42 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="top-navbar">
-    <h1>Welcome to the Useful Vault</h1>
-    <h3>You can find many useful tools on my website</h3>
+  <div class="container">
+    <header class="top-navbar">
+      <div class="logo">
+        <h1>Welcome to the Useful Vault</h1>
+      </div>
+      <div class="subheading">
+        <h3>You can find many useful tools on my website</h3>
+      </div>
+    </header>
     <nav class="links">
-      <ul>
-        <li><a href="calculator.html">Calculator</a></li>
-        <li><a href="pla.html">Planets</a></li>
-        <li><a href="project3.html">Circumference Calculator</a></li>
-        <li><a href="project2.html">Age Calculator</a></li>
-      </ul>
-      <ul>
-        <li><a href="stopwatch.html">Random Number Generator</a></li>
-        <li><a href="m.html">Length Converter</a></li>
-        <li><a href="t.html">Random Password Generator</a></li>
-        <li><a href="draw.html">Stopwatch</a></li>
-        <li><a href="r.html">Tempurature Converter</a></li>
-      </ul>
-      <ul>
-        <li><a href="w.html">Mass Converter</a></li>
-        <li><a href="time.html">Clock</a></li>
-        <li><a href="13.html">Notes</a></li>
-        <li><a href="draw3.html">Drawpad</a></li>
-      </ul>
+      <div class="link-group" style="background-color: #e0e0e0;">
+     
+        <div><a href="calculator.html" class="a-link">Calculator</a></div>
+        <div><a href="pla.html" class="a-link">Planets</a></div>
+        <div><a href="project3.html" class="a-link">Circumference Calculator</a></div>
+        <div><a href="project2.html" class="a-link">Age Calculator</a></div>
+      </div>
+      <div class="link-group" style="background-color: #e0e0e0;">
+      
+        <div><a href="stopwatch.html" class="a-link">Random Number Generator</a></div>
+        <div><a href="m.html" class="a-link">Length Converter</a></li>
+        <div><a href="t.html" class="a-link">Random Password Generator</a></div>
+        <div><a href="draw.html" class="a-link">Stopwatch</a></div>
+        <div><a href="r.html" class="a-link">Tempurature Converter</a></div>
+      </div>
+      <div class="link-group" style="background-color: #e0e0e0;">
+        <h2 style="color: #4CAF50;">Conversion Tools</h2>
+        <div><a href="w.html" class="a-link">Mass Converter</a></li>
+        <div><a href="time.html" class="a-link">Clock</a></li>
+        <div><a href="13.html" class="a-link">Notes</a></li>
+        <div><a href="draw3" class="a-link">Drawpad</a></li>
+      </div>
     </nav>
-  </header>
-  <h5>Contact Us: helpfulvault@gmail.com</h5>
+    <footer class="footer" style="background-color: #f0f0f0;">
+      Contact Us: helpfulvault@gmail.com
+    </footer>
 
 <style>
 
@@ -61,29 +71,31 @@ body {
   display: block;
 }
 
-nav {
-  text-align: center;
-  background-color: #f0f0f0;
-  padding: 20px;
-  color: white;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-nav ul {
-  list-style-type: none;
-  padding-left: 0px;
+.logo {
+  background-color: #4CAF50;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-nav li {
-  margin-bottom: 10px;
-}
-
-nav a {
+.subheading {
   color: #666666;
-  text-decoration: none;
 }
 
-nav a:hover {
-  color: #03A9F4;
+.links {
+  text-align: center;
+}
+
+.link-group {
+  margin-bottom: 20px;
+}
+
+.link-group h2 {
+  color: #4CAF50;
 }
 
 .a-link {
@@ -96,6 +108,9 @@ border-radius :5px;
 background-color :#03A9F4; 
 }
 
+footer {
+  padding-top: 10px;
+}
 </style>
 
 </body>
