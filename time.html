@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock</title>
+</head>
+<body>
+  <div class="clock">
+    <div class="time"></div>
+    <div class="date-time"></div>
+</div>
+<script>
+  // Select the clock elements
+const timeElement = document.querySelector('.time');
+const dateTimeElement = document.querySelector('.date-time');
+
+// Function to update the clock
+function updateClock() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const day = now.getDay();
+    const date = now.getDate();
+    const month = now.getMonth();
+    const year = now.getFullYear();
+
+    // Display the time
+    timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+
+    // Display the date and day of the week
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    dateTimeElement.textContent = `${dayNames[day]}, ${monthNames[month]} ${date}, ${year}`;
+}
+
+// Update the clock every second
+setInterval(updateClock, 1000);
+
+</script>
+
+<style>
+  .clock {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-size: 24px;
+}
+body {
+  background-color: rgb(173, 238, 216);
+  color: rgb(76, 80, 84);
+  font-size: 70px;
+}
+
+
+</style>
+</body>
+</html>

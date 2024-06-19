@@ -1,0 +1,38 @@
+body {
+  width: 100vh;
+  height: 100px;
+  background-color: rgb(164, 237, 237);
+  text-align: center;
+ margin-left: 250px;
+ color: rgb(58, 58, 99);
+}
+
+.label {
+  font-size: 50px;
+}
+
+
+
+
+
+#btnContainer{
+    text-align: center;
+}
+.buttons{
+    padding: 10px 20px;
+    font-size: 1.5em;
+    color: white;
+    background-color: hsl(214, 100%, 74%);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+.buttons:hover{
+    background-color: hsl(214, 100%, 56%)
+}
+
+button {
+  border: none;
+  color: rgb(58, 58, 99);
+  background-color: rgb(90, 115, 141);
+}

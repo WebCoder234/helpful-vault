@@ -1,0 +1,11 @@
+body {
+  text-align: center;
+  background-color: rgb(110, 112, 173);
+  color: aliceblue;
+}
+
+input {
+  border: none;
+  background-color: aliceblue;
+  color: rgb(79, 87, 109);
+}

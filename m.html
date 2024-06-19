@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Length Conversion</title>
+  <link rel="stylesheet" href="m.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Conversion </h1>
+    <form>
+      <label for="input">Enter value:</label>
+      <input type="number" id="input" value="0">
+      <br>
+      <select id="unit-from">
+        <option value="ft">Feet</option>
+        <option value="in">Inches</option>
+        <option value="m">Meters</option>
+        <option value="yd">Yards</option>
+        <option value="mi">Miles</option>
+        <option value="km">Kilometers</option>
+      </select>
+      <select id="unit-to">
+        <option value="ft">Feet</option>
+        <option value="in">Inches</option>
+        <option value="m">Meters</option>
+        <option value="yd">Yards</option>
+        <option value="mi">Miles</option>
+        <option value="km">Kilometers</option>
+      </select>
+      <button type="button" id="convert">Convert</button>
+      <p id="result"></p>
+    </form>
+  </div>
+  <script>
+    // Define the conversion factors
+const conversionFactors = {
+  ft: {
+    in: 12,
+    m: 0.3048,
+    yd: 0.3333,
+    mi: 0.00018939,
+    km: 0.003048
+  },
+  in: {
+    ft: 1 / 12,
+    m: 0.0254,
+    yd: 0.083333,
+    mi: 0.00001639,
+    km: 0.0000254
+  },
+  m: {
+    ft: 3.2808,
+    in: 39.37,
+    yd: 1.0936,
+    mi: 0.00062137,
+    km: 0.001
+  },
+  yd: {
+    ft: 3,
+    in: 36,
+    m: 0.9144,
+    mi: 0.00056818,
+    km: 0.0009144
+  },
+  mi: {
+    ft: 5280,
+    in: 63360,
+    m: 160934, // approximately
+    yd: 1760, // approximately
+    km: 160934 // approximately
+  },
+  km: {
+    ft: 3280.8,
+    in: 39370.08,
+    m: 1000,
+    yd: 1093.61,
+    mi: 0.621371
+  }
+};
+
+// Get the input and conversion select elements
+const input = document.getElementById('input');
+const unitFrom = document.getElementById('unit-from');
+const unitTo = document.getElementById('unit-to');
+const convertButton = document.getElementById('convert');
+const resultElement = document.getElementById('result');
+
+// Set the initial values
+let fromUnit = 'ft';
+let toUnit = 'ft';
+
+// Add event listeners to the conversion select elements
+unitFrom.addEventListener('change', (e) => {
+  fromUnit = e.target.value;
+});
+
+unitTo.addEventListener('change', (e) => {
+  toUnit = e.target.value;
+});
+
+// Add event listener to the convert button
+convertButton.addEventListener('click', (e) => {
+  const inputValue = parseFloat(input.value);
+  
+  if (!isNaN(inputValue)) {
+    const convertedValue = inputValue * conversionFactors[fromUnit][toUnit];
+    resultElement.textContent = `${inputValue} ${fromUnit} is equal to ${convertedValue} ${toUnit}`;
+  } else {
+    resultElement.textContent = 'Invalid input';
+  }
+});
+  </script>
+
+  <style>
+    body {
+  font-family: sans-serif;
+  background-color: #f0f0f0;
+  
+}
+
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.select {
+  width: 150px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.button {
+  width: 100px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.result {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#convert {
+  border: none;
+}
+  </style>
+</body>
+</html>

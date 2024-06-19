@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
+</head>
+<body>
+<style>
+  body {
+    text-align: center;
+    background-color: antiquewhite;
+    color: rgb(110, 109, 109);
+  }
+
+  input {
+    border: none;
+    color: rgb(118, 121, 122);
+    text-align:center ;
+  }
+
+  button {
+    border: none;
+    background-color: aliceblue;
+  }
+</style>
+
+  <h1>Notes </h1>
+  <input id="note-input" type="text" placeholder="Take a note...">
+  <button id="add-note-btn">Add Note</button>
+  <br>
+  <ol id="note-list"></ol>
+  <br>
+  <script>
+ const noteList = document.getElementById('note-list');
+const noteInput = document.getElementById('note-input');
+const addNoteBtn = document.getElementById('add-note-btn');
+
+let notes = [];
+
+addNoteBtn.addEventListener('click', () => {
+  const noteText = noteInput.value;
+  if (noteText !== '') {
+    notes.push({ text: noteText, id: Date.now() });
+    renderNotes();
+    noteInput.value = '';
+  }
+});
+
+function renderNotes() {
+  noteList.innerHTML = '';
+  notes.forEach((note) => {
+    const noteListItem = document.createElement('li');
+    noteListItem.textContent = note.text;
+    noteListItem.dataset.id = note.id;
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.dataset.id = note.id;
+    deleteButton.addEventListener('click', (e) => {
+      const noteId = e.target.dataset.id;
+      notes = notes.filter((note) => note.id !== parseInt(noteId));
+      renderNotes();
+    });
+    noteListItem.appendChild(deleteButton);
+    noteList.appendChild(noteListItem);
+  });
+}
+
+  </script>
+
+</body>
+</html>

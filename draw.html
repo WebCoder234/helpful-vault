@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Stopwatch</h1>
+    <div id="time">
+        <span class="digit" id="hr">00</span>
+        <span class="digit">:</span>
+        <span class="digit" id="min">00</span>
+        <span class="digit">:</span>
+        <span class="digit" id="sec">00</span>
+    </div>
+    <div id="buttons">
+        <button class="btn" id="start">Start</button>
+        <button class="btn" id="stop">Stop</button>
+        <button class="btn" id="reset">Reset</button>
+    </div>
+</div>
+
+<style>
+  body {
+    background-color: rgb(239, 120, 120);
+    text-align: center;
+    color: aliceblue;
+    font-size: 50px;
+  }
+
+  #start {
+    border: none;
+    background-color: coral;
+    color: aliceblue;
+  }
+
+  #stop {
+    border: none;
+    background-color: coral;
+    color: aliceblue;
+  }
+
+  #reset {
+    border: none;
+    background-color: coral;
+    color: aliceblue;
+  }
+</style>
+<script>
+    // Add your JavaScript logic here
+    const hrElement = document.getElementById("hr");
+    const minElement = document.getElementById("min");
+    const secElement = document.getElementById("sec");
+    const startButton = document.getElementById("start");
+    const stopButton = document.getElementById("stop");
+    const resetButton = document.getElementById("reset");
+
+    let timer;
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+
+    function updateTimer() {
+        seconds++;
+        if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes === 60) {
+                minutes = 0;
+                hours++;
+            }
+        }
+        hrElement.textContent = hours.toString().padStart(2, "0");
+        minElement.textContent = minutes.toString().padStart(2, "0");
+        secElement.textContent = seconds.toString().padStart(2, "0");
+    }
+
+    startButton.addEventListener("click", () => {
+        if (!timer) {
+            timer = setInterval(updateTimer, 1000);
+        }
+    });
+
+    stopButton.addEventListener("click", () => {
+        clearInterval(timer);
+        timer = null;
+    });
+
+    resetButton.addEventListener("click", () => {
+        clearInterval(timer);
+        timer = null;
+        hours = 0;
+        minutes = 0;
+        seconds = 0;
+        hrElement.textContent = "00";
+        minElement.textContent = "00";
+        secElement.textContent = "00";
+    });
+</script>
+</body>
+</html>

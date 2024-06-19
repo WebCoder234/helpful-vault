@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="project3.css">
+  <script src="project3.js"></script>
+
+  <head>
+<title>Circumference Calculator</title>
+  </head>
+  <body>
+    <h1>Enter The Radius Of Your Circle</h1>
+    <input type="number" id="radius">
+    <button onclick="calculateCircumference()">Calculate</button>
+    <div id="result"></div>
+
+    <script>
+        function calculateCircumference() {
+            const radius = parseFloat(document.getElementById('radius').value);
+            const pi = 3.1415926535;
+            const circumference = 2 * pi * radius;
+            document.getElementById("result").textContent = `The circumference of your circle is approximately ${circumference.toFixed(2)}.`;
+        }
+    </script>
+
+  </body>
+</html>

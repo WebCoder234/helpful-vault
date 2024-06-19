@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Mass Conversion
+  </title>
+</head>
+<body>
+  <div class="container">
+    <h1>Mass Conversion</h1>
+    <form>
+      <label for="input">Enter value:</label>
+      <br>
+      
+      <input type="number" id="input" value="0"><br>
+
+      <br>
+      <select id="unit-from">
+        <option value="lbs">Pounds</option>
+        <option value="kg">Kilograms</option>
+        <option value="g">Grams</option>
+        <option value="mg">Milligrams</option>
+        <option value="t">Tons</option>
+      </select>
+      <select id="unit-to">
+        <option value="lbs">Pounds</option>
+        <option value="kg">Kilograms</option>
+        <option value="g">Grams</option>
+        <option value="mg">Milligrams</option>
+        <option value="t">Tons</option>
+      </select>
+      <button type="button" id="convert">Convert</button>
+      <p id="result"></p>
+    </form>
+  </div>
+  <style>
+    body {
+      text-align: center;
+      background-color: aliceblue;
+      color: rgb(101, 101, 101);
+    }
+
+    input {
+      border: none;
+      color: rgb(59, 55, 85);
+    }
+
+    button {
+      border: none;
+      color: rgb(85, 174, 251);
+    }
+
+    #unit-to {
+      border: none;
+    }
+
+    #unit-from {
+      border: none;
+    }
+  </style>
+  
+  <script>
+    // Define the conversion factors
+    const conversionFactors = {
+      lbs: {
+        kg: 0.453592,
+        g: 453.592,
+        mg: 453592,
+        t: 0.000454545
+      },
+      kg: {
+        lbs: 2.20462,
+        g: 1000,
+        mg: 1000000,
+        t: 0.001
+      },
+      g: {
+        lbs: 0.00220462,
+        kg: 0.001,
+        mg: 1000,
+        t: 0.000000001
+      },
+      mg: {
+        lbs: 0.00000220462,
+        kg: 0.000001,
+        g: 0.001,
+        t: 0.000000000001
+      },
+      t: {
+        lbs: 2000,
+        kg: 1000,
+        g: 1000000,
+        mg: 1000000000
+      }
+    };
+  
+    // Get the input and conversion select elements
+    const input = document.getElementById('input');
+    const unitFrom = document.getElementById('unit-from');
+    const unitTo = document.getElementById('unit-to');
+    const convertButton = document.getElementById('convert');
+    const resultElement = document.getElementById('result');
+  
+    // Set the initial values
+    let fromUnitValue = 'lbs';
+    let toUnitValue = 'lbs';
+  
+    // Add event listeners to the conversion select elements
+    unitFrom.addEventListener('change', (e) => {
+      fromUnitValue = e.target.value;
+    });
+  
+    unitTo.addEventListener('change', (e) => {
+      toUnitValue = e.target.value;
+    });
+  
+    // Add event listener to the convert button
+    convertButton.addEventListener('click', (e) => {
+      const inputValue = parseFloat(input.value);
+    
+      if (!isNaN(inputValue)) {
+        const convertedValue = inputValue * conversionFactors[fromUnitValue][toUnitValue];
+        resultElement.textContent = `${inputValue} ${fromUnitValue} is equal to ${convertedValue} ${toUnitValue}`;
+      } else {
+        resultElement.textContent = 'Invalid input';
+      }
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draw Pad</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: aquamarine;
+      text-align: center;
+    } 
+    
+    canvas {
+      background-color: aliceblue;
+      border: none;
+    }
+
+    button {
+background-color: aliceblue;
+border: none;
+    }
+    #drawpad {
+      border: 1px solid black;
+    }
+    #color-picker {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: #FFFFFF;
+      padding: 10px;
+      border: 1px solid #AAAAAA;
+    }
+    #color-picker input[type="color"] {
+      width: 40px;
+    }
+    #color-picker input[type="range"] {
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="drawpad" width="800" height="600"></canvas>
+  <div id="color-picker">
+    <input type="color" id="background-color" value="#FFFFFF">
+    <input type="range" id="brush-size" min="1" max="50" value="5">
+    <input type="color" id="brush-color" value="#000000">
+  </div>
+  <div id="eraser-btn">
+    
+    <button id="delete-btn">Delete</button>
+  </div>
+  
+  <script>
+    const drawpad = document.getElementById('drawpad');
+    const ctx = drawpad.getContext('2d');
+    const colorPicker = document.getElementById('color-picker');
+    const backgroundColorInput = document.getElementById('background-color');
+    const brushSizeInput = document.getElementById('brush-size');
+    const brushColorInput = document.getElementById('brush-color');
+    let brushSize = brushSizeInput.value;
+    let brushColor = brushColorInput.value;
+    let isDrawing = false;
+
+    drawpad.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+    });
+
+    drawpad.addEventListener('mousemove', (e) => {
+      if (isDrawing) {
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.strokeStyle = brushColor;
+        ctx.lineWidth = brushSize;
+        ctx.stroke();
+      }
+    });
+
+    drawpad.addEventListener('mouseup', () => {
+      isDrawing = false;
+    });
+
+    drawpad.addEventListener('mouseout', () => {
+      isDrawing = false;
+    });
+
+    backgroundColorInput.addEventListener('input', (e) => {
+      ctx.fillStyle = e.target.value;
+      ctx.fillRect(0, 0, drawpad.width, drawpad.height);
+    });
+
+    brushSizeInput.addEventListener('input', (e) => {
+      brushSize = e.target.value;
+    });
+
+    brushColorInput.addEventListener('input', (e) => {
+      brushColor = e.target.value;
+    });
+
+    const eraserBtn = document.getElementById('eraser-btn');
+    const deleteBtn = document.getElementById('delete-btn');
+
+    
+
+    deleteBtn.addEventListener('click', () => {
+      ctx.clearRect(0, 0, drawpad.width, drawpad.height);
+    });
+
+    
+  
+  </script>
+</body>
+</html>
