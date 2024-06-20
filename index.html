@@ -5,6 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UsefulVault</title>
   <style>
+    .centered-containers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+#box12 {
+  grid-column: 1;
+}
+
+#box13 {
+  grid-column: 2;
+}
+
+.centered-containers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#box12 {
+  margin-right: 20px;
+}
+
+#box13 {
+  margin-left: 20px;
+}
+
+.row {
+  display: flex;
+}
+
+.col-md-3 {
+  width: 33.33%;
+}
+
+
+.centered-containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
     #calculator {
       text-align: center;
     }
@@ -103,7 +146,7 @@ body {
 
 #box1 {
   background-color: #eeb06d; /* orange */
-  height: 75px;
+  height: 150px;
   width: 150px;
   text-align: center;
   border-radius: 10px;
@@ -117,11 +160,13 @@ margin: auto;
 align-items: center;
 justify-content: center;
   gap: 20px;
+  
 }
 
 #box2 {
+  margin-left: 120px;
   background-color: #f6d850; /* light orange */
-  height: 75px;
+  height: 150px;
   width: 150px;
   text-align: center;
   border-radius: 10px;
@@ -173,6 +218,8 @@ align-items: center;
 justify-content: center;
    gap: 20px;
 }
+
+
 
 #box5 {
   background-color: #89ddee; /* light blue */
@@ -399,7 +446,45 @@ justify-content: center;
   flex-wrap: wrap;
 }
 
+.centered-containers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
 
+.box {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.box:hover {
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+.my-div {
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+  .my-div {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .my-div {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-device-width: 320px) {
+  .my-div {
+    margin: 5px;
+  }
+}
 
 
 </style>
@@ -408,35 +493,39 @@ justify-content: center;
 
 </script>
 <div class="centered-containers">
-  <a href="calculator.html"><div id="box1" class="tools"><div id="calculator"><b>Calculator</b></div></div></a>
-
-  <a href="project3.html"><div id="box2" class="tools"><b>Circumference Calculator</b></div></a>
-   <a href="project2.html"><div id="box3" class="tools"><b>Age calculator</b></div></a>
-    <a href="m.html"><div id="box4" class="tools"><b>Length Converter</b></div></a>
-     <a href="t.html"><div id="box5" class="tools"><b>Random Password Generator</b></div></a>
-     <br>
-     <br>
-      <a href="draw.html"><div id="box6" class="tools"><b>Stopwatch</b></div></a>
-      <a href="r.html"><div id="box7" class="tools"><b>Tempurature Converter</b></div></a>
-  <a href="w.html"><div id="box8" class="tools"><b>Mass Converter</b></div></a>
-   <a href="time.html"><div id="box9" class="tools"><b>Clock</b></div></a>
-    <a href="13.HTML"><div id="box10" class="tools"><b>Notes</b></div></a>
+  <a href="calculator.html"><div id="box1" class="box" grid-column="1 / span 1">Calculator</div></a>
+  <a href="project3.html"><div id="box2" class="box" grid-column="2 / span 1">Circumference Calculator</div></a>
+  <a href="project2.html"><div id="box3" class="box" grid-column="3 / span 1">Age calculator</div></a>
+  
+  <a href="m.html"><div id="box4" class="box" grid-column="1 / span 1">Length Converter</div></a>
+  <a href="t.html"><div id="box5" class="box" grid-column="2 / span 1">Random Password Generator</div></a>
+  
+  <a href="draw.html"><div id="box6" class="box" grid-column="3 / span 1">Stopwatch</div></a>
+  
+  <a href="r.html"><div id="box7" class="box" grid-column="1 / span 1">Tempurature Converter</div></a>
+  
+  <a href="w.html"><div id="box8" class="box" grid-column="2 / span 1">Mass Converter</div></a>
+  
+   <a href="time.html"><div id="box9" class="box" grid-column="3 / span 1">Clock</div></a>
+  
+    <a href="13.HTML"><div id="box10" class="box" grid-column="1 / span 1">Notes</div></a>
     <br>
     <br>
-     <a href="draw3.html"><div id="box11" class="tools"><b>DrawPad</b></div></a>
-      <a href="stopwatch.html"><div id="box12" class="tools"><b>Random Nunber Generator</b></div></a>
-      <a href="pla.html"><div id="box13" class="tools"><b>Planets</b></div></a>
+   
+      
 </div>
 
-   <h5>Contact Us: helpfulvault@gmail.com</h5>
+
    <style>
     h5 {
       color: rgb(74, 76, 81);
     }
+
+    body {
+      text-align: center;
+    }
    </style>
 </body>
 </html>
-
-
 
 
