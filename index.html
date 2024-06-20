@@ -3,119 +3,278 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Useful Vault</title>
+  <title>UsefulVault</title>
   <style>
 
-  
-    h5 {
-      text-align: center;
-    }
-    body {
-      
-     font-family: Lexend, Times-New-Roman;
-     background-color: white;
-      color: black;
-      margin-left: 150px;
-      height: auto;
-      width: auto;
-      text-align: center;
-      margin-top: 150px;
-    }
-
-    button {
-      border: none;
-      border-radius: 4px;
-      background-color: #FF6363;
-      color: aliceblue;
-    }
-
-    h1, h3 {
-      color: rgb(44, 42, 42);
-      font-family: sans-serif;
-    }
-
- 
-
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+.box-container {
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.image-column {
+body {
+  text-align: center;
+  height: auto;
+  width: auto;
+  
+}
+
+.box-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+}
+
+.box {
+  margin-right: 20px;
+}
+
+.box-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box {
+  margin-right: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+body {
+  background-color: #f5f5f5; /* light gray background */
+}
+
+
+
+  body {
+  text-align: center;
+  background-color: #f5f5f5; /* light gray background */
+}
+
+.box-container {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-
-.image-column h6 {
-  margin-bottom: 5px;
-}
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
   
-.image-grid a {
-  color: rgb(44, 42, 42);
 }
 
-.image-grid a:hover {
-  color: rgb(66, 67, 69);
+.box {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+.box a {
+  text-decoration: none;
+  color: #333;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  
+}
+
+.box:hover {
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+#box1 {
+  background-color: #eeb06d; /* orange */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+  flex-direction: row;
+
+}
+
+#box2 {
+  background-color: #f6d850; /* light orange */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+  flex-direction: row;
+
+}
+
+#box3 {
+  background-color: #adf6d5; /* pink */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+}
+
+#box4 {
+  background-color: #979d80; /* light brown */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+}
+
+#box5 {
+  background-color: #89ddee; /* light blue */
+
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+}
+
+#box6 {
+  background-color: #a0e9a3; /* green */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+}
+
+#box7 {
+  background-color: #ec8d83; /* orange-red */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+}
+
+#box8 {
+  background-color: #84c4ef; /* blue */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+}
+
+#box9 {
+  background-color: #baa1c4; /* purple */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+}
+
+#box10 {
+  background-color: #f0dc8c; /* yellow-orange */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+}
+
+#box11 {
+  background-color: #E67E73; /* orange-brown */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+}
+
+#box12 {
+  background-color: #2ECC71; /* green-blue */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+}
+
+#box13 {
+  background-color: #3b4d5e; /* dark blue-gray */
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: 200;
+}
+
+.tools {
+  height: 150px;
+  width: 150px;
 }
 
 </style>
 </head>
 <body>
-  <h1>Welcome to the Useful Vault</h1>
-  <h3>You can find many useful tools on my website</h3>
-<div class="image-grid">
-<a href="calculator.html">
-    <div class="image-column">
-      <h6>Calculator</h6>
-    </div>
-</a>
-<a href="project2.html">
-    <div class="image-column">
-      <h6>Age Calculator</h6>
-    </div>
-</a>
-<a href="m.html">
-    <div class="image-column">
-      <h6>Length Conversion</h6>
-    </div>
-</a>
-<a href="t.html">
-    <div class="image-column">
-      <h6>Random Password Generator</h6>
-    </div>
-</a>
-<a href="r.html">
-    <div class="image-column">
-      <h6>Temperature Converter</h6>
-    </div>
-</a>
-<a href="w.html">
-    <div class="image-column">
-      <h6>Mass Converter</h6>
-    </div>
-</a>
-<a href="time.html">
-    <div class="image-column">
-      <h6>Clock</h6>
-    </div>
-</a>
-<a href="13.html">
-    <div class="image-column">
-      <h6>Notes</h6>
-    </div>
-</a>
-
-<br><br><br>
-
-<h5>Contact Us: 
-<br>helpfulvault@gmail.com</h5>
-
-<script>
-
-</script>
-
+  <a href="calculator.html"><div id="box1" class="tools">Calculator</div></a>
+   <a href="project3.html"><div id="box2" class="tools">Circumference Calculator</div></a>
+    <a href="project2.html"><div id="box3" class="tools">Age Calculator</div></a>
+     <a href="m.html"><div id="box4" class="tools">Length Converter</div></a>
+      <a href="t.html"><div id="box5" class="tools">Random Password Generator</div></a>
+       <a href="draw.html"><div id="box6" class="tools">Stopwatch</div></a>
+       <a href="r.html"><div id="box7" class="tools">Tempurature Converter</div></a>
+   <a href="w.html"><div id="box8" class="tools">Mass Converter</div></a>
+    <a href="time.html"><div id="box9" class="tools">Clock</div></a>
+     <a href="13.HTML"><div id="box10" class="tools">Notes</div></a>
+      <a href="draw3.html"><div id="box11" class="tools">DrawPad</div></a>
+       <a href="stopwatch.html"><div id="box12" class="tools">Random Nunber Generator</div></a>
+       <a href="pla.html"><div id="box13" class="tools">Planets</div></a>
+   
 </body>
 </html>
+
 
