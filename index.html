@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <link rel="stylesheet" href="style.css">
 
  
   <!-- Google tag (gtag.js) -->
@@ -565,7 +564,55 @@ justify-content: center;
 
 </script>
   <link rel="icon" href="Pictures/LOGO1.png">
-<h3>If you are using this website on a phone, make sure your phone is flipped horizontally. Sorry for the inconvenience</h3>
+
+ <!-- Add a CSS file for animations -->
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+<!-- Add the theme switcher HTML -->
+<label class="switch">
+  <input type="checkbox" id="theme-switch-1" />
+  <span class="slider"></span>
+</label>
+
+<label class="switch">
+  <input type="checkbox" id="theme-switch-2" />
+  <span class="slider"></span>
+</label>
+
+<label class="switch">
+  <input type="checkbox" id="theme-switch-3" />
+  <span class="slider"></span>
+</label>
+
+<!-- Add the JavaScript code -->
+<script>
+  // Get the theme switch input and slider elements
+  const themeSwitch1 = document.getElementById('theme-switch-1');
+  const slider1 = document.querySelector('.slider');
+
+  const themeSwitch2 = document.getElementById('theme-switch-2');
+  const slider2 = document.querySelector('.slider');
+
+  const themeSwitch3 = document.getElementById('theme-switch-3');
+  const slider3 = document.querySelector('.slider');
+
+  // Add an event listener to each theme switch input to toggle the dark mode
+  themeSwitch1.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode-1');
+    localStorage.setItem('theme', 'dark-mode-1');
+  });
+
+  themeSwitch2.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode-2');
+    localStorage.setItem('theme', 'dark-mode-2');
+  });
+
+  themeSwitch3.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode-3');
+    localStorage.setItem('theme', 'dark-mode-3');
+  });
+</script>
+
 <div class="centered-containers">
   <a href="calculator.html"><div id="box1" class="box" grid-column="1 / span 1">Calculator</div></a>
   <a href="project3.html"><div id="box2" class="box" grid-column="2 / span 1">Circumference Calculator</div></a>
@@ -589,48 +636,6 @@ justify-content: center;
       
 </div>
 
- <!-- Add more theme switchers -->
-<label class="switch">
-  <input type="checkbox" id="theme-switch-1" />
-  <span class="slider"></span>
-</label>
-
-<label class="switch">
-  <input type="checkbox" id="theme-switch-2" />
-  <span class="slider"></span>
-</label>
-
-<label class="switch">
-  <input type="checkbox" id="theme-switch-3" />
-  <span class="slider"></span>
-</label>
-
-<!-- Update the JavaScript to handle multiple theme switchers -->
-<script>
-  // Get the theme switch input and slider elements
-  const themeSwitch1 = document.getElementById('theme-switch-1');
-  const slider1 = document.querySelector('.slider');
-  
-  const themeSwitch2 = document.getElementById('theme-switch-2');
-  const slider2 = document.querySelector('.slider');
-
-  const themeSwitch3 = document.getElementById('theme-switch-3');
-  const slider3 = document.querySelector('.slider');
-
-  // Add an event listener to each theme switch input to toggle the dark mode
-  themeSwitch1.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode-1');
-  });
-
-  themeSwitch2.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode-2');
-  });
-
-  themeSwitch3.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode-3');
-  });
-</script>
-
 
    <style>
 
@@ -650,19 +655,6 @@ justify-content: center;
    </style>
 
  <style>
-
-  /* Add more dark mode classes */
-.dark-mode-1 {
-  background-color: #333;
-}
-
-.dark-mode-2 {
-  background-color: #555;
-}
-
-.dark-mode-3 {
-  background-color: #777;
-}
     body {
       background-color: #f5f5f5; /* light mode background */
       transition: background-color 0.5s; /* add a transition effect */
@@ -715,6 +707,42 @@ justify-content: center;
     input:checked + .slider:before {
       transform: translateX(26px); /* move the slider to the right */
     }
+
+  /* Add animations and transitions */
+.switch {
+  position: relative;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #333;
+  transition: transform 0.5s ease-in-out;
+}
+
+.switch input[type="checkbox"] {
+  opacity: 0;
+}
+
+.switch input[type="checkbox"]:checked ~ .slider {
+  transform: translateX(30px);
+}
+
+.dark-mode-1 {
+  background-color: #333;
+}
+
+.dark-mode-2 {
+  background-color: #555;
+}
+
+.dark-mode-3 {
+  background-color: #777;
+}
   </style>
 
 
