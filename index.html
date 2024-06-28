@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ <link rel="stylesheet" href="style.css">
 
  
   <!-- Google tag (gtag.js) -->
@@ -588,6 +589,48 @@ justify-content: center;
       
 </div>
 
+ <!-- Add more theme switchers -->
+<label class="switch">
+  <input type="checkbox" id="theme-switch-1" />
+  <span class="slider"></span>
+</label>
+
+<label class="switch">
+  <input type="checkbox" id="theme-switch-2" />
+  <span class="slider"></span>
+</label>
+
+<label class="switch">
+  <input type="checkbox" id="theme-switch-3" />
+  <span class="slider"></span>
+</label>
+
+<!-- Update the JavaScript to handle multiple theme switchers -->
+<script>
+  // Get the theme switch input and slider elements
+  const themeSwitch1 = document.getElementById('theme-switch-1');
+  const slider1 = document.querySelector('.slider');
+  
+  const themeSwitch2 = document.getElementById('theme-switch-2');
+  const slider2 = document.querySelector('.slider');
+
+  const themeSwitch3 = document.getElementById('theme-switch-3');
+  const slider3 = document.querySelector('.slider');
+
+  // Add an event listener to each theme switch input to toggle the dark mode
+  themeSwitch1.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode-1');
+  });
+
+  themeSwitch2.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode-2');
+  });
+
+  themeSwitch3.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode-3');
+  });
+</script>
+
 
    <style>
 
@@ -607,6 +650,19 @@ justify-content: center;
    </style>
 
  <style>
+
+  /* Add more dark mode classes */
+.dark-mode-1 {
+  background-color: #333;
+}
+
+.dark-mode-2 {
+  background-color: #555;
+}
+
+.dark-mode-3 {
+  background-color: #777;
+}
     body {
       background-color: #f5f5f5; /* light mode background */
       transition: background-color 0.5s; /* add a transition effect */
