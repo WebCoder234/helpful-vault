@@ -592,43 +592,6 @@ justify-content: center;
       
 </div>
 
- <form action="/search" method="get">
-  <input type="text" id="search-input" placeholder="Search...">
-  <input type="submit" value="Search">
-</form>
-
-<div class="centered-containers">
-  <!-- your original code here -->
-  <div id="search-results"></div>
-</div>
-
-<script>
-  const searchInput = document.getElementById('search-input');
-  const searchResults = document.getElementById('search-results');
-  const boxes = document.querySelectorAll('.box');
-
-  searchInput.addEventListener('input', () => {
-    const searchQuery = searchInput.value.toLowerCase();
-    const results = [];
-
-    boxes.forEach(box => {
-      const boxText = box.textContent.toLowerCase();
-      if (boxText.includes(searchQuery)) {
-        results.push(box);
-      }
-    });
-
-    if (results.length > 0) {
-      let html = '';
-      results.forEach(box => {
-        html += `<a href="${box.querySelector('a').href}">${box.textContent}</a>`;
-      });
-      searchResults.innerHTML = html;
-    } else {
-      searchResults.innerHTML = 'No results found';
-    }
-  });
-</script>
 
  <style>
     body {
