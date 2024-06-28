@@ -574,44 +574,7 @@ justify-content: center;
   <span class="slider"></span>
 </label>
 
-<label class="switch">
-  <input type="checkbox" id="theme-switch-2" />
-  <span class="slider"></span>
-</label>
 
-<label class="switch">
-  <input type="checkbox" id="theme-switch-3" />
-  <span class="slider"></span>
-</label>
-
-<!-- Add the JavaScript code -->
-<script>
-  // Get the theme switch input and slider elements
-  const themeSwitch1 = document.getElementById('theme-switch-1');
-  const slider1 = document.querySelector('.slider');
-
-  const themeSwitch2 = document.getElementById('theme-switch-2');
-  const slider2 = document.querySelector('.slider');
-
-  const themeSwitch3 = document.getElementById('theme-switch-3');
-  const slider3 = document.querySelector('.slider');
-
-  // Add an event listener to each theme switch input to toggle the dark mode
-  themeSwitch1.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode-1');
-    localStorage.setItem('theme', 'dark-mode-1');
-  });
-
-  themeSwitch2.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode-2');
-    localStorage.setItem('theme', 'dark-mode-2');
-  });
-
-  themeSwitch3.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode-3');
-    localStorage.setItem('theme', 'dark-mode-3');
-  });
-</script>
 
 <div class="centered-containers">
   <a href="calculator.html"><div id="box1" class="box" grid-column="1 / span 1">Calculator</div></a>
