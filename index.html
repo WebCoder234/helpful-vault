@@ -686,70 +686,10 @@ themeSwitch.addEventListener('click', () => {
     }
    </style>
 
- <!-- Add the following code to the HTML file -->
-<div class="page" id="page-1">
-  <!-- Page content -->
-  <h2>Page 1</h2>
-  <p>Page 1 content</p>
-  <div class="comments-container">
-    <ul id="comments-1"></ul>
-    <input type="text" id="comment-input-1" placeholder="Add a comment">
-    <button id="add-comment-1">Add Comment</button>
-  </div>
-</div>
 
-<div class="page" id="page-2">
-  <!-- Page content -->
-  <h2>Page 2</h2>
-  <p>Page 2 content</p>
-  <div class="comments-container">
-    <ul id="comments-2"></ul>
-    <input type="text" id="comment-input-2" placeholder="Add a comment">
-    <button id="add-comment-2">Add Comment</button>
-  </div>
-</div>
 
-<!-- ...and so on for each page -->
- <script>
-  // Get all pages
-const pages = document.querySelectorAll('.page');
 
-// Add an event listener to each page's add comment button
-pages.forEach((page) => {
-  const commentsContainer = page.querySelector('.comments-container');
-  const commentsList = commentsContainer.querySelector('ul');
-  const commentInput = commentsContainer.querySelector('input[type="text"]');
-  const addCommentButton = commentsContainer.querySelector('button');
 
-  addCommentButton.addEventListener('click', () => {
-    const comment = commentInput.value.trim();
-    if (comment !== '') {
-      const newComment = document.createElement('li');
-      newComment.textContent = comment;
-      commentsList.appendChild(newComment);
-      commentInput.value = '';
-    }
-  });
-});
-
-  // Get all pages
-const pages = document.querySelectorAll('.page');
-
-// Populate comments list for each page
-pages.forEach((page) => {
-  const commentsContainer = page.querySelector('.comments-container');
-  const commentsList = commentsContainer.querySelector('ul');
-  
-  // Assume you have an array of existing comments for each page
-  const existingComments = [...]; // e.g. [ 'Comment 1', 'Comment 2', ... ];
-  
-  existingComments.forEach((comment) => {
-    const newComment = document.createElement('li');
-    newComment.textContent = comment;
-    commentsList.appendChild(newComment);
-  });
-});
- </script>
 </body>
 </html>
 
