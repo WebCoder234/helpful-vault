@@ -680,6 +680,23 @@ justify-content: center;
   </label>
 
 <script>
+
+ <label class="switch">
+  <input type="checkbox" id="theme-switch" />
+  <span class="slider"></span>
+</label>
+
+<script>
+  // Get the theme switch input and slider elements
+  const themeSwitch = document.getElementById('theme-switch');
+  const slider = document.querySelector('.slider');
+
+  // Add an event listener to the theme switch input to toggle the dark mode
+  themeSwitch.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+</script>
+
   
 // Get the theme switch input and slider elements
 const themeSwitch = document.getElementById('theme-switch');
