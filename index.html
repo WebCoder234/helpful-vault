@@ -16,6 +16,18 @@
 
   gtag('config', 'G-WSJCSPXV48');
 </script>
+ <script>const lightSwitchButton = document.getElementById('light-switch'); // Get the button element
+
+let isLightOn = true; // Track light state (initially on)
+
+lightSwitchButton.addEventListener('click', function() {
+  const body = document.body;
+  const lightColor = isLightOn ? 'white' : '#f5f5f5'; // Adjust background color based on state
+
+  body.style.backgroundColor = lightColor;
+  isLightOn = !isLightOn; // Toggle light state for next click
+});
+</script>
  <link rel="icon" type="image/png" href="logo3.png">
   <meta name="description" content="You can find many useful tools on our website.">
     <meta name="keywords" content="useful , vault , tools , math , random">
