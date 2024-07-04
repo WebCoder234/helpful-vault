@@ -707,8 +707,7 @@ justify-content: center;
     
     <br>
     <br>
-
- body {
+ <style> body {
       background-color: #f5f5f5; /* light mode background */
       transition: background-color 0.5s; /* add a transition effect */
     }
@@ -759,8 +758,8 @@ justify-content: center;
     
     input:checked + .slider:before {
       transform: translateX(26px); /* move the slider to the right */
-    }
-  </style>
+    }</style>
+
 
 
 
@@ -807,21 +806,7 @@ themeSwitch.addEventListener('click', () => {
 
 <script>
 
- <label class="switch">
-  <input type="checkbox" id="theme-switch" />
-  <span class="slider"></span>
-</label>
-
-<script>
-  // Get the theme switch input and slider elements
-  const themeSwitch = document.getElementById('theme-switch');
-  const slider = document.querySelector('.slider');
-
-  // Add an event listener to the theme switch input to toggle the dark mode
-  themeSwitch.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-  });
-</script>
+ 
 
 
 
