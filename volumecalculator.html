@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volume Calculator</title>
+<style>
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5; /* Light gray background */
+  text-align: center;
+  color: #333;
+}
+
+.calculator {
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  background-color: #fff;
+  width: 80%; /* Responsive width */
+  max-width: 450px; /* Set a maximum width for larger screens */
+  margin: 0 auto; /* Center calculator horizontally */
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+label {
+  display: flex;
+  justify-content: space-between; /* Align label and unit */
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="number"] {
+  width: calc(100% - 50px); /* Account for unit width */
+  padding: 12px 20px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.unit {
+  width: 50px; /* Fixed width for unit */
+  text-align: right; /* Align unit to the right */
+  color: #ccc; /* Lighter text color for unit */
+}
+
+button {
+  cursor: pointer;
+  background-color: #428bca; /* Blue button */
+  color: white;
+  transition: background-color 0.3s ease-in-out;
+  padding: 12px 20px;
+  border: none; /* Remove border for cleaner look */
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #357ebd;
+}
+
+#result {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+
+</style>
+</head>
+<body>
+  
+  <div class="calculator">
+    <label for="length">Length:</label>
+    <input type="number" id="length" placeholder="Enter length">
+    <br>
+    <label for="width">Width:</label>
+    <input type="number" id="width" placeholder="Enter width">
+    <br>
+    <label for="height">Height:</label>
+    <input type="number" id="height" placeholder="Enter height">
+    <br>
+    <button onclick="calculateVolume()">Calculate Volume</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function calculateVolume() {
+  const length = parseFloat(document.getElementById("length").value);
+  const width = parseFloat(document.getElementById("width").value);
+  const height = parseFloat(document.getElementById("height").value);
+
+  if (isNaN(length) || isNaN(width) || isNaN(height)) {
+    alert("Please enter valid numbers!");
+    return;
+  }
+
+  const volume = length * width * height;
+  const resultElement = document.getElementById("result");
+  resultElement.textContent = `Volume: ${volume.toFixed(2)}`;
+}
+
+  </script>
+</body>
+</html>
