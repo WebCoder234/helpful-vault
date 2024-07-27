@@ -1,1 +1,122 @@
+/* General box styles */
+.box {
+  background-color: #f5f5f5; /* Light gray background */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding around the content */
+  text-align: center; /* Center align the content within the box */
+  color: #333; /* Dark gray text color */
+  display: flex;
+  align-items: center; /* Vertically center the content within the box */
+  justify-content: center; /* Horizontally center the content within the box */
+}
+
+/* Box hover effect */
+.box:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow on hover */
+  transform: scale(1.05); /* Slightly enlarge the box on hover */
+}
+
+/* Box container */
+.centered-containers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the boxes horizontally */
+  align-items: center; /* Center the boxes vertically */
+}
+
+/* Individual box dimensions */
+.box {
+  width: 200px; /* Adjust width as needed */
+  height: 150px; /* Adjust height as needed */
+}
+
+/* Box spacing */
+.box {
+  margin: 10px; /* Adjust margin as needed */
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .centered-containers {
+    flex-direction: column; /* Stack boxes vertically on smaller screens */
+  }
+}
+
+/* Box content */
+.box-content {
+  font-size: 18px; /* Adjust font size as needed */
+  font-weight: bold; /* Bold font weight */
+  color: #333; /* Dark gray text color */
+}
+
+/* Box hover effects */
+.box:hover {
+  background-color: #f0f0f0; /* Lighter background on hover */
+  transform: scale(1.02); /* Slight zoom on hover */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow on hover */
+}
+
+/* Advanced box shadow */
+.box {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Box transitions */
+.box {
+  transition: all 0.3s ease-in-out; /* Smooth transitions for all properties */
+}
+/* Hover animation */
+.box:hover {
+  transform: scale(1.05) rotate(2deg); /* Add a slight rotation on hover */
+}
+
+/* Pulsating effect */
+.pulsating-box {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.box {
+  box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography */
+body {
+  font-family: Arial, sans-serif; /* Choose a suitable font */
+  font-size: 16px; /* Base font size */
+}
+
+h1, h2, h3 {
+  font-family: Montserrat, sans-serif; /* Choose a heading font */
+  font-weight: bold;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .centered-containers {
+    flex-direction: column; /* Stack boxes vertically on smaller screens */
+  }
+  .box {
+    width: 100%; /* Make boxes full width on smaller screens */
+  }
+}
+
+.box {
+  width: 200px;
+  padding: 10px;
+  border: 2px solid black;
+  margin: 10px;
+}
+
 
