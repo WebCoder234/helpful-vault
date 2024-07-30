@@ -1,58 +1,540 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3275665611594561"
-   crossorigin="anonymous"></script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3275665611594561"
+   crossorigin="anonymous"></script>
 
 
- 
- <!-- Google tag (gtag.js) -->
+ 
+ <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WSJCSPXV48"></script>
 <script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
 
- gtag('config', 'G-WSJCSPXV48');
+ gtag('config', 'G-WSJCSPXV48');
 </script>
 
- <link rel="icon" type="image/png" href="logo3.png">
- <meta name="description" content="You can find many useful tools on our website.">
-
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-</head>
-<script>
-
-</script>
-
-<link rel="stylesheet" type="text/css" href="styles.css">
-
-
-
-
-
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3275665611594561"
-   crossorigin="anonymous"></script>
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3275665611594561"
+   crossorigin="anonymous"></script>
 <!-- Ad #1 -->
 <ins class="adsbygoogle"
-   style="display:block"
-   data-ad-client="ca-pub-3275665611594561"
-   data-ad-slot="6028276479"
-   data-ad-format="auto"
-   data-full-width-responsive="true"></ins>
+   style="display:block"
+   data-ad-client="ca-pub-3275665611594561"
+   data-ad-slot="6028276479"
+   data-ad-format="auto"
+   data-full-width-responsive="true"></ins>
 <script>
-   (adsbygoogle = window.adsbygoogle || []).push({});
+   (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-  <body>
-    <div class="sidebar">
-      <span class="sidebarlines">☰</span>
-    </div>
-  </body>
+
+  
 <style>
-  .sidebarlines {
-    width: 20px;
+  * {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    margin-left: 3.5px;
+    margin-top: 3.5px;
+    padding: 0;
+    box-sizing: border-box;
   }
+ 
+body {
+  background-color: #181a1d;
+}
+ 
+
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #252428;
+    height: 100%;
+    align-items: center;
+    width: 18%;
+    text-align: center;
+    border: rgb(171, 193, 232) 5px solid;;
+  }
+
+
+  .sidebar .logo-details i {
+    font-size: 30px;
+    color: white;
+    align-items: center;
+  }
+
+
+  .sidebar .logo-details .logo_name {
+    font-size: 22px;
+    color: white;
+    height: 90%;
+    align-items: center;
+  }
+
+
+  .buttons {
+    border: 0px;
+    border-radius: 5px;
+    height: 70px;
+    color: #f0f8ff;
+    background-color: #736f7e;
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding-left: 10px;
+    cursor: pointer;
+   
+  }
+  .buttons1 {
+    border: 0px;
+    border-radius: 5px;
+    height: 70px;
+    color: #f0f8ff;
+    background-color: #736f7e;
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding-left: 10px;
+    cursor: pointer;
+    width: 90%;
+   
+  }
+
+
+  /* Separate dropdown classes for each button */
+  .dropdown-calculators {
+    position: relative;
+    display: inline-block;
+  }
+
+
+  .dropdown-converters {
+    position: relative;
+    display: inline-block;
+  }
+
+
+  .dropdown-fun {
+    position: relative;
+    display: inline-block;
+  }
+
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+   
+  }
+
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+
+  .dropdown-content a:hover {background-color: #ddd;}
+
+
+  /* New styling for hover effect */
+  .dropdown-calculators:hover .dropdown-content {
+    display: block;
+  }
+
+
+  .dropdown-converters:hover .dropdown-content {
+    display: block;
+  }
+
+
+  .dropdown-fun:hover .dropdown-content {
+    display: block;
+  }
+
+
+  .buttons:not(:hover) .dropdown-content {
+    display: none;
+  }
+  #settings_button {
+    text-align: center;
+    align-items: center;
+    align-self: center;
+  }
+h1 {
+  color: white;
+  text-align: center;
+}
+
+
+.box {
+  text-align: center;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+
+#box1  {
+  margin-left: 120px;
+  background-color: #ede3b9; /* light orange */
+height: 170px;
+  width: 170px;
+ 
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #343232;
+ 
+  font-weight: bold;
+  flex-direction: row;
+  display: flex;
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+   text-decoration: none;
+}
+
+
+#box2 {
+  margin-left: 120px;
+  background-color: #e4af87; /* light orange */
+height: 200px;
+  width: 200px;
+ 
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #342f2f;
+ 
+  font-weight: bold;
+  flex-direction: row;
+  display: flex;
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+
+
+}
+
+
+#box3 {
+  background-color: #f6cbad; /* pink */
+   height: 180px;
+  width: 180px;
+
+
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #252222;
+  font-weight: bold;
+  display: flex;
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+}
+
+
+#box4 {
+  background-color: #e48686; /* light brown */
+  height: 150px;
+  width: 150px;
+
+
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #2f2b2b;
+   font-weight: bold;
+  display: flex;
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+}
+
+
+
+
+
+
+#box5 {
+  background-color: #b8f2fe; /* light blue */
+
+
+ height: 160px;
+  width: 160px;
+
+
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #201e1e;
+  font-weight: bold;
+  display: flex;
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+}
+
+
+#box6 {
+  background-color: #b8f0ba; /* green */
+  height: 170px;
+  width: 170px;
+ 
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #312d2d;
+  font-weight: bold;
+  display: flex;
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+}
+
+
+#box7 {
+  background-color: #a5eae2; /* orange-red */
+  height: 190px;
+  width: 190px;
+
+
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #2f2e2e;
+  font-weight: bold;
+  display: flex;
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+}
+
+
+#box8 {
+  background-color: #84c4ef; /* blue */
+  height: 160px;
+  width: 160px;
+
+
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #373737;
+  font-weight: bold;
+  display: flex;
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+}
+
+
+#box9 {
+  background-color: #d6aee6; /* purple */
+  height: 120px;
+  width: 120px;
+ 
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #333131;
+  font-weight: bold;
+  display: flex;
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+}
+
+
+
+
+
+
+#box10 {
+  background-color: #c9eec1; /* yellow-orange */
+   height: 120px;
+  width: 120px;
+
+
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #292929;
+  font-weight: bold;
+  display: flex;
+    display: flex;
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+}
+
+
+#box11 {
+  background-color: #E67E73; /* orange-brown */
+   height: 120px;
+  width: 120px;
+ 
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+    font-weight: bold;
+  display: flex;
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+}
+
+
+#box12 {
+  background-color: #2ECC71; /* green-blue */
+   height: 120px;
+  width: 120px;
+
+
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding-top: 20px;
+  color: #f5f5f5;
+  font-weight: bold;
+  display: flex;
+  position: relative; /* or absolute */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+margin: auto;
+align-items: center;
+justify-content: center;
+   gap: 20px;
+}
+
+
+
+
 </style>
-</html>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>UsefulVault</h1>
+<div class="sidebar">
+<div class="logo-details"> <span class="logo_name">UsefulVault</span>
+  <box-icon name='home' ></box-icon>
+  </div>
+  <div class="dropdown-calculators">
+    <button class="buttons">Calculators</button>
+    <div class="dropdown-content">
+      <a href="calculator.html">Calculator</a>
+      <a href="project3.html">Circumference Calculator</a>
+      <a href="project2.html">Age Calculator</a>
+    </div>
+  </div>
+  <div class="dropdown-converters">
+    <button class="buttons">Converters</button>
+    <div class="dropdown-content">
+      <a href="m.html">Length Converter</a>
+      <a href="r.html">Tempurature Converter</a>
+      <a href="w.html">Mass Converter</a>
+    </div>
+  </div>
+  <div class="dropdown-fun">
+    <button class="buttons">Fun and Random</button>
+    <div class="dropdown-content">
+      <a href="t.html">Random Password Generator</a>
+      <a href="draw.html">Stopwatch</a>
+      <a href="time.html">Clock</a>
+      <a href="13.HTML">Notes</a>
+   
+
+
+    </div>
+   
+   
+  </div>
+   
+  <div >
+
+
+  </div>
+
+
+  <br>
+<div>
+
+
+</div>
+  </div>
+  <div class="main">
+    <a href="calculator.html"><div id="box1" class="box" grid-column="1 / span 1">Calculator</div></a>
+    <a href="project3.html"><div id="box2" class="box" grid-column="2 / span 1">Circumference Calculator</div></a>
+    <a href="project2.html"><div id="box3" class="box" grid-column="3 / span 1">Age Calculator</div></a>
+   
+    <a href="m.html"><div id="box4" class="box" grid-column="1 / span 1">Length Converter</div></a>
+    <a href="t.html"><div id="box5" class="box" grid-column="2 / span 1">Random Password Generator</div></a>
+   
+    <a href="draw.html"><div id="box6" class="box" grid-column="3 / span 1">Stopwatch</div></a>
+   
+    <a href="r.html"><div id="box7" class="box" grid-column="1 / span 1">Tempurature Converter</div></a>
+   
+    <a href="w.html"><div id="box8" class="box" grid-column="2 / span 1">Mass Converter</div></a>
+   
+     <a href="time.html"><div id="box9" class="box" grid-column="3 / span 1">Clock</div></a>
+   
+      <a href="13.HTML"><div id="box10" class="box" grid-column="1 / span 1">Notes</div></a>
+ 
+  </div>
+  </body>
+  </html>
+ 
+
+
+
+
