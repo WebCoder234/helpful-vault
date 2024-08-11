@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  background-color: rgb(110, 112, 173);
+  background-color: #2E2F34;
   color: aliceblue;
 }
 
@@ -8,4 +8,8 @@ input {
   border: none;
   background-color: aliceblue;
   color: rgb(79, 87, 109);
+}
+
+button {
+  border: none;
 }
