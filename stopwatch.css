@@ -1,7 +1,7 @@
 body {
   width: 100vh;
   height: 100px;
-  background-color: rgb(164, 237, 237);
+  background-color: #373943;
   text-align: center;
  margin-left: 250px;
  color: rgb(58, 58, 99);
@@ -36,3 +36,4 @@ button {
   color: rgb(58, 58, 99);
   background-color: rgb(90, 115, 141);
 }
+
