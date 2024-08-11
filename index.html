@@ -61,7 +61,8 @@ body {
     align-items: center;
     width: 18%;
     text-align: center;
-    border: rgb(171, 193, 232) 5px solid;;
+    border: rgb(238, 247, 255) 5px solid;
+    box-shadow: 0px 0px 10px rgb(214, 252, 255);
   }
 
 
@@ -84,13 +85,14 @@ body {
     border: 0px;
     border-radius: 5px;
     height: 70px;
-    color: #f0f8ff;
-    background-color: #736f7e;
+    color: #373839;
+    background-color: #ffffff;
     display: block;
     width: 100%;
     text-align: left;
     padding-left: 10px;
     cursor: pointer;
+    font-weight: 500;
    
   }
   .buttons1 {
@@ -465,6 +467,27 @@ justify-content: center;
   transform: scale(1.07); /* To increase size by 20% */
 }
 
+.box {
+  box-shadow: 0px 0px 10px rgb(242, 254, 255);
+  
+}
+
+input {
+  border-radius: 10px;
+  border: none;
+  height: 45px;
+  width: 90%;
+  
+}
+
+
+::placeholder {
+  font-size: 13px;
+  text-align: center;
+  color: #736c6c;
+}
+
+
 
 
 
@@ -481,6 +504,7 @@ justify-content: center;
 <div class="logo-details"> <span class="logo_name">UsefulVault</span>
   <box-icon name='home' ></box-icon>
   </div>
+
   <div class="dropdown-calculators">
     <button class="buttons">Calculators</button>
     <div class="dropdown-content">
@@ -508,6 +532,8 @@ justify-content: center;
 
 
     </div>
+
+
    
    
   </div>
@@ -525,7 +551,7 @@ justify-content: center;
 </div>
   </div>
   <div class="main">
-   <h4><i>"</i>All Your Needs, One Place.<i>"</i></h4>
+   <h4><i>"</i>All Your Help, One Place.<i>"</i></h4>
     <a href="calculator.html"><div id="box1" class="box" grid-column="1 / span 1">Calculator</div></a>
     <a href="project3.html"><div id="box2" class="box" grid-column="2 / span 1">Circumference Calculator</div></a>
     <a href="project2.html"><div id="box3" class="box" grid-column="3 / span 1">Age Calculator</div></a>
@@ -544,9 +570,14 @@ justify-content: center;
       <a href="13.HTML"><div id="box10" class="box" grid-column="1 / span 1">Notes</div></a>
  
   </div>
+  
+ 
+
+
+
+  
   </body>
   </html>
  
-
 
 
