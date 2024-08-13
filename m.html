@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Conversion </h1>
+    <h1>Length Converter </h1>
     <form>
       <label for="input">Enter value:</label>
       <input type="number" id="input" value="0">
@@ -22,6 +22,7 @@
         <option value="km">Kilometers</option>
       </select>
       <select id="unit-to">
+        h5
         <option value="ft">Feet</option>
         <option value="in">Inches</option>
         <option value="m">Meters</option>
@@ -114,48 +115,75 @@ convertButton.addEventListener('click', (e) => {
   </script>
 
   <style>
-    body {
-  font-family: sans-serif;
-  background-color: #f0f0f0;
-  
+body {
+
+  background-color: #413e3e;
+  color: #333;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .container {
   max-width: 500px;
-  margin: 40px auto;
-  padding: 20px;
+  padding: 40px;
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.select {
-  width: 150px;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: #fff;
+h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.button {
-  width: 100px;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4CAF50;
-  color: #fff;
-  cursor: pointer;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.result {
-  font-size: 18px;
+label {
   font-weight: bold;
 }
 
-#convert {
+input[type="number"],
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+button:hover {
+  background-color: #6dcc7a;
+}
+
+#result {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+option {
   border: none;
 }
   </style>
