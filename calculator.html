@@ -112,40 +112,15 @@ inputtext {
 
 
     <script>
-        const input = document.getElementById('inputtext');
+  const input = document.getElementById('inputtext');
 const buttons = document.querySelectorAll('button');
 
-function calculate(expression) {
-    console.log(expression);
-    console.log(typeof(expression));
-    try {
-        return new Function('return ' + expression)();
-    } catch (error) {
-        return 'Malformed Operation';
-    }
-}
+const calculate = expr => eval(expr) || 'Malformed Operation';
 
-
-function operation(buttonValue) {
-    if (buttonValue === 'C') {
-        input.value = '';
-    } else if (buttonValue === 'DEL') {
-        input.value = input.value.slice(0, -1);
-    } else if (buttonValue === '=') {
-        input.value = calculate(input.value);
-    } else {
-        input.value += buttonValue;
-    }
-}
-
-buttons.forEach(button => {
-    let buttonValue = button.innerText;
-    button.addEventListener('click', function () {
-        operation(buttonValue);
-    });
-});
-
-π=3.1415;
+buttons.forEach(btn => btn.onclick = () => {
+  const val = btn.textContent;
+  input.value += val === '=' ? calculate(input.value) : val === 'C' ? '' : val === 'DEL' ? input.value.slice(0, -1) : val;
+});  
 
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
