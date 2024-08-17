@@ -108,72 +108,39 @@ inputtext {
     </div>
   </div>
  <script>
-     const resultDisplay = document.getElementById("result");
-const buttons = document.querySelectorAll("button");
+ const buttons = document.querySelectorAll('button');
 
-let currentNumber = "";
-let previousNumber = "";
-let operation = null;
-
-function updateDisplay(value) {
-  resultDisplay.value = value;
-}
-
-function clearAll() {
-  currentNumber = "";
-  previousNumber = "";
-  operation = null;
-  updateDisplay("");
-}
-
-function handleNumber(value) {
-  currentNumber += value;
-  updateDisplay(currentNumber);
-}
-
-function handleOperator(operator) {
-  if (currentNumber === "") return;
-  if (operation !== null) {
-    calculate();
-  }
-  previousNumber = currentNumber;
-  currentNumber = "";
-  operation = operator;
-}
-
-function calculate() {
-  if (currentNumber === "" || operation === null) return;
-  let computation;
+function calculate(expression) {
+  console.log(expression);
+  console.log(typeof(expression));
   try {
-    computation = eval(previousNumber + operation + currentNumber);
+    return new Function('return ' + expression)();
   } catch (error) {
-    updateDisplay("Error");
-    return;
+    return 'Malformed Operation';
   }
-  currentNumber = computation.toString();
-  previousNumber = "";
-  operation = null;
-  updateDisplay(currentNumber);
+}
+
+
+function operation(buttonValue) {
+  if (buttonValue === 'C') {
+    input.value = '';
+  } else if (buttonValue === 'DEL') {
+    input.value = input.value.slice(0, -1);
+  } else if (buttonValue === '=') {
+    input.value = calculate(input.value);
+  } else {
+    input.value += buttonValue;
+  }
 }
 
 buttons.forEach(button => {
-  const buttonValue = button.textContent;
-  button.addEventListener('click', () => {
-    if (buttonValue === 'C') {
-      clearAll();
-    } else if (buttonValue === 'DEL') {
-      currentNumber = currentNumber.slice(0, -1);
-      updateDisplay(currentNumber);
-    } else if (buttonValue === '=') {
-      calculate();
-    } else if (buttonValue === 'π') {
-      currentNumber += Math.PI;
-      updateDisplay(currentNumber);
-    } else {
-      handleNumber(buttonValue);
-    }
+  let buttonValue = button.innerText;
+  button.addEventListener('click', function () {
+    operation(buttonValue);
   });
 });
+
+π=3.1415;
  </script>
 </body>
 </html>
