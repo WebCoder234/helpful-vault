@@ -5,80 +5,83 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <style>
-  body {
-    font-family: 'Poppins';
-  }
+  body {
+    font-family: 'Poppins';
+  }
 </style>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
 </head>
 <body>
 <style>
-  body {
-    text-align: center;
-    background-color: antiquewhite;
-    color: rgb(110, 109, 109);
+  body {
+    text-align: center;
+    background-color: antiquewhite;
+    color: rgb(110, 109, 109);
 height: auto;
 width: auto;
-  }
+  }
 
-  input {
-    border: none;
-    color: rgb(118, 121, 122);
-    text-align:center ;
-  }
+  input {
+    border: none;
+    color: rgb(118, 121, 122);
+    text-align:center ;
+  }
 
-  button {
-    border: none;
-    background-color: aliceblue;
-  }
+  button {
+    border: none;
+    background-color: aliceblue;
+  }
 </style>
 
-  <h1>Notes </h1>
-  <input id="note-input" type="text" placeholder="Take a note...">
-  <button id="add-note-btn">Add Note</button>
-  <br>
-  <ol id="note-list"></ol>
-  <br>
-  <script>
-const noteList = document.getElementById('note-list');
+  <h1>Notes </h1>
+  <input id="note-input" type="text" placeholder="Take a note...">
+  <button id="add-note-btn">Add Note</button>
+  <br>
+  <ol id="note-list"></ol>
+  <br>
+  <script>
+ const noteList = document.getElementById('note-list');
 const noteInput = document.getElementById('note-input');
 const addNoteBtn = document.getElementById('add-note-btn');
 
 let notes = [];
 
 addNoteBtn.addEventListener('click', () => {
-  const text = noteInput.value.trim();
-  if (text) {
-    notes.push({ text, id: Date.now() });
-    renderNotes();
-    noteInput.value = '';
-  }
+  const noteText = noteInput.value;
+  if (noteText !== '') {
+    notes.push({ text: noteText, id: Date.now() });
+    renderNotes();
+    noteInput.value = '';
+  }
 });
 
-const renderNotes = () => {
-  noteList.innerHTML = notes.map(note => `
-    <li data-id="${note.id}">
-      ${note.text}
-      <button data-id="${note.id}">Delete</button>
-    </li>
-  `).join('');
+function renderNotes() {
+  noteList.innerHTML = '';
+  notes.forEach((note) => {
+    const noteListItem = document.createElement('li');
+    noteListItem.textContent = note.text;
+    noteListItem.dataset.id = note.id;
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.dataset.id = note.id;
+    deleteButton.addEventListener('click', (e) => {
+      const noteId = e.target.dataset.id;
+      notes = notes.filter((note) => note.id !== parseInt(noteId));
+      renderNotes();
+    });
+    noteListItem.appendChild(deleteButton);
+    noteList.appendChild(noteListItem);
+  });
+}
 
-  document.querySelectorAll('button[data-id]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      notes = notes.filter(n => n.id !== +btn.dataset.id);
-      renderNotes();
-    });
-  });
-};
-
-  </script>
+  </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <style>
-    body {
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <style>
+    body {
 font-family: 'Poppins';
     }
   </style>
