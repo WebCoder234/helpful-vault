@@ -1,23 +1,17 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<style>
-
-  
-
-  body {
-  font-family: 'Poppins'; 
+  <title>Calculator</title>
+  <style>
+      body {
+  font-family: 'Poppins';
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
   background-color: #323136; /* Light gray background */
-      text-align: center;
+  text-align: center;
 }
 
 .grid-container {
@@ -30,19 +24,17 @@
   background-color: #fff; /* White background */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   width: 40%;
-  font-family: 'Poppins'; 
-    text-align: center;
+  font-family: 'Poppins';
+  text-align: center;
 }
 
 .calculator-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  font-family: 'Poppins'; 
+  font-family: 'Poppins';
   color: #202020;
-    text-align: center;
-
-
+  text-align: center;
 }
 
 textarea {
@@ -53,9 +45,9 @@ textarea {
   padding: 10px;
   border: 2px solid #202020;
   border-radius: 5px;
-  font-family: 'Poppins'; 
+  font-family: 'Poppins';
   color: #202020;
-    text-align: center;
+  text-align: center;
 }
 
 button {
@@ -67,114 +59,121 @@ button {
   background-color: #f0f0f0;
   font-family: 'Poppins';
   color: #202020;
-    text-align: center;
+  text-align: center;
 }
 
 button:hover {
   background-color: #e0e0e0;
-  font-family: 'Poppins'; 
+  font-family: 'Poppins';
   color: #202020;
-    text-align: center;
-  
+  text-align: center;
 }
 
 inputtext {
-  font-family: 'Poppins'; 
+  font-family: 'Poppins';
   color: #202020;
-    text-align: center;
+  text-align: center;
 }
 
-    .calculator {
-        
-    }
-
-
- 
-</style>
-    <title>Calculator</title>
-    
-  
+.calculator {
+  /* No styles applied */
+}
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-         <div class = "grid-container">
-        <div class = "calculator-grid ">
-          <textarea type="text" id = "inputtext" placeholder="0"></textarea>
-            <button>C</button>
-            <button>DEL</button>
-            <button></button>
-            <button>+</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>-</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>*</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>/</button>
-            <button>π</button>
-            <button>0</button>
-            <button>.</button>
-            <button>=</button>
-        </div>
+  <div class="grid-container">
+    <div class="calculator-grid">
+      <textarea type="text" id="result" readonly></textarea>
+      <button>C</button>
+      <button>DEL</button>
+      <button></button>
+      <button>+</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>-</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>*</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>/</button>
+      <button>π</button>
+      <button>0</button>
+      <button>.</button>
+      <button>=</button>
     </div>
+  </div>
+ <script>
+     const resultDisplay = document.getElementById("result");
+const buttons = document.querySelectorAll("button");
 
-   
- 
- 
+let currentNumber = "";
+let previousNumber = "";
+let operation = null;
 
-    <script>
- const buttons = document.querySelectorAll('button');
-
-function calculate(expression) {
-    console.log(expression);
-    console.log(typeof(expression));
-    try {
-        return new Function('return ' + expression)();
-    } catch (error) {
-        return 'Malformed Operation';
-    }
+function updateDisplay(value) {
+  resultDisplay.value = value;
 }
 
+function clearAll() {
+  currentNumber = "";
+  previousNumber = "";
+  operation = null;
+  updateDisplay("");
+}
 
-function operation(buttonValue) {
-    if (buttonValue === 'C') {
-        input.value = '';
-    } else if (buttonValue === 'DEL') {
-        input.value = input.value.slice(0, -1);
-    } else if (buttonValue === '=') {
-        input.value = calculate(input.value);
-    } else {
-        input.value += buttonValue;
-    }
+function handleNumber(value) {
+  currentNumber += value;
+  updateDisplay(currentNumber);
+}
+
+function handleOperator(operator) {
+  if (currentNumber === "") return;
+  if (operation !== null) {
+    calculate();
+  }
+  previousNumber = currentNumber;
+  currentNumber = "";
+  operation = operator;
+}
+
+function calculate() {
+  if (currentNumber === "" || operation === null) return;
+  let computation;
+  try {
+    computation = eval(previousNumber + operation + currentNumber);
+  } catch (error) {
+    updateDisplay("Error");
+    return;
+  }
+  currentNumber = computation.toString();
+  previousNumber = "";
+  operation = null;
+  updateDisplay(currentNumber);
 }
 
 buttons.forEach(button => {
-    let buttonValue = button.innerText;
-    button.addEventListener('click', function () {
-        operation(buttonValue);
-    });
-});
-
-π=3.1415;
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <style>
-    body {
-font-family: 'Poppins';
-        
+  const buttonValue = button.textContent;
+  button.addEventListener('click', () => {
+    if (buttonValue === 'C') {
+      clearAll();
+    } else if (buttonValue === 'DEL') {
+      currentNumber = currentNumber.slice(0, -1);
+      updateDisplay(currentNumber);
+    } else if (buttonValue === '=') {
+      calculate();
+    } else if (buttonValue === 'π') {
+      currentNumber += Math.PI;
+      updateDisplay(currentNumber);
+    } else {
+      handleNumber(buttonValue);
     }
-
-      .calculator {
-          background-color: #F3F5FE;
-      }
-
-      
-  </style>
+  });
+});
+ </script>
 </body>
 </html>
