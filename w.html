@@ -1,140 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-    Mass Conversion
-  </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mass Conversion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            text-align: center;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .container {
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-weight: 600;
+            display: block;
+        }
+
+        input {
+            border: 2px solid #64b5f6;
+            border-radius: 10px;
+            padding: 10px;
+            width: 100%;
+            font-size: 1rem;
+            outline: none;
+            margin-bottom: 20px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus {
+            border-color: #1e88e5;
+            box-shadow: 0 0 5px rgba(30, 136, 229, 0.5);
+        }
+
+        select {
+            border: 2px solid #64b5f6;
+            border-radius: 10px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            outline: none;
+            background-color: white;
+            transition: border-color 0.3s;
+        }
+
+        button {
+            background-color: #64b5f6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #42a5f5;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            button, input, select {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Mass Conversion</h1>
-    <form>
-      <label for="input">Enter value:</label>
-      <br>
-      
-      <input type="number" id="input" value="0"><br>
-
-      <br>
-      <select id="unit-from">
-        <option value="lbs">Pounds</option>
-        <option value="kg">Kilograms</option>
-        <option value="g">Grams</option>
-        <option value="mg">Milligrams</option>
-        <option value="t">Tons</option>
-      </select>
-      <select id="unit-to">
-        <option value="lbs">Pounds</option>
-        <option value="kg">Kilograms</option>
-        <option value="g">Grams</option>
-        <option value="mg">Milligrams</option>
-        <option value="t">Tons</option>
-      </select>
-      <button type="button" id="convert">Convert</button>
-      <p id="result"></p>
-    </form>
-  </div>
-  <style>
-    body {
-      text-align: center;
-      background-color: aliceblue;
-      color: rgb(101, 101, 101);
-    }
-
-    input {
-      border: none;
-      color: rgb(59, 55, 85);
-    }
-
-    button {
-      border: none;
-      color: rgb(85, 174, 251);
-    }
-
-    #unit-to {
-      border: none;
-    }
-
-    #unit-from {
-      border: none;
-    }
-  </style>
-  
-  <script>
-    // Define the conversion factors
-    const conversionFactors = {
-      lbs: {
-        kg: 0.453592,
-        g: 453.592,
-        mg: 453592,
-        t: 0.000454545
-      },
-      kg: {
-        lbs: 2.20462,
-        g: 1000,
-        mg: 1000000,
-        t: 0.001
-      },
-      g: {
-        lbs: 0.00220462,
-        kg: 0.001,
-        mg: 1000,
-        t: 0.000000001
-      },
-      mg: {
-        lbs: 0.00000220462,
-        kg: 0.000001,
-        g: 0.001,
-        t: 0.000000000001
-      },
-      t: {
-        lbs: 2000,
-        kg: 1000,
-        g: 1000000,
-        mg: 1000000000
-      }
-    };
-  
-    // Get the input and conversion select elements
-    const input = document.getElementById('input');
-    const unitFrom = document.getElementById('unit-from');
-    const unitTo = document.getElementById('unit-to');
-    const convertButton = document.getElementById('convert');
-    const resultElement = document.getElementById('result');
-  
-    // Set the initial values
-    let fromUnitValue = 'lbs';
-    let toUnitValue = 'lbs';
-  
-    // Add event listeners to the conversion select elements
-    unitFrom.addEventListener('change', (e) => {
-      fromUnitValue = e.target.value;
-    });
-  
-    unitTo.addEventListener('change', (e) => {
-      toUnitValue = e.target.value;
-    });
-  
-    // Add event listener to the convert button
-    convertButton.addEventListener('click', (e) => {
-      const inputValue = parseFloat(input.value);
+    <div class="container">
+        <h1>Mass Conversion</h1>
+        <form>
+            <label for="input">Enter value:</label>
+            <input type="number" id="input" value="0">
+            <label for="unit-from">From:</label>
+            <select id="unit-from">
+                <option value="lbs">Pounds</option>
+                <option value="kg">Kilograms</option>
+                <option value="g">Grams</option>
+                <option value="mg">Milligrams</option>
+                <option value="t">Tons</option>
+            </select>
+            <label for="unit-to">To:</label>
+            <select id="unit-to">
+                <option value="lbs">Pounds</option>
+                <option value="kg">Kilograms</option>
+                <option value="g">Grams</option>
+                <option value="mg">Milligrams</option>
+                <option value="t">Tons</option>
+            </select>
+            <button type="button" id="convert">Convert</button>
+            <p id="result"></p>
+        </form>
+    </div>
     
-      if (!isNaN(inputValue)) {
-        const convertedValue = inputValue * conversionFactors[fromUnitValue][toUnitValue];
-        resultElement.textContent = `${inputValue} ${fromUnitValue} is equal to ${convertedValue} ${toUnitValue}`;
-      } else {
-        resultElement.textContent = 'Invalid input';
-      }
-  });
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <style>
-    * {
-font-family: 'Poppins';
-    }
-  </style>
+    <script>
+        // Define the conversion factors
+        const conversionFactors = {
+            lbs: {
+                kg: 0.453592,
+                g: 453.592,
+                mg: 453592,
+                t: 0.000454545
+            },
+            kg: {
+                lbs: 2.20462,
+                g: 1000,
+                mg: 1000000,
+                t: 0.001
+            },
+            g: {
+                lbs: 0.00220462,
+                kg: 0.001,
+                mg: 1000,
+                t: 0.000001
+            },
+            mg: {
+                lbs: 0.00000220462,
+                kg: 0.000001,
+                g: 0.001,
+                t: 0.000000001
+            },
+            t: {
+                lbs: 2204.62,
+                kg: 1000,
+                g: 1000000,
+                mg: 1000000000
+            }
+        };
+    
+        // Get the input and conversion select elements
+        const input = document.getElementById('input');
+        const unitFrom = document.getElementById('unit-from');
+        const unitTo = document.getElementById('unit-to');
+        const convertButton = document.getElementById('convert');
+        const resultElement = document.getElementById('result');
+    
+        // Set the initial values
+        let fromUnitValue = 'lbs';
+        let toUnitValue = 'lbs';
+    
+        // Add event listeners to the conversion select elements
+        unitFrom.addEventListener('change', (e) => {
+            fromUnitValue = e.target.value;
+        });
+    
+        unitTo.addEventListener('change', (e) => {
+            toUnitValue = e.target.value;
+        });
+    
+        // Add event listener to the convert button
+        convertButton.addEventListener('click', () => {
+            const inputValue = parseFloat(input.value);
+        
+            if (!isNaN(inputValue)) {
+                const convertedValue = inputValue * conversionFactors[fromUnitValue][toUnitValue];
+                resultElement.textContent = `${inputValue} ${fromUnitValue} is equal to ${convertedValue.toFixed(4)} ${toUnitValue}`;
+            } else {
+                resultElement.textContent = 'Invalid input';
+            }
+        });
+    </script>
 </body>
 </html>
