@@ -1,68 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <html lang="en">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
   <meta name="description" content="Perform quick and easy calculations with this simple online calculator. Featuring basic arithmetic functions, pi (π), and decimal support, this calculator is perfect for everyday math needs on any device.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <title>Calculator</title>
   <style>
-    * {
-       font-family: 'Poppins';
-    }
-    body {
-  font-family: 'Poppins';
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #323136;
-  text-align: center;
-}
-
-.calculator {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  background-color: #fff;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  width: 20%;
-  display: inline-flex;
-}
-
-textarea {
-  width: 98%;
-  height: 50px;
-  font-size: 24px;
-  text-align: center;
-  padding: 10px;
-  border: 2px solid #202020;
-  border-radius: 5px;
-  
-}
-
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-button {
-  font-size: 18px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #f0f0f0;
-}
-
-button:hover {
-  background-color: #e0e0e0;
-}
+    /* Add your CSS styles here */
   </style>
 </head>
 <body>
@@ -90,46 +36,80 @@ button:hover {
       <button>=</button>
     </div>
   </div>
-<script>
-  const buttons = document.querySelectorAll('button');
-const result = document.getElementById('result');
+  <script>
+    const buttons = document.querySelectorAll('button');
+    const result = document.getElementById('result');
 
-// Function to calculate an expression
-function calculate(expression) {
-  try {
-    return eval(expression); // Consider using a more robust parser for security reasons
-  } catch (error) {
-    result.value = 'Error: Invalid expression';
-    return; // Prevent further processing of the error
-  }
+    // Function to calculate an expression
+    function calculate(expression) {
+      try {
+        return eval(expression); // Consider using a more robust parser for security reasons
+      } catch (error) {
+        result.value = 'Error: Invalid expression';
+        return; // Prevent further processing of the error
+      }
+    }
+
+    // Function to handle button clicks
+    function operation(buttonValue) {
+      switch (buttonValue) {
+        case 'C':
+          result.value = '';
+          break;
+        case 'DEL':
+          result.value = result.value.slice(0, -1);
+          break;
+        case '=':
+          result.value = calculate(result.value);
+          break;
+        default:
+          result.value += buttonValue;
+      }
+    }
+
+    buttons.forEach(button => {
+      let buttonValue = button.innerText;
+      button.addEventListener('click', function () {
+        operation(buttonValue);
+      });
+    });
+
+    // Define PI constant
+    const π = 3.1415;
+  </script>
+  <style>
+    body {
+  background-color: #333845;
+  text-align: center;
+  font-family: 'Poppins', sans-serif; /* Add font family */
 }
 
-// Function to handle button clicks
-function operation(buttonValue) {
-  switch (buttonValue) {
-    case 'C':
-      result.value = '';
-      break;
-    case 'DEL':
-      result.value = result.value.slice(0, -1);
-      break;
-    case '=':
-      result.value = calculate(result.value);
-      break;
-    default:
-      result.value += buttonValue;
-  }
+.calculator {
+  background-color: white;
+  border-radius: 8px; /* Add border radius */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  padding: 20px;
 }
 
-buttons.forEach(button => {
-  let buttonValue = button.innerText;
-  button.addEventListener('click', function () {
-    operation(buttonValue);
-  });
-});
+textarea {
+  border: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px; /* Add border radius */
+}
 
-// Define PI constant
-const π = 3.1415;
-</script>
+button {
+  border: none;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-family: 'Poppins', sans-serif; /* Add font family */
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+}
+  </style>
 </body>
 </html>
