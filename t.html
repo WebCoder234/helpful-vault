@@ -1,53 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Password Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #f2f2f2;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 10px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            margin: 0 10px;
+            font-size: 1em;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #ff7e5f;
+            box-shadow: 0 0 5px rgba(255, 126, 95, 0.8);
+        }
+
+        button {
+            color: #fff;
+            border-radius: 10px;
+            border: none;
+            background-color: #ff6347;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background-color: #ff7e5f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        #password {
+            font-size: 1.5em;
+            font-weight: 500;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            border: 1px solid #fff;
+            color: #ff6347;
+            display: inline-block;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        #password:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        label {
+            font-size: 1em;
+            margin: 10px 0;
+            display: block;
+            color: #fff;
+        }
+    </style>
 </head>
+
 <body>
-  <h1>Random Password Generator</h1>
-  <p>Generated Password: <span id="password"></span></p>
-  <br>
-  <button onclick="generatePassword()">Generate Password</button>
+    <h1>Random Password Generator</h1>
+    <p>Generated Password: <span id="password"></span></p>
 
-  <script>
-    function generatePassword() {
-    const length = 8; // Change the desired password length
-    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*+"; // Include special characters if needed
-    let password = "";
+    <label for="minLength">Min Length:</label>
+    <input type="number" id="minLength" value="8" min="1">
 
-    for (let i = 0; i < length; ++i) {
-        const randomIndex = Math.floor(Math.random() * charset.length);
-        password += charset.charAt(randomIndex);
-    }
+    <label for="maxLength">Max Length:</label>
+    <input type="number" id="maxLength" value="12" min="1">
 
-    document.getElementById("password").textContent = password;
-}
+    <button onclick="generatePassword()">Generate Password</button>
 
-  </script>
+    <script>
+        function generatePassword() {
+            const minLength = parseInt(document.getElementById('minLength').value) || 8;
+            const maxLength = parseInt(document.getElementById('maxLength').value) || 12;
+            const length = Math.max(minLength, Math.min(maxLength, maxLength));
+            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*+";
+            let password = "";
 
-  <style>
-    body {
-      text-align: center;
-      color: aliceblue;
-       background-color: #f08080;
-    }
+            for (let i = 0; i < length; ++i) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset.charAt(randomIndex);
+            }
 
-    button {
-      color: aliceblue;
-border-radius: 10px;
-border: none;
-background-color: #ffa07a;
-    }
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <style>
-    * {
-font-family: 'Poppins';
-    }
-  </style>
+            document.getElementById("password").textContent = password;
+        }
+    </script>
 </body>
+
 </html>
