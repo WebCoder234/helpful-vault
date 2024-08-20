@@ -520,6 +520,46 @@ h1 {
 
 
 
+/* Keyframes for Fade-In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start as hidden */
+        transform: translateY(10px); /* Slightly push down */
+    }
+    to {
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* Original position */
+    }
+}
+
+/* Box Styles */
+.box {
+    margin: 10px auto;
+    border-radius: 10px;
+    padding-top: 20px;
+    text-align: center;
+    color: #343232;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added smooth transition */
+    opacity: 0; /* Start as hidden */
+    animation: fadeIn 0.5s forwards; /* Fade-in effect */
+}
+
+.box:hover {
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+    transform: scale(1.05); /* Scale slightly on hover */
+}
+
+/* Button Hover Effects */
+.buttons:hover,
+.buttons1:hover {
+    background-color: #f0f0f0; /* Light background for hover effect */
+    transition: background-color 0.3s ease; /* Smooth transition for button background */
+}
 
 
 </style>
@@ -581,6 +621,5 @@ h1 {
   </body>
   </html>
  
-
 
 
