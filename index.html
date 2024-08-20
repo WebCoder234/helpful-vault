@@ -656,59 +656,6 @@ h1 {
 }
 
 /* Main Box Styles */
-.box {
-    margin: 10px auto;
-    border-radius: 10px;
-    padding-top: 20px;
-    text-align: center;
-    color: #343232;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; /* Updated transition to include opacity */
-    opacity: 0;
-    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, wobble 0.5s forwards; /* Added wobble effect on load */
-}
-
-.box:hover {
-    box-shadow: 0px 0px 25px rgba(255, 165, 0, 0.8);
-    transform: scale(1.05) translateY(-3px) rotate(0deg); /* Added rotate effect placeholder */
-    animation: flip 0.6s forwards; /* Flip effect on hover */
-}
-
-/* Additional Fade Out on Mouse Leave */
-.box:not(:hover) {
-    animation: fadeOut 0.5s forwards; /* Fade-out effect */
-}
-
-/* Text Shake on Hover */
-.box h1, .box p {
-    display: inline-block; /* Ensure shake animation works */
-    transition: transform 0.3s ease; /* Transition for smooth effect */
-}
-
-.box:hover h1, .box:hover p {
-    animation: shake 0.3s; /* Shake effect on text */
-}
-
-/* Pulse Effect for Buttons */
-.buttons,
-.buttons1 {
-    transition: background-color 0.3s ease; /* Smooth transition for button background */
-    animation: pulse 2s infinite; /* Continuous pulse effect */
-}
-
-.buttons:hover, .buttons1:hover {
-    background-color: #f0f0f0; /* Light background for hover effect */
-    animation: none; /* Stop pulse on hover */
-}
-
-/* Hover Effect to Remove Fade Out */
-.box:hover:not(:hover) {
-    animation: none; /* Prevent fade-out on hover */
-}
 
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
