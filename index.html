@@ -1,587 +1,323 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta name="description" content="Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions. 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions. 
           Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools. 
           From simple math to complex conversions, we've got you covered.">
-    <html lang="en">
-    
-   <title>UsefulVault - Basic Online Tools</title>
- 
+          <meta name="keywords" content="UsefulVault, online tools, calculations, conversions, calculators, unit converter, online calculator, age calculator, length converter, password generator, stopwatch, temperature converter, mass converter, volume calculator, random password generator, game tools, fun games, rock paper scissors, maze game, number guessing game, clicker game">
+    <title>UsefulVault - Basic Online Tools</title>
 
-  
-<style>
+    <style>
+        * {
+            text-align: center;
+            justify-content: center;
+            margin-left: 50%;
+        }
 
-     .line2ofd {
-          text-align: center;
+        .line2ofd {
+            text-align: center;
             font-size: 18px;
-          color: white;
-          
-     }
-     p {
-          font-size: 18px;
-          color: white;
-          text-align: center;
-          
-     }
+            color: white;
+        }
 
-    
-     @media (max-width: 768px) {
-  /* Styles for screens up to 768px */
-  body {
-    font-size: 16px;
-  }
+        p {
+            font-size: 18px;
+            color: white;
+            text-align: center;
+        }
 
-          @media (max-width: 768px) {
-  .buttons, .buttons1 {
-    font-size: 18px;
-    padding: 15px;
-  }
-}
+        @media (max-width: 768px) {
+            /* Styles for screens up to 768px */
+            body {
+                font-size: 16px;
+            }
 
-          
-  .box {
-    width: 100%;
-    margin: 10px;
-  }
-}
+            .buttons,
+            .buttons1 {
+                font-size: 18px;
+                padding: 15px;
+            }
+        }
 
-   h4 {
-      text-align: center;
-      color: white;
- 
-   }
-  * {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    margin-left: 3.5px;
-    margin-top: 3.5px;
-    padding: 0;
-    box-sizing: border-box;
-        
-  }
- 
-body {
- background-color: #24252a;
-      
-     font-display: swap;
-}
- 
+        h4 {
+            text-align: center;
+            color: white;
+        }
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            margin-left: 3.5px;
+            margin-top: 3.5px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #24252a;
+            font-display: swap;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #252428;
+            height: 100%;
+            align-items: center;
+            width: 18%;
+            text-align: center;
+            border: rgb(238, 247, 255) 5px solid;
+            box-shadow: 0px 0px 10px rgb(214, 252, 255);
+        }
+
+        .sidebar .logo-details i {
+            font-size: 30px;
+            color: white;
+            align-items: center;
+            display: flex;
+        }
+
+        .sidebar .logo-details .logo_name {
+            font-size: 22px;
+            color: white;
+            height: 90%;
+            align-items: center;
+        }
+
+        .buttons {
+            border: 0px;
+            border-radius: 5px;
+            height: 70px;
+            color: #373839;
+            background-color: #ffffff;
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding-left: 10px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .buttons1 {
+            border: 0px;
+            border-radius: 5px;
+            height: 70px;
+            color: #f0f8ff;
+            background-color: #736f7e;
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding-left: 10px;
+            cursor: pointer;
+            width: 90%;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            
+        }
+
+        .box {
+            text-align: center;
+            margin: 10px; /* Margin around each box */
+            flex: 0 0 100%; /* One box per row */
+            max-width: 300px; /* Set a max width for the boxes */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px; /* Fixed height for all boxes */
+            width: auto;
+            border-radius: 10px;
+            color: #282A2D;
+            font-weight: bold;
+        }
+
+        #box1 {
+            background-color: #ede3b9;
+            width: 155px;
+        }
+
+        #box2 {
+            background-color: #e4af87;
+             width: 160px;
+             font-size: 20px;
+             display: flex;
+        }
+
+        #box3 {
+            background-color: #f6cbad;
+              width: 160px;
+             font-size: 23px;
+        }
+
+        #box4 {
+            background-color: #e48686;
+              width: 160px;
+             font-size: 23px;
+        }
+
+        #box5 {
+            background-color: #b8f2fe;
+              width: 160px;
+             font-size: 23px;
+        }
+
+        #box6 {
+            background-color: #b8f0ba;
+              width: 160px;
+             font-size: 23px;
+        }
+
+        #box7 {
+            background-color: #a5eae2;
+              width: 160px;
+             font-size: 23px;
+        }
+
+        #box8 {
+            background-color: #84c4ef;
+              width: 160px;
+             font-size: 23px;
+        }
+
+        #box9 {
+            background-color: #d6aee6;
+              width: 140px;
+             font-size: 23px;
+        }
+
+        #box10 {
+            background-color: #c9eec1;
+              width: 140px;
+             font-size: 23px;
+        }
+
+        #box11 {
+            background-color: #A4E3D0;
+              width: 160px;
+             font-size: 23px;
+        }
+
+        #box13 {
+            background-color: #F06263;
+              width: 160px;
+             font-size: 23px;
+        }
+
+        #box14 {
+            background-color: #FFECA1;
+              width: 160px;
+             font-size: 23px;
+        }
+
+        #box15 {
+            background-color: #FFCA7B;
+              width: 160px;
+             font-size: 23px;
+        }
+
+        #box16 {
+            background-color: #E2EAF4;
+              width: 165px;
+             font-size: 23px;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column; /* Stack boxes in a column */
+            align-items: center; /* Center align boxes */
+            margin: 20px auto; /* Center with margins on top and bottom */
+        }
 
 
- .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #252428;
-  height: 100%;
-  align-items: center;
-  width: 18%;
-  text-align: center;
-  border: rgb(238, 247, 255) 5px solid;
-  box-shadow: 0px 0px 10px rgb(214, 252, 255);
-      displat: flex;
-}
-
-  .sidebar .logo-details i {
-    font-size: 30px;
-    color: white;
-    align-items: center;
-        display: flex;
-  }
-
-
-  .sidebar .logo-details .logo_name {
-    font-size: 22px;
-    color: white;
-    height: 90%;
-    align-items: center;
-  }
-
-
-  .buttons {
-    border: 0px;
-    border-radius: 5px;
-    height: 70px;
-    color: #373839;
-    background-color: #ffffff;
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding-left: 10px;
-    cursor: pointer;
-    font-weight: 500;
-
-   
-  }
-  .buttons1 {
-    border: 0px;
-    border-radius: 5px;
-    height: 70px;
-    color: #f0f8ff;
-    background-color: #736f7e;
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding-left: 10px;
-    cursor: pointer;
-    width: 90%;
-      
-   
-  }
-
-
-  /* Separate dropdown classes for each button */
-  .dropdown-calculators {
-    position: relative;
-    display: inline-block;
-  }
-
-
-  .dropdown-converters {
-    position: relative;
-    display: inline-block;
-  }
-
-
-  .dropdown-fun {
-    position: relative;
-    display: inline-block;
-  }
-
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-   
-  }
-
-
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-
-
-  .dropdown-content a:hover {background-color: #ddd;}
-
-
-  /* New styling for hover effect */
-  .dropdown-calculators:hover .dropdown-content {
-    display: block;
-  }
-
-
-  .dropdown-converters:hover .dropdown-content {
-    display: block;
-  }
-
-
-  .dropdown-fun:hover .dropdown-content {
-    display: block;
-  }
-
-
-  .buttons:not(:hover) .dropdown-content {
-    display: none;
-  }
-  #settings_button {
-    text-align: center;
-    align-items: center;
-    align-self: center;
-  }
-h1 {
-  color: white;
-  text-align: center;
-     font-size: 28px;
-}
-
-
-.box {
-  text-align: center;
-}
-
-
-a {
+* {
   text-decoration: none;
 }
 
-
-#box1  {
-  margin-left: 120px;
-  background-color: #ede3b9; /* light orange */
-height: 170px;
-  width: 170px;
- 
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color: #343232;
- 
-  font-weight: bold;
-  flex-direction: row;
-  display: flex;
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-   text-decoration: none;
-}
-
-
-#box2 {
-  margin-left: 120px;
-  background-color: #e4af87; /* light orange */
-height: 200px;
-  width: 200px;
- 
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color: #342f2f;
- 
-  font-weight: bold;
-  flex-direction: row;
-  display: flex;
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-
-
-}
-
-
-#box3 {
-  background-color: #f6cbad; /* pink */
-   height: 180px;
-  width: 180px;
-
-
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color: #252222;
-  font-weight: bold;
-  display: flex;
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-}
-
-
-#box4 {
-  background-color: #e48686; /* light brown */
-  height: 150px;
-  width: 150px;
-
-
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color: #2f2b2b;
-   font-weight: bold;
-  display: flex;
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-}
-
-
-
-
-
-
-#box5 {
-  background-color: #b8f2fe; /* light blue */
-
-
- height: 160px;
-  width: 160px;
-
-
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color: #201e1e;
-  font-weight: bold;
-  display: flex;
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-}
-
-
-#box6 {
-  background-color: #b8f0ba; /* green */
-  height: 170px;
-  width: 170px;
- 
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color: #312d2d;
-  font-weight: bold;
-  display: flex;
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-}
-
-
-#box7 {
-  background-color: #a5eae2; /* orange-red */
-  height: 190px;
-  width: 190px;
-
-
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color: #2f2e2e;
-  font-weight: bold;
-  display: flex;
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-}
-
-
-#box8 {
-  background-color: #84c4ef; /* blue */
-  height: 160px;
-  width: 160px;
-
-
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color: #373737;
-  font-weight: bold;
-  display: flex;
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-}
-
-
-#box9 {
-  background-color: #d6aee6; /* purple */
-  height: 120px;
-  width: 120px;
- 
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color: #333131;
-  font-weight: bold;
-  display: flex;
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-}
-
-
-
-
-
-
-#box10 {
-  background-color: #c9eec1; /* yellow-orange */
-   height: 120px;
-  width: 120px;
-
-
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color: #292929;
-  font-weight: bold;
-  display: flex;
-    display: flex;
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-}
-
-
-#box11 {
-  background-color: #A4E3D0; 
-   height: 155px;
-  width: 155px;
- 
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color:#282C2B;
-    font-weight: bold;
-  display: flex;
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-}
-
-
-#box12 {
-  background-color: #2ECC71; /* green-blue */
-   height: 120px;
-  width: 120px;
-
-
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  padding-top: 20px;
-  color: #f5f5f5;
-  font-weight: bold;
-  display: flex;
-  position: relative; /* or absolute */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-margin: auto;
-align-items: center;
-justify-content: center;
-   gap: 20px;
-}
-
 .box:hover {
-  box-shadow: 0px 0px 10px rgb(255, 255, 255);
-  transform: scale(1.07); /* To increase size by 20% */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* White shadow */
+    transform: scale(1.05); /* Optional: Slightly increase the size on hover */
+    transition: all 0.3s ease; /* Smooth transition for the shadow and scaling */
 }
-
-.box {
-  box-shadow: 0px 0px 10px rgb(242, 254, 255);
-  
-}
-
-input {
-  border-radius: 10px;
-  border: none;
-  height: 45px;
-  width: 90%;
-  
-}
-
-
-::placeholder {
-  font-size: 13px;
-  text-align: center;
-  color: #736c6c;
-}
-
-
-
-     body {
-  font-size: 24px; /* Base font size */
-}
-h1 {
-  font-size: 2.5rem;
-}
-
-
-
-
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
 </head>
+
 <body>
-      
-     
-
-   
- 
-   
-  <div >
-
-
-  </div>
-
-
-  <br>
-<div>
-
-
-</div>
-  </div>
-  <div class="main">
-       
-
-  <h1>UsefulVault</h1>
+    <div></div>
+    <br>
+    <div></div>
+    </div>
+    <div class="main">
+        <h1>UsefulVault</h1>
         <p>Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions.
-             Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools.
-             From simple math to complex conversions,<p class="line2ofd"> we've got you covered.<p></p>
-     
-    <a href="calculator.html"><div id="box1" class="box" grid-column="1 / span 1">Calculator</div></a>
-    <a href="project3.html"><div id="box2" class="box" grid-column="2 / span 1">Circumference Calculator</div></a>
-    <a href="project2.html"><div id="box3" class="box" grid-column="3 / span 1">Age Calculator</div></a>
-   
-    <a href="m.html"><div id="box4" class="box" grid-column="1 / span 1">Length Converter</div></a>
-       
-    <a href="t.html"><div id="box5" class="box" grid-column="2 / span 1">Random Password Generator</div></a>
-   
-    <a href="draw.html"><div id="box6" class="box" grid-column="3 / span 1">Stopwatch</div></a>
-   
-    <a href="r.html"><div id="box7" class="box" grid-column="1 / span 1">Temperature Converter</div></a>
-   
-    <a href="w.html"><div id="box8" class="box" grid-column="2 / span 1">Mass Converter</div></a>
-   
-     <a href="time.html"><div id="box9" class="box" grid-column="3 / span 1">Clock</div></a>
-   
-      <a href="13.HTML"><div id="box10" class="box" grid-column="1 / span 1">Notes</div></a>
+            Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools.
+            From simple math to complex conversions,<p class="line2ofd"> we've got you covered.<p></p>
 
-             <a href="volumecalculator.html"><div id="box11" class="box" grid-column="2 / span 1">Volume Calculator</div></a>
- 
-  </div>
-  
- 
+        <a href="calculator.html">
+            <div id="box1" class="box" grid-column="1 / span 1">Calculator</div>
+        </a>
+        <a href="project3.html">
+            <div id="box2" class="box" grid-column="2 / span 1">Circumference Calculator</div>
+        </a>
+        <a href="project2.html">
+            <div id="box3" class="box" grid-column="3 / span 1">Age Calculator</div>
+        </a>
 
+        <a href="m.html">
+            <div id="box4" class="box" grid-column="1 / span 1">Length Converter</div>
+        </a>
 
+        <a href="t.html">
+            <div id="box5" class="box" grid-column="2 / span 1">Random Password Generator</div>
+        </a>
 
-  
-  </body>
-  </html>
- 
+        <a href="draw.html">
+            <div id="box6" class="box" grid-column="3 / span 1">Stopwatch</div>
+        </a>
 
+        <a href="r.html">
+            <div id="box7" class="box" grid-column="1 / span 1">Temperature Converter</div>
+        </a>
 
+        <a href="w.html">
+            <div id="box8" class="box" grid-column="2 / span 1">Mass Converter</div>
+        </a>
+
+        <a href="time.html">
+            <div id="box9" class="box" grid-column="3 / span 1">Clock</div>
+        </a>
+
+        <a href="13.HTML">
+            <div id="box10" class="box" grid-column="1 / span 1">Notes</div>
+        </a>
+
+        <a href="volumecalculator.html">
+            <div id="box11" class="box" grid-column="2 / span 1">Volume Calculator</div>
+        </a>
+
+        <a href="rockpaperscissors.html">
+            <div id="box13" class="box" grid-column="3 / span 1">Rock Paper Scissors Game</div>
+        </a>
+
+        <a href="maze.html">
+            <div id="box14" class="box" grid-column="1 / span 1">Maze Game</div>
+        </a>
+
+        <a href="numberguessinggame.html">
+            <div id="box15" class="box" grid-column="2 / span 1">Number Guessing Game</div>
+        </a>
+
+        <a href="clcikergame.html">
+            <div id="box16" class="box" grid-column="1 / span 1">Clicker Game</div>
+        </a>
+    </div>
+</body>
+
+</html>
