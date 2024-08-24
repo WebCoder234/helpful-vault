@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors Game</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+/* Reset box-sizing and set base font */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Reset box-sizing and set base font */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Base styles for body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f4f8; /* Light background for contrast */
+}
+
+/* Styling for game container */
+#game {
+    background-color: #ffffff; /* White background for the game container */
+    padding: 40px 50px;
+    border-radius: 10px; /* Slightly more rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 0.6s ease; /* Fade-in animation for game container */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Heading styles */
+h1 {
+    color: #007bff; /* Blue color for the heading */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    animation: slideIn 0.6s ease; /* Slide-in animation for heading */
+}
+
+/* Slide-in animation for heading */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Button styles */
+.btn {
+    display: inline-block; /* Allows for margin spacing to work */
+    background-color: #007bff; /* Button background color */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 8px; /* Rounding for buttons */
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s, color 0.3s; /* Transition effects */
+    position: relative; /* Needed for the pseudo-elements */
+}
+
+/* Button hover effects */
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow on hover */
+    color: #fff; /* Ensure text remains white */
+}
+
+/* Button click effect */
+.btn:active {
+    transform: scale(0.95); /* Shrinks button upon click */
+}
+
+/* Result styling */
+#result {
+    margin-top: 20px;
+    font-size: 1.8em; /* Font size for result text */
+    font-weight: bold;
+    color: #007bff; /* Color for result text */
+    opacity: 0; /* Initial opacity for animation */
+    animation: resultFadeIn 0.5s forwards; /* Fade-in effect for results */
+}
+
+/* Result fade-in animation */
+@keyframes resultFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Score styling */
+#score {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Highlight score animation */
+@keyframes highlightScore {
+    0%, 100% {
+        color: #007bff;
+    }
+    50% {
+        color: #ffcc00; /* Highlight color */
+    }
+}
+
+/* Score transition effect */
+.score-transition {
+    animation: highlightScore 1s forwards; /* Animate score on change */
+}
+
+/* Hidden class for elements that need to be hidden */
+.hidden {
+    display: none;
+}
+
+/* Mode toggle button */
+#modeToggle {
+    margin-top: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px; /* Slight rounding for mode toggle */
+    background-color: #007bff; /* Button background */
+}
+
+/* Mode toggle hover effects */
+#modeToggle:hover {
+    background-color: #0056b3; /* Darker background on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Button animations on loading */
+.btn {
+    animation: buttonLoad 0.6s ease forwards;
+}
+
+/* Button load animation */
+@keyframes buttonLoad {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+    </style>
+</head>
+<body>
+    <div id="game">
+        <h1>Rock, Paper, Scissors</h1>
+        <div id="choice">
+            <button class="btn" id="rock">Rock</button>
+            <button class="btn" id="paper">Paper</button>
+            <button class="btn" id="scissors">Scissors</button>
+        </div>
+        <div id="result">
+            <h2 id="resultText"></h2>
+            <h2 id="finalResultText"></h2>
+        </div>
+        <div id="score">
+            <p>Player Score: <span id="playerScore">0</span></p>
+            <p>Computer Score: <span id="computerScore">0</span></p>
+        </div>
+        <button id="restartButton" class="btn hidden">Restart Game</button>
+    
+    </div>
+    <script>
+        const playerScoreDisplay = document.getElementById('playerScore');
+        const computerScoreDisplay = document.getElementById('computerScore');
+        const resultText = document.getElementById('resultText');
+        const finalResultText = document.getElementById('finalResultText');
+        const restartButton = document.getElementById('restartButton');
+        const modeToggle = document.getElementById('modeToggle');
+        const gameElement = document.getElementById('game');
+
+        let playerScore = 0;
+        let computerScore = 0;
+        const winningScore = 10;
+
+        function playGame(playerChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            if (playerChoice === computerChoice) {
+                resultText.textContent = `It's a draw! You both chose ${playerChoice}.`;
+            } else if (
+                (playerChoice === 'rock' && computerChoice === 'scissors') ||
+                (playerChoice === 'paper' && computerChoice === 'rock') ||
+                (playerChoice === 'scissors' && computerChoice === 'paper')
+            ) {
+                playerScore++;
+                playerScoreDisplay.textContent = playerScore;
+                resultText.textContent = `You win!`;
+            } else {
+                computerScore++;
+                computerScoreDisplay.textContent = computerScore;
+                resultText.textContent = `You lose!`;
+            }
+
+            // Check if either player has reached the winning score
+            if (playerScore === winningScore || computerScore === winningScore) {
+                finalResultText.textContent = playerScore === winningScore ? "You win the game!" : "You lose the game!";
+                document.getElementById('choice').classList.add('hidden');
+                restartButton.classList.remove('hidden');
+            }
+        }
+
+        // Event listeners for buttons
+        document.getElementById('rock').addEventListener('click', () => playGame('rock'));
+        document.getElementById('paper').addEventListener('click', () => playGame('paper'));
+        document.getElementById('scissors').addEventListener('click', () => playGame('scissors'));
+
+        // Restart game functionality
+        restartButton.addEventListener('click', () => {
+            playerScore = 0;
+            computerScore = 0;
+            playerScoreDisplay.textContent = playerScore;
+            computerScoreDisplay.textContent = computerScore;
+            resultText.textContent = '';
+            finalResultText.textContent = '';
+            restartButton.classList.add('hidden');
+            document.getElementById('choice').classList.remove('hidden');
+        });
+
+        // Dark/Light mode toggle
+        modeToggle.addEventListener('click', () => {
+            gameElement.classList.toggle('dark-mode');
+            if (gameElement.classList.contains('dark-mode')) {
+                modeToggle.textContent = "Switch to Light Mode";
+            } else {
+                modeToggle.textContent = "Switch to Dark Mode";
+            }
+        });
+
+    </script>
+</body>
+</html>

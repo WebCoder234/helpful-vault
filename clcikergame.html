@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: Poppins;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Clicker Game with Upgrades</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef;
+            color: #343a40;
+            text-align: center;
+            margin: 0;
+            padding: 40px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 25px;
+            font-size: 2.5em;
+        }
+
+        #score {
+            font-size: 28px;
+            margin: 20px 0;
+            font-weight: bold;
+            border: 2px solid #007bff;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        #points-per-second {
+            font-size: 20px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        #click-button {
+            padding: 16px 34px;
+            font-size: 22px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #click-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .upgrade {
+            margin: 20px 0;
+        }
+
+        .upgrade-button {
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 10px;
+            width: calc(100% - 20px);
+        }
+
+        .upgrade-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #reset-button {
+            padding: 12px 24px;
+            margin-top: 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            width: 100%;
+        }
+
+        #reset-button:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+
+        .upgrade-cost {
+            font-size: 14px;
+            color: #6c757d;
+            margin-left: 10px;
+        }
+
+        h2 {
+            color: #343a40;
+            margin: 20px 0 10px 0;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Money Clicker Game</h1>
+        <div id="score">Score: 0</div>
+        <div id="points-per-second">Points per second: 0</div>
+        <button id="click-button">Click for Money!</button>
+        <div class="upgrade">
+            <h2>Click Upgrades</h2>
+            <button class="upgrade-button" id="click-upgrade-1-btn">Upgrade (Cost: 10 points) - x2 Clicks</button><br>
+            <button class="upgrade-button" id="click-upgrade-2-btn">Upgrade (Cost: 30 points) - x3 Clicks</button><br>
+            <button class="upgrade-button" id="click-upgrade-3-btn">Upgrade (Cost: 90 points) - x4 Clicks</button><br>
+            <button class="upgrade-button" id="click-upgrade-4-btn">Upgrade (Cost: 270 points) - x5 Clicks</button><br>
+            <button class="upgrade-button" id="click-upgrade-5-btn">Upgrade (Cost: 810 points) - x6 Clicks</button><br>
+            <button class="upgrade-button" id="click-upgrade-6-btn">Upgrade (Cost: 2430 points) - x7 Clicks</button><br>
+            <button class="upgrade-button" id="click-upgrade-7-btn">Upgrade (Cost: 7290 points) - x8 Clicks</button><br>
+            <button class="upgrade-button" id="click-upgrade-8-btn">Upgrade (Cost: 21870 points) - x9 Clicks</button><br>
+            <button class="upgrade-button" id="click-upgrade-9-btn">Upgrade (Cost: 65610 points) - x10 Clicks</button><br>
+            <button class="upgrade-button" id="click-upgrade-10-btn">Upgrade (Cost: 196830 points) - x11 Clicks</button><br>
+            <button class="upgrade-button" id="click-upgrade-11-btn">Upgrade (Cost: 590490 points) - x12 Clicks</button><br>
+            
+            <h2>Points per Second Upgrades</h2>
+            <button class="upgrade-button" id="points-upgrade-1-btn">Upgrade (Cost: 10 points) - +1 Point per second</button><br>
+            <button class="upgrade-button" id="points-upgrade-2-btn">Upgrade (Cost: 30 points) - +3 Points per second</button><br>
+            <button class="upgrade-button" id="points-upgrade-3-btn">Upgrade (Cost: 90 points) - +5 Points per second</button><br>
+            <button class="upgrade-button" id="points-upgrade-4-btn">Upgrade (Cost: 270 points) - +10 Points per second</button><br>
+            <button class="upgrade-button" id="points-upgrade-5-btn">Upgrade (Cost: 810 points) - +20 Points per second</button><br>
+            <button class="upgrade-button" id="points-upgrade-6-btn">Upgrade (Cost: 2430 points) - +50 Points per second</button><br>
+            <button class="upgrade-button" id="points-upgrade-7-btn">Upgrade (Cost: 7290 points) - +100 Points per second</button><br>
+            <button class="upgrade-button" id="points-upgrade-8-btn">Upgrade (Cost: 21870 points) - +200 Points per second</button><br>
+            <button class="upgrade-button" id="points-upgrade-9-btn">Upgrade (Cost: 65610 points) - +500 Points per second</button><br>
+            <button class="upgrade-button" id="points-upgrade-10-btn">Upgrade (Cost: 196830 points) - +1000 Points per second</button><br>
+            <button class="upgrade-button" id="points-upgrade-11-btn">Upgrade (Cost: 590490 points) - +2000 Points per second</button><br>
+        </div>
+        <button id="reset-button">Reset Game</button>
+    </div>
+
+    <script>
+        let score = 0;
+        let pointsPerClick = 1;
+        let pointsPerSecond = 0;
+
+        const scoreDisplay = document.getElementById('score');
+        const pointsPerSecondDisplay = document.getElementById('points-per-second');
+        const clickButton = document.getElementById('click-button');
+        const resetButton = document.getElementById('reset-button');
+
+        // Load progress from localStorage
+        function loadProgress() {
+            const savedScore = localStorage.getItem('score');
+            const savedPointsPerClick = localStorage.getItem('pointsPerClick');
+            const savedPointsPerSecond = localStorage.getItem('pointsPerSecond');
+    
+            if (savedScore) score = parseInt(savedScore);
+            if (savedPointsPerClick) pointsPerClick = parseInt(savedPointsPerClick);
+            if (savedPointsPerSecond) pointsPerSecond = parseInt(savedPointsPerSecond);
+    
+            updateScore();
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            localStorage.setItem('score', score);
+            localStorage.setItem('pointsPerClick', pointsPerClick);
+            localStorage.setItem('pointsPerSecond', pointsPerSecond);
+        }
+
+        // Update score display function
+        function updateScore() {
+            scoreDisplay.textContent = `Score: ${score}`;
+            pointsPerSecondDisplay.textContent = `Points per second: ${pointsPerSecond}`;
+            saveProgress(); // Save progress whenever the score updates
+        }
+
+        // Automatically increase score every second
+        setInterval(() => {
+            score += pointsPerSecond;
+            updateScore();
+        }, 1000);
+
+        // Click button event listener
+        clickButton.addEventListener('click', () => {
+            score += pointsPerClick;
+            updateScore();
+        });
+
+        // Upgrade purchase function that increases cost by 3x
+        function purchaseUpgrade(cost, additional, isClickUpgrade) {
+            if (score >= cost) {
+                score -= cost;
+                if (isClickUpgrade) {
+                    pointsPerClick += additional; // Increase clicks per click
+                } else {
+                    pointsPerSecond += additional; // Increase points per second
+                }
+                updateScore();
+                return cost * 3; // Return new cost after purchase
+            } else {
+                alert('Not enough points for this upgrade!');
+                return cost; // Return existing cost if purchase fails
+            }
+        }
+
+        // Click upgrade event listeners
+        document.getElementById('click-upgrade-1-btn').addEventListener('click', () => {
+            clickUpgradeCost1 = purchaseUpgrade(10, 1, true);
+        });
+        document.getElementById('click-upgrade-2-btn').addEventListener('click', () => {
+            clickUpgradeCost2 = purchaseUpgrade(30, 1, true);
+        });
+        document.getElementById('click-upgrade-3-btn').addEventListener('click', () => {
+            clickUpgradeCost3 = purchaseUpgrade(90, 1, true);
+        });
+        document.getElementById('click-upgrade-4-btn').addEventListener('click', () => {
+            clickUpgradeCost4 = purchaseUpgrade(270, 1, true);
+        });
+        document.getElementById('click-upgrade-5-btn').addEventListener('click', () => {
+            clickUpgradeCost5 = purchaseUpgrade(810, 1, true);
+        });
+        document.getElementById('click-upgrade-6-btn').addEventListener('click', () => {
+            clickUpgradeCost6 = purchaseUpgrade(2430, 1, true);
+        });
+        document.getElementById('click-upgrade-7-btn').addEventListener('click', () => {
+            clickUpgradeCost7 = purchaseUpgrade(7290, 1, true);
+        });
+        document.getElementById('click-upgrade-8-btn').addEventListener('click', () => {
+            clickUpgradeCost8 = purchaseUpgrade(21870, 1, true);
+        });
+        document.getElementById('click-upgrade-9-btn').addEventListener('click', () => {
+            clickUpgradeCost9 = purchaseUpgrade(65610, 1, true);
+        });
+        document.getElementById('click-upgrade-10-btn').addEventListener('click', () => {
+            clickUpgradeCost10 = purchaseUpgrade(196830, 1, true);
+        });
+        document.getElementById('click-upgrade-11-btn').addEventListener('click', () => {
+            clickUpgradeCost11 = purchaseUpgrade(590490, 1, true);
+        });
+
+        // Points per second upgrade event listeners
+        document.getElementById('points-upgrade-1-btn').addEventListener('click', () => {
+            pointsUpgradeCost1 = purchaseUpgrade(10, 1, false);
+        });
+        document.getElementById('points-upgrade-2-btn').addEventListener('click', () => {
+            pointsUpgradeCost2 = purchaseUpgrade(30, 3, false);
+        });
+        document.getElementById('points-upgrade-3-btn').addEventListener('click', () => {
+            pointsUpgradeCost3 = purchaseUpgrade(90, 5, false);
+        });
+        document.getElementById('points-upgrade-4-btn').addEventListener('click', () => {
+            pointsUpgradeCost4 = purchaseUpgrade(270, 10, false);
+        });
+        document.getElementById('points-upgrade-5-btn').addEventListener('click', () => {
+            pointsUpgradeCost5 = purchaseUpgrade(810, 20, false);
+        });
+        document.getElementById('points-upgrade-6-btn').addEventListener('click', () => {
+            pointsUpgradeCost6 = purchaseUpgrade(2430, 50, false);
+        });
+        document.getElementById('points-upgrade-7-btn').addEventListener('click', () => {
+            pointsUpgradeCost7 = purchaseUpgrade(7290, 100, false);
+        });
+        document.getElementById('points-upgrade-8-btn').addEventListener('click', () => {
+            pointsUpgradeCost8 = purchaseUpgrade(21870, 200, false);
+        });
+        document.getElementById('points-upgrade-9-btn').addEventListener('click', () => {
+            pointsUpgradeCost9 = purchaseUpgrade(65610, 500, false);
+        });
+        document.getElementById('points-upgrade-10-btn').addEventListener('click', () => {
+            pointsUpgradeCost10 = purchaseUpgrade(196830, 1000, false);
+        });
+        document.getElementById('points-upgrade-11-btn').addEventListener('click', () => {
+            pointsUpgradeCost11 = purchaseUpgrade(590490, 2000, false);
+        });
+
+        // Reset button event listener
+        resetButton.addEventListener('click', () => {
+            score = 0;
+            pointsPerClick = 1; // Reset to initial points per click
+            pointsPerSecond = 0; // Reset points per second
+            updateScore();
+            localStorage.removeItem('score'); // Clear saved score
+            localStorage.removeItem('pointsPerClick'); // Clear saved points per click
+            localStorage.removeItem('pointsPerSecond'); // Clear saved points per second
+        });
+
+        // Load progress when the game starts
+        loadProgress();
+        
+        // Initialize score display
+        updateScore();
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f8ff; /* Light blue background */
+            color: #333;
+            margin: 0;
+        }
+        * {
+          font-family: Poppins;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #4a90e2; /* Blue color for the title */
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+            width: 100px;
+            border: 2px solid #4a90e2; /* Blue border */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4a90e2; /* Blue button */
+            border: none;
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: #357ab8; /* Darker blue on hover */
+        }
+
+        #messages {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #d9534f; /* Bootstrap danger color */
+        }
+
+        #gameControls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff; /* White background for controls */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        #form {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Space between input fields */
+        }
+    </style>
+</head>
+<body>
+
+<h1>Number Guessing Game</h1>
+<div id="form">
+    <div>
+        <label for="min">Min:</label>
+        <input type="number" id="min" value="1" />
+    </div>
+    <div>
+        <label for="max">Max:</label>
+        <input type="number" id="max" value="100" />
+    </div>
+    <button id="startButton">Start Game</button>
+</div>
+
+<div id="gameControls" style="display: none;">
+    <p>Guess a number between <span id="range"></span></p>
+    <input type="number" id="guessInput" />
+    <button id="guessButton">Guess</button>
+</div>
+
+<div id="messages"></div>
+
+<script>
+    let min, max, randomNumber, attempts;
+
+    document.getElementById('startButton').addEventListener('click', function () {
+        min = parseInt(document.getElementById('min').value);
+        max = parseInt(document.getElementById('max').value);
+
+        if (min >= max) {
+            alert("Minimum must be less than maximum!");
+            return;
+        }
+
+        randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        attempts = 0;
+
+        document.getElementById('range').innerText = `${min} and ${max}`;
+        document.getElementById('messages').innerText = '';
+        document.getElementById('gameControls').style.display = 'block';
+        document.getElementById('guessInput').value = '';
+    });
+
+    document.getElementById('guessButton').addEventListener('click', function () {
+        const guess = parseInt(document.getElementById('guessInput').value);
+        attempts++;
+
+        if (isNaN(guess)) {
+            document.getElementById('messages').innerText = `Please enter a valid number.`;
+            return;
+        }
+
+        if (guess < min || guess > max) {
+            document.getElementById('messages').innerText = `Your guess must be between ${min} and ${max}.`;
+        } else if (guess < randomNumber) {
+            document.getElementById('messages').innerText = `Too low! Attempts: ${attempts}`;
+        } else if (guess > randomNumber) {
+            document.getElementById('messages').innerText = `Too high! Attempts: ${attempts}`;
+        } else {
+            document.getElementById('messages').innerText = `Congratulations! You guessed the number ${randomNumber} in ${attempts} attempts!`;
+        }
+    });
+</script>
+
+</body>
+</html>
+

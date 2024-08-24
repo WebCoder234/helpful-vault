@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connected Maze Game (38x38)</title>
+    <style>
+        * {
+            font-family: Poppins, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #282c34;
+            color: #ffffff;
+            overflow: hidden; /* Hide overflow for large maze */
+        }
+
+        #game {
+            position: relative;
+            width: 760px;  /* Adjusted width for 38x38 maze */
+            height: 760px; /* Adjusted height for 38x38 maze */
+            border: 2px solid #61dafb;
+            background-color: #20232a;
+            display: grid;
+            grid-template-columns: repeat(38, 1fr);
+            grid-template-rows: repeat(38, 1fr);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .cell {
+            box-sizing: border-box;
+            border: 0.3px solid #444; /* Thinner lines */
+            transition: background-color 0.3s ease;
+        }
+
+        .wall {
+            background-color: #333;
+        }
+
+        .path {
+            background-color: #fff;
+        }
+
+        .player {
+            background-color: #C36767; /* Player color */
+            transition: transform 0.3s ease;
+        }
+
+        .exit {
+            background-color: #5CB171; /* Finish line color */
+        }
+
+        .collectible {
+            background-color: #ffd700; /* Collectible color */
+            transition: transform 0.3s ease;
+        }
+
+        #score {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #message {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #ff4b5c;
+            text-align: center;
+        }
+
+        #timer {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #61dafb;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 640px) {
+            #game {
+                width: 90vw;
+                height: 90vw;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="game"></div>
+
+<div id="score">Score: <span id="scoreValue">0</span></div>
+<div id="timer">Time remaining: <span id="timerValue">10:00</span></div>
+<div id="message"></div>
+
+<script>
+    const mazeSize = 38; // 38x38 maze
+    const maze = [];
+    const gameArea = document.getElementById('game');
+
+    const scoreElement = document.getElementById('scoreValue');
+    const timerElement = document.getElementById('timerValue');
+    const messageElement = document.getElementById('message');
+    
+    let playerPosition = { x: 1, y: 1 }; // Start position
+    let exitPosition = {}; // Finish line position
+    let collectibles = [];
+    let score = 0; 
+    let timer; // Timer variable
+    let timeRemaining = 600; // 10 minutes in seconds
+
+    // Generate the maze using Depth-First Search (DFS)
+    function generateMaze() {
+        for (let i = 0; i < mazeSize; i++) {
+            maze[i] = [];
+            for (let j = 0; j < mazeSize; j++) {
+                maze[i][j] = '#'; // Start with walls
+            }
+        }
+
+        function carvePath(x, y) {
+            const directions = [
+                [0, -2], // Up
+                [2, 0],  // Right
+                [0, 2],  // Down
+                [-2, 0], // Left
+            ];
+
+            // Shuffle directions
+            directions.sort(() => Math.random() - 0.5);
+
+            for (const [dx, dy] of directions) {
+                const nx = x + dx;
+                const ny = y + dy;
+
+                // Check bounds and ensure the new cell is still a wall
+                if (nx > 0 && nx < mazeSize - 1 && ny > 0 && ny < mazeSize - 1 && maze[ny][nx] === '#') {
+                    maze[ny][nx] = ' '; // Empty space
+                    maze[y + dy / 2][x + dx / 2] = ' '; // Carve between
+                    carvePath(nx, ny); // Recur
+                }
+            }
+        }
+
+        carvePath(1, 1);
+        maze[1][1] = ' '; // Ensure starting position is empty
+
+        generateCollectibles();
+        placeExit(); // Place the exit after generating the maze
+    }
+
+    // Generate collectibles
+    function generateCollectibles() {
+        let numberOfCollectibles = Math.floor(Math.random() * 10) + 5; // Random number of collectibles (5-15)
+
+        while (collectibles.length < numberOfCollectibles) {
+            let x = Math.floor(Math.random() * mazeSize);
+            let y = Math.floor(Math.random() * mazeSize);
+            if (maze[y][x] === ' ' && (x !== playerPosition.x || y !== playerPosition.y)) {
+                collectibles.push({ x, y });
+                maze[y][x] = 'C'; // Mark collectible
+            }
+        }
+    }
+
+    // Function to place the exit in a random accessible position
+    function placeExit() {
+        let possibleExits = [];
+
+        // Gather all accessible path positions
+        for (let y = 0; y < mazeSize; y++) {
+            for (let x = 0; x < mazeSize; x++) {
+                if (maze[y][x] === ' ' && (x !== playerPosition.x || y !== playerPosition.y)) {
+                    possibleExits.push({ x, y });
+                }
+            }
+        }
+
+        // Select a random accessible position for the exit
+        exitPosition = possibleExits[Math.floor(Math.random() * possibleExits.length)];
+        maze[exitPosition.y][exitPosition.x] = ' '; // Ensure finish line position is empty
+    }
+
+    // Initialize the maze display
+    function drawMaze() {
+        gameArea.innerHTML = '';
+        for (let row = 0; row < maze.length; row++) {
+            for (let col = 0; col < maze[row].length; col++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+
+                if (maze[row][col] === '#') {
+                    cell.classList.add('wall');
+                } else if (maze[row][col] === 'C') {
+                    cell.classList.add('collectible');
+                } else {
+                    cell.classList.add('path');
+                }
+
+                if (row === playerPosition.y && col === playerPosition.x) {
+                    cell.classList.add('player');
+                }
+                if (row === exitPosition.y && col === exitPosition.x) {
+                    cell.classList.add('exit'); // Green finish line cell
+                }
+                gameArea.appendChild(cell);
+            }
+        }
+    }
+
+    // Move the player
+    function movePlayer(direction) {
+        let newX = playerPosition.x;
+        let newY = playerPosition.y;
+
+        switch(direction) {
+            case 'ArrowUp': newY--; break;
+            case 'ArrowDown': newY++; break;
+            case 'ArrowLeft': newX--; break;
+            case 'ArrowRight': newX++; break;
+        }
+
+        // Check for valid move
+        if (maze[newY] && maze[newY][newX] !== '#' && newY >= 0 && newX >= 0) {
+            playerPosition.x = newX;
+            playerPosition.y = newY;
+            drawMaze();
+
+            // Check for collectible
+            if (maze[newY][newX] === 'C') {
+                score++;
+                scoreElement.textContent = score; 
+                maze[newY][newX] = ' '; // Remove collectible
+            }
+
+            // Check for win condition
+            if (playerPosition.x === exitPosition.x && playerPosition.y === exitPosition.y) {
+                clearInterval(timer);
+                messageElement.textContent = 'Congratulations! You found the finish line!';
+            }
+        }
+    }
+
+    // Set up the timer
+    function startTimer() {
+        timer = setInterval(() => {
+            timeRemaining--;
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            // Check if time is up
+            if (timeRemaining <= 0) {
+                clearInterval(timer);
+                messageElement.textContent = 'Time is up! Game over!';
+                gameArea.style.display = 'none'; // Hide the game area
+            }
+        }, 1000); // Update every second
+    }
+
+    // Set up event listeners
+    document.addEventListener('keydown', (event) => {
+        movePlayer(event.key);
+    });
+
+    // Start the game
+    generateMaze();
+    drawMaze();
+    startTimer(); // Start the timer when the game starts
+
+</script>
+
+</body>
+</html>
+
