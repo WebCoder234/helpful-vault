@@ -6,14 +6,41 @@
     <meta name="description" content="Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions. 
           Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools. 
           From simple math to complex conversions, we've got you covered.">
-          <meta name="keywords" content="UsefulVault, online tools, calculations, conversions, calculators, unit converter, online calculator, age calculator, length converter, password generator, stopwatch, temperature converter, mass converter, volume calculator, random password generator, game tools, fun games, rock paper scissors, maze game, number guessing game, clicker game">
+    <meta name="keywords" content="UsefulVault, online tools, calculations, conversions, calculators, unit converter, online calculator, age calculator, length converter, password generator, stopwatch, temperature converter, mass converter, volume calculator, random password generator, game tools, fun games, rock paper scissors, maze game, number guessing game, clicker game">
     <title>UsefulVault - Basic Online Tools</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:wght@100..900&display=swap" rel="stylesheet">
 
     <style>
         * {
             text-align: center;
             justify-content: center;
-            margin-left: 50%;
+            margin: 0; /* Reset margin */
+            padding: 0; /* Reset padding */
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif; /* Set to Lexend font */
+        }
+
+        body {
+            background-color: #24252a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5em; /* Adjust font size */
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            max-width: 800px; /* Set maximum width for better readability */
         }
 
         .line2ofd {
@@ -22,103 +49,19 @@
             color: white;
         }
 
-        p {
-            font-size: 18px;
-            color: white;
+        .search-container {
+            margin: 20px;
             text-align: center;
         }
 
-        @media (max-width: 768px) {
-            /* Styles for screens up to 768px */
-            body {
-                font-size: 16px;
-            }
-
-            .buttons,
-            .buttons1 {
-                font-size: 18px;
-                padding: 15px;
-            }
-        }
-
-        h4 {
-            text-align: center;
-            color: white;
-        }
-
-        * {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            margin-left: 3.5px;
-            margin-top: 3.5px;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #24252a;
-            font-display: swap;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #252428;
-            height: 100%;
-            align-items: center;
-            width: 18%;
-            text-align: center;
-            border: rgb(238, 247, 255) 5px solid;
-            box-shadow: 0px 0px 10px rgb(214, 252, 255);
-        }
-
-        .sidebar .logo-details i {
-            font-size: 30px;
-            color: white;
-            align-items: center;
-            display: flex;
-        }
-
-        .sidebar .logo-details .logo_name {
-            font-size: 22px;
-            color: white;
-            height: 90%;
-            align-items: center;
-        }
-
-        .buttons {
-            border: 0px;
+        .search-bar {
+            height: 40px;
+            width: 300px;
+            font-size: 16px;
+            padding: 8px;
+            border: none;
             border-radius: 5px;
-            height: 70px;
-            color: #373839;
-            background-color: #ffffff;
-            display: block;
-            width: 100%;
-            text-align: left;
-            padding-left: 10px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .buttons1 {
-            border: 0px;
-            border-radius: 5px;
-            height: 70px;
-            color: #f0f8ff;
-            background-color: #736f7e;
-            display: block;
-            width: 100%;
-            text-align: left;
-            padding-left: 10px;
-            cursor: pointer;
-            width: 90%;
-        }
-
-        h1 {
-            color: white;
-            text-align: center;
-            
+            outline: none; /* Remove outline for the input field */
         }
 
         .box {
@@ -130,13 +73,74 @@
             justify-content: center;
             align-items: center;
             height: 150px; /* Fixed height for all boxes */
-            width: auto;
             border-radius: 10px;
             color: #282A2D;
             font-weight: bold;
+            cursor: pointer; /* Make cursor pointer for boxes */
+            font-size: 20px; /* Font size for box text */
+            outline: none; /* Remove outline for boxes */
         }
 
-        #box1 {
+        /* Individual box styling (colors) */
+        #box1 { background-color: #ede3b9; }
+        #box2 { background-color: #e4af87; }
+        #box3 { background-color: #f6cbad; }
+        #box4 { background-color: #e48686; }
+        #box5 { background-color: #b8f2fe; }
+        #box6 { background-color: #b8f0ba; }
+        #box7 { background-color: #a5eae2; }
+        #box8 { background-color: #84c4ef; }
+        #box9 { background-color: #d6aee6; }
+        #box10 { background-color: #c9eec1; }
+        #box11 { background-color: #A4E3D0; }
+        #box13 { background-color: #F06263; }
+        #box14 { background-color: #FFECA1; }
+        #box15 { background-color: #FFCA7B; }
+        #box16 { background-color: #E2EAF4; }
+
+        .main {
+            display: flex;
+            flex-direction: column; /* Stack boxes in a column */
+            align-items: center; /* Center align boxes */
+            margin: 20px auto; /* Center with margins on top and bottom */
+        }
+
+        .box:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* White shadow */
+            transform: scale(1.05); /* Slightly increase the size on hover */
+            transition: all 0.3s ease; /* Smooth transition for the shadow and scaling */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            /* Styles for screens up to 768px */
+            body {
+                font-size: 16px;
+            }
+
+            .search-bar {
+                width: 80%; /* Make search bar responsive */
+            }
+
+            h1 {
+                font-size: 2em; /* Adjust heading size for smaller screens */
+            }
+
+            p {
+                font-size: 16px; /* Reduce paragraph size for smaller screens */
+            }
+
+            .box {
+                font-size: 18px; /* Reduce font size for boxes on smaller screens */
+            }
+        }
+        
+        * {
+  text-decoration: none;
+}
+
+
+   #box1 {
             background-color: #ede3b9;
             width: 155px;
         }
@@ -226,98 +230,84 @@
              font-size: 23px;
         }
 
-        .main {
-            display: flex;
-            flex-direction: column; /* Stack boxes in a column */
-            align-items: center; /* Center align boxes */
-            margin: 20px auto; /* Center with margins on top and bottom */
-        }
-
-
-* {
-  text-decoration: none;
-}
-
-.box:hover {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* White shadow */
-    transform: scale(1.05); /* Optional: Slightly increase the size on hover */
-    transition: all 0.3s ease; /* Smooth transition for the shadow and scaling */
-}
     </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div></div>
-    <br>
-    <div></div>
-    </div>
     <div class="main">
         <h1>UsefulVault</h1>
         <p>Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions.
             Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools.
-            From simple math to complex conversions,<p class="line2ofd"> we've got you covered.<p></p>
+            <p class="line2ofd">We've got you covered.</p>
+        </p>
+
+        <div class="search-container">
+            <input type="text" id="search" class="search-bar" placeholder="Search for a tool..." />
+        </div>
 
         <a href="calculator.html">
-            <div id="box1" class="box" grid-column="1 / span 1">Calculator</div>
+            <div id="box1" class="box">Calculator</div>
         </a>
         <a href="project3.html">
-            <div id="box2" class="box" grid-column="2 / span 1">Circumference Calculator</div>
+            <div id="box2" class="box">Circumference Calculator</div>
         </a>
         <a href="project2.html">
-            <div id="box3" class="box" grid-column="3 / span 1">Age Calculator</div>
+            <div id="box3" class="box">Age Calculator</div>
         </a>
-
         <a href="m.html">
-            <div id="box4" class="box" grid-column="1 / span 1">Length Converter</div>
+            <div id="box4" class="box">Length Converter</div>
         </a>
-
         <a href="t.html">
-            <div id="box5" class="box" grid-column="2 / span 1">Random Password Generator</div>
+            <div id="box5" class="box">Random Password Generator</div>
         </a>
-
         <a href="draw.html">
-            <div id="box6" class="box" grid-column="3 / span 1">Stopwatch</div>
+            <div id="box6" class="box">Stopwatch</div>
         </a>
-
         <a href="r.html">
-            <div id="box7" class="box" grid-column="1 / span 1">Temperature Converter</div>
+            <div id="box7" class="box">Temperature Converter</div>
         </a>
-
         <a href="w.html">
-            <div id="box8" class="box" grid-column="2 / span 1">Mass Converter</div>
+            <div id="box8" class="box">Mass Converter</div>
         </a>
-
         <a href="time.html">
-            <div id="box9" class="box" grid-column="3 / span 1">Clock</div>
+            <div id="box9" class="box">Clock</div>
         </a>
-
         <a href="13.HTML">
-            <div id="box10" class="box" grid-column="1 / span 1">Notes</div>
+            <div id="box10" class="box">Notes</div>
         </a>
-
         <a href="volumecalculator.html">
-            <div id="box11" class="box" grid-column="2 / span 1">Volume Calculator</div>
+            <div id="box11" class="box">Volume Calculator</div>
         </a>
-
         <a href="rockpaperscissors.html">
-            <div id="box13" class="box" grid-column="3 / span 1">Rock Paper Scissors Game</div>
+            <div id="box13" class="box">Rock Paper Scissors Game</div>
         </a>
-
         <a href="maze.html">
-            <div id="box14" class="box" grid-column="1 / span 1">Maze Game</div>
+            <div id="box14" class="box">Maze Game</div>
         </a>
-
         <a href="numberguessinggame.html">
-            <div id="box15" class="box" grid-column="2 / span 1">Number Guessing Game</div>
+            <div id="box15" class="box">Number Guessing Game</div>
         </a>
-
         <a href="clcikergame.html">
-            <div id="box16" class="box" grid-column="1 / span 1">Clicker Game</div>
+            <div id="box16" class="box">Clicker Game</div>
         </a>
     </div>
+
+    <script>
+        const searchBar = document.getElementById('search');
+
+        searchBar.addEventListener('keyup', function(event) {
+            const query = event.target.value.toLowerCase();
+            const boxes = document.querySelectorAll('.box');
+
+            boxes.forEach(box => {
+                if (box.innerText.toLowerCase().includes(query)) {
+                    box.style.display = 'flex'; // Show box if it matches query
+                } else {
+                    box.style.display = 'none'; // Hide box if it doesn't match
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
