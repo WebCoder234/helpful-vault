@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Length Converter </h1>
+    <h1>Length Converter</h1>
     <form>
       <label for="input">Enter value:</label>
       <input type="number" id="input" value="0">
@@ -22,7 +22,6 @@
         <option value="km">Kilometers</option>
       </select>
       <select id="unit-to">
-        h5
         <option value="ft">Feet</option>
         <option value="in">Inches</option>
         <option value="m">Meters</option>
@@ -34,166 +33,147 @@
       <p id="result"></p>
     </form>
   </div>
+  
   <script>
     // Define the conversion factors
-const conversionFactors = {
-  ft: {
-    in: 12,
-    m: 0.3048,
-    yd: 0.3333,
-    mi: 0.00018939,
-    km: 0.003048
-  },
-  in: {
-    ft: 1 / 12,
-    m: 0.0254,
-    yd: 0.083333,
-    mi: 0.00001639,
-    km: 0.0000254
-  },
-  m: {
-    ft: 3.2808,
-    in: 39.37,
-    yd: 1.0936,
-    mi: 0.00062137,
-    km: 0.001
-  },
-  yd: {
-    ft: 3,
-    in: 36,
-    m: 0.9144,
-    mi: 0.00056818,
-    km: 0.0009144
-  },
-  mi: {
-    ft: 5280,
-    in: 63360,
-    m: 160934, // approximately
-    yd: 1760, // approximately
-    km: 160934 // approximately
-  },
-  km: {
-    ft: 3280.8,
-    in: 39370.08,
-    m: 1000,
-    yd: 1093.61,
-    mi: 0.621371
-  }
-};
+    const conversionFactors = {
+      ft: { in: 12, m: 0.3048, yd: 0.3333, mi: 0.00018939, km: 0.003048 },
+      in: { ft: 1 / 12, m: 0.0254, yd: 0.083333, mi: 0.00001639, km: 0.0000254 },
+      m: { ft: 3.2808, in: 39.37, yd: 1.0936, mi: 0.00062137, km: 0.001 },
+      yd: { ft: 3, in: 36, m: 0.9144, mi: 0.00056818, km: 0.0009144 },
+      mi: { ft: 5280, in: 63360, m: 160934, yd: 1760, km: 1.60934 },
+      km: { ft: 3280.8, in: 39370.08, m: 1000, yd: 1093.61, mi: 0.621371 }
+    };
 
-// Get the input and conversion select elements
-const input = document.getElementById('input');
-const unitFrom = document.getElementById('unit-from');
-const unitTo = document.getElementById('unit-to');
-const convertButton = document.getElementById('convert');
-const resultElement = document.getElementById('result');
+    // Get the input and conversion select elements
+    const input = document.getElementById('input');
+    const unitFrom = document.getElementById('unit-from');
+    const unitTo = document.getElementById('unit-to');
+    const convertButton = document.getElementById('convert');
+    const resultElement = document.getElementById('result');
 
-// Set the initial values
-let fromUnit = 'ft';
-let toUnit = 'ft';
+    // Set the initial values
+    let fromUnit = 'ft';
+    let toUnit = 'ft';
 
-// Add event listeners to the conversion select elements
-unitFrom.addEventListener('change', (e) => {
-  fromUnit = e.target.value;
-});
+    // Add event listeners to the conversion select elements
+    unitFrom.addEventListener('change', (e) => {
+      fromUnit = e.target.value;
+    });
 
-unitTo.addEventListener('change', (e) => {
-  toUnit = e.target.value;
-});
+    unitTo.addEventListener('change', (e) => {
+      toUnit = e.target.value;
+    });
 
-// Add event listener to the convert button
-convertButton.addEventListener('click', (e) => {
-  const inputValue = parseFloat(input.value);
-  
-  if (!isNaN(inputValue)) {
-    const convertedValue = inputValue * conversionFactors[fromUnit][toUnit];
-    resultElement.textContent = `${inputValue} ${fromUnit} is equal to ${convertedValue} ${toUnit}`;
-  } else {
-    resultElement.textContent = 'Invalid input';
-  }
-});
+    // Add event listener to the convert button
+    convertButton.addEventListener('click', (e) => {
+      const inputValue = parseFloat(input.value);
+      
+      if (!isNaN(inputValue)) {
+        const convertedValue = inputValue * conversionFactors[fromUnit][toUnit];
+        resultElement.textContent = `${inputValue} ${fromUnit} is equal to ${convertedValue.toFixed(4)} ${toUnit}`; // Fixed to 4 decimal places
+      } else {
+        resultElement.textContent = 'Invalid input';
+      }
+    });
   </script>
 
   <style>
-body {
+    body {
+      background-color: #413e3e;
+      color: #333;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-  background-color: #413e3e;
-  color: #333;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+    .container {
+      max-width: 90%; /* Adjusted to be responsive */
+      width: 500px; /* Fixed maximum width */
+      padding: 40px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-.container {
-  max-width: 500px;
-  padding: 40px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-h1 {
-  font-size: 1.5rem;
-  text-align: center;
-  margin-bottom: 20px;
-}
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+    label {
+      font-weight: bold;
+    }
 
-label {
-  font-weight: bold;
-}
+    input[type="number"],
+    select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 23px;
+      width: 100%; /* Full width for inputs and selects */
+    }
 
-input[type="number"],
-select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%; /* Full width for button */
+    }
+    button:hover {
+      background-color: #6dcc7a;
+    }
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-button:hover {
-  background-color: #6dcc7a;
-}
+    #result {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
 
-#result {
-  text-align: center;
-  margin-top: 20px;
-  font-weight: bold;
-}
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        width: 90%; /* Adjust the width for smaller screens */
+      }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 20px;
-  }
-}
+      h1 {
+        font-size: 1.4rem; /* Make the heading smaller for smaller screens */
+      }
 
-option {
-  border: none;
-}
+      input[type="number"],
+      select {
+        font-size: 18px; /* Smaller font for smaller screens */
+      }
+
+      button {
+        padding: 10px; /* Reduce padding for smaller screens */
+      }
+    }
+
+    option {
+      border: none;
+    }
+
+    /* Font Family */
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <style>
-    * {
-font-family: 'Poppins';
-    }
-  </style>
 </body>
 </html>
