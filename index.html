@@ -17,10 +17,10 @@
         * {
             text-align: center;
             justify-content: center;
-            margin: 0; /* Reset margin */
-            padding: 0; /* Reset padding */
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
-            font-family: 'Lexend', sans-serif; /* Set to Lexend font */
+            font-family: 'Lexend', sans-serif;
         }
 
         body {
@@ -28,11 +28,34 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .navbar {
+            background-color: #333;
+            width: 100%;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
         }
 
         h1 {
             color: white;
-            font-size: 2.5em; /* Adjust font size */
+            font-size: 2.5em;
             margin-top: 20px;
         }
 
@@ -40,7 +63,14 @@
             font-size: 18px;
             color: white;
             text-align: center;
-            max-width: 800px; /* Set maximum width for better readability */
+            max-width: 800px;
+        }
+
+        .conduct-info {
+            display: none; /* Hide initially */
+            color: white; /* Set color for contact info */
+            font-size: 20px; /* Set font size for contact info */
+            margin-top: 50px; /* Margin for better spacing */
         }
 
         .line2ofd {
@@ -61,27 +91,26 @@
             padding: 8px;
             border: none;
             border-radius: 5px;
-            outline: none; /* Remove outline for the input field */
+            outline: none;
         }
 
         .box {
             text-align: center;
-            margin: 10px; /* Margin around each box */
-            flex: 0 0 100%; /* One box per row */
-            max-width: 300px; /* Set a max width for the boxes */
+            margin: 10px;
+            flex: 0 0 100%;
+            max-width: 300px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 150px; /* Fixed height for all boxes */
+            height: 150px;
             border-radius: 10px;
             color: #282A2D;
             font-weight: bold;
-            cursor: pointer; /* Make cursor pointer for boxes */
-            font-size: 20px; /* Font size for box text */
-            outline: none; /* Remove outline for boxes */
+            cursor: pointer;
+            font-size: 20px;
+            outline: none;
         }
 
-        /* Individual box styling (colors) */
         #box1 { background-color: #ede3b9; }
         #box2 { background-color: #e4af87; }
         #box3 { background-color: #f6cbad; }
@@ -98,204 +127,193 @@
         #box15 { background-color: #FFCA7B; }
         #box16 { background-color: #E2EAF4; }
 
-        .main {
+        .main, .settings, .games-section {
             display: flex;
-            flex-direction: column; /* Stack boxes in a column */
-            align-items: center; /* Center align boxes */
-            margin: 20px auto; /* Center with margins on top and bottom */
+            flex-direction: column;
+            align-items: center;
+            margin: 20px auto;
         }
 
         .box:hover {
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* White shadow */
-            transform: scale(1.05); /* Slightly increase the size on hover */
-            transition: all 0.3s ease; /* Smooth transition for the shadow and scaling */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            transform: scale(1.05);
+            transition: all 0.3s ease;
         }
 
-        /* Responsive styles */
         @media (max-width: 768px) {
-            /* Styles for screens up to 768px */
             body {
                 font-size: 16px;
             }
 
             .search-bar {
-                width: 80%; /* Make search bar responsive */
+                width: 80%;
             }
 
             h1 {
-                font-size: 2em; /* Adjust heading size for smaller screens */
+                font-size: 2em; 
             }
 
             p {
-                font-size: 16px; /* Reduce paragraph size for smaller screens */
+                font-size: 16px; 
             }
 
             .box {
-                font-size: 18px; /* Reduce font size for boxes on smaller screens */
+                font-size: 18px; 
             }
         }
-        
+
         * {
-  text-decoration: none;
-}
-
-
-   #box1 {
-            background-color: #ede3b9;
-            width: 155px;
+            text-decoration: none;
         }
-
-        #box2 {
-            background-color: #e4af87;
-             width: 160px;
-             font-size: 20px;
-             display: flex;
-        }
-
-        #box3 {
-            background-color: #f6cbad;
-              width: 160px;
-             font-size: 23px;
-        }
-
-        #box4 {
-            background-color: #e48686;
-              width: 160px;
-             font-size: 23px;
-        }
-
-        #box5 {
-            background-color: #b8f2fe;
-              width: 160px;
-             font-size: 23px;
-        }
-
-        #box6 {
-            background-color: #b8f0ba;
-              width: 160px;
-             font-size: 23px;
-        }
-
-        #box7 {
-            background-color: #a5eae2;
-              width: 160px;
-             font-size: 23px;
-        }
-
-        #box8 {
-            background-color: #84c4ef;
-              width: 160px;
-             font-size: 23px;
-        }
-
-        #box9 {
-            background-color: #d6aee6;
-              width: 140px;
-             font-size: 23px;
-        }
-
-        #box10 {
-            background-color: #c9eec1;
-              width: 140px;
-             font-size: 23px;
-        }
-
-        #box11 {
-            background-color: #A4E3D0;
-              width: 160px;
-             font-size: 23px;
-        }
-
-        #box13 {
-            background-color: #F06263;
-              width: 160px;
-             font-size: 23px;
-        }
-
-        #box14 {
-            background-color: #FFECA1;
-              width: 160px;
-             font-size: 23px;
-        }
-
-        #box15 {
-            background-color: #FFCA7B;
-              width: 160px;
-             font-size: 23px;
-        }
-
-        #box16 {
-            background-color: #E2EAF4;
-              width: 165px;
-             font-size: 23px;
-        }
-
     </style>
 </head>
 
 <body>
-    <div class="main">
+    <div class="navbar">
+        <a href="#" id="homeLink">Home</a>
+        <a href="#games" id="gamesLink">Games</a>
+        <a href="#settings" id="settingsLink">Settings</a>
+        <a href="#contact" id="contactLink">Contact Us</a>
+    </div>
+
+    <div class="main" id="main-content">
         <h1>UsefulVault</h1>
         <p>Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions.
             Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools.
             <p class="line2ofd">We've got you covered.</p>
         </p>
 
-        <div class="search-container">
+        <div class="search-container" id="search-container">
             <input type="text" id="search" class="search-bar" placeholder="Search for a tool..." />
         </div>
 
-        <a href="calculator.html">
-            <div id="box1" class="box">Calculator</div>
-        </a>
-        <a href="project3.html">
-            <div id="box2" class="box">Circumference Calculator</div>
-        </a>
-        <a href="project2.html">
-            <div id="box3" class="box">Age Calculator</div>
-        </a>
-        <a href="m.html">
-            <div id="box4" class="box">Length Converter</div>
-        </a>
-        <a href="t.html">
-            <div id="box5" class="box">Random Password Generator</div>
-        </a>
-        <a href="draw.html">
-            <div id="box6" class="box">Stopwatch</div>
-        </a>
-        <a href="r.html">
-            <div id="box7" class="box">Temperature Converter</div>
-        </a>
-        <a href="w.html">
-            <div id="box8" class="box">Mass Converter</div>
-        </a>
-        <a href="time.html">
-            <div id="box9" class="box">Clock</div>
-        </a>
-        <a href="13.HTML">
-            <div id="box10" class="box">Notes</div>
-        </a>
-        <a href="volumecalculator.html">
-            <div id="box11" class="box">Volume Calculator</div>
-        </a>
-        <a href="rockpaperscissors.html">
-            <div id="box13" class="box">Rock Paper Scissors Game</div>
-        </a>
-        <a href="maze.html">
-            <div id="box14" class="box">Maze Game</div>
-        </a>
-        <a href="numberguessinggame.html">
-            <div id="box15" class="box">Number Guessing Game</div>
-        </a>
-        <a href="clcikergame.html">
-            <div id="box16" class="box">Clicker Game</div>
-        </a>
+        <div id="toolboxes">
+            <a href="calculator.html">
+                <div id="box1" class="box">Calculator</div>
+            </a>
+            <a href="project3.html">
+                <div id="box2" class="box">Circumference Calculator</div>
+            </a>
+            <a href="project2.html">
+                <div id="box3" class="box">Age Calculator</div>
+            </a>
+            <a href="m.html">
+                <div id="box4" class="box">Length Converter</div>
+            </a>
+            <a href="t.html">
+                <div id="box5" class="box">Random Password Generator</div>
+            </a>
+            <a href="draw.html">
+                <div id="box6" class="box">Stopwatch</div>
+            </a>
+            <a href="r.html">
+                <div id="box7" class="box">Temperature Converter</div>
+            </a>
+            <a href="w.html">
+                <div id="box8" class="box">Mass Converter</div>
+            </a>
+            <a href="time.html">
+                <div id="box9" class="box">Clock</div>
+            </a>
+            <a href="13.HTML">
+                <div id="box10" class="box">Notes</div>
+            </a>
+            <a href="volumecalculator.html">
+                <div id="box11" class="box">Volume Calculator</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="conduct-info" id="contact-info">
+        Contact us at helpfulvault@gmail.com. We'd love to hear your feedback!
+    </div>
+
+    <div class="settings" id="settings" style="display: none;">
+        <h2>Settings</h2>
+        <label for="searchToggle">Show Search Bar: </label>
+        <input type="checkbox" id="searchToggle" checked /> <!-- Default checked -->
+    </div>
+
+    <div id="games-section" style="display: none;">
+        <h2>Games</h2>
+        <div id="games">
+            <a href="rockpaperscissors.html">
+                <div id="box13" class="box">Rock Paper Scissors Game</div>
+            </a>
+            <a href="maze.html">
+                <div id="box14" class="box">Maze Game</div>
+            </a>
+            <a href="numberguessinggame.html">
+                <div id="box15" class="box">Number Guessing Game</div>
+            </a>
+            <a href="clcikergame.html">
+                <div id="box16" class="box">Clicker Game</div>
+            </a>
+        </div>
     </div>
 
     <script>
-        const searchBar = document.getElementById('search');
+        const mainContent = document.getElementById('main-content');
+        const contactInfo = document.getElementById('contact-info');
+        const searchContainer = document.getElementById('search-container');
+        const gamesSection = document.getElementById('games-section');
+        const settingsSection = document.getElementById('settings');
 
-        searchBar.addEventListener('keyup', function(event) {
+        // Load saved search toggle state, default to true if not set
+        const savedSearchToggleState = localStorage.getItem('searchToggle') === 'true';
+        const searchToggle = document.getElementById('searchToggle');
+
+        // If there is no saved state, default to true (show search)
+        if (savedSearchToggleState === undefined) {
+            searchToggle.checked = true;
+            searchContainer.style.display = 'block'; // Show the search container
+        } else {
+            searchToggle.checked = savedSearchToggleState;
+            searchContainer.style.display = savedSearchToggleState ? 'block' : 'none'; // Set visibility based on saved state
+        }
+
+        // Home link functionality
+        document.getElementById('homeLink').addEventListener('click', function () {
+            contactInfo.style.display = 'none';  // Hide contact info
+            gamesSection.style.display = 'none';  // Hide games section
+            settingsSection.style.display = 'none';  // Hide settings section
+            mainContent.style.display = 'flex';   // Show main content
+        });
+
+        // Games link functionality
+        document.getElementById('gamesLink').addEventListener('click', function () {
+            mainContent.style.display = 'none';  // Hide main content
+            contactInfo.style.display = 'none';  // Hide contact info
+            settingsSection.style.display = 'none';  // Hide settings section
+            gamesSection.style.display = 'block'; // Show games section
+        });
+
+        // Settings link functionality
+        document.getElementById('settingsLink').addEventListener('click', function () {
+            mainContent.style.display = 'none';  // Hide main content
+            gamesSection.style.display = 'none';  // Hide games section
+            contactInfo.style.display = 'none';  // Hide contact info
+            settingsSection.style.display = 'block'; // Show settings section
+        });
+
+        // Contact Us link functionality
+        document.getElementById('contactLink').addEventListener('click', function () {
+            mainContent.style.display = 'none';  // Hide main content
+            gamesSection.style.display = 'none';  // Hide games section
+            settingsSection.style.display = 'none';  // Hide settings section
+            contactInfo.style.display = 'block';  // Show contact info
+        });
+
+        // Toggle search bar visibility functionality
+        searchToggle.addEventListener('change', function () {
+            const isChecked = searchToggle.checked;
+            localStorage.setItem('searchToggle', isChecked); // Save toggle state
+            searchContainer.style.display = isChecked ? 'block' : 'none'; // Show/hide search bar
+        });
+
+        // Search functionality
+        const searchBar = document.getElementById('search');
+        searchBar.addEventListener('keyup', function (event) {
             const query = event.target.value.toLowerCase();
             const boxes = document.querySelectorAll('.box');
 
