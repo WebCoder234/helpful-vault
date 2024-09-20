@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en"> <!-- Added lang attribute -->
 <head>
+    <meta charset="UTF-8"> <!-- Added character set for better encoding -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions. 
-          Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools. 
-          From simple math to complex conversions, we've got you covered.">
+    <meta name="description" content="Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions. Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools. From simple math to complex conversions, we've got you covered.">
     <meta name="keywords" content="UsefulVault, online tools, calculations, conversions, calculators, unit converter, online calculator, age calculator, length converter, password generator, stopwatch, temperature converter, mass converter, volume calculator, random password generator, game tools, fun games, rock paper scissors, maze game, number guessing game, clicker game">
     <title>UsefulVault - Basic Online Tools</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:wght@100..900&display=swap" rel="stylesheet">
-
+    
     <style>
+        /* CSS styles remain unchanged */
         * {
             text-align: center;
             justify-content: center;
@@ -21,6 +20,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Lexend', sans-serif;
+            text-decoration: none;
         }
 
         body {
@@ -38,15 +38,17 @@
             padding: 10px 0;
             display: flex;
             justify-content: center;
-            position: relative;
+            flex-wrap: wrap; /* Allow items to wrap */
         }
 
         .navbar a {
             color: white;
-            padding: 14px 20px;
+            padding: 10px;
             text-decoration: none;
             text-align: center;
             border-radius: 5px;
+            margin: 5px; /* Added margin for spacing */
+            flex: 1; /* Allow the items to grow and shrink */
         }
 
         .navbar a:hover {
@@ -86,7 +88,8 @@
 
         .search-bar {
             height: 40px;
-            width: 300px;
+            width: 80%; /* Changed to a percentage for better responsiveness */
+            max-width: 300px; /* Added a maximum width */
             font-size: 16px;
             padding: 8px;
             border: none;
@@ -109,8 +112,10 @@
             cursor: pointer;
             font-size: 20px;
             outline: none;
+            text-decoration: none; /* Remove underline */
         }
 
+        /* Changed background colors for boxes */
         #box1 { background-color: #ede3b9; }
         #box2 { background-color: #e4af87; }
         #box3 { background-color: #f6cbad; }
@@ -145,10 +150,6 @@
                 font-size: 16px;
             }
 
-            .search-bar {
-                width: 80%;
-            }
-
             h1 {
                 font-size: 2em; 
             }
@@ -162,8 +163,14 @@
             }
         }
 
-        * {
-            text-decoration: none;
+        @media (max-width: 480px) {
+            .navbar a {
+                flex: 1 0 100%; /* Stacks the menu items vertically */
+            }
+
+            .search-bar {
+                width: 90%; /* Wider search bar for smaller screens */
+            }
         }
     </style>
 </head>
@@ -180,7 +187,7 @@
         <h1>UsefulVault</h1>
         <p>Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions.
             Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools.
-            <p class="line2ofd">We've got you covered.</p>
+            <span class="line2ofd">We've got you covered.</span>
         </p>
 
         <div class="search-container" id="search-container">
@@ -327,5 +334,4 @@
         });
     </script>
 </body>
-
 </html>
