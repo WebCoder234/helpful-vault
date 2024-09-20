@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- Added lang attribute -->
+<html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- Added character set for better encoding -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions. Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools. From simple math to complex conversions, we've got you covered.">
+    <meta name="description" content="Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions. Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools.">
     <meta name="keywords" content="UsefulVault, online tools, calculations, conversions, calculators, unit converter, online calculator, age calculator, length converter, password generator, stopwatch, temperature converter, mass converter, volume calculator, random password generator, game tools, fun games, rock paper scissors, maze game, number guessing game, clicker game">
     <title>UsefulVault - Basic Online Tools</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:wght@100..900&display=swap" rel="stylesheet">
-    
+
     <style>
         /* CSS styles remain unchanged */
         * {
@@ -111,8 +111,33 @@
             font-weight: bold;
             cursor: pointer;
             font-size: 20px;
+            position: relative; /* For tooltip positioning */
             outline: none;
             text-decoration: none; /* Remove underline */
+            transition: background-color 0.3s;
+        }
+
+        /* Tooltip styling */
+        .tooltip {
+            visibility: hidden;
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 160%; /* Position above the box */
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .box:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
         }
 
         /* Changed background colors for boxes */
@@ -196,39 +221,93 @@
 
         <div id="toolboxes">
             <a href="calculator.html">
-                <div id="box1" class="box">Calculator</div>
+                <div id="box1" class="box">Calculator
+                    <div class="tooltip">Perform basic and complex arithmetic calculations easily.</div>
+                </div>
             </a>
             <a href="project3.html">
-                <div id="box2" class="box">Circumference Calculator</div>
+                <div id="box2" class="box">Circumference Calculator
+                    <div class="tooltip">Calculate the circumference of circles using radius or diameter.</div>
+                </div>
             </a>
             <a href="project2.html">
-                <div id="box3" class="box">Age Calculator</div>
+                <div id="box3" class="box">Age Calculator
+                    <div class="tooltip">Calculate your exact age based on your birth date.</div>
+                </div>
             </a>
             <a href="m.html">
-                <div id="box4" class="box">Length Converter</div>
+                <div id="box4" class="box">Length Converter
+                    <div class="tooltip">Convert between different units of length with ease.</div>
+                </div>
             </a>
             <a href="t.html">
-                <div id="box5" class="box">Random Password Generator</div>
+                <div id="box5" class="box">Random Password Generator
+                    <div class="tooltip">Generate secure passwords using letters, numbers, and symbols.</div>
+                </div>
             </a>
             <a href="draw.html">
-                <div id="box6" class="box">Stopwatch</div>
+                <div id="box6" class="box">Stopwatch
+                    <div class="tooltip">Time any event easily with our intuitive stopwatch.</div>
+                </div>
             </a>
             <a href="r.html">
-                <div id="box7" class="box">Temperature Converter</div>
+                <div id="box7" class="box">Temperature Converter
+                    <div class="tooltip">Convert temperatures between Celsius, Fahrenheit, and Kelvin.</div>
+                </div>
             </a>
             <a href="w.html">
-                <div id="box8" class="box">Mass Converter</div>
+                <div id="box8" class="box">Mass Converter
+                    <div class="tooltip">Convert mass units like grams, kilograms, and pounds easily.</div>
+                </div>
             </a>
             <a href="time.html">
-                <div id="box9" class="box">Clock</div>
+                <div id="box9" class="box">Clock
+                    <div class="tooltip">Check the current time in a simple format.</div>
+                </div>
             </a>
             <a href="13.HTML">
-                <div id="box10" class="box">Notes</div>
+                <div id="box10" class="box">Notes
+                    <div class="tooltip">Take notes or save important information quickly.</div>
+                </div>
             </a>
             <a href="volumecalculator.html">
-                <div id="box11" class="box">Volume Calculator</div>
+                <div id="box11" class="box">Volume Calculator
+                    <div class="tooltip">Calculate the volume of liquids and solids accurately.</div>
+                </div>
             </a>
         </div>
+
+        <h2>Explore Our Tools</h2>
+        <p>
+            <strong>Calculator:</strong> Our versatile calculator allows you to perform basic and complex arithmetic operations quickly. Whether you're calculating the total cost of groceries or performing advanced equations, this tool helps you get accurate results on the go.
+        </p>
+        <p>
+            <strong>Circumference Calculator:</strong> Easily calculate the circumference of circles with just the radius or diameter. This tool is perfect for students learning geometry or anyone who needs quick formulas at hand.
+        </p>
+        <p>
+            <strong>Age Calculator:</strong> Find your exact age in years, months, and days based on your birth date. This tool can be beneficial for birthday surprises or calculating eligibility for age-restricted activities.
+        </p>
+        <p>
+            <strong>Length Converter:</strong> Convert between different units of length (metric and imperial) with ease. Useful for construction projects, travel planning, or academic assignments requiring unit conversions.
+        </p>
+        <p>
+            <strong>Random Password Generator:</strong> Strengthen your online security with our password generator. It creates complex passwords combining letters, numbers, and symbols, making it challenging for hackers to crack.
+        </p>
+        <p>
+            <strong>Stopwatch:</strong> Use our stopwatch for timing any event, whether for exercise, cooking, or any other timing requirement. It features a simple interface that lets you start, stop, and reset quickly.
+        </p>
+        <p>
+            <strong>Temperature Converter:</strong> Instantly convert temperatures between Celsius, Fahrenheit, and Kelvin. This is useful for anyone in cooking, science, or traveling between different climates.
+        </p>
+        <p>
+            <strong>Mass Converter:</strong> Convert mass units like grams, kilograms, pounds, and ounces without hassle. A handy tool for nutrition tracking or recipes that require precise measurements.
+        </p>
+        <p>
+            <strong>Clock:</strong> Keep track of time with our clock. You can check the current time easily, ensuring you're always punctual for your appointments.
+        </p>
+        <p>
+            <strong>Volume Calculator:</strong> Calculate the volume of various shapes and liquids. Essential for both academic projects and practical tasks like measuring paint or construction materials.
+        </p>
     </div>
 
     <div class="conduct-info" id="contact-info">
@@ -245,16 +324,24 @@
         <h2>Games</h2>
         <div id="games">
             <a href="rockpaperscissors.html">
-                <div id="box13" class="box">Rock Paper Scissors Game</div>
+                <div id="box13" class="box">Rock Paper Scissors Game
+                    <div class="tooltip">Play the classic game—choose rock, paper, or scissors!</div>
+                </div>
             </a>
             <a href="maze.html">
-                <div id="box14" class="box">Maze Game</div>
+                <div id="box14" class="box">Maze Game
+                    <div class="tooltip">Navigate through a maze—find the exit in the least time!</div>
+                </div>
             </a>
             <a href="numberguessinggame.html">
-                <div id="box15" class="box">Number Guessing Game</div>
+                <div id="box15" class="box">Number Guessing Game
+                    <div class="tooltip">Guess the number within the given attempts.</div>
+                </div>
             </a>
             <a href="clcikergame.html">
-                <div id="box16" class="box">Clicker Game</div>
+                <div id="box16" class="box">Clicker Game
+                    <div class="tooltip">Click to earn points—how fast can you click?</div>
+                </div>
             </a>
         </div>
     </div>
