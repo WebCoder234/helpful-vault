@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions. Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools.">
-    <meta name="keywords" content="UsefulVault, online tools, calculations, conversions, calculators, unit converter, online calculator, age calculator, length converter, password generator, stopwatch, temperature converter, mass converter, volume calculator, random password generator, game tools, fun games, rock paper scissors, maze game, number guessing game, clicker game">
+    <meta name="keywords" content="UsefulVault, online tools, calculations, conversions, calculators, unit converter, online calculator, age calculator, length converter, password generator, stopwatch, temperature converter, mass converter, volume calculator, random password generator, game tools, fun games, rock paper scissors, maze game, number guessing game, clicker game, FAQ">
     <title>UsefulVault - Basic Online Tools</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,14 +23,16 @@
             font-family: 'Lexend', sans-serif;
             text-decoration: none;
         }
+
         body {
-            background-color: #24252a;
+            background-color: #24252a; /* Background color of the webpage */
             display: flex;
             flex-direction: column;
             align-items: center;
             color: white;
             transition: background-color 0.3s;
         }
+
         .navbar {
             background-color: #333;
             width: 100%;
@@ -38,52 +41,63 @@
             justify-content: center;
             flex-wrap: wrap;
         }
+
         .navbar a {
             color: white;
             padding: 10px;
             margin: 5px;
             border-radius: 5px;
-            flex: 1; 
+            flex: 1;
             transition: background-color 0.3s;
         }
+
         .navbar a:hover {
             background-color: #575757;
         }
-        h1, h2 {
+
+        h1,
+        h2 {
             color: white;
         }
+
         h1 {
             font-size: 2.5em;
             margin-top: 20px;
         }
+
         p {
             font-size: 18px;
             text-align: center;
             max-width: 800px;
         }
+
         .conduct-info {
-            display: none; 
-            color: white; 
-            font-size: 20px; 
-            margin-top: 50px; 
+            display: none;
+            color: white;
+            font-size: 20px;
+            margin-top: 50px;
         }
+
         .line2ofd {
             text-align: center;
             font-size: 18px;
         }
+
         .search-container {
             margin: 20px;
         }
+
         .search-bar {
             height: 40px;
-            width: 80%; 
-            max-width: 300px; 
+            width: 80%;
+            max-width: 300px;
             font-size: 16px;
             padding: 8px;
             border: none;
             border-radius: 5px;
             outline: none;
         }
+
         .box {
             margin: 10px;
             max-width: 300px;
@@ -92,14 +106,15 @@
             align-items: center;
             height: 150px;
             border-radius: 10px;
-            color: #282A2D;
+            color: #282A2D; /* Default text color */
             font-weight: bold;
             cursor: pointer;
             font-size: 20px;
-            position: relative; 
+            position: relative;
             outline: none;
             transition: all 0.3s;
         }
+
         /* Tooltip styling */
         .tooltip {
             visibility: hidden;
@@ -111,16 +126,18 @@
             padding: 5px;
             position: absolute;
             z-index: 1;
-            bottom: 160%; 
+            bottom: 160%;
             left: 50%;
             transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.3s;
         }
+
         .box:hover .tooltip {
             visibility: visible;
             opacity: 1;
         }
+
         /* Changed background colors for boxes */
         #box1 { background-color: #ede3b9; }
         #box2 { background-color: #e4af87; }
@@ -133,43 +150,56 @@
         #box9 { background-color: #d6aee6; }
         #box10 { background-color: #c9eec1; }
         #box11 { background-color: #A4E3D0; }
-        #box13 { background-color: #F06263; }
-        #box14 { background-color: #FFECA1; }
-        #box15 { background-color: #FFCA7B; }
-        #box16 { background-color: #E2EAF4; }
-        .main, .settings, .games-section {
+
+        .main,
+        .settings,
+        .games-section,
+        .faq-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 20px auto;
         }
+
         .box:hover {
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
             transform: scale(1.05);
         }
+
+        /* Game box specific styles */
+        #games-section .box {
+            color: #24252a; /* Set text color of game boxes to match the background color of the webpage */
+        }
+
         @media (max-width: 768px) {
             body {
                 font-size: 16px;
             }
+
             h1 {
-                font-size: 2em; 
+                font-size: 2em;
             }
+
             h2 {
                 font-size: 1.8em;
             }
+
             p {
-                font-size: 16px; 
+                font-size: 16px;
             }
+
             .box {
-                font-size: 18px; 
+                font-size: 18px;
             }
         }
+
         @media (max-width: 480px) {
             .navbar a {
-                flex: 1 0 100%; 
+                flex: 1 0 100%;
             }
+
             .search-bar {
-                width: 90%; 
+                width: 90%;
             }
         }
     </style>
@@ -180,6 +210,7 @@
         <a href="#" id="homeLink">Home</a>
         <a href="#games" id="gamesLink">Games</a>
         <a href="#settings" id="settingsLink">Settings</a>
+        <a href="#faq" id="faqLink">FAQ</a> <!-- Added FAQ Link -->
         <a href="#contact" id="contactLink">Contact Us</a>
     </div>
 
@@ -222,7 +253,7 @@
             </a>
             <a href="draw.html">
                 <div id="box6" class="box">Stopwatch
-                    <div class="tooltip">Time your activities with precision! Click to start, stop, or reset. Plus, it has a built-in countdown timer for your convenience!</div>
+                    <div class="tooltip">Time your activities with precision! Click to start, stop, or reset.</div>
                 </div>
             </a>
             <a href="r.html">
@@ -265,19 +296,6 @@
         </ol>
 
         <!-- User Instructions / How-to Guides -->
-        <h2>Frequently Asked Questions (FAQs)</h2>
-        <h3>How do I use the Calculator?</h3>
-        <p>Simply input the numbers and select the operation you want to perform. Hit 'equals' and see the result!</p>
-        
-        <h3>Can I convert multiple units at once?</h3>
-        <p>Currently, our tools allow one type of conversion at a time for accuracy. Select your desired unit for conversion.</p>
-
-        <h3>What if I forget my password with the Password Generator?</h3>
-        <p>We recommend saving your generated passwords in a secure location or using a password manager.</p>
-
-        <h3>How do I contact support?</h3>
-        <p>You can contact us by clicking on the "Contact Us" link in the navbar and sending us an email.</p>
-
         <h2>Tips for Using Our Tools Effectively</h2>
         <p>Maximize your productivity by exploring our resources and discovering innovative ways to use our tools:</p>
         <ul>
@@ -288,53 +306,8 @@
         </ul>
     </div>
     
-    
-      <h2>Explore Our Tools</h2>
-        <p>
-            <strong>Calculator:</strong> Our versatile calculator allows you to perform basic and complex arithmetic operations quickly. 
-            Whether you're calculating the total cost of groceries or performing advanced equations, this tool helps you get accurate results on the go.
-        </p>
-        <p> 
-          <br>
-            <strong>Circumference Calculator:</strong> Easily calculate the circumference of circles with just the radius. This tool is perfect for students learning geometry or anyone who needs quick formulas at hand.
-        </p>
-        <br />
-        
-        <p>
-            <strong>Age Calculator:</strong> Find your exact age in years, months, and days based on your birth date. This tool can be beneficial for birthday surprises or calculating eligibility for age-restricted activities.
-        </p><br>
-        <p>
-            <strong>Length Converter:</strong> Convert between different units of length (metric and imperial) with ease. Useful for construction projects, travel planning, or academic assignments requiring unit conversions.
-        </p>
-        <p>
-        <br>
-            <strong>Random Password Generator:</strong> Strengthen your online security with our password generator. It creates complex passwords combining letters, numbers, and symbols, making it challenging for hackers to crack.
-            
-        </p>
-        <p>
-          <br>
-            <strong>Stopwatch:</strong> Use our stopwatch for timing any event, whether for exercise, cooking, or any other timing requirement. It features a simple interface that lets you start, stop, and reset quickly.
- It also comes with a built-in timer.
-        </p>
-        <p>
-            <strong>Temperature Converter:</strong> Instantly convert temperatures between Celsius, Fahrenheit, and Kelvin. This is useful for anyone in cooking, science, or traveling between different climates.
-        </p>
-        <p>
-          <br>
-            <strong>Mass Converter:</strong> Convert mass units like grams, kilograms, pounds, and ounces without hassle. A handy tool for nutrition tracking or recipes that require precise measurements.
-        </p>
-        <p>
-          <br>
-            <strong>Clock:</strong> Keep track of time with our clock. You can check the current time easily, ensuring you're always punctual for your appointments.
-        </p>
-        <p>
-          <br>
-            <strong>Volume Calculator:</strong> Calculate the volume of various shapes and liquids. Essential for both academic projects and practical tasks like measuring paint or construction materials.
-        </p>
-          <br>
-
     <div class="conduct-info" id="contact-info">
-        Contact us at <a href="mailto:helpfulvault@gmail.com" style="color: cyan;">helpfulvault@gmail.com</a>. 
+        Contact us at <a href="mailto:helpfulvault@gmail.com" style="color: cyan;">helpfulvault@gmail.com</a>.
         We value your feedback and ideas for improvements!
     </div>
 
@@ -344,26 +317,43 @@
         <input type="checkbox" id="searchToggle" checked /> <!-- Default checked -->
     </div>
 
+    <!-- FAQ Section -->
+    <div class="faq-section" id="faq" style="display: none;">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div>
+            <h3>1. What is UsefulVault?</h3>
+            <p>UsefulVault is an online toolbox that provides various calculators and converters to simplify your tasks.</p>
+        </div>
+        <div>
+            <h3>2. How do I use the tools?</h3>
+            <p>Select a tool from the toolbox, enter the required values, and click the calculate button to get instant results.</p>
+        </div>
+        <div>
+            <h3>3. Is there a limit to the number of tools I can use?</h3>
+            <p>No, you can use as many tools as you need without any restrictions.</p>
+        </div>
+    </div>
+
     <div id="games-section" style="display: none;">
         <h2>Games</h2>
         <div id="games">
             <a href="rockpaperscissors.html">
-                <div id="box13" class="box">Rock Paper Scissors Game
+                <div class="box">Rock Paper Scissors Game
                     <div class="tooltip">Play the classic game—choose rock, paper, or scissors and outsmart your opponent!</div>
                 </div>
             </a>
             <a href="maze.html">
-                <div id="box14" class="box">Maze Game
+                <div class="box">Maze Game
                     <div class="tooltip">Navigate through a maze—find the exit in the least time to challenge yourself!</div>
                 </div>
             </a>
             <a href="numberguessinggame.html">
-                <div id="box15" class="box">Number Guessing Game
+                <div class="box">Number Guessing Game
                     <div class="tooltip">Guess the number within the given attempts—can you do it?</div>
                 </div>
             </a>
             <a href="clickergame.html">
-                <div id="box16" class="box">Clicker Game
+                <div class="box">Clicker Game
                     <div class="tooltip">Click to earn points—how fast can you click and climb the leaderboard?</div>
                 </div>
             </a>
@@ -376,6 +366,14 @@
         const searchContainer = document.getElementById('search-container');
         const gamesSection = document.getElementById('games-section');
         const settingsSection = document.getElementById('settings');
+        const faqSection = document.getElementById('faq');
+
+        const colors = [
+            '#ede3b9', '#e4af87', '#f6cbad',
+            '#e48686', '#b8f2fe', '#b8f0ba',
+            '#a5eae2', '#84c4ef', '#d6aee6',
+            '#c9eec1', '#A4E3D0'
+        ];
 
         // Load saved search toggle state, default to true if not set
         const savedSearchToggleState = localStorage.getItem('searchToggle') === 'true';
@@ -390,18 +388,31 @@
             searchContainer.style.display = savedSearchToggleState ? 'block' : 'none'; // Set visibility based on saved state
         }
 
+        // Change the background color of game boxes
+        function setGameBoxBackgrounds() {
+            const gameBoxes = document.querySelectorAll('#games .box');
+            gameBoxes.forEach(box => {
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                box.style.backgroundColor = randomColor; // Set random color from the colors array
+                box.style.color = '#24252a'; // Set text color to match the page background
+            });
+        }
+
         // Navigation link functionality
         document.getElementById('homeLink').addEventListener('click', function () {
             contactInfo.style.display = 'none';  
             gamesSection.style.display = 'none';  
             settingsSection.style.display = 'none';  
+            faqSection.style.display = 'none';  // Hide the FAQ section
             mainContent.style.display = 'flex';   
         });
 
         document.getElementById('gamesLink').addEventListener('click', function () {
+            setGameBoxBackgrounds(); // Set random background colors and adjust text color
             mainContent.style.display = 'none';  
             contactInfo.style.display = 'none';  
             settingsSection.style.display = 'none';  
+            faqSection.style.display = 'none';  // Hide the FAQ section
             gamesSection.style.display = 'block'; 
         });
 
@@ -409,13 +420,23 @@
             mainContent.style.display = 'none';  
             gamesSection.style.display = 'none';  
             contactInfo.style.display = 'none';  
+            faqSection.style.display = 'none';  // Hide the FAQ section
             settingsSection.style.display = 'block'; 
+        });
+
+        document.getElementById('faqLink').addEventListener('click', function () {
+            mainContent.style.display = 'none';  
+            gamesSection.style.display = 'none';  
+            contactInfo.style.display = 'none';  
+            settingsSection.style.display = 'none';  // Hide the settings section
+            faqSection.style.display = 'flex';     // Show FAQ section
         });
 
         document.getElementById('contactLink').addEventListener('click', function () {
             mainContent.style.display = 'none';  
             gamesSection.style.display = 'none';  
             settingsSection.style.display = 'none';  
+            faqSection.style.display = 'none';  // Hide the FAQ section
             contactInfo.style.display = 'block';  
         });
 
@@ -442,4 +463,5 @@
         });
     </script>
 </body>
+
 </html>
