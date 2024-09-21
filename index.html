@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions. Quickly solve problems, convert units, and simplify your tasks with our user-friendly tools.">
-    <meta name="keywords" content="UsefulVault, online tools, calculations, conversions, calculators, unit converter, online calculator, age calculator, length converter, password generator, stopwatch, temperature converter, mass converter, volume calculator, random password generator, game tools, fun games, rock paper scissors, maze game, number guessing game, clicker game, FAQ">
-    <title>UsefulVault - Basic Online Tools</title>
+    <meta name="description" content="Use Useful Vault – Your ultimate online toolbox for quick calculations and conversions. Simplify tasks effortlessly with our efficient tools!">
+    <meta name="keywords" content="calculators, conversions, UsefulVault, online calculator, age calculator, temperature converter, unit converter, volume calculator, tools, efficiency">
+    <link rel="canonical" href="https://yourdomain.com/">
+
+    <title>UsefulVault - Your Go-To Online Calculator and Conversion Tool</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +18,6 @@
         /* Shared CSS styles */
         * {
             text-align: center;
-            justify-content: center;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -25,7 +26,7 @@
         }
 
         body {
-            background-color: #24252a; /* Background color of the webpage */
+            background-color: #24252a;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -56,7 +57,8 @@
         }
 
         h1,
-        h2 {
+        h2,
+        h3 {
             color: white;
         }
 
@@ -65,7 +67,8 @@
             margin-top: 20px;
         }
 
-        p {
+        p,
+        li {
             font-size: 18px;
             text-align: center;
             max-width: 800px;
@@ -106,7 +109,7 @@
             align-items: center;
             height: 150px;
             border-radius: 10px;
-            color: #282A2D; /* Default text color */
+            color: #282A2D;
             font-weight: bold;
             cursor: pointer;
             font-size: 20px;
@@ -168,7 +171,7 @@
 
         /* Game box specific styles */
         #games-section .box {
-            color: #24252a; /* Set text color of game boxes to match the background color of the webpage */
+            color: #24252a;
         }
 
         @media (max-width: 768px) {
@@ -182,6 +185,10 @@
 
             h2 {
                 font-size: 1.8em;
+            }
+
+            h3 {
+                font-size: 1.5em;
             }
 
             p {
@@ -203,6 +210,14 @@
             }
         }
     </style>
+
+    <script>
+        // This function will help you track page load time and optimize user experience.
+        window.addEventListener('load', function() {
+            const loadTime = performance.now(); // can use this for metrics
+            console.log('Page load time is ' + loadTime + ' milliseconds');
+        });
+    </script>
 </head>
 
 <body>
@@ -210,111 +225,111 @@
         <a href="#" id="homeLink">Home</a>
         <a href="#games" id="gamesLink">Games</a>
         <a href="#settings" id="settingsLink">Settings</a>
-        <a href="#faq" id="faqLink">FAQ</a> <!-- Added FAQ Link -->
+        <a href="#faq" id="faqLink">FAQ</a>
         <a href="#contact" id="contactLink">Contact Us</a>
     </div>
 
     <div class="main" id="main-content">
         <h1>Welcome to UsefulVault</h1>
-        <p>Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions. 
-            With our wide array of user-friendly tools, you can effortlessly solve problems, convert units, and simplify your daily tasks.
+        <p>
+            Discover Useful Vault: Your all-in-one toolbox for online calculations and conversions.
+            Our tools are designed to help you solve problems quickly and efficiently. If you're looking to 
+            calculate, convert, or simplify your daily tasks, you've come to the right place!
             <span class="line2ofd">We're here to help you succeed.</span>
         </p>
 
         <div class="search-container" id="search-container">
-            <input type="text" id="search" class="search-bar" placeholder="Search for a tool..." />
+            <input type="text" id="search" class="search-bar" placeholder="Search for a tool..." aria-label="Search for a tool" />
         </div>
 
-        <div id="toolboxes">
-            <a href="calculator.html">
-                <div id="box1" class="box">Calculator
-                    <div class="tooltip">Perform basic and complex arithmetic calculations easily!</div>
-                </div>
-            </a>
-            <a href="project3.html">
-                <div id="box2" class="box">Circumference Calculator
-                    <div class="tooltip">Calculate the circumference of circles easily using radius or diameter.</div>
-                </div>
-            </a>
-            <a href="project2.html">
-                <div id="box3" class="box">Age Calculator
-                    <div class="tooltip">Calculate your exact age to know how many candles to blow out!</div>
-                </div>
-            </a>
-            <a href="m.html">
-                <div id="box4" class="box">Length Converter
-                    <div class="tooltip">Convert units of length and avoid confusion while measuring!</div>
-                </div>
-            </a>
-            <a href="t.html">
-                <div id="box5" class="box">Random Password Generator
-                    <div class="tooltip">Enhance your security by generating unique passwords!</div>
-                </div>
-            </a>
-            <a href="draw.html">
-                <div id="box6" class="box">Stopwatch
-                    <div class="tooltip">Time your activities with precision! Click to start, stop, or reset.</div>
-                </div>
-            </a>
-            <a href="r.html">
-                <div id="box7" class="box">Temperature Converter
-                    <div class="tooltip">Always be comfortable by converting temperature accurately!</div>
-                </div>
-            </a>
-            <a href="w.html">
-                <div id="box8" class="box">Mass Converter
-                    <div class="tooltip">Convert weights effectively, perfect for recipes and diets!</div>
-                </div>
-            </a>
-            <a href="time.html">
-                <div id="box9" class="box">Clock
-                    <div class="tooltip">Stay punctual with our easy-to-use clock!</div>
-                </div>
-            </a>
-            <a href="13.HTML">
-                <div id="box10" class="box">Notes
-                    <div class="tooltip">Capture your thoughts or plans quickly with our Notes tool!</div>
-                </div>
-            </a>
-            <a href="volumecalculator.html">
-                <div id="box11" class="box">Volume Calculator
-                    <div class="tooltip">Accurately measure volumes for any liquids or solids!</div>
-                </div>
-            </a>
-        </div>
-
-        <h2>Explore Our Tools</h2>
+        <h2>Our Tools</h2>
+        <p>Explore our diverse collection of calculators and conversion tools designed for your convenience:</p>
         
-        <!-- Instructions Section -->
-        <h2>How to Use Our Tools</h2>
+        <div id="toolboxes">
+            <a href="calculator.html" aria-label="Go to Calculator Tool">
+                <div id="box1" class="box">Calculator
+                    <div class="tooltip">Perform arithmetic calculations easily!</div>
+                </div>
+            </a>
+            <a href="project3.html" aria-label="Go to Circumference Calculator">
+                <div id="box2" class="box">Circumference Calculator
+                    <div class="tooltip">Calculate circle circumference quickly.</div>
+                </div>
+            </a>
+            <a href="project2.html" aria-label="Go to Age Calculator">
+                <div id="box3" class="box">Age Calculator
+                    <div class="tooltip">Find your exact age easily!</div>
+                </div>
+            </a>
+            <a href="m.html" aria-label="Go to Length Converter">
+                <div id="box4" class="box">Length Converter
+                    <div class="tooltip">Convert length units effortlessly!</div>
+                </div>
+            </a>
+            <a href="t.html" aria-label="Go to Random Password Generator">
+                <div id="box5" class="box">Random Password Generator
+                    <div class="tooltip">Enhance security with unique passwords!</div>
+                </div>
+            </a>
+            <a href="draw.html" aria-label="Go to Stopwatch Tool">
+                <div id="box6" class="box">Stopwatch
+                    <div class="tooltip">Time your activities with precision.</div>
+                </div>
+            </a>
+            <a href="r.html" aria-label="Go to Temperature Converter">
+                <div id="box7" class="box">Temperature Converter
+                    <div class="tooltip">Convert temperatures accurately!</div>
+                </div>
+            </a>
+            <a href="w.html" aria-label="Go to Mass Converter">
+                <div id="box8" class="box">Mass Converter
+                    <div class="tooltip">Convert weight units effectively!</div>
+                </div>
+            </a>
+            <a href="time.html" aria-label="Go to Clock Tool">
+                <div id="box9" class="box">Clock
+                    <div class="tooltip">Stay punctual with our clock tool!</div>
+                </div>
+            </a>
+            <a href="notes.html" aria-label="Go to Notes Tool">
+                <div id="box10" class="box">Notes
+                    <div class="tooltip">Capture your plans or tasks easily!</div>
+                </div>
+            </a>
+            <a href="volumecalculator.html" aria-label="Go to Volume Calculator">
+                <div id="box11" class="box">Volume Calculator
+                    <div class="tooltip">Accurately measure volumes for liquids and solids!</div>
+                </div>
+            </a>
+        </div>
+
+        <h2>How to Maximize Your Experience</h2>
         <p>Follow these simple steps to get started:</p>
         <ol>
             <li>Select a tool from the toolbox.</li>
-            <li>Input the necessary values as prompted.</li>
-            <li>Press the calculate button to see results instantly!</li>
-            <li>Use the features of each tool to maximize utility.</li>
+            <li>Input the necessary values to get instant results.</li>
+            <li>Explore the features of each tool for maximum utility.</li>
         </ol>
 
-        <!-- User Instructions / How-to Guides -->
         <h2>Tips for Using Our Tools Effectively</h2>
-        <p>Maximize your productivity by exploring our resources and discovering innovative ways to use our tools:</p>
+        <p>Discover clever ways to utilize our tools:</p>
         <ul>
-            <li>Combine the Age Calculator with the Notes tool for birthday plans!</li>
-            <li>Use the Stopwatch to time exercise intervals for optimal performance.</li>
-            <li>Regularly use our Random Password Generator for unique and secure codes.</li>
-            <li>Utilize volume measurements when cooking to ensure accurate recipes!</li>
+            <li>Combine the Age Calculator with the Notes tool for birthday planning!</li>
+            <li>Utilize the Stopwatch for timing exercise intervals.</li>
+            <li>For secure logins, regularly generate unique passwords!</li>
+            <li>Use measured volume when cooking to ensure recipe success!</li>
         </ul>
     </div>
     
     <div class="conduct-info" id="contact-info">
         Contact us at <a href="mailto:helpfulvault@gmail.com" style="color: cyan;">helpfulvault@gmail.com</a>.
-        We value your feedback and ideas for improvements!
+        Your feedback and suggestions are greatly appreciated!
     </div>
 
     <div class="settings" id="settings" style="display: none;">
         <h2>Settings</h2>
         <label for="searchToggle">Show Search Bar: </label>
-        <input type="checkbox" id="searchToggle" checked /> <!-- Default checked -->
+        <input type="checkbox" id="searchToggle" checked />
     </div>
 
     <!-- FAQ Section -->
@@ -322,39 +337,39 @@
         <h2>Frequently Asked Questions (FAQ)</h2>
         <div>
             <h3>1. What is UsefulVault?</h3>
-            <p>UsefulVault is an online toolbox that provides various calculators and converters to simplify your tasks.</p>
+            <p>UsefulVault is an online toolbox with a variety of calculators and converters designed to simplify your tasks.</p>
         </div>
         <div>
-            <h3>2. How do I use the tools?</h3>
-            <p>Select a tool from the toolbox, enter the required values, and click the calculate button to get instant results.</p>
+            <h3>2. How can I use the tools?</h3>
+            <p>Select a tool from the toolbox, enter required values, and click the calculate button for instant results.</p>
         </div>
         <div>
-            <h3>3. Is there a limit to the number of tools I can use?</h3>
-            <p>No, you can use as many tools as you need without any restrictions.</p>
+            <h3>3. Is there a limit on the number of tools I can use?</h3>
+            <p>No, you can use as many tools as necessary without restrictions.</p>
         </div>
     </div>
 
     <div id="games-section" style="display: none;">
         <h2>Games</h2>
         <div id="games">
-            <a href="rockpaperscissors.html">
+            <a href="rockpaperscissors.html" aria-label="Play Rock Paper Scissors Game">
                 <div class="box">Rock Paper Scissors Game
-                    <div class="tooltip">Play the classic game—choose rock, paper, or scissors and outsmart your opponent!</div>
+                    <div class="tooltip">Choose rock, paper, or scissors and outsmart your opponent!</div>
                 </div>
             </a>
-            <a href="maze.html">
+            <a href="maze.html" aria-label="Play Maze Game">
                 <div class="box">Maze Game
-                    <div class="tooltip">Navigate through a maze—find the exit in the least time to challenge yourself!</div>
+                    <div class="tooltip">Find the exit in the quickest time!</div>
                 </div>
             </a>
-            <a href="numberguessinggame.html">
+            <a href="numberguessinggame.html" aria-label="Play Number Guessing Game">
                 <div class="box">Number Guessing Game
-                    <div class="tooltip">Guess the number within the given attempts—can you do it?</div>
+                    <div class="tooltip">Guess the number within the limited attempts!</div>
                 </div>
             </a>
-            <a href="clickergame.html">
+            <a href="clickergame.html" aria-label="Play Clicker Game">
                 <div class="box">Clicker Game
-                    <div class="tooltip">Click to earn points—how fast can you click and climb the leaderboard?</div>
+                    <div class="tooltip">Click to earn points—how fast can you go?</div>
                 </div>
             </a>
         </div>
@@ -375,44 +390,40 @@
             '#c9eec1', '#A4E3D0'
         ];
 
-        // Load saved search toggle state, default to true if not set
         const savedSearchToggleState = localStorage.getItem('searchToggle') === 'true';
         const searchToggle = document.getElementById('searchToggle');
 
-        // If there is no saved state, default to true (show search)
         if (savedSearchToggleState === undefined) {
             searchToggle.checked = true;
-            searchContainer.style.display = 'block'; // Show the search container
+            searchContainer.style.display = 'block'; 
         } else {
             searchToggle.checked = savedSearchToggleState;
-            searchContainer.style.display = savedSearchToggleState ? 'block' : 'none'; // Set visibility based on saved state
+            searchContainer.style.display = savedSearchToggleState ? 'block' : 'none'; 
         }
 
-        // Change the background color of game boxes
         function setGameBoxBackgrounds() {
             const gameBoxes = document.querySelectorAll('#games .box');
             gameBoxes.forEach(box => {
                 const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                box.style.backgroundColor = randomColor; // Set random color from the colors array
-                box.style.color = '#24252a'; // Set text color to match the page background
+                box.style.backgroundColor = randomColor; 
+                box.style.color = '#24252a'; 
             });
         }
 
-        // Navigation link functionality
         document.getElementById('homeLink').addEventListener('click', function () {
             contactInfo.style.display = 'none';  
             gamesSection.style.display = 'none';  
             settingsSection.style.display = 'none';  
-            faqSection.style.display = 'none';  // Hide the FAQ section
+            faqSection.style.display = 'none'; 
             mainContent.style.display = 'flex';   
         });
 
         document.getElementById('gamesLink').addEventListener('click', function () {
-            setGameBoxBackgrounds(); // Set random background colors and adjust text color
+            setGameBoxBackgrounds();
             mainContent.style.display = 'none';  
             contactInfo.style.display = 'none';  
             settingsSection.style.display = 'none';  
-            faqSection.style.display = 'none';  // Hide the FAQ section
+            faqSection.style.display = 'none';  
             gamesSection.style.display = 'block'; 
         });
 
@@ -420,7 +431,7 @@
             mainContent.style.display = 'none';  
             gamesSection.style.display = 'none';  
             contactInfo.style.display = 'none';  
-            faqSection.style.display = 'none';  // Hide the FAQ section
+            faqSection.style.display = 'none';  
             settingsSection.style.display = 'block'; 
         });
 
@@ -428,26 +439,24 @@
             mainContent.style.display = 'none';  
             gamesSection.style.display = 'none';  
             contactInfo.style.display = 'none';  
-            settingsSection.style.display = 'none';  // Hide the settings section
-            faqSection.style.display = 'flex';     // Show FAQ section
+            settingsSection.style.display = 'none';  
+            faqSection.style.display = 'flex';     
         });
 
         document.getElementById('contactLink').addEventListener('click', function () {
             mainContent.style.display = 'none';  
             gamesSection.style.display = 'none';  
             settingsSection.style.display = 'none';  
-            faqSection.style.display = 'none';  // Hide the FAQ section
+            faqSection.style.display = 'none';  
             contactInfo.style.display = 'block';  
         });
 
-        // Toggle search bar visibility functionality
         searchToggle.addEventListener('change', function () {
             const isChecked = searchToggle.checked;
             localStorage.setItem('searchToggle', isChecked); 
             searchContainer.style.display = isChecked ? 'block' : 'none'; 
         });
 
-        // Search functionality
         const searchBar = document.getElementById('search');
         searchBar.addEventListener('keyup', function (event) {
             const query = event.target.value.toLowerCase();
@@ -455,9 +464,9 @@
 
             boxes.forEach(box => {
                 if (box.innerText.toLowerCase().includes(query)) {
-                    box.style.display = 'flex'; // Show box if it matches query
+                    box.style.display = 'flex'; 
                 } else {
-                    box.style.display = 'none'; // Hide box if it doesn't match
+                    box.style.display = 'none'; 
                 }
             });
         });
