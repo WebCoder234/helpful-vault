@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Percentage Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins';
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+            transition: background-color 0.3s;
+        }
+        #calculator {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 400px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        .input-group {
+            margin: 15px 0;
+        }
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #2980b9;
+            outline: none;
+        }
+        button {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px 0;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .secondary-button {
+            background-color: #e74c3c;
+        }
+        .secondary-button:hover {
+            background-color: #c0392b;
+        }
+        .result, .history, .suggestions {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+        .dark-mode {
+            background-color: #26242D;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <h1>Percentage Calculator</h1>
+        <div class="input-group">
+            <input type="number" id="total" placeholder="Total Amount" />
+        </div>
+        <div class="input-group">
+            <input type="number" id="percent" placeholder="Percentage (%)" />
+        </div>
+        <button id="calculateButton">Calculate</button>
+        <button id="copyButton">Copy Result</button>
+        <button id="clearButton" class="secondary-button">Clear</button>
+        <div class="result">
+            <p id="resultText"></p>
+            <p id="dynamicPercentages"></p>
+        </div>
+        <div class="history">
+            <h3>Calculation History:</h3>
+            <ul id="historyLog"></ul>
+        </div>
+        <button id="themeToggle" class="secondary-button">Toggle Theme</button>
+    </div>
+
+    <script>
+        const historyLog = [];
+
+        const calculateButton = document.getElementById('calculateButton');
+        calculateButton.addEventListener('click', function() {
+            const total = parseFloat(document.getElementById('total').value);
+            const percent = parseFloat(document.getElementById('percent').value);
+            
+            if (!isNaN(total) && !isNaN(percent)) {
+                const result = (total * percent) / 100;
+                document.getElementById('resultText').textContent = `Result: ${result}`;
+                document.getElementById('dynamicPercentages').textContent = 
+                    `1%: ${(total * 0.01).toFixed(2)}, 10%: ${(total * 0.1).toFixed(2)}, 50%: ${(total * 0.5).toFixed(2)}`;
+                updateHistoryLog(total, percent, result);
+            } else {
+                document.getElementById('resultText').textContent = "Please enter valid numbers.";
+            }
+        });
+
+        document.getElementById('copyButton').addEventListener('click', function() {
+            const resultText = document.getElementById('resultText').textContent;
+            navigator.clipboard.writeText(resultText).then(() => {
+                alert('Result copied to clipboard!');
+            });
+        });
+        
+        document.getElementById('clearButton').addEventListener('click', function() {
+            document.getElementById('total').value = '';
+            document.getElementById('percent').value = '';
+            document.getElementById('resultText').textContent = '';
+            document.getElementById('dynamicPercentages').textContent = '';
+        });
+
+        function updateHistoryLog(total, percent, result) {
+            const historyEntry = `${percent}% of ${total} = ${result.toFixed(2)}`;
+            historyLog.push(historyEntry);
+            const historyList = document.getElementById('historyLog');
+            const listItem = document.createElement('li');
+            listItem.textContent = historyEntry;
+            historyList.appendChild(listItem);
+        }
+
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            document.getElementById('calculator').classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
