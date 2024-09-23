@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+                        font-family: 'Poppins';
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-2px);
+        }
+
+        h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        #noteInput {
+            width: calc(100% - 24px);
+            padding: 12px;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        #noteInput:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        #addNoteButton {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        #addNoteButton:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+        }
+
+        .note {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 12px 0;
+            border-left: 5px solid #007bff;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .note:hover {
+            transform: translateY(-1px);
+        }
+
+        .note span {
+            display: block;
+            margin-top: 5px;
+            font-size: 16px;
+            color: #495057;
+        }
+
+        .edit-button,
+        .delete-button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .edit-button {
+            color: #28a745;
+            margin-right: 10px;
+            transition: color 0.3s;
+        }
+
+        .edit-button:hover {
+            color: #218838;
+        }
+
+        .delete-button {
+            color: #dc3545;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .delete-button:hover {
+            color: #c82333;
+        }
+
+        .no-notes {
+            text-align: center;
+            color: #6c757d;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Notes App</h1>
+        <input type="text" id="noteInput" placeholder="Add a new note..." />
+        <button id="addNoteButton">Add Note</button>
+        <div id="notesContainer"></div>
+        <div id="noNotesMessage" class="no-notes" style="display:none;">No notes available. Please add a note.</div>
+    </div>
+    <script>
+        const noteInput = document.getElementById('noteInput');
+        const addNoteButton = document.getElementById('addNoteButton');
+        const notesContainer = document.getElementById('notesContainer');
+        const noNotesMessage = document.getElementById('noNotesMessage');
+
+        let notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+        const renderNotes = () => {
+            notesContainer.innerHTML = '';
+            if (notes.length === 0) {
+                noNotesMessage.style.display = 'block';
+            } else {
+                noNotesMessage.style.display = 'none';
+            }
+            notes.forEach((note, index) => {
+                const noteDiv = document.createElement('div');
+                noteDiv.classList.add('note');
+                noteDiv.innerHTML = `
+                    <span>${note}</span>
+                    <button class="edit-button" onclick="editNote(${index})">Edit</button>
+                    <button class="delete-button" onclick="deleteNote(${index})">&times;</button>
+                `;
+                notesContainer.appendChild(noteDiv);
+            });
+        };
+
+        const addNote = () => {
+            const noteText = noteInput.value.trim();
+            if (noteText) {
+                notes.push(noteText);
+                localStorage.setItem('notes', JSON.stringify(notes));
+                noteInput.value = '';
+                renderNotes();
+            }
+        };
+
+        const editNote = (index) => {
+            const newNote = prompt('Edit your note:', notes[index]);
+            if (newNote !== null && newNote.trim() !== '') {
+                notes[index] = newNote;
+                localStorage.setItem('notes', JSON.stringify(notes));
+                renderNotes();
+            }
+        };
+
+        const deleteNote = (index) => {
+            notes.splice(index, 1);
+            localStorage.setItem('notes', JSON.stringify(notes));
+            renderNotes();
+        };
+
+        addNoteButton.addEventListener('click', addNote);
+
+        // Initial Render
+        renderNotes();
+    </script>
+</body>
+
+</html>
