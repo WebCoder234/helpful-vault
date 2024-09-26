@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <title>Gravity Bound
+</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e3f2fd;
+            font-family: 'Lexend', sans-serif;
+        }
+        canvas {
+            border: 2px solid #333;
+            background-color: #e4f1fe;
+        }
+        #score {
+            position: absolute;
+            bottom: 10px; /* Position score at the bottom */
+            font-size: 20px;
+            color: #333;
+        }
+        #level {
+            position: absolute;
+            top: 10px; /* Position level at the top */
+            font-size: 20px;
+            color: #333;
+        }
+        #gameOver {
+            display: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: red;
+            text-align: center;
+        }
+        #restart {
+            cursor: pointer;
+            margin-top: 10px;
+            background-color: #1976d2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            display: none;
+        }
+        .bar {
+            position: absolute;
+            width: 100px;
+            height: 10px;
+            background-color: rgba(0, 255, 0, 0.5);
+            margin-top: 20px;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <div id="score">Score: 0</div>
+    <div id="level">Level: 1</div>
+    <div id="gameOver">Game Over!</div>
+    <button id="restart">Restart</button>
+    
+    <div id="sprintBar" class="bar" style="top: 0; right: 10px;"></div>
+    <div id="flyBar" class="bar" style="top: 20px; right: 10px;"></div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let score = 0;
+        let lives = 3; // Keeping this for logic but not displaying it
+        let level = 1;
+        let isGameOver = false;
+
+        // Character initialization
+        const character = { x: 50, y: canvas.height - 60, width: 30, height: 30, dy: 0 };
+        const gravity = 1;
+
+        // Speed Configurations
+        const normalSpeed = 3; // Normal movement speed
+        const sprintSpeed = 5; // Sprinting movement speed
+        const flySpeed = 2; // Speed during flying
+        const enemySpeedFactor = 0.4; // Enemy speed relative to player speed
+
+        // Level data
+        let platforms = [];
+        let coins = [];
+        let enemies = [];
+        let exitPortal = { x: 0, y: 0, width: 40, height: 40 };
+
+        // Sprinting variables
+        let isSprinting = false;
+        let sprintTimeMax = 5;
+        let sprintTimeLeft = sprintTimeMax;
+        let sprintCooldown = 4;
+        let sprintCooldownActive = false;
+
+        // Flying variables
+        let isFlying = false;
+        let flyTimeMax = 45;
+        let flyTimeLeft = flyTimeMax;
+        let flyCooldown = 5;
+        let flyCooldownActive = false;
+
+        function generateLevel() {
+            platforms = [];
+            coins = [];
+            enemies = [];
+
+            // Generate 6 platforms
+            for (let i = 0; i < 6; i++) {
+                platforms.push({
+                    x: Math.random() * (canvas.width - 100),
+                    y: canvas.height - (Math.random() * 100 + (60 + i * 10)), // Higher platforms as levels increase
+                    width: 100 + Math.random() * 50,
+                    height: 10
+                });
+            }
+
+            // Generate `level` number of coins
+            for (let i = 0; i < level + 2; i++) { // Increase coins each level
+                coins.push({
+                    x: Math.random() * (canvas.width - 20),
+                    y: Math.random() * (canvas.height - 60),
+                    width: 10,
+                    height: 10,
+                    collected: false
+                });
+            }
+
+            // Generate flying enemies
+            for (let i = 0; i < level; i++) {
+                enemies.push({
+                    x: Math.random() * (canvas.width - 50),
+                    y: Math.random() * (canvas.height - 100), // Enemies can spawn higher up
+                    width: 20,
+                    height: 20,
+                    speed: normalSpeed * enemySpeedFactor, // Calculate enemy speed based on player speed
+                    directionX: (Math.random() < 0.5 ? -1 : 1) * (Math.random() * (normalSpeed * enemySpeedFactor)), // Random horizontal direction
+                    directionY: (Math.random() < 0.5 ? -1 : 1) * (Math.random() * (normalSpeed * enemySpeedFactor)), // Random vertical direction
+                    changeDirectionCounter: Math.floor(Math.random() * 60) + 60 // Random timer for changing direction (between 60 to 120 frames)
+                });
+            }
+
+            // Set the portal position to a random platform that is not the ground
+            const validPlatforms = platforms.filter(p => p.y < canvas.height - 20);
+            const randomPlatform = validPlatforms[Math.floor(Math.random() * validPlatforms.length)];
+            exitPortal.x = randomPlatform.x;
+            exitPortal.y = randomPlatform.y - exitPortal.height; // Place it above the platform
+
+            console.log("New level generated!");
+        }
+
+        generateLevel(); // Generate the first level
+
+        function update() {
+            if (!isGameOver) {
+                // Move character
+                if (isFlying && !flyCooldownActive) {
+                    flyTimeLeft -= 1 / 60; // Decrease fly time
+                    character.y -= flySpeed; // Move up while flying
+                    if (flyTimeLeft <= 0) {
+                        flyTimeLeft = 0;
+                        isFlying = false;
+                        flyCooldownActive = true;
+                    }
+                } else {
+                    // Apply gravity
+                    character.dy += gravity;
+                    character.y += character.dy;
+                    
+                    // Check for ground collision
+                    platforms.forEach(platform => {
+                        if (character.x < platform.x + platform.width &&
+                            character.x + character.width > platform.x &&
+                            character.y + character.height >= platform.y &&
+                            character.y + character.height <= platform.y + platform.height) {
+                            character.y = platform.y - character.height; // Place character on top of platform
+                            character.dy = 0; // Reset vertical velocity
+                        }
+                    });
+                    
+                    // Limit character's fall
+                    if (character.y > canvas.height - character.height) {
+                        character.y = canvas.height - character.height;
+                        character.dy = 0;
+                    }
+                }
+
+                // Handle sprinting
+                if (isSprinting && !sprintCooldownActive) {
+                    sprintTimeLeft -= 1 / 60; // Decrease by 1 second per minute
+                    if (sprintTimeLeft <= 0) {
+                        sprintTimeLeft = 0;
+                        isSprinting = false;
+                        sprintCooldownActive = true;
+                    }
+                }
+
+                // Handle cooldowns
+                if (sprintCooldownActive) {
+                    sprintCooldown -= 1 / 60;
+                    if (sprintCooldown <= 0) {
+                        sprintCooldownActive = false; // Ready to sprint again
+                        sprintTimeLeft = sprintTimeMax; // Reset sprint time
+                    }
+                }
+
+                if (flyCooldownActive) {
+                    flyCooldown -= 1 / 60;
+                    if (flyCooldown <= 0) {
+                        flyCooldownActive = false; // Ready to fly again
+                        flyTimeLeft = flyTimeMax; // Reset fly time
+                    }
+                }
+
+                // Control character movement
+                if (keys['ArrowRight'] || keys['d']) {
+                    character.x += isSprinting ? sprintSpeed : normalSpeed; // Use base speed or sprint speed
+                }
+                if (keys['ArrowLeft'] || keys['a']) {
+                    character.x -= isSprinting ? sprintSpeed : normalSpeed; // Use base speed or sprint speed
+                }
+
+                // Prevent character from going out of bounds
+                character.x = Math.max(0, Math.min(canvas.width - character.width, character.x));
+
+                // Check for coin collection
+                coins.forEach(coin => {
+                    if (!coin.collected && character.x < coin.x + coin.width &&
+                        character.x + character.width > coin.x &&
+                        character.y < coin.y + coin.height &&
+                        character.y + character.height > coin.y) {
+                        coin.collected = true;
+                        score += 10; // Increase score
+                    }
+                });
+
+                // Handle enemies (randomly change direction while moving)
+                enemies.forEach(enemy => {
+                    enemy.x += enemy.directionX; // Move horizontally
+                    enemy.y += enemy.directionY; // Move vertically
+
+                    // Check for boundary collisions
+                    if (enemy.x < 0 || enemy.x > canvas.width - enemy.width) {
+                        enemy.directionX *= -1; // Reverse horizontal direction
+                    }
+                    if (enemy.y < 0 || enemy.y > canvas.height - enemy.height) {
+                        enemy.directionY *= -1; // Reverse vertical direction
+                    }
+
+                    // Update change direction timer
+                    enemy.changeDirectionCounter--;
+                    if (enemy.changeDirectionCounter <= 0) {
+                        // Randomly change direction
+                        enemy.directionX = (Math.random() < 0.5 ? -1 : 1) * (Math.random() * (normalSpeed * enemySpeedFactor));
+                        enemy.directionY = (Math.random() < 0.5 ? -1 : 1) * (Math.random() * (normalSpeed * enemySpeedFactor));
+                        enemy.changeDirectionCounter = Math.floor(Math.random() * 60) + 60; // Reset timer
+                    }
+
+                    // Check for collision with the character
+                    if (character.x < enemy.x + enemy.width &&
+                        character.x + character.width > enemy.x &&
+                        character.y < enemy.y + enemy.height &&
+                        character.y + character.height > enemy.y) {
+                        lives -= 1; // Lose a life
+                        if (lives <= 0) {
+                            isGameOver = true; // End game if no lives left
+                        }
+                    }
+                });
+
+                // Check for exit portal when all coins are collected
+                const allCoinsCollected = coins.every(coin => coin.collected);
+                if (allCoinsCollected && character.x < exitPortal.x + exitPortal.width &&
+                    character.x + character.width > exitPortal.x &&
+                    character.y < exitPortal.y + exitPortal.height &&
+                    character.y + character.height > exitPortal.y) {
+                    level++;
+                    generateLevel(); // Generate the next level
+                    character.x = 50; // Reset character position
+                    character.y = canvas.height - 60; // Reset height
+                }
+
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw platforms
+                platforms.forEach(platform => {
+                    ctx.fillStyle = 'green';
+                    ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
+                });
+
+                // Draw coins
+                coins.forEach(coin => {
+                    if (!coin.collected) {
+                        ctx.fillStyle = 'gold';
+                        ctx.fillRect(coin.x, coin.y, coin.width, coin.height);
+                    }
+                });
+
+                // Draw enemies
+                ctx.fillStyle = 'red';
+                enemies.forEach(enemy => {
+                    ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+                });
+
+                // Draw the character
+                ctx.fillStyle = 'blue';
+                ctx.fillRect(character.x, character.y, character.width, character.height);
+
+                // Draw the exit portal
+                ctx.fillStyle = 'purple';
+                ctx.fillRect(exitPortal.x, exitPortal.y, exitPortal.width, exitPortal.height);
+                
+                // Draw sprint and fly bars
+                document.getElementById('sprintBar').style.width = (sprintTimeLeft / sprintTimeMax * 100) + 'px';
+                document.getElementById('flyBar').style.width = (flyTimeLeft / flyTimeMax * 100) + 'px';
+                
+                // Update score and level
+                document.getElementById('score').innerText = `Score: ${score}`;
+                document.getElementById('level').innerText = `Level: ${level}`;
+            } else {
+                document.getElementById('gameOver').style.display = 'block';
+                document.getElementById('restart').style.display = 'block';
+            }
+        }
+
+        const keys = {}; // Key state storage
+        window.addEventListener('keydown', (event) => {
+            keys[event.key] = true;
+            if (event.key === 'Shift') {
+                if (!sprintCooldownActive) {
+                    isSprinting = true;
+                }
+            }
+            if (event.key === ' ') {
+                if (!flyCooldownActive) {
+                    isFlying = true;
+                }
+            }
+        });
+
+        window.addEventListener('keyup', (event) => {
+            keys[event.key] = false;
+            if (event.key === ' ') {
+                isFlying = false; // Stop flying when the space bar is released
+            }
+        });
+
+        document.getElementById('restart').addEventListener('click', () => {
+            score = 0;
+            lives = 3; // Keeping this for logic but not displaying it
+            level = 1;
+            character.x = 50;
+            character.y = canvas.height - 60;
+            isGameOver = false;
+            document.getElementById('gameOver').style.display = 'none';
+            document.getElementById('restart').style.display = 'none';
+            generateLevel(); // Regenerate the first level
+            gameLoop();
+        });
+
+        function gameLoop() {
+            update();
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop(); // Start game loop
+    </script>
+</body>
+</html>
