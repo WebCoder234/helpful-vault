@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+        }
+
+        body {
+            background-color: #f7f9fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .converter {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input[type="number"],
+        select {
+            padding: 15px;
+            margin: 0;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            font-size: 1.2em;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #2980b9;
+            outline: none;
+            box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
+        }
+
+        button {
+            padding: 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) inset;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #2c3e50;
+            padding: 15px;
+            border: 1px solid #3498db;
+            border-radius: 8px;
+            background-color: #ecf9ff;
+        }
+
+        /* Responsive design tweaks */
+        @media (max-width: 550px) {
+            h1 {
+                font-size: 2em;
+            }
+            button,
+            input[type="number"],
+            select {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Currency Converter</h1>
+        <div class="converter">
+            <input type="number" id="amount" placeholder="Enter amount" />
+            <select id="fromCurrency">
+                <option value="" disabled selected>From Currency</option>
+                <!-- Currency options will be populated here -->
+            </select>
+            <select id="toCurrency">
+                <option value="" disabled selected>To Currency</option>
+                <!-- Currency options will be populated here -->
+            </select>
+            <button id="convertButton">Convert</button>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        // All currencies
+        const currencies = [
+            "Afghan Afghani (AFN)",
+            "Albanian Lek (ALL)",
+            "Algerian Dinar (DZD)",
+            "Angolan Kwanza (AOA)",
+            "East Caribbean Dollar (XCD)",
+            "Argentine Peso (ARS)",
+            "Armenian Dram (AMD)",
+            "Aruban Florin (AWG)",
+            "Australian Dollar (AUD)",
+            "Azerbaijani Manat (AZN)",
+            "Bahamian Dollar (BSD)",
+            "Bahraini Dinar (BHD)",
+            "Bangladeshi Taka (BDT)",
+            "Barbadian Dollar (BBD)",
+            "Belarusian Ruble (BYN)",
+            "Belgian Franc (BEF)",
+            "Belize Dollar (BZD)",
+            "Bermudian Dollar (BMD)",
+            "Bhutanese Ngultrum (BTN)",
+            "Bolivian Boliviano (BOB)",
+            "Bosnia and Herzegovina Convertible Mark (BAM)",
+            "Botswana Pula (BWP)",
+            "Brazilian Real (BRL)",
+            "British Pound Sterling (GBP)",
+            "Brunei Dollar (BND)",
+            "Bulgarian Lev (BGN)",
+            "Burundian Franc (BIF)",
+            "Cabo Verde Escudo (CVE)",
+            "Cambodian Riel (KHR)",
+            "Canadian Dollar (CAD)",
+            "Central African CFA Franc (XAF)",
+            "Chilean Peso (CLP)",
+            "Chinese Yuan (CNY)",
+            "Colombian Peso (COP)",
+            "Comorian Franc (KMF)",
+            "Congolese Franc (CDF)",
+            "Costa Rican Colón (CRC)",
+            "Croatian Kuna (HRK)",
+            "Czech Koruna (CZK)",
+            "Danish Krone (DKK)",
+            "Djiboutian Franc (DJF)",
+            "Dominican Peso (DOP)",
+            "East Caribbean Dollar (XCD)",
+            "Egyptian Pound (EGP)",
+            "El Salvador Colón (SVC)",
+            "Emirati Dirham (AED)",
+            "Ethiopian Birr (ETB)",
+            "Euro (EUR)",
+            "Falkland Islands Pound (FKP)",
+            "Fijian Dollar (FJD)",
+            "Gambian Dalasi (GMD)",
+            "Georgian Lari (GEL)",
+            "Ghanaian Cedi (GHS)",
+            "Gibraltar Pound (GIP)",
+            "Guatemalan Quetzal (GTQ)",
+            "Guinea Franc (GNF)",
+            "Guinean Franc (GNF)",
+            "Guyanaese Dollar (GYD)",
+            "Haitian Gourde (HTG)",
+            "Honduran Lempira (HNL)",
+            "Hong Kong Dollar (HKD)",
+            "Hungarian Forint (HUF)",
+            "Icelandic Króna (ISK)",
+            "Indian Rupee (INR)",
+            "Indonesian Rupiah (IDR)",
+            "Iranian Rial (IRR)",
+            "Iraqi Dinar (IQD)",
+            "Israeli Shekel (ILS)",
+            "Italian Lira (ITL)",
+            "Jamaican Dollar (JMD)",
+            "Japanese Yen (JPY)",
+            "Jordanian Dinar (JOD)",
+            "Kazakhstani Tenge (KZT)",
+            "Kenyan Shilling (KES)",
+            "Kuwaiti Dinar (KWD)",
+            "Kyrgyzstani Som (KGS)",
+            "Lao Kip (LAK)",
+            "Latvian Lats (LVL)",
+            "Lebanese Pound (LBP)",
+            "Lesotho Loti (LSL)",
+            "Liberian Dollar (LRD)",
+            "Libyan Dinar (LYD)",
+            "Lithuanian Litas (LTL)",
+            "Macanese Pataca (MOP)",
+            "Macedonian Denar (MKD)",
+            "Malagasy Ariary (MGA)",
+            "Malawian Kwacha (MWK)",
+            "Malaysian Ringgit (MYR)",
+            "Maldivian Rufiyaa (MVR)",
+            "Mali Franc (XOF)",
+            "Omani Rial (OMR)",
+            "Panamanian Balboa (PAB)",
+            "Paraguayan Guarani (PYG)",
+            "Peruvian Sol (PEN)",
+            "Philippine Peso (PHP)",
+            "Polish Zloty (PLN)",
+            "Portuguese Escudo (PTE)",
+            "Qatari Riyal (QAR)",
+            "Romanian Leu (RON)",
+            "Russian Ruble (RUB)",
+            "Rwandan Franc (RWF)",
+            "Samoan Tala (WST)",
+            "Saudi Riyal (SAR)",
+            "Serbian Dinar (RSD)",
+            "Seychellois Rupee (SCR)",
+            "Sierra Leonean Leone (SLL)",
+            "Singapore Dollar (SGD)",
+            "Slovak Koruna (SKK)",
+            "Slovenian Tolar (SIT)",
+            "Somali Shilling (SOS)",
+            "South African Rand (ZAR)",
+            "South Korean Won (KRW)",
+            "Sri Lankan Rupee (LKR)",
+            "Sudanese Pound (SDG)",
+            "Surinamese Dollar (SRD)",
+            "Swedish Krona (SEK)",
+            "Swiss Franc (CHF)",
+            "Syrian Pound (SYP)",
+            "Tajikistani Somoni (TJS)",
+            "Tanzanian Shilling (TZS)",
+            "Thai Baht (THB)",
+            "Tunisian Dinar (TND)",
+            "Turkish Lira (TRY)",
+            "Turkmenistani Manat (TMT)",
+            "UAE Dirham (AED)",
+            "Ugandan Shilling (UGX)",
+            "Ukrainian Hryvnia (UAH)",
+            "United States Dollar (USD)",
+            "Uruguayan Peso (UYU)",
+            "Uzbekistani Som (UZS)",
+            "Vanuatu Vatu (VUV)",
+            "Venezuelan Bolívar (VES)",
+            "Vietnamese Dong (VND)",
+            "Yemeni Rial (YER)",
+            "Zambian Kwacha (ZMW)",
+            "Zimbabwean Dollar (ZWL)"
+        ];
+
+        // Sample exchange rates for demonstration (use real-time data in production)
+        const exchangeRates = {
+            "AFN": 89.74,
+            "ALL": 108.75,
+            "DZD": 133.50,
+            "AOA": 649.00,
+            "ARS": 350.00,
+            "AUD": 1.48,
+            "AZN": 1.69,
+            "BSD": 1.00,
+            "BHD": 0.38,
+            "BDT": 107.25,
+            "BBD": 2.00,
+            "BYN": 3.00,
+            "BZD": 2.00,
+            "BMD": 1.00,
+            "BRL": 5.00,
+            "CAD": 1.36,
+            "CHF": 0.93,
+            "CLP": 800.00,
+            "CNY": 7.00,
+            "COP": 4200.00,
+            "CZK": 22.00,
+            "DKK": 7.10,
+            "EUR": 0.94,
+            "GBP": 0.81,
+            "HKD": 7.85,
+            "HUF": 380.00,
+            "IDR": 14000.00,
+            "ILS": 3.50,
+            "INR": 83.00,
+            "JPY": 130.00,
+            "KES": 137.00,
+            "KRW": 1300.00,
+            "MXN": 18.00,
+            "NZD": 1.54,
+            "NOK": 10.00,
+            "PEN": 3.80,
+            "PHP": 57.00,
+            "PLN": 4.00,
+            "QAR": 3.65,
+            "RON": 4.70,
+            "RUB": 60.00,
+            "SAR": 3.75,
+            "SEK": 10.80,
+            "SGD": 1.39,
+            "THB": 35.00,
+            "TRY": 19.00,
+            "TWD": 30.00,
+            "USD": 1.00,
+            "VND": 23000.00
+        };
+
+        // Populate currency select options
+        function populateCurrencies() {
+            const fromCurrencySelect = document.getElementById("fromCurrency");
+            const toCurrencySelect = document.getElementById("toCurrency");
+
+            currencies.forEach(currency => {
+                const [name, code] = currency.split(" (");
+                const option = document.createElement("option");
+                option.value = code.slice(0, -1); // remove trailing ")"
+                option.textContent = currency;
+                fromCurrencySelect.appendChild(option);
+                toCurrencySelect.appendChild(option.cloneNode(true)); // add to both selects
+            });
+        }
+
+        // Currency conversion
+        document.getElementById("convertButton").addEventListener("click", function() {
+            const amount = parseFloat(document.getElementById("amount").value);
+            const fromCurrency = document.getElementById("fromCurrency").value;
+            const toCurrency = document.getElementById("toCurrency").value;
+
+            if (!amount || !fromCurrency || !toCurrency) {
+                document.getElementById("result").textContent = "Please fill all fields correctly.";
+                return;
+            }
+
+            const convertedAmount = (amount / exchangeRates[fromCurrency]) * exchangeRates[toCurrency];
+            document.getElementById("result").textContent = `Converted Amount: ${convertedAmount.toFixed(2)} ${toCurrency}`;
+        });
+
+        // Initial setup
+        populateCurrencies();
+    </script>
+</body>
+</html>
