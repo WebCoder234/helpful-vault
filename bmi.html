@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <title>BMI Calculator</title>
+    <style>
+    
+    * {
+      font-family: 'Lexend';
+    }
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: block;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #219653;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .risk-level {
+            font-weight: bold;
+            color: #e67e22; /* Default text for risk level */
+        }
+
+        .normal { color: #2ecc71; }
+        .overweight { color: #e67e22; }
+        .obesity { color: #e74c3c; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <label for="weight">Weight (lbs):</label>
+        <input type="number" id="weight" placeholder="Enter your weight" step="0.1" required>
+
+        <label for="height-feet">Height (feet):</label>
+        <input type="number" id="height-feet" placeholder="Feet" required>
+
+        <label for="height-inches">Height (inches):</label>
+        <input type="number" id="height-inches" placeholder="Inches" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" placeholder="Enter your age" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" required>
+            <option value="">Select your gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        <button id="calculate-btn">Calculate BMI</button>
+
+        <div class="result" id="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        const calculateBtn = document.getElementById('calculate-btn');
+        const resultDiv = document.getElementById('result');
+
+        calculateBtn.addEventListener('click', () => {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const heightFeet = parseInt(document.getElementById('height-feet').value);
+            const heightInches = parseInt(document.getElementById('height-inches').value);
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+
+            // Convert height to inches
+            const totalInches = (heightFeet * 12) + heightInches;
+            // Convert pounds to kilograms (1 lb = 0.453592 kg)
+            const weightInKg = weight * 0.453592;
+            // Convert inches to meters (1 inch = 0.0254 m)
+            const heightInM = totalInches * 0.0254;
+
+            if (weight > 0 && heightFeet >= 0 && heightInches >= 0 && age > 0 && gender) {
+                const bmi = (weightInKg / (heightInM * heightInM)).toFixed(2);
+                let category;
+                let riskLevel;
+
+                if (bmi < 18.5) {
+                    category = 'Underweight';
+                    riskLevel = 'Normal to low risk';
+                } else if (bmi >= 18.5 && bmi < 24.9) {
+                    category = 'Normal weight';
+                    riskLevel = 'Low risk';
+                } else if (bmi >= 25 && bmi < 29.9) {
+                    category = 'Overweight';
+                    riskLevel = 'Increased risk';
+                } else {
+                    category = 'Obesity';
+                    riskLevel = 'High risk';
+                }
+
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = `
+                    Your BMI is <strong>${bmi}</strong>, which is considered <strong class="${category.toLowerCase()}">${category}</strong>.<br>
+                    Health Risk Level: <strong class="risk-level">${riskLevel}</strong>
+                `;
+            } else {
+                alert('Please enter valid weight, height, age, and select a gender.');
+            }
+        });
+    </script>
+</body>
+
+</html>
