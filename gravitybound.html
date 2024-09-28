@@ -6,6 +6,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
     <title>Gravity Bound</title>
     <style>
+    * {
+      font-family: 'Lexend';
+    }
         body {
             display: flex;
             justify-content: center;
@@ -14,6 +17,7 @@
             margin: 0;
             background-color: #e3f2fd;
             font-family: 'Lexend', sans-serif;
+            position: relative;
         }
         canvas {
             border: 2px solid #333;
@@ -53,9 +57,38 @@
             border: 1px solid #333;
             border-radius: 5px;
         }
+        #home-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 10;
+            text-align: center;
+        }
+        #start-button {
+            cursor: pointer;
+            background-color: #1976d2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        #instructions {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
+    <div id="home-screen">
+        <h1>Gravity Bound</h1>
+        <p id="instructions">Use the arrow keys to move, Shift to sprint, and Space to fly.<br> Collect coins and avoid enemies!</p>
+        <button id="start-button">Play</button>
+    </div>
+    
     <canvas id="gameCanvas" width="800" height="400"></canvas>
     <div id="score">Score: 0</div>
     <div id="level">Level: 1</div>
@@ -91,14 +124,13 @@
         let powerUps = [];
         let healthPacks = [];
 
-        // Sprinting variables
+        // Sprinting and Flying
         let isSprinting = false;
         let sprintTimeMax = 5;
         let sprintTimeLeft = sprintTimeMax;
         let sprintCooldown = 4;
         let sprintCooldownActive = false;
 
-        // Flying variables
         let isFlying = false;
         let flyTimeMax = 45;
         let flyTimeLeft = flyTimeMax;
@@ -184,13 +216,20 @@
             }
         }
 
-        generateLevel(); // Generate the first level
+        function startGame() {
+            document.getElementById('home-screen').style.display = 'none';
+            canvas.style.display = 'block';
+            generateLevel(); // Generate the first level
+            gameLoop(); // Start the game loop
+        }
 
+        document.getElementById('start-button').addEventListener('click', startGame);
+        
         function update() {
             if (!isGameOver) {
                 // Move character
                 if (isFlying && !flyCooldownActive) {
-                    flyTimeLeft -= 1 / 60; // Decrease fly time
+                    flyTimeLeft -= (1 / 60) * 0.8; // Decrease fly time at 0.8 times slower
                     character.y -= flySpeed; // Move up while flying
                     if (character.y < 0) {
                         character.y = 0;
@@ -223,7 +262,7 @@
                     }
                 }
 
-                // Handle sprinting
+                // Handle sprinting and cooldowns
                 if (isSprinting && !sprintCooldownActive) {
                     sprintTimeLeft -= 1 / 60;
                     if (sprintTimeLeft <= 0) {
@@ -233,7 +272,6 @@
                     }
                 }
 
-                // Handle cooldowns
                 if (sprintCooldownActive) {
                     sprintCooldown -= 1 / 60;
                     if (sprintCooldown <= 0) {
@@ -297,7 +335,7 @@
                     }
                 });
 
-                // Handle enemies (randomly change direction while moving)
+                // Handle enemies
                 enemies.forEach(enemy => {
                     enemy.x += enemy.directionX; // Move horizontally
                     enemy.y += enemy.directionY; // Move vertically
@@ -308,14 +346,6 @@
                     }
                     if (enemy.y < 0 || enemy.y > canvas.height - enemy.height) {
                         enemy.directionY *= -1; // Reverse vertical direction
-                    }
-
-                    // Update change direction timer
-                    enemy.changeDirectionCounter--;
-                    if (enemy.changeDirectionCounter <= 0) {
-                        enemy.directionX = (Math.random() < 0.5 ? -1 : 1) * (Math.random() * (normalSpeed * enemySpeedFactor));
-                        enemy.directionY = (Math.random() < 0.5 ? -1 : 1) * (Math.random() * (normalSpeed * enemySpeedFactor));
-                        enemy.changeDirectionCounter = Math.floor(Math.random() * 60) + 60; // Reset timer
                     }
 
                     // Check for collision with the character
@@ -441,8 +471,6 @@
             update();
             requestAnimationFrame(gameLoop);
         }
-
-        gameLoop(); // Start game loop
     </script>
 </body>
 </html>
