@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Test Game</title>
+    <!-- Link to Google Fonts for Lexend -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+    * {      font-family: 'Lexend'}
+        body {
+            font-family: 'Lexend', sans-serif; /* Use Lexend font */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e0e0e0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        #gameArea {
+            width: 300px;
+            height: 300px;
+            border: 5px solid #333;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+        }
+
+        #reactionBox {
+            width: 100px;
+            height: 100px;
+            background-color: #e74c3c;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #555;
+            text-align: center;
+            transition: color 0.3s;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Reaction Test Game</h1>
+    <div id="gameArea">
+        <div id="reactionBox"></div>
+    </div>
+    <div id="message"></div>
+    <button id="startBtn">Start Test</button>
+
+    <script>
+        let timeout;
+        let startTime;
+        let reactionBox = document.getElementById('reactionBox');
+        let message = document.getElementById('message');
+        let startBtn = document.getElementById('startBtn');
+
+        // Function to start the reaction test
+        function startTest() {
+            reactionBox.style.backgroundColor = "#e74c3c"; // Reset color
+            message.textContent = "Wait for the box to turn green!";
+            message.style.color = "#555";
+
+            // Random delay between 2 to 5 seconds
+            let randomDelay = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
+            timeout = setTimeout(() => {
+                reactionBox.style.backgroundColor = "#2ecc71"; // Change to green
+                startTime = Date.now(); // Record the start time
+                message.textContent = "Click the box!";
+            }, randomDelay);
+        }
+
+        // Function to react to box click
+        function boxClicked() {
+            if (reactionBox.style.backgroundColor === "rgb(46, 204, 113)") { // Check if it's green
+                let reactionTime = (Date.now() - startTime) / 1000; // Calculate reaction time
+                message.textContent = `Your reaction time is: ${reactionTime.toFixed(3)} seconds`;
+                message.style.color = "#27ae60"; // Change text color to green
+            } else {
+                message.textContent = "You clicked too early! Wait for it to turn green.";
+                message.style.color = "#e74c3c"; // Change text color to red
+            }
+        }
+
+        // Event listeners
+        reactionBox.addEventListener('click', boxClicked);
+        startBtn.addEventListener('click', startTest);
+    </script>
+</body>
+
+</html>
