@@ -1,260 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- Character encoding -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Compatibility with IE -->
-    <meta name="description" content="A simple circumference calculator that computes the circumference based on the given radius.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Circumference Calculator</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <title>Volume Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap" rel="stylesheet">
     <style>
         * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
             font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: #e9ecef; /* Default light background */
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            animation: fadeIn 0.5s ease;
-            transition: background-color 0.3s;
+            background-color: #eef2f3;
+            margin: 0;
+            padding: 20px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
-            margin-bottom: 20px;
-            color: #007bff;
             text-align: center;
+            color: #333;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            max-width: 300px;
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: 600;
+            color: #555;
         }
 
-        input[type="number"] {
-            padding: 10px;
-            border: 2px solid #007bff;
-            border-radius: 5px;
+        input, select {
             width: 100%;
+            padding: 12px;
+            border: 2px solid #007BFF;
+            border-radius: 4px;
             margin-bottom: 10px;
-            font-size: 16px;
-            transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+            transition: border-color 0.3s ease;
         }
 
-        input[type="number"]:focus {
+        input:focus, select:focus {
             border-color: #0056b3;
-            box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
             outline: none;
-            transform: scale(1.02);
-        }
-
-        select {
-            padding: 10px;
-            border: 2px solid #007bff;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: border-color 0.3s;
-        }
-
-        select:hover {
-            border-color: #0056b3;
         }
 
         button {
-            padding: 10px 15px;
-            background-color: #007bff;
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            width: 100%;
-            margin-bottom: 10px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
             background-color: #0056b3;
-            transform: scale(1.05);
+        }
+
+        .shape-inputs {
+            display: none;
+        }
+
+        .hidden {
+            display: none;
         }
 
         #result {
+            text-align: center;
             margin-top: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: #007bff;
-            color: #fff;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.3s ease;
-            transform: translateY(-10px);
-            display: none; /* Hidden by default */
+            font-size: 18px;
+            color: #007BFF;
+            font-weight: bold;
         }
-
-        #result.show {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .theme-toggle {
-            margin-top: 15px;
-            cursor: pointer;
-            padding: 10px;
-            background-color: #343a40;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.2s;
-            width: 30%;
-        }
-
-.reset-button {
-            margin-top: 15px;
-            cursor: pointer;
-            padding: 10px;
-            background-color: #343a40;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.2s;
-            width: 30%;
-        }
-        .theme-toggle:hover, .reset-button:hover {
-            background-color: #495057;
-            transform: scale(1.05);
-        }
-
-        body.dark-mode {
-            background-color: #343a40;
-            color: #e9ecef;
-            transition: background-color 0.5s;
-        }
-
-        body.dark-mode input[type="number"],
-        body.dark-mode select {
-            border: 2px solid #6c757d;
-            background-color: #495057;
-            color: #e9ecef;
-        }
-
-        body.dark-mode button {
-            background-color: #6c757d;
-        }
-
-        body.dark-mode button:hover {
-            background-color: #5a6268;
-        }
-
-        body.dark-mode #result {
-            background-color: #495057;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-        
     </style>
 </head>
 <body>
-    <h1>Circumference Calculator</h1>
-    <form id="circumference-form" aria-labelledby="Circumference Calculator">
-        <input type="number" id="radius" aria-label="Radius" placeholder="Enter radius" required>
-        <select id="unit-selector" aria-label="Select unit of measurement">
-            <option value="cm">Centimeters</option>
-            <option value="m">Meters</option>
-            <option value="in">Inches</option>
-            <option value="ft">Feet</option>
+    <div class="container">
+        <h1>Volume Calculator</h1>
+        <label for="shape">Select a shape:</label>
+        <select id="shape" onchange="showInputs()">
+            <option value="">Select a shape</option>
+            <option value="cube">Cube</option>
+            <option value="sphere">Sphere</option>
+            <option value="cylinder">Cylinder</option>
         </select>
-     
-        <button type="button" class="reset-button">Reset</button>
-    </form>
-    
-    <div id="result" role="alert"></div>
-    <button class="theme-toggle" aria-label="Toggle theme">Toggle Dark/Light Theme</button>
-    
+
+        <div id="inputs" class="hidden">
+            <div id="cubeInputs" class="shape-inputs">
+                <label for="cubeSide">Side Length (a):</label>
+                <input type="number" id="cubeSide" placeholder="Enter side length" min="0" step="any">
+            </div>
+            <div id="sphereInputs" class="shape-inputs">
+                <label for="sphereRadius">Radius (r):</label>
+                <input type="number" id="sphereRadius" placeholder="Enter radius" min="0" step="any">
+            </div>
+            <div id="cylinderInputs" class="shape-inputs">
+                <label for="cylinderRadius">Radius (r):</label>
+                <input type="number" id="cylinderRadius" placeholder="Enter radius" min="0" step="any">
+                <label for="cylinderHeight">Height (h):</label>
+                <input type="number" id="cylinderHeight" placeholder="Enter height" min="0" step="any">
+            </div>
+            <button onclick="calculateVolume()">Calculate Volume</button>
+        </div>
+
+        <h2 id="result"></h2>
+    </div>
+
     <script>
-        const form = document.getElementById('circumference-form');
-        const radiusInput = document.getElementById('radius');
-        const unitSelector = document.getElementById('unit-selector');
-        const resultDiv = document.getElementById('result');
-        const themeToggleButton = document.querySelector('.theme-toggle');
-        const resetButton = document.querySelector('.reset-button');
+        function showInputs() {
+            const shape = document.getElementById("shape").value;
+            const inputsDiv = document.getElementById("inputs");
+            const cubeInputs = document.getElementById("cubeInputs");
+            const sphereInputs = document.getElementById("sphereInputs");
+            const cylinderInputs = document.getElementById("cylinderInputs");
 
-        // Real-time calculation
-        radiusInput.addEventListener('input', function() {
-            if (this.value) {
-                const radius = parseFloat(this.value);
-                const circumference = 2 * Math.PI * radius;
-                const unit = unitSelector.value;
-                resultDiv.innerHTML = `Circumference: ${circumference.toFixed(2)} ${unit}`;
-                resultDiv.classList.add('show'); // Show result with animation
-            } else {
-                resultDiv.classList.remove('show'); // Hide result if input is cleared
+            inputsDiv.classList.remove("hidden");
+            cubeInputs.style.display = "none";
+            sphereInputs.style.display = "none";
+            cylinderInputs.style.display = "none";
+
+            if (shape === "cube") {
+                cubeInputs.style.display = "block";
+            } else if (shape === "sphere") {
+                sphereInputs.style.display = "block";
+            } else if (shape === "cylinder") {
+                cylinderInputs.style.display = "block";
             }
-        });
+        }
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            radiusInput.dispatchEvent(new Event('input')); // Trigger the real-time calculation
-        });
-
-        // Reset the form
-        resetButton.addEventListener('click', () => {
-            radiusInput.value = '';
-            resultDiv.classList.remove('show'); // Hide the result with animation
-            unitSelector.selectedIndex = 0; // Reset unit to first option
-            
-            // Add bounce animation to the reset button
-            resetButton.style.animation = 'bounce 0.6s';
-            setTimeout(() => {
-                resetButton.style.animation = ''; // Reset animation
-            }, 600);
-        });
-
-        // Toggle theme between light and dark
-        themeToggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            themeToggleButton.innerText = isDarkMode ? 'Switch to Light Theme' : 'Switch to Dark Theme';
-        });
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 't') { // Toggle theme on 'T'
-                themeToggleButton.click();
-            } else if (e.key === 'r') { // Reset on 'R'
-                resetButton.click();
+        function calculateVolume() {
+            const shape = document.getElementById("shape").value;
+            let volume;
+            if (shape === "cube") {
+                const side = parseFloat(document.getElementById("cubeSide").value);
+                volume = Math.pow(side, 3);
+            } else if (shape === "sphere") {
+                const radius = parseFloat(document.getElementById("sphereRadius").value);
+                volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+            } else if (shape === "cylinder") {
+                const radius = parseFloat(document.getElementById("cylinderRadius").value);
+                const height = parseFloat(document.getElementById("cylinderHeight").value);
+                volume = Math.PI * Math.pow(radius, 2) * height;
             }
-        });
+
+            document.getElementById("result").innerText = `Volume: ${volume.toFixed(2)}`;
+        }
     </script>
 </body>
 </html>
