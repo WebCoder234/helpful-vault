@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Search</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+    
+    * {
+      font-family: 'Poppins';
+    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: #343a40;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+        
+          h3 {
+            text-align: center;
+            color: #1f2120;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            margin-bottom: 30px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        .recipe {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            background: #f1f5f9;
+        }
+
+        .recipe:hover {
+            background-color: #e2e6ea;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe h2 {
+            margin: 0 0 5px;
+            color: #007BFF;
+        }
+
+        .recipe p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .recipe-detail {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .recipe-detail h2 {
+            color: #343a40;
+            margin-bottom: 10px;
+        }
+
+        .recipe-detail h3 {
+            color: #007BFF;
+            margin-bottom: 5px;
+        }
+
+        .ingredients ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .instructions {
+            background: #e9ecef;
+            border-left: 5px solid #007BFF;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .back-button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .recipe h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recipes</h1>
+        
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for a recipe..." onkeyup="filterRecipes()">
+        </div>
+        <h3>New Recipes Every Week!</h3>
+        <div id="recipeList">
+            <!-- Recipes will be displayed here -->
+        </div>
+    </div>
+
+    <div id="recipeDetail" class="container recipe-detail">
+        <button class="back-button" onclick="showRecipeList()">Back to Recipes</button>
+        <h2 id="recipeTitle"></h2>
+        <p id="recipeDescription"></p>
+        <div class="ingredients">
+            <h3>Ingredients:</h3>
+            <ul id="recipeIngredients"></ul>
+        </div>
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <p id="recipeInstructions"></p>
+        </div>
+        <div class="additional-info">
+            <h3>Additional Information:</h3>
+            <p id="recipeAdditionalInfo"></p>
+        </div>
+    </div>
+
+    <script>
+        const recipes = [
+            {
+                title: "Spaghetti Carbonara",
+                description: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper for a rich and creamy sauce.",
+                ingredients: [
+                    "Spaghetti - 400g",
+                    "Eggs - 4 large",
+                    "Pancetta - 150g, diced",
+                    "Parmesan cheese - 100g, grated",
+                    "Black pepper - freshly ground",
+                    "Salt - to taste",
+                    "Fresh parsley - for garnish (optional)"
+                ],
+                instructions: "1. Boil a large pot of salted water and cook the spaghetti according to package instructions until al dente.\n" +
+                "2. In a pan, cook pancetta over medium heat until crispy. Mix eggs with cheese in a bowl. \n" +
+                "3. Drain the spaghetti, reserving some pasta water. Off the heat, add spaghetti and pancetta to egg mixture, tossing quickly.\n" +
+                "4. Add reserved pasta water to achieve desired creaminess. Season with pepper and salt. Garnish with parsley if desired.",
+                additionalInfo: "Preparation time: 10 mins | Cook time: 20 mins | Serves: 4"
+            },
+            {
+                title: "Chicken Tikka Masala",
+                description: "Grilled marinated chicken pieces served in a creamy, flavorful tomato-based sauce, perfect with rice or naan.",
+                ingredients: [
+                    "Chicken breast - 500g, diced",
+                    "Yogurt - 200g",
+                    "Tomato sauce - 400g",
+                    "Onion - 1 large, finely chopped",
+                    "Garlic - 4 cloves, minced",
+                    "Ginger - 1-inch piece, grated",
+                    "Spices (cumin, coriander, garam masala) - 2 tsp each",
+                    "Cream - 100ml",
+                    "Cilantro - for garnish",
+                    "Salt - to taste",
+                    "Oil - for cooking"
+                ],
+                instructions: "1. Marinate chicken in yogurt and spices for at least 30 minutes.\n" +
+                "2. Grill or sauté marinated chicken until cooked, then set aside.\n" +
+                "3. In the same pan, cook onion, garlic, and ginger until softened.\n" +
+                "4. Add tomato sauce and cream, bring to a simmer. \n" +
+                "5. Add chicken and nestle into the sauce. Cook for 10 mins. Garnish with cilantro before serving.",
+                additionalInfo: "Preparation time: 30 mins | Cook time: 30 mins | Serves: 4"
+            },
+            {
+                title: "Beef Stroganoff",
+                description: "Sautéed beef strips cooked in a creamy mushroom sauce, often served over egg noodles for a hearty meal.",
+                ingredients: [
+                    "Beef strips - 500g",
+                    "Mushrooms - 250g, sliced",
+                    "Onion - 1 large, sliced",
+                    "Garlic - 2 cloves, minced",
+                    "Sour cream - 150g",
+                    "Beef broth - 200ml",
+                    "Egg noodles - 300g",
+                    "Flour - 2 tbsp",
+                    "Salt and pepper - to taste",
+                    "Oil - for cooking",
+                    "Fresh parsley - for garnish"
+                ],
+                instructions: "1. Cook egg noodles according to package instructions and set aside.\n" +
+                "2. In a large skillet, heat oil and sauté onion and garlic until soft. Remove from pan.\n" +
+                "3. In the same pan, add beef strips and cook until browned. Sprinkle with flour and mix well.\n" +
+                "4. Add mushrooms and broth, stirring well. Simmer for 10 minutes.\n" +
+                "5. Stir in sour cream and season with salt and pepper. Serve over noodles, garnished with parsley.",
+                additionalInfo: "Preparation time: 15 mins | Cook time: 20 mins | Serves: 4"
+            },
+            {
+                title: "Vegetable Stir Fry",
+                description: "A colorful mix of fresh vegetables stir-fried with soy sauce and sesame oil, serving as a quick and healthy dish.",
+                ingredients: [
+                    "Bell peppers - 1 of each color, sliced",
+                    "Carrots - 2 large, sliced",
+                    "Broccoli - 1 head, cut into florets",
+                    "Soy sauce - 4 tbsp",
+                    "Garlic - 3 cloves, minced",
+                    "Ginger - 1-inch piece, grated",
+                    "Sesame oil - 2 tbsp",
+                    "Spring onions - for garnish",
+                    "Sesame seeds - for garnish (optional)"
+                ],
+                instructions: "1. Heat sesame oil in a large pan or wok over high heat.\n" +
+                "2. Add garlic and ginger, cooking briefly until fragrant.\n" +
+                "3. Add vegetables, stir-frying for 5-7 minutes until just tender.\n" +
+                "4. Add soy sauce and toss to coat the vegetables. Cook for an additional 2 minutes.\n" +
+                "5. Garnish with spring onions and sesame seeds before serving.",
+                additionalInfo: "Preparation time: 10 mins | Cook time: 5 mins | Serves: 2-4"
+            },
+            {
+                title: "Pancakes",
+                description: "Light and fluffy pancakes that are perfect for breakfast, served with syrup and fresh fruits.",
+                ingredients: [
+                    "All-purpose flour - 200g",
+                    "Milk - 300ml",
+                    "Eggs - 2 large",
+                    "Baking powder - 2 tsp",
+                    "Sugar - 2 tbsp",
+                    "Butter - 50g, melted",
+                    "Salt - a pinch",
+                    "Maple syrup, fresh fruits - for serving"
+                ],
+                instructions: "1. In a bowl, mix flour, baking powder, sugar, and salt.\n" +
+                "2. In another bowl, whisk together milk, eggs, and melted butter.\n" +
+                "3. Combine the wet and dry ingredients, mixing until just combined. \n" +
+                "4. Heat a skillet over medium heat and pour batter to form pancakes.\n" +
+                "5. Cook until bubbles appear, then flip and cook until golden brown. Serve with syrup and fruit.",
+                additionalInfo: "Preparation time: 5 mins | Cook time: 20 mins | Serves: 4"
+            },
+            {
+                title: "Caesar Salad",
+                description: "A classic salad with romaine lettuce, crispy croutons, parmesan cheese, and a creamy Caesar dressing.",
+                ingredients: [
+                    "Romaine lettuce - 1 large head, chopped",
+                    "Croutons - 1 cup",
+                    "Parmesan cheese - 50g, shaved or grated",
+                    "Caesar dressing - 100ml",
+                    "Lemon - 1, juiced",
+                    "Black pepper - freshly cracked",
+                    "Salt - to taste"
+                ],
+                instructions: "1. In a large bowl, combine chopped romaine with Caesar dressing.\n" +
+                "2. Toss well to coat the leaves evenly. \n" +
+                "3. Add croutons and parmesan cheese, mixing gently.\n" +
+                "4. Squeeze fresh lemon juice over the top and season with salt and pepper before serving.",
+                additionalInfo: "Preparation time: 10 mins | Serves: 2-4"
+            },
+            {
+                title: "Chocolate Chip Cookies",
+                description: "Deliciously classic cookies filled with gooey chocolate chips, perfect for snacking at any time of the day.",
+                ingredients: [
+                    "All-purpose flour - 220g",
+                    "Butter - 115g, softened",
+                    "Granulated sugar - 100g",
+                    "Brown sugar - 100g",
+                    "Egg - 1 large",
+                    "Vanilla extract - 1 tsp",
+                    "Baking soda - 1 tsp",
+                    "Salt - 1/2 tsp",
+                    "Chocolate chips - 200g"
+                ],
+                instructions: "1. Preheat oven to 180°C (350°F).\n" +
+                "2. In a mixing bowl, cream together butter, granulated sugar, and brown sugar until fluffy. \n" +
+                "3. Beat in egg and vanilla until well combined. \n" +
+                "4. In another bowl, mix flour, baking soda, and salt. Gradually add to the butter mixture.\n" +
+                "5. Stir in chocolate chips. Drop spoonfuls of dough onto a baking sheet.\n" +
+                "6. Bake for 10-12 minutes. Let cool on a rack before serving.",
+                additionalInfo: "Preparation time: 15 mins | Cook time: 10 mins | Makes: 24 cookies"
+            },
+            {
+                title: "Beef Tacos",
+                description: "Flavorful ground beef tacos loaded into soft tortillas and topped with fresh ingredients for a tasty meal.",
+                ingredients: [
+                    "Ground beef - 500g",
+                    "Taco shells - 8",
+                    "Lettuce - 1 cup, shredded",
+                    "Tomato - 1 large, diced",
+                    "Cheese - 1 cup, shredded (cheddar or Mexican blend)",
+                    "Taco seasoning - 1 packet",
+                    "Sour cream - for serving",
+                    "Olive oil - for cooking"
+                ],
+                instructions: "1. In a skillet, heat olive oil over medium high heat. Add ground beef and cook until browned.\n" +
+                "2. Drain excess fat and stir in taco seasoning. Add water according to package instructions and simmer.\n" +
+                "3. Meanwhile, warm taco shells in the oven. \n" +
+                "4. Fill each shell with beef, then top with lettuce, tomato, cheese, and a dollop of sour cream.",
+                additionalInfo: "Preparation time: 10 mins | Cook time: 15 mins | Serves: 4"
+            },
+            {
+                title: "Lemon Garlic Salmon",
+                description: "Baked salmon fillets marinated in lemon juice and garlic, making for a healthy and flavor-packed dish.",
+                ingredients: [
+                    "Salmon fillets - 2 large",
+                    "Lemon - 1, juiced",
+                    "Garlic - 2 cloves, minced",
+                    "Olive oil - 2 tbsp",
+                    "Salt - to taste",
+                    "Black pepper - to taste",
+                    "Fresh dill or parsley - for garnish"
+                ],
+                instructions: "1. Preheat your oven to 190°C (375°F).\n" +
+                "2. In a small bowl, mix lemon juice, minced garlic, olive oil, salt, and pepper.\n" +
+                "3. Place salmon on a baking tray lined with parchment paper. Pour marinade over the salmon. Let marinate for 15 minutes.\n" +
+                "4. Bake in the oven for 15-20 minutes until the salmon flakes easily with a fork. Garnish with fresh herbs.",
+                additionalInfo: "Preparation time: 10 mins | Cook time: 20 mins | Serves: 2"
+            },
+            {
+                title: "Caprese Salad",
+                description: "A simple Italian salad featuring fresh mozzarella, ripe tomatoes, basil, and a drizzle of balsamic reduction.",
+                ingredients: [
+                    "Fresh mozzarella - 250g, sliced",
+                    "Tomatoes - 2 large, sliced",
+                    "Fresh basil - a handful",
+                    "Olive oil - for drizzling",
+                    "Balsamic vinegar - for drizzling",
+                    "Salt - to taste",
+                    "Black pepper - freshly cracked"
+                ],
+                instructions: "1. Layer slices of mozzarella and tomatoes on a platter alternately.\n" +
+                "2. Tuck fresh basil leaves in between layers.\n" +
+                "3. Drizzle olive oil and balsamic vinegar over the salad. Season with salt and pepper before serving.",
+                additionalInfo: "Preparation time: 10 mins | Serves: 2-4"
+            }
+        ];
+
+        function displayRecipes(recipesToDisplay) {
+            const recipeList = document.getElementById('recipeList');
+            recipeList.innerHTML = ''; // Clear previous list
+
+            recipesToDisplay.forEach((recipe, index) => {
+                const recipeDiv = document.createElement('div');
+                recipeDiv.className = 'recipe';
+                recipeDiv.onclick = () => showRecipeDetail(index);
+                recipeDiv.innerHTML = `<h2>${recipe.title}</h2><p>${recipe.description}</p>`;
+                recipeList.appendChild(recipeDiv);
+            });
+        }
+
+        function filterRecipes() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const filteredRecipes = recipes.filter(recipe =>
+                recipe.title.toLowerCase().includes(searchInput) ||
+                recipe.description.toLowerCase().includes(searchInput)
+            );
+            displayRecipes(filteredRecipes);
+        }
+
+        function showRecipeDetail(index) {
+            const recipeDetail = document.getElementById('recipeDetail');
+            const recipeTitle = document.getElementById('recipeTitle');
+            const recipeDescription = document.getElementById('recipeDescription');
+            const recipeIngredients = document.getElementById('recipeIngredients');
+            const recipeInstructions = document.getElementById('recipeInstructions');
+            const recipeAdditionalInfo = document.getElementById('recipeAdditionalInfo');
+
+            // Set the recipe details
+            recipeTitle.innerText = recipes[index].title;
+            recipeDescription.innerText = recipes[index].description;
+            recipeIngredients.innerHTML = recipes[index].ingredients.map(ingredient => `<li>${ingredient}</li>`).join('');
+            recipeInstructions.innerText = recipes[index].instructions;
+            recipeAdditionalInfo.innerText = recipes[index].additionalInfo;
+
+            // Hide recipe list and show recipe detail
+            document.getElementById('recipeList').style.display = 'none';
+            recipeDetail.style.display = 'block';
+        }
+
+        function showRecipeList() {
+            document.getElementById('recipeList').style.display = 'block';
+            document.getElementById('recipeDetail').style.display = 'none';
+        }
+
+        // Initial display of all recipes
+        displayRecipes(recipes);
+    </script>
+</body>
+</html>
