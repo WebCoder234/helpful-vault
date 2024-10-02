@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Invest: A Comprehensive Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        button {
+            background-color: #45a049;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .search-box {
+            margin: 15px 0;
+        }
+
+        h2 {
+            color: #35424a;
+            margin-top: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #35424a;
+            color: #ffffff;
+        }
+
+        /* Styling for the dictionary entries */
+        .dictionary-entry {
+            margin-bottom: 10px;
+        }
+
+        .dictionary-entry h4 {
+            margin: 0;
+            color: #35424a;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>How to Invest: A Comprehensive Guide</h1>
+        <button id="dictionary-button">Dictionary</button>
+    </header>
+
+    <main>
+        <section>
+            <h2>1. Introduction to Investing</h2>
+            <p>Investing is one of the most effective ways to grow wealth over time. The basic premise of investing is to allocate resources, typically money, to an asset with the expectation of generating income or appreciation in value. As we navigate through the complex world of finance, understanding the fundamentals of investing can empower individuals to make informed choices for their financial future.</p>
+            <p>This guide aims to break down key concepts, various investment vehicles, risk management strategies, and practical steps to create a versatile investment portfolio. Whether you're a novice looking to dip your toes into the world of investing or a seasoned investor seeking to refine your strategies, this comprehensive guide will provide valuable insights.</p>
+        </section>
+
+        <section>
+            <h2>2. Understanding the Basics of Investing</h2>
+            <p>Before diving into the different types of investments, it’s crucial to understand the basic principles of investing. At its core, investing is about making strategic choices that align with your financial goals and risk tolerance.</p>
+
+            <h3>2.1 What is an Investment?</h3>
+            <p>An investment is the act of allocating resources, usually money, with the expectation of generating income or profit. The goal of investing is not just to preserve wealth but to allow it to grow over time. Investments can range from low-risk savings accounts to high-risk stock market ventures.</p>
+
+            <h3>2.2 The Importance of Time Horizon</h3>
+            <p>Your time horizon is crucial when it comes to investing. It refers to the length of time you expect to hold an investment before needing to access the money. A longer time horizon typically allows for a greater risk tolerance since you have the time to recover from market fluctuations.</p>
+
+            <h3>2.3 Understanding Risk and Return</h3>
+            <p>Every investment carries a degree of risk, which is the potential for losing some or all of your investment. Generally, the higher the potential return on an investment, the higher the risk involved. Understanding this relationship is key to making informed investment decisions.</p>
+            <p>Investors must determine their risk tolerance—a subjective measure influenced by individual circumstances, including financial goals, age, income, and investment experience.</p>
+        </section>
+
+        <section>
+            <h2>3. Types of Investments</h2>
+            <p>Investing isn't a one-size-fits-all approach. Various types of investment vehicles cater to different financial goals, time horizons, and risk tolerances. Understanding the differences among key asset classes can help you allocate your resources more effectively.</p>
+            
+            <h3>3.1 Stocks</h3>
+            <p>Stocks represent ownership in a company. When you purchase a stock, you become a shareholder and are entitled to a portion of the company's profits, typically distributed in the form of dividends. Stocks can offer high returns compared to other investments, but they also come with enhanced volatility and risk.</p>
+
+            <h3>3.2 Bonds</h3>
+            <p>Bonds are fixed-income securities issued by corporations or governments as a way to raise capital. When you buy a bond, you are effectively lending money to the issuer in exchange for periodic interest payments and the return of the bond's face value when it matures.</p>
+
+            <h3>3.3 Real Estate</h3>
+            <p>Real estate investing involves purchasing properties for rental income, resale, or capital appreciation. Real estate can provide a steady income stream and potential tax benefits.</p>
+
+            <h3>3.4 Mutual Funds and ETFs</h3>
+            <p>Mutual funds and exchange-traded funds (ETFs) offer ways to invest in a diversified portfolio without having to pick individual stocks or bonds. Both types of investment funds pool money from multiple investors to purchase various assets.</p>
+        </section>
+
+        <section>
+            <h2>4. Understanding Risk Management</h2>
+            <p>Risk management is an essential aspect of investing that involves identifying, analyzing, and responding to risk factors that may impact your investments. Implementing risk management strategies can help reduce potential losses and enhance portfolio performance.</p>
+            
+            <h3>4.1 Diversification</h3>
+            <p>Diversification is a risk management strategy that mixes a wide variety of investments within a portfolio. The idea is that by investing in different asset classes, sectors, and geographic regions, you can minimize the impact of a poor-performing investment on your overall portfolio.</p>
+            <p>Effective diversification can involve:</p>
+            <ul>
+                <li>Investing across asset classes (stocks, bonds, real estate)</li>
+                <li>Spreading investments within asset classes (different stocks or bonds)</li>
+                <li>Including international investments to capture global growth</li>
+            </ul>
+
+            <h3>4.2 Asset Allocation</h3>
+            <p>Asset allocation refers to the process of dividing an investment portfolio among different asset categories, such as stocks, bonds, and cash. The appropriate asset allocation depends on your risk tolerance, investment goals, and time horizon.</p>
+            <p>Several strategies exist, including:</p>
+            <ul>
+                <li><strong>Conservative Allocation:</strong> High allocation to bonds and cash, suitable for risk-averse investors.</li>
+                <li><strong>Moderate Allocation:</strong> A balanced mix of stocks and bonds, designed for moderate risk tolerance.</li>
+                <li><strong>Aggressive Allocation:</strong> High allocation to stocks, designed for investors seeking higher returns over a long time frame.</li>
+            </ul>
+
+            <h3>4.3 Stop-Loss Orders</h3>
+            <p>A stop-loss order is an order placed with a broker to buy or sell once the stock reaches a certain price. It’s designed to limit your losses in a security, and it can also lock in profits on positions that have moved favorably.</p>
+        </section>
+
+        <section>
+            <h2>5. Building Your Investment Portfolio</h2>
+            <p>Creating a successful investment portfolio requires a structured approach that aligns with your financial objectives and risk tolerance. This section will discuss the steps to build and maintain your portfolio over time.</p>
+            
+            <h3>5.1 Defining Your Goals</h3>
+            <p>The first step in building your investment portfolio is to define your financial goals. What are you investing for? Retirement, a child's education, a new home? Understanding your objectives will inform your investment strategy.</p>
+            <p>Considerations for goal-setting include:</p>
+            <ul>
+                <li><strong>Time Frame:</strong> Short-term vs. long-term goals will influence your asset allocation.</li>
+                <li><strong>Amount Required:</strong> Understand how much you need to save or invest to reach your goals.</li>
+                <li><strong>Income Needs:</strong> Determine whether you need regular income from your investments or if you will allow them to grow over time.</li>
+            </ul>
+
+            <h3>5.2 Assessing Your Risk Tolerance</h3>
+            <p>Your risk tolerance is your ability and willingness to endure market fluctuations. It’s essential to assess your personal comfort level with risk before making investment decisions.</p>
+            <p>To determine your risk tolerance, consider factors such as your age, financial situation, and investment goals. Tools like risk tolerance questionnaires can help you gauge your comfort level.</p>
+
+            <h3>5.3 Selecting Investments</h3>
+            <p>With your goals and risk tolerance defined, the next step is selecting specific investments that align with your investment strategy. Research potential investments thoroughly, considering factors like past performance, management, fees, and market conditions.</p>
+
+            <h3>5.4 Regular Monitoring and Rebalancing</h3>
+            <p>Building a portfolio is not a one-time task. It requires continuous monitoring and rebalancing to maintain your targeted asset allocation. Over time, certain investments may grow faster than others, shifting your portfolio’s risk profile.</p>
+            <p>Regularly review your investments, ideally on a semi-annual basis, and make adjustments as necessary to align with your initial goals and risk tolerance.</p>
+        </section>
+
+        <section>
+            <h2>6. Common Investment Strategies</h2>
+            <p>Successful investing often involves applying specific strategies tailored to your goals and market conditions. Understanding common investment strategies will help you make informed decisions.</p>
+            
+            <h3>6.1 Buy and Hold</h3>
+            <p>The buy-and-hold strategy involves purchasing stocks and holding them for an extended period, regardless of market fluctuations. This long-term approach benefits from compounding returns and is less affected by short-term market volatility.</p>
+
+            <h3>6.2 Dollar-Cost Averaging</h3>
+            <p>Dollar-cost averaging is an investment strategy where an investor buys a fixed dollar amount of a particular investment on a regular schedule, regardless of its price. This strategy reduces the impact of volatility and lowers the average cost per share over time.</p>
+
+            <h3>6.3 Growth vs. Value Investing</h3>
+            <p>Investors often choose between growth and value strategies. Growth investors seek companies with strong earnings potential, while value investors focus on stocks that appear undervalued based on their intrinsic value. Depending on market conditions, one strategy may outperform the other.</p>
+
+            <h3>6.4 Tactical Asset Allocation</h3>
+            <p>Tactical asset allocation involves actively managing your investments to capitalize on market opportunities. Investors dynamically adjust their portfolio based on market trends, economic conditions, and geopolitical events.</p>
+        </section>
+
+        <section>
+            <h2>7. Investing During Different Market Conditions</h2>
+            <p>Understanding how to adjust your investment strategy based on market conditions is crucial. Different phases of the market cycle require different approaches to optimize returns.</p>
+            
+            <h3>7.1 Bull Markets</h3>
+            <p>A bull market is characterized by rising stock prices and investor confidence. During these periods, growth and aggressive strategies may yield positive results. However, investors should remain cautious and consider diversifying to hedge against potential downturns.</p>
+
+            <h3>7.2 Bear Markets</h3>
+            <p>In a bear market, characterized by declining prices and negative investor sentiment, defensive strategies can be beneficial. Investors may want to shift toward bonds, dividend-paying stocks, or cash to protect their capital.</p>
+
+            <h3>7.3 Economic Downturns</h3>
+            <p>During economic recessions, consumers tend to spend less, impacting company revenues and profits. Investors should focus on high-quality companies, consider value stocks, and perhaps reallocate to safer assets.</p>
+        </section>
+
+        <section>
+            <h2>8. Tax Considerations for Investors</h2>
+            <p>Understanding tax implications is a vital part of an investment strategy. Taxes can significantly affect your overall returns, making it crucial to consider them when buying or selling investments.</p>
+            
+            <h3>8.1 Capital Gains Tax</h3>
+            <p>When you sell an investment for a profit, you may be subject to capital gains tax. The rate you pay depends on how long you've held the investment. Long-term capital gains (for assets held over a year) are generally taxed at a lower rate than short-term gains.</p>
+
+            <h3>8.2 Tax-Advantaged Accounts</h3>
+            <p>Investors should take advantage of tax-advantaged accounts such as IRAs and 401(k)s. These accounts offer tax benefits that can help increase your overall returns and enable you to save for retirement effectively.</p>
+
+            <h3>8.3 Tax Loss Harvesting</h3>
+            <p>Tax loss harvesting is a strategy where investors sell losing investments to offset capital gains taxes on winning investments. This approach can reduce your tax liability, helping you keep more of your gains.</p>
+        </section>
+
+        <section>
+            <h2>9. Conclusion</h2>
+            <p>Investing can seem daunting, but understanding the basics and developing a personal strategy can greatly enhance your chances for success. This comprehensive guide provides a solid foundation for developing sound investment practices. Remember, investing is a journey, not a sprint; the key is patience, education, and disciplined execution of your strategy.</p>
+            <p>As you embark on or continue your investment journey, remember to continually refine your strategy based on your evolving goals and market conditions. Seek knowledge, consult professionals when necessary, and stay informed about market trends and economic developments. By doing so, you can build a robust investment portfolio that stands the test of time.</p>
+        </section>
+
+        <div id="dictionary-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="close-modal">&times;</span>
+                <h2>Investment Terms Dictionary</h2>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search for a term..." onkeyup="filterDictionary()">
+                </div>
+                <div id="dictionary-entries">
+                    <!-- Example Dictionary Entries -->
+                    <div class="dictionary-entry" id="entry-investment">
+                        <h4>Investment:</h4>
+                        <p>The act of allocating resources, usually money, with the expectation of generating income or profit.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-assets">
+                        <h4>Assets:</h4>
+                        <p>Resources owned by an individual or entity, which provide economic value.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-risk">
+                        <h4>Risk:</h4>
+                        <p>The potential for loss or underperformance in an investment.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-diversification">
+                        <h4>Diversification:</h4>
+                        <p>A risk management strategy that mixes a wide variety of investments within a portfolio.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-portfolio">
+                        <h4>Portfolio:</h4>
+                        <p>A collection of financial assets such as stocks, bonds, and other investments held by an individual or institution.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-bonds">
+                        <h4>Bonds:</h4>
+                        <p>A fixed-income investment in which an investor loans money to an entity in exchange for periodic interest payments and the return of the bond's face value when it matures.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-stocks">
+                        <h4>Stocks:</h4>
+                        <p>Securities that represent ownership in a corporation and a claim on part of its assets and earnings.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-mutual-funds">
+                        <h4>Mutual Funds:</h4>
+                        <p>Investment programs funded by shareholders that trade in diversified holdings and are professionally managed.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-ETFs">
+                        <h4>ETFs:</h4>
+                        <p>Exchange-Traded Funds that track an index or commodity and are traded on stock exchanges.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-capital-gains">
+                        <h4>Capital Gains:</h4>
+                        <p>The profit from the sale of an asset or investment, typically subject to tax.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-dividend">
+                        <h4>Dividend:</h4>
+                        <p>A distribution of a portion of a company's earnings to its shareholders, usually paid in cash or additional shares.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-equity">
+                        <h4>Equity:</h4>
+                        <p>The value of an ownership interest in an asset, calculated by subtracting liabilities from the asset's total value.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-inflation">
+                        <h4>Inflation:</h4>
+                        <p>A general increase in prices and fall in the purchasing value of money, affecting investment returns.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-margin">
+                        <h4>Margin:</h4>
+                        <p>Borrowing funds from a broker to purchase an investment, which can amplify returns and losses.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-market-capitalization">
+                        <h4>Market Capitalization:</h4>
+                        <p>The total market value of a company's outstanding shares, calculated by multiplying the share price by the total number of outstanding shares.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-portfolio-diversification">
+                        <h4>Portfolio Diversification:</h4>
+                        <p>The strategy of spreading investments across various financial assets to reduce risk.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-rebalancing">
+                        <h4>Rebalancing:</h4>
+                        <p>The process of realigning the weightings of a portfolio by periodically buying or selling assets to maintain a desired level of asset allocation.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-savings-account">
+                        <h4>Savings Account:</h4>
+                        <p>A deposit account held at a financial institution that provides a modest interest rate.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-speculation">
+                        <h4>Speculation:</h4>
+                        <p>The practice of buying and selling assets with higher risk in the hopes of making a profit from short-term price changes.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-value-investing">
+                        <h4>Value Investing:</h4>
+                        <p>An investment strategy that involves picking stocks that appear to be undervalued based on fundamental analysis.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-growth-investing">
+                        <h4>Growth Investing:</h4>
+                        <p>A strategy that focuses on companies expected to grow at an above-average rate compared to their industry or the overall market.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-market-research">
+                        <h4>Market Research:</h4>
+                        <p>The process of gathering information about consumers' needs and preferences to guide investments.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-call-option">
+                        <h4>Call Option:</h4>
+                        <p>A financial contract that gives the buyer the right, but not the obligation, to buy an asset at a specified price within a specified time frame.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-put-option">
+                        <h4>Put Option:</h4>
+                        <p>A financial contract that gives the buyer the right, but not the obligation, to sell an asset at a specified price within a specified time frame.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-asset-allocation">
+                        <h4>Asset Allocation:</h4>
+                        <p>The investment strategy of dividing a portfolio among different asset categories, such as stocks, bonds, and cash.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-FDIC">
+                        <h4>FDIC:</h4>
+                        <p>The Federal Deposit Insurance Corporation, a U.S. government agency that provides deposit insurance to depositors in U.S. banks.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-risk-tolerance">
+                        <h4>Risk Tolerance:</h4>
+                        <p>The degree of variability in investment returns that an individual is willing to withstand in their investment portfolio.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-pulled-risk-studies">
+                        <h4>Pulled Risk Studies:</h4>
+                        <p>Research studies that assess the potential risks involved with specific investments or market conditions.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-stability">
+                        <h4>Stability:</h4>
+                        <p>The characteristic of an investment that tends to maintain its value over time with minimal variance.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-futures">
+                        <h4>Futures:</h4>
+                        <p>Contracts to buy or sell a specific asset at a predetermined future date and price, used for hedging and speculation.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-preferred-stock">
+                        <h4>Preferred Stock:</h4>
+                        <p>A class of ownership in a corporation that provides a fixed dividend before any dividends are paid to common stockholders.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-arbitrage">
+                        <h4>Arbitrage:</h4>
+                        <p>The simultaneous purchase and sale of an asset in different markets to exploit price differences.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-market-making">
+                        <h4>Market Making:</h4>
+                        <p>The process by which a firm or individual provides liquidity to the market by buying and selling financial instruments.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-collateral">
+                        <h4>Collateral:</h4>
+                        <p>An asset pledged by a borrower to secure a loan, which can be seized by the lender in case of default.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-hedging">
+                        <h4>Hedging:</h4>
+                        <p>A risk management strategy used to offset potential losses in investments by taking an opposite position in a related asset.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-yield">
+                        <h4>Yield:</h4>
+                        <p>The income generated from an investment, typically expressed as a percentage of the investment's cost or current market value.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-returns">
+                        <h4>Returns:</h4>
+                        <p>The gain or loss made on an investment over a specific period of time, often expressed as a percentage.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-margin-trading">
+                        <h4>Margin Trading:</h4>
+                        <p>The practice of borrowing money from a broker to trade, amplifying potential gains and losses.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-liquidity">
+                        <h4>Liquidity:</h4>
+                        <p>The ease with which an asset can be converted into cash without significantly affecting its price.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-derivative">
+                        <h4>Derivative:</h4>
+                        <p>A financial contract whose value is based on the performance of an underlying asset, index, or interest rate.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-public-offering">
+                        <h4>Public Offering:</h4>
+                        <p>The process of offering shares of a private company to the public in a new stock issuance.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-private-equity">
+                        <h4>Private Equity:</h4>
+                        <p>Investment capital from high-net-worth individuals and firms that is used to acquire shares in private companies or conduct buyouts of public companies.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-angel-investor">
+                        <h4>Angel Investor:</h4>
+                        <p>An individual who provides capital for a startup, often in exchange for convertible debt or ownership equity.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-cybersecurities">
+                        <h4>Cybersecurities:</h4>
+                        <p>Measures and technologies designed to secure digital assets and protect financial transactions from cyber threats.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-ETF-spread">
+                        <h4>ETF Spread:</h4>
+                        <p>The difference between the purchase price and the sale price of an ETF, typically lower than traditional stock spreads.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-cryptocurrency">
+                        <h4>Cryptocurrency:</h4>
+                        <p>A digital or virtual currency that uses cryptography for security and operates on a decentralized network (blockchain).</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-blockchain">
+                        <h4>Blockchain:</h4>
+                        <p>A distributed ledger technology that records transactions across multiple computers securely and in a way that the registered transactions cannot be altered.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-syndicate">
+                        <h4>Syndicate:</h4>
+                        <p>A group of investors that come together to fund a specific investment or venture, sharing both the risks and rewards.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-revenue">
+                        <h4>Revenue:</h4>
+                        <p>The total amount of money generated from the sale of goods or services by a company.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-expense">
+                        <h4>Expense:</h4>
+                        <p>The costs incurred in the operation of a business, which reduce revenue.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-capital-structure">
+                        <h4>Capital Structure:</h4>
+                        <p>The mix of different sources of funding, including debt and equity, used by a company to finance its operations.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-IPO">
+                        <h4>IPO:</h4>
+                        <p>An Initial Public Offering, when a company first sells shares to the public, allowing it to raise capital from public investors.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-SCOR">
+                        <h4>SCOR:</h4>
+                        <p>Systematic Curated Order Report, a report used to assess the systematic risks associated with a particular investment.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-legal-liability">
+                        <h4>Legal Liability:</h4>
+                        <p>The legal obligation imposed on an individual or organization, which may entail a monetary penalty related to investment transactions.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-insider-trading">
+                        <h4>Insider Trading:</h4>
+                        <p>The buying or selling of a company's stock by someone who has non-public, material information about that company, often illegal.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-valuation">
+                        <h4>Valuation:</h4>
+                        <p>The process of determining the current worth of an asset or company, considering various factors and approaches.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-uncertainty">
+                        <h4>Uncertainty:</h4>
+                        <p>The condition of having limited knowledge regarding an investment outcome, leading to potential variability in returns.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-compliance">
+                        <h4>Compliance:</h4>
+                        <p>Adherence to laws, regulations, and guidelines governing financial markets and investment practices.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-consolidation">
+                        <h4>Consolidation:</h4>
+                        <p>The process where companies combine their resources, which can lead to increased efficiency and market share.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-due-diligence">
+                        <h4>Due Diligence:</h4>
+                        <p>The investigation and evaluation of a business or investment opportunity before signing a contract or making an investment decision.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-valuation-multiples">
+                        <h4>Valuation Multiples:</h4>
+                        <p>Financial ratios used to compare a company's value to key financial metrics, helping assess whether it is overvalued or undervalued.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-liquidation">
+                        <h4>Liquidation:</h4>
+                        <p>The process of selling off a company's assets in order to pay debts or distribute proceeds to shareholders.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-tender-offer">
+                        <h4>Tender Offer:</h4>
+                        <p>A public offer to buy some or all of shareholders' shares at a specified price.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-tariff">
+                        <h4>Tariff:</h4>
+                        <p>A tax imposed on imported goods and services, generally in an effort to protect domestic industries.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-outlook">
+                        <h4>Outlook:</h4>
+                        <p>An estimated future performance of a particular investment or market, often based on economic or market indicators.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-sample">
+                        <h4>Sample:</h4>
+                        <p>A portion of a population selected for analysis or testing to draw conclusions about the entire group.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-libor">
+                        <h4>LIBOR:</h4>
+                        <p>The London Interbank Offered Rate, a benchmark interest rate used to set borrowing costs around the world.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-acquisition">
+                        <h4>Acquisition:</h4>
+                        <p>The process of acquiring control of another company, often through purchasing its shares.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-merger">
+                        <h4>Merger:</h4>
+                        <p>The combination of two companies to form a new entity, often aiming to increase efficiency and market share.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-zero-sum-game">
+                        <h4>Zero-Sum Game:</h4>
+                        <p>A situation in which one participant's gains are exactly balanced by another participant's losses, common in competitive markets.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-network">
+                        <h4>Network:</h4>
+                        <p>A system of interconnected people, organizations, or businesses that can facilitate the exchange of information or resources.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-data-analysis">
+                        <h4>Data Analysis:</h4>
+                        <p>The process of reviewing, cleaning, and modeling data with the goal of discovering useful information to support decision-making.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-sovereign-debt">
+                        <h4>Sovereign Debt:</h4>
+                        <p>The money that a country's government has borrowed, typically through issuing bonds to fund public projects.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-technical-analysis">
+                        <h4>Technical Analysis:</h4>
+                        <p>Investment analysis methodology that forecasts the direction of prices through the study of past market data, primarily price and volume.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-fundamental-analysis">
+                        <h4>Fundamental Analysis:</h4>
+                        <p>The process of evaluating a security's intrinsic value by examining related economic, financial, and other qualitative and quantitative factors.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-beta">
+                        <h4>Beta:</h4>
+                        <p>A measure of a stock's volatility in relation to the overall market, used to assess investment risk.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-alternative-investments">
+                        <h4>Alternative Investments:</h4>
+                        <p>Assets that do not fall into the conventional investment categories, such as stocks, bonds, or cash; includes private equity, hedge funds, and real estate.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-restructuring">
+                        <h4>Restructuring:</h4>
+                        <p>The process of reorganizing a company’s structure, often to reduce debt or enhance efficiency.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-operational-risk">
+                        <h4>Operational Risk:</h4>
+                        <p>The risk of loss resulting from inadequate or failed internal processes, people, or systems, or from external events.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-cash-flow">
+                        <h4>Cash Flow:</h4>
+                        <p>The total amount of money being transferred into and out of a business, critical for assessing financial health.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-initial-margin">
+                        <h4>Initial Margin:</h4>
+                        <p>The minimum percentage of the purchase price of securities that the investor must pay for with their own cash or marginable securities.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-rolling-return">
+                        <h4>Rolling Return:</h4>
+                        <p>The return of investment over a certain period of time, updated continuously as new returns are added to the dataset.</p>
+                    </div>
+                    <div class="dictionary-entry" id="entry-ESG-investing">
+                        <h4>ESG Investing:</h4>
+                        <p>Investment strategy that considers environmental, social, and governance factors alongside financial returns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Investment Guide. Educate yourself and invest wisely!</p>
+    </footer>
+
+    <script>
+        // Get modal element
+        var modal = document.getElementById("dictionary-modal");
+        // Get button that opens the modal
+        var btn = document.getElementById("dictionary-button");
+        // Get the <span> element that closes the modal
+        var span = document.getElementById("close-modal");
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // Close modal if the user clicks outside of the modal content
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Function to filter the dictionary entries based on search input
+        function filterDictionary() {
+            var input, filter, dictionary, entries, entry, h4, i, txtValue;
+            input = document.getElementById('search-input');
+            filter = input.value.toLowerCase();
+            dictionary = document.getElementById("dictionary-entries");
+            entries = dictionary.getElementsByClassName('dictionary-entry');
+
+            for (i = 0; i < entries.length; i++) {
+                entry = entries[i];
+                h4 = entry.getElementsByTagName("h4")[0];
+                if (h4) {
+                    txtValue = h4.textContent || h4.innerText;
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        entry.style.display = "";
+                    } else {
+                        entry.style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
