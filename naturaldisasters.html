@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Disaster Survival Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+    
+    * {
+           font-family: 'Poppins'}
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            background: #35424a;
+            color: #fff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        nav li:hover {
+            background-color: #45a049;
+        }
+
+        main {
+            padding: 20px;
+            background-color: white;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #35424a;
+            color: #ffffff;
+        }
+
+        .kit-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: #009688;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .kit-content {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #e0f7fa;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Natural Disaster Survival Guide</h1>
+    </header>
+
+    <nav>
+        <ul id="nav-links">
+            <li onclick="showSection('earthquake')">Earthquakes</li>
+            <li onclick="showSection('volcano')">Volcanic Eruptions</li>
+            <li onclick="showSection('tsunami')">Tsunamis</li>
+            <li onclick="showSection('hurricane')">Hurricanes</li>
+            <li onclick="showSection('tornado')">Tornadoes</li>
+            <li onclick="showSection('flood')">Floods</li>
+            <li onclick="showSection('drought')">Droughts</li>
+            <li onclick="showSection('wildfire')">Wildfires</li>
+            <li onclick="showSection('landslide')">Landslides</li>
+            <li onclick="showSection('avalanche')">Avalanches</li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="earthquake" class="content-section active">
+            <h2>Earthquakes</h2>
+            <p>Earthquakes can happen without warning, making it essential to be prepared. First, you should create an emergency kit filled with water, non-perishable food, a flashlight, batteries, a first-aid kit, and any necessary medications. Keep this kit in a place that is easily accessible so you can grab it quickly during an emergency.</p>
+            <p>During the shaking, remember to follow the ‘Drop, Cover, and Hold On’ technique. Get down on your hands and knees to prevent being knocked over, cover your head and neck under sturdy furniture or against an interior wall, and hold on until the shaking stops. This reduces the chance of injury from falling debris.</p>
+            <p>If you are indoors, stay inside, as moving outside during shaking can expose you to falling objects. If you are in bed, cover your head with a pillow. After the shaking stops, check for injuries and damage before evacuating if necessary.</p>
+            <p>Outside, find an open area away from buildings, trees, streetlights, and utility wires. Once the shaking has stopped, remain aware of potential aftershocks, which often follow the main quake.</p>
+            <p>Finally, keep in touch with family and loved ones through emergency communication plans. Know how to communicate your status and location, as mobile signals may be disrupted. Understanding your local emergency procedures and evacuation routes is crucial for safety and preparedness.</p>
+
+            <button class="kit-button" onclick="toggleKit('earthquakeKit')">🧰 Preparedness Kit</button>
+            <div id="earthquakeKit" class="kit-content">
+                <ul>
+                    <li>Water: One gallon per person per day for at least three days</li>
+                    <li>Non-perishable food: Enough for at least three days</li>
+                    <li>Flashlight and extra batteries</li>
+                    <li>First aid kit</li>
+                    <li>Multi-tool or Swiss army knife</li>
+                    <li>Whistle to signal for help</li>
+                    <li>Local maps</li>
+                    <li>Cell phone with chargers and backup batteries</li>
+                    <li>Important documents (insurance policies, identification)</li>
+                    <li>Medications and medical supplies</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="volcano" class="content-section">
+            <h2>Volcanic Eruptions</h2>
+            <p>When living near a volcano, your first step should be to understand the alert levels (normal, advisory, watch, warning) set by authorities. Stay informed through local news and geological surveys about any changes in volcanic activity. Preparation includes creating an emergency kit with essentials for evacuation.</p>
+            <p>If an eruption is imminent, evacuate immediately if instructed by authorities. To protect yourself from ash fall, wear masks, goggles, and long-sleeved clothing. Keeping windows and doors closed can help prevent ash from entering your home.</p>
+            <p>When ash falls, avoid driving unless absolutely necessary. Ash can severely reduce visibility and make roads slippery. If driving is unavoidable, keep your headlights on and drive slowly, maintaining a safe distance from other vehicles.</p>
+            <p>Post-eruption, stay indoors until local authorities declare it safe. Monitor air quality reports to avoid ash inhalation, and clean up ash carefully, using proper protective equipment to prevent respiratory problems.</p>
+            <p>Finally, communicate regularly with family and friends during a volcanic eruption, keeping them informed about your safety. Creating a family emergency plan and regularly practicing it can help reduce panic and confusion during an actual event.</p>
+
+            <button class="kit-button" onclick="toggleKit('volcanoKit')">🧰 Preparedness Kit</button>
+            <div id="volcanoKit" class="kit-content">
+                <ul>
+                    <li>Water: Enough for at least three days</li>
+                    <li>Non-perishable food: Enough for at least three days</li>
+                    <li>N95 masks to protect against ash inhalation</li>
+                    <li>Goggles to protect eyes from ash</li>
+                    <li>First aid kit</li>
+                    <li>Flashlight with extra batteries</li>
+                    <li>Emergency blanket or sleeping bags</li>
+                    <li>Whistle to signal for help</li>
+                    <li>Important documents sealed in waterproof bags</li>
+                    <li>Local maps and evacuation routes</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="tsunami" class="content-section">
+            <h2>Tsunamis</h2>
+            <p>Tsunamis are often preceded by an earthquake. Familiarize yourself with the local tsunami evacuation routes before a disaster strikes. Your home should have a disaster kit ready, including water, food, a flashlight, a whistle, and essential medications that could sustain you for several days.</p>
+            <p>When a tsunami warning is issued, it is critical to move to higher ground immediately. Do not wait for further instructions, as the first wave may not be the largest. If you are in a coastal area and feel an earthquake, head for higher ground or inland as soon as it is safe to do so.</p>
+            <p>If you are in a boat, stay away from harbors and shallow waters if a tsunami is approaching, as they can create unpredictable waves. Instead, head to open waters and listen for instructions from authorities.</p>
+            <p>After the tsunami, avoid returning to the coastline until declared safe by authorities. Follow emergency broadcasts for information on health advisories, possible contamination, and other dangers to be aware of.</p>
+            <p>In terms of longer-term planning, participating in local disaster preparedness drills and education programs can improve your tsunami response. Establishing communication plans with family members can also ensure everyone knows what to do in an emergency.</p>
+
+            <button class="kit-button" onclick="toggleKit('tsunamiKit')">🧰 Preparedness Kit</button>
+            <div id="tsunamiKit" class="kit-content">
+                <ul>
+                    <li>Water: One gallon per person per day for at least three days</li>
+                    <li>Non-perishable food: Enough for at least three days</li>
+                    <li>Flashlight with extra batteries</li>
+                    <li>Portable charger for phones</li>
+                    <li>Whistle to signal for help</li>
+                    <li>First aid kit</li>
+                    <li>Modifications for housing (floats, buoyancy aids)</li>
+                    <li>Personal flotation device if in coastal areas</li>
+                    <li>Local maps highlighting evacuation routes</li>
+                    <li>Important documents sealed in waterproof bags</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="hurricane" class="content-section">
+            <h2>Hurricanes</h2>
+            <p>Preparation for a hurricane begins well in advance. Monitor weather reports and understand the difference between a watch and a warning. Create an emergency kit that includes water, non-perishable food, flashlights, batteries, first-aid supplies, and other essentials to sustain your household for at least three days.</p>
+            <p>If you live in an area prone to hurricanes, consider developing a family evacuation plan. Know where you will go, how you’ll get there, and ensure all family members are aware of the plan. It's also crucial to secure your home, including storm shutters and reinforcement of garage doors.</p>
+            <p>During the storm, stay indoors and away from windows and doors. Seek shelter in a small, windowless interior room on the lowest level of your house. Listen to local authorities for updates and stay informed through a battery-operated radio or weather apps.</p>
+            <p>After the storm passes, remain cautious. Avoid flooded areas and stay clear of downed power lines. If you've been evacuated, wait for official announcements before returning home, and be prepared for the possibility of additional hazards such as further flooding or debris.</p>
+            <p>Stay informed and connected with emergency services and your community in the aftermath. Sharing information about any needs or damage can aid recovery efforts. It’s important to assess your home for safety before making repairs, and document any damage for insurance purposes.</p>
+
+            <button class="kit-button" onclick="toggleKit('hurricaneKit')">🧰 Preparedness Kit</button>
+            <div id="hurricaneKit" class="kit-content">
+                <ul>
+                    <li>Water: One gallon per person per day for at least three days</li>
+                    <li>Non-perishable food: Enough for at least three days</li>
+                    <li>Flashlight with extra batteries</li>
+                    <li>Emergency radio</li>
+                    <li>First aid kit</li>
+                    <li>Multi-tool or Swiss army knife</li>
+                    <li>Whistle to signal for help</li>
+                    <li>Important documents sealed in waterproof bags</li>
+                    <li>Cell phone with chargers and backup batteries</li>
+                    <li>Cash in small denominations</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="tornado" class="content-section">
+            <h2>Tornadoes</h2>
+            <p>Tornado preparedness is essential. Know the tornado watch and warning distinctions, and always have a plan in place before severe weather strikes. Maintain an emergency kit with water, food, a flashlight, batteries, and a weather radio in a designated safe area in your home.</p>
+            <p>When a tornado warning is issued, seek shelter immediately. The best place to go is a basement or small interior room on the lowest floor, away from windows. Cover yourself with a mattress or heavy blankets to protect against debris.</p>
+            <p>If you are in a mobile home, seek substantial shelter nearby, as they are particularly vulnerable to tornadoes. If you are caught outside, lay flat in a nearby ditch or low-lying area, protecting your head and neck with your arms.</p>
+            <p>Post-tornado, remain cautious of downed power lines and avoid injured individuals if you are not trained to provide assistance. Listen to local news for emergency instructions regarding travel safety and potential further tornado activity.</p>
+            <p>Finally, participate in tornado drills and familiarize yourself with the sound of warnings. Developing a communication plan that includes family members will ensure everyone is aware of their roles during a storm event.</p>
+
+            <button class="kit-button" onclick="toggleKit('tornadoKit')">🧰 Preparedness Kit</button>
+            <div id="tornadoKit" class="kit-content">
+                <ul>
+                    <li>Water: One gallon per person per day for at least three days</li>
+                    <li>Non-perishable food: Enough for at least three days</li>
+                    <li>Flashlight with extra batteries</li>
+                    <li>First aid kit</li>
+                    <li>Emergency whistle</li>
+                    <li>Multi-tool or Swiss army knife</li>
+                    <li>Sturdy shoes and gloves</li>
+                    <li>Local maps with evacuation routes</li>
+                    <li>Important documents sealed in waterproof bags</li>
+                    <li>Cell phone with chargers</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="flood" class="content-section">
+            <h2>Floods</h2>
+            <p>To prepare for floods, create an emergency kit containing food, water, medications, and important documents. Know if you live in a flood-prone area and familiarize yourself with the local evacuation routes and emergency procedures.</p>
+            <p>During a flood, heed warnings from local authorities. If instructed to evacuate, do so immediately, taking your emergency kit with you. Move to higher ground without hesitation, avoiding flooded areas where water can hide dangers such as debris and hazardous materials.</p>
+            <p>Never drive through floodwaters, as it can be difficult to determine the depth and strength of the current. In rainstorms, be aware of flash floods, which can occur suddenly and with little warning.</p>
+            <p>Stay informed via local news and weather stations to keep track of the situation. Never underestimate the power of water; even a few inches can sweep you away.</p>
+            <p>After the flood, return home only when authorities declare it safe. Check for structural damage and hazards before reentering, and document any damage for insurance claims.</p>
+
+            <button class="kit-button" onclick="toggleKit('floodKit')">🧰 Preparedness Kit</button>
+            <div id="floodKit" class="kit-content">
+                <ul>
+                    <li>Water: Enough for at least three days</li>
+                    <li>Non-perishable food: Enough for at least three days</li>
+                    <li>Flashlight with extra batteries</li>
+                    <li>First aid kit</li>
+                    <li>Emergency radio</li>
+                    <li>Multi-tool or Swiss army knife</li>
+                    <li>Whistle to signal for help</li>
+                    <li>Local maps and emergency contacts</li>
+                    <li>Cash in small denominations</li>
+                    <li>Important documents sealed in waterproof bags</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="drought" class="content-section">
+            <h2>Droughts</h2>
+            <p>Drought preparedness begins with understanding your water usage. In water-scarce regions, conserving water should become a daily habit. Create a plan that focuses on saving water in your home and yard, and invest in water-efficient appliances and irrigation systems.</p>
+            <p>Have an emergency kit ready that includes water purification tablets and water bottles. Stock up on non-perishable food items, as drought can lead to food shortages.</p>
+            <p>During a drought, prioritize water conservation. Limit usage by taking shorter showers and fixing leaks, and avoid watering your lawn or garden unless absolutely necessary.</p>
+            <p>Be aware of fire hazards that can increase during drought conditions. Clear dry leaves and brush from around your home, and always adhere to local burn bans.</p>
+            <p>Stay informed through local weather reports and updates from authorities regarding drought status and possible food rationing. Communicate with your community about conservation methods and resource sharing.</p>
+
+            <button class="kit-button" onclick="toggleKit('droughtKit')">🧰 Preparedness Kit</button>
+            <div id="droughtKit" class="kit-content">
+                <ul>
+                    <li>Water: Store enough safe drinking water for emergencies</li>
+                    <li>Water purification methods: Tablets, filters, or boiling supplies</li>
+                    <li>Non-perishable food: Enough to last for several days</li>
+                    <li>First aid kit</li>
+                    <li>Emergency flashlight and batteries</li>
+                    <li>Personal hygiene items</li>
+                    <li>Garden tools for conserving and managing irrigation</li>
+                    <li>Local maps and emergency contacts</li>
+                    <li>Cash in small denominations for food purchases</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="wildfire" class="content-section">
+            <h2>Wildfires</h2>
+            <p>Wildfire preparation starts by creating a defensible space around your property. Clear away brush, trees, and combustible materials that could ignite your home. Create a barrier using gravel or mulch, and maintain a well-watered landscape.</p>
+            <p>Prepare an emergency kit that includes water, snacks, first aid supplies, and protective clothing. A map highlighting evacuation routes and local shelters should also be included.</p>
+            <p>If a wildfire threat is imminent, stay informed via local news and adhere to evacuation orders. If told to evacuate, do so quickly, taking your emergency kit and important documents.</p>
+            <p>During a wildfire, keep windows and doors closed to limit smoke infiltration. Use wet cloths to seal any gaps. Keep alerted to changing conditions and ensure you have enough breathing protection if evacuated.</p>
+            <p>After the fire, remain cautious of hot spots and embers that could reignite. Only return home when local authorities declare it safe. Evaluate damage with safety in mind and document any losses for insurance claims.</p>
+
+            <button class="kit-button" onclick="toggleKit('wildfireKit')">🧰 Preparedness Kit</button>
+            <div id="wildfireKit" class="kit-content">
+                <ul>
+                    <li>Water: Store enough drinking water for emergencies</li>
+                    <li>Non-perishable food: Enough to sustain you for several days</li>
+                    <li>Flashlight and extra batteries</li>
+                    <li>First aid kit</li>
+                    <li>Personal protective equipment (goggles, masks)</li>
+                    <li>Emergency blanket or sleeping bag</li>
+                    <li>Rain gear for ash and ember protection</li>
+                    <li>Local maps with evacuation routes</li>
+                    <li>Important documents sealed in waterproof bags</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="landslide" class="content-section">
+            <h2>Landslides</h2>
+            <p>Preparing for landslides involves identifying whether you live in a landslide-prone area. Check with local geological surveys about risks and take steps to manage drainage around your property, such as creating drainage ditches and ensuring proper erosion control.</p>
+            <p>Have an emergency kit ready that includes water, snacks, a flashlight, and a first aid kit. Be aware of your local evacuation routes and what to do during heavy rainfall.</p>
+            <p>If you notice signs of a landslide, such as cracks in the ground or bulging earth, evacuate immediately to higher ground. Avoid walking through elevated debris or over unstable ground.</p>
+            <p>After a landslide, stay clear of the affected area and listen to local warnings. Be aware of the possibility of aftershocks or further slides in areas affected by heavy rains.</p>
+            <p>Stay informed about weather conditions and report any concerns to local authorities. Communicate with family to ensure everyone is aware of safety protocols.</p>
+
+            <button class="kit-button" onclick="toggleKit('landslideKit')">🧰 Preparedness Kit</button>
+            <div id="landslideKit" class="kit-content">
+                <ul>
+                    <li>Water: Enough for at least three days</li>
+                    <li>Non-perishable food: Enough for at least three days</li>
+                    <li>Flashlight with extra batteries</li>
+                    <li>Whistle to signal for help</li>
+                    <li>First aid kit</li>
+                    <li>Small shovel for clearing debris</li>
+                    <li>Sturdy shoes and gloves</li>
+                    <li>Local maps with evacuation routes</li>
+                    <li>Important documents sealed in waterproof bags</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="avalanche" class="content-section">
+            <h2>Avalanches</h2>
+            <p>Preparation for avalanches starts with understanding the areas you spend time in. While enjoying winter sports, remain informed of avalanche risks and check local avalanche forecasts. Always choose routes with a lower risk of slides.</p>
+            <p>Your emergency kit should include essentials like water, food, first-aid supplies, and an avalanche transceiver if you are venturing into backcountry areas. Additionally, carry a shovel, a probe, and safety equipment like helmets and goggles.</p>
+            <p>In case of an avalanche, if you’re caught, try to move to the side of the slide to avoid being buried completely. Swimming actions will help keep you from getting pulled down. When the slide stops, create an air pocket in front of your mouth and nose as you settle. Stay calm and still.</p>
+            <p>Post-avalanche, be aware of secondary avalanches and continue to seek higher ground. Monitor weather conditions and follow local emergency protocols for rescuing or recovering others.</p>
+            <p>Communicate with authorities and stay connected with search and rescue teams during recovery efforts. Understanding community resources available after an avalanche can aid recovery efforts.</p>
+
+            <button class="kit-button" onclick="toggleKit('avalancheKit')">🧰 Preparedness Kit</button>
+            <div id="avalancheKit" class="kit-content">
+                <ul>
+                    <li>Water: Store enough drinking water for emergencies</li>
+                    <li>Non-perishable food: Enough to sustain you for several days</li>
+                    <li>First aid kit</li>
+                    <li>Avalanche transceiver and probe</li>
+                    <li>Small shovel for clearing snow</li>
+                    <li>Flashlight with extra batteries</li>
+                    <li>Personal protective equipment (goggles, masks)</li>
+                    <li>Local maps highlighting safe areas</li>
+                    <li>Emergency blanket</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    
+
+    <script>
+        function showSection(id) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Show the selected section
+            const activeSection = document.getElementById(id);
+            activeSection.classList.add('active');
+        }
+
+        // Show the first section by default
+        showSection('earthquake');
+
+        function toggleKit(kitId) {
+            const kitContent = document.getElementById(kitId);
+            kitContent.style.display = kitContent.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+
+</html>
