@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child's Height Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Lexend';
+        }
+        
+        body {
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #e9ecef;
+            color: #343a40;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        header {
+            background: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 123, 255, 0.2);
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input[type="number"] {
+            width: 48%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        /* Add margin to the second input in the input-group for inches */
+        .input-group input[type="number"]:nth-child(2) {
+            margin-left: 4%; /* Adjust margin to achieve desired spacing */
+        }
+
+        input[type="number"]:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        select:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        button {
+            padding: 15px;
+            background-color: #28A745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #1e7e34;
+            transform: translateY(0);
+        }
+
+        #heightResult {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #343a40;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        @media (max-width: 600px) {
+            .input-group {
+                flex-direction: column;
+            }
+
+            input[type="number"] {
+                width: 100%;
+                margin-bottom: 15px; /* Include bottom margin to space inputs */
+            }
+
+            .input-group input[type="number"]:nth-child(2) {
+                margin-left: 0; /* Reset margin for mobile view */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Child's Height Predictor</h1>
+    <p>Estimate your child's future height based on parental heights.</p>
+
+    <main>
+        <section id="height-predictor">
+            <label for="fatherFeet">Father's Height:</label>
+            <div class="input-group">
+                <input type="number" id="fatherFeet" placeholder="Feet" min="0" required>
+                <input type="number" id="fatherInches" placeholder="Inches" min="0" max="11" required>
+            </div>
+
+            <label for="motherFeet">Mother's Height:</label>
+            <div class="input-group">
+                <input type="number" id="motherFeet" placeholder="Feet" min="0" required>
+                <input type="number" id="motherInches" placeholder="Inches" min="0" max="11" required>
+            </div>
+
+            <label for="childGender">Child's Gender:</label>
+            <select id="childGender">
+                <option value="boy">Boy</option>
+                <option value="girl">Girl</option>
+            </select>
+
+            <button id="predictHeight">Predict Height</button>
+            <p id="heightResult"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Child's Height Predictor. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('predictHeight').addEventListener('click', function () {
+            // Get values for father's height
+            const fatherFeet = parseInt(document.getElementById('fatherFeet').value) || 0;
+            const fatherInches = parseInt(document.getElementById('fatherInches').value) || 0;
+            const fatherHeightInCm = (fatherFeet * 30.48) + (fatherInches * 2.54);
+
+            // Get values for mother's height
+            const motherFeet = parseInt(document.getElementById('motherFeet').value) || 0;
+            const motherInches = parseInt(document.getElementById('motherInches').value) || 0;
+            const motherHeightInCm = (motherFeet * 30.48) + (motherInches * 2.54);
+
+            const childGender = document.getElementById('childGender').value;
+
+            // Validate inputs
+            if (fatherHeightInCm <= 0 || motherHeightInCm <= 0) {
+                alert("Please enter valid height values.");
+                return;
+            }
+
+            // Calculate the predicted height
+            let predictedHeight;
+            if (childGender === 'boy') {
+                predictedHeight = ((fatherHeightInCm + motherHeightInCm) / 2) + 6.5; // Add 6.5 cm for boys
+            } else {
+                predictedHeight = ((fatherHeightInCm + motherHeightInCm) / 2) - 6.5; // Subtract 6.5 cm for girls
+            }
+
+            // Convert result back to feet and inches
+            const resultFeet = Math.floor(predictedHeight / 30.48);
+            const resultInches = Math.round((predictedHeight % 30.48) / 2.54);
+
+            // Display the result
+            document.getElementById('heightResult').textContent = `Predicted Height: ${resultFeet} feet ${resultInches} inches`;
+        });
+    </script>
+
+</body>
+</html>
