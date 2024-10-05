@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riddles </title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+     * {font-family: 'Lexend'}
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #27ae60;
+        }
+
+        .riddle {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            background-color: #eef9f4;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #27ae60;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            font-size: 1.2em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 90%;
+            font-size: 1em;
+            margin: 10px 0;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #27ae60;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #27ae60;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Riddles </h1>
+        <div id="riddle" class="riddle"></div>
+        <input type="text" id="answer" placeholder="Your answer here" />
+        <button id="submit">Submit</button>
+        <div id="feedback" class="feedback"></div>
+        <button id="nextRiddle">Next Riddle</button>
+    </div>
+
+    <script>
+        const riddles = [
+            { question: "What has keys but can't open locks?", answer: "piano" },
+            { question: "What has to be broken before you can use it?", answer: "egg" },
+            { question: "I’m tall when I’m young, and I’m short when I’m old. What am I?", answer: "candle" },
+            { question: "What is full of holes but still holds water?", answer: "sponge" },
+            { question: "What begins with T, ends with T, and has T in it?", answer: "teapot" },
+            { question: "I have branches, but no fruit, trunk, or leaves. What am I?", answer: "bank" },
+            { question: "What can you catch but not throw?", answer: "cold" },
+            { question: "What begins with an 'e' and only contains one letter?", answer: "envelope" },
+            { question: "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?", answer: "echo" },
+            { question: "The more of this there is, the less you see. What is it?", answer: "darkness" },
+            { question: "What has hands but cannot clap?", answer: "clock" },
+            { question: "What can travel around the world while staying in a corner?", answer: "stamp" },
+            { question: "What runs all around a backyard, yet never moves?", answer: "fence" },
+            { question: "What begins with P and ends with E and has a million letters in it?", answer: "post office" },
+            { question: "I’m light as a feather, yet the strongest person can’t hold me for much longer than a minute. What am I?", answer: "breath" },
+            { question: "What has one eye but can't see?", answer: "needle" },
+            { question: "I can be cracked, made, told, and played. What am I?", answer: "joke" },
+            { question: "What is so fragile that saying its name breaks it?", answer: "silence" },
+            { question: "What has a heart that doesn’t beat?", answer: "artichoke" },
+            { question: "What gets wetter as it dries?", answer: "towel" },
+            { question: "What has a neck but no head?", answer: "bottle" },
+            { question: "What is always in front of you but can’t be seen?", answer: "future" },
+            { question: "What has many teeth but cannot bite?", answer: "comb" },
+            { question: "What goes up but never comes down?", answer: "age" },
+            { question: "I go in hard, come out soft, and am never the same. What am I?", answer: "gum" },
+            { question: "What has feet but no legs?", answer: "ruler" },
+            { question: "What can fill a room but takes up no space?", answer: "light" },
+            { question: "What comes once in a minute, twice in a moment, but never in a thousand years?", answer: "m" },
+            { question: "I have no life, but I can die. What am I?", answer: "battery" },
+            { question: "What can you hold in your left hand but not in your right?", answer: "your right hand" },
+            { question: "What has a thumb and four fingers but is not alive?", answer: "glove" },
+            { question: "What begins with 't', ends with a 't', and is full of 't'?", answer: "teapot" },
+            { question: "I go around all the places, cities, towns, and fields, but never leave my home. What am I?", answer: "map" },
+            { question: "What gets bigger the more you take away from it?", answer: "hole" },
+            { question: "What is always coming but never arrives?", answer: "tomorrow" },
+            { question: "What is easy to get into but hard to get out of?", answer: "trouble" },
+            { question: "What has words but never speaks?", answer: "book" },
+            { question: "What is more useful when it is broken?", answer: "egg" },
+            { question: "What has a face and two hands but no arms or legs?", answer: "clock" },
+            { question: "If a rooster lays an egg on top of a barn, which way will it roll?", answer: "it won't" },
+            { question: "What comes down but never goes up?", answer: "rain" },
+            { question: "You see me once in June, twice in November, but not at all in May. What am I?", answer: "the letter 'e'" },
+            { question: "What runs but never walks, has a mouth but never talks, has a head but never weeps, has a bed but never sleeps?", answer: "river" },
+            { question: "What can you break, even if you never pick it up or touch it?", answer: "promise" },
+            { question: "What has a bottom at the top?", answer: "leg" },
+            { question: "What is black when it’s clean and white when it’s dirty?", answer: "chalkboard" },
+            { question: "I have lots of eyes, but I cannot see. What am I?", answer: "potato" },
+            { question: "What has an end but no beginning, a home but no family, and a space but no room?", answer: "keyboard" },
+            { question: "What gets sharper the more you use it?", answer: "brain" },
+            { question: "What can fill a bag but never be seen?", answer: "air" },
+            { question: "What has a head, a tail, is brown, and has no legs?", answer: "penny" },
+            { question: "What belongs to you but other people use it more than you do?", answer: "your name" },
+            { question: "What can run but never walks, has a mouth but never sleeps?", answer: "river" },
+            { question: "What can you drop that will never touch the ground?", answer: "temperature" },
+            { question: "What has a spine but no bones?", answer: "book" },
+            { question: "I am taken from a mine, and shut up in a wooden case, from which I am never released. What am I?", answer: "pencil lead" },
+            { question: "What gets broken without being held?", answer: "promise" },
+            { question: "In a one-storey pink house, there was a pink person, a pink cat, a pink chair, a pink table, and a pink telephone. What color were the stairs?", answer: "there aren’t any" },
+            { question: "What is so light that it can float, but so heavy that it can sink?", answer: "bread" },
+            { question: "If you drop me, I'm sure to crack, but if you smile at me, I'm sure to smile back. What am I?", answer: "mirror" },
+            { question: "What can fill a room but occupies no space?", answer: "light" },
+            { question: "What comes once in a minute, twice in a moment, but never in a thousand years?", answer: "the letter 'm'" },
+            { question: "What goes up and down but does not move?", answer: "stairs" },
+            { question: "What can’t be put in a saucepan?", answer: "its lid" },
+            { question: "What question can you never answer yes to?", answer: "Are you asleep?" },
+            { question: "What can travel around the world while staying in a corner?", answer: "stamp" },
+            { question: "What has a bed but never sleeps?", answer: "river" },
+            { question: "I am not alive, but I can die. What am I?", answer: "battery" },
+            { question: "What has teeth but cannot bite?", answer: "comb" },
+            { question: "What has a neck but no head?", answer: "bottle" },
+            { question: "What has to be broken before you can use it?", answer: "egg" },
+            { question: "I’m found in socks, scarves, and mittens. I’m passed from person to person. What am I?", answer: "yarn" },
+            { question: "What can you serve that you can’t eat?", answer: "tennis ball" },
+            { question: "What has four wheels and flies?", answer: "garbage truck" },
+            { question: "What is always in front of you but can’t be seen?", answer: "future" },
+            { question: "What can you keep after giving to someone?", answer: "your word" },
+            { question: "What is full of holes but still holds water?", answer: "sponge" },
+            { question: "People buy me to eat, but never eat me. What am I?", answer: "plate" },
+            { question: "I am easy to lift, but hard to throw. What am I?", answer: "feather" },
+            { question: "I have a thumb and four fingers, but I'm not alive. What am I?", answer: "glove" },
+            { question: "What is given to you but others use it more?", answer: "your name" },
+            { question: "What has one eye but can’t see?", answer: "needle" },
+            { question: "I’m light as a feather, yet the strongest person can’t hold me for 5 minutes. What am I?", answer: "breath" },
+            { question: "What has cities but no houses, forests but no trees, and rivers but no water?", answer: "map" },
+            { question: "What is always coming but never arrives?", answer: "tomorrow" },
+            { question: "What begins with T, ends with T, and has T in it?", answer: "teapot" },
+            { question: "What has a head, a tail, but no body?", answer: "coin" },
+            { question: "What runs but never walks?", answer: "water" },
+            { question: "If a rooster lays an egg on the top of a barn, which way will it roll?", answer: "there is no egg" },
+            { question: "What gets bigger the more you take away from it?", answer: "hole" },
+            { question: "What can you catch but not throw?", answer: "cold" },
+            { question: "What has lots of eyes but can’t see?", answer: "potato" },
+            { question: "What has a head and a tail, but no body?", answer: "coin" },
+            { question: "What has roots as nobody sees, is taller than trees, up it goes, and yet never grows?", answer: "mountain" },
+            { question: "What has words but never speaks?", answer: "book" },
+            { question: "What begins with an 'e' and only contains one letter?", answer: "envelope" },
+            { question: "What has an eye but cannot see?", answer: "needle" },
+            { question: "What is full of holes but still holds water?", answer: "sponge" },
+            { question: "What gets sharper the more you use it?", answer: "brain" },
+            { question: "What has a heart that doesn’t beat?", answer: "artichoke" },
+            { question: "I can be cracked, made, told, and played. What am I?", answer: "joke" },
+            { question: "What can travel around the world but stays in one spot?", answer: "stamp" },
+            { question: "What is always in front of you but can't be seen?", answer: "future" },
+            { question: "I’m tall when I’m young, and I’m short when I’m old. What am I?", answer: "candle" },
+            { question: "What is so fragile that saying its name breaks it?", answer: "silence" },
+            { question: "What can fill a room but takes up no space?", answer: "light" },
+            { question: "What has one head, one foot, and four legs?", answer: "bed" },
+            { question: "What has many needles, but doesn’t sew?", answer: "Christmas tree" },
+            { question: "What can you catch but not throw?", answer: "cold" },
+            { question: "What is something that you can’t see, but can feel when it’s there?", answer: "air" },
+            { question: "What gets wetter as it dries?", answer: "towel" },
+            { question: "What travels around the world but stays in a corner?", answer: "stamp" },
+            { question: "What comes down but never goes up?", answer: "rain" },
+            { question: "What has a face and two hands but no arms or legs?", answer: "clock" },
+            { question: "What can run but never walks?", answer: "water" },
+            { question: "What can’t be used until it’s broken?", answer: "egg" },
+            { question: "The more of this there is, the less you see. What is it?", answer: "darkness" },
+            { question: "You see me once in June, twice in November, but not at all in May. What am I?", answer: "the letter 'e'" },
+            { question: "What has a neck but no head?", answer: "bottle" },
+            { question: "What runs but cannot walk?", answer: "river" },
+            { question: "What has four wheels and flies?", answer: "garbage truck" },
+            { question: "What can you hold in your left hand but not in your right?", answer: "your right hand" },
+            { question: "What has an end but no beginning, a home but no family?", answer: "keyboard" },
+            { question: "What goes up and down but does not move?", answer: "stairs" },
+            { question: "What is always coming but never arrives?", answer: "tomorrow" },
+            { question: "What is always in front of you but can’t be seen?", answer: "the future" },
+            { question: "What can you serve that you can’t eat?", answer: "tennis ball" },
+            { question: "What is black when it’s clean and white when it’s dirty?", answer: "chalkboard" },
+            { question: "What type of ship has no captain, no crew, and sails only in the night?", answer: "friendship" },
+            { question: "What is yours but others use it more than you do?", answer: "your name" },
+            { question: "The more you take, the more you leave behind. What am I?", answer: "footsteps" },
+            { question: "What has one eye but cannot see?", answer: "hurricane" },
+            { question: "What comes once in a minute, twice in a moment, but never in a thousand years?", answer: "m" },
+            { question: "What gets bigger as you take away from it?", answer: "hole" },
+            { question: "What can fill an entire room but takes up no space?", answer: "light" },
+            { question: "What is made of water but if you put it into water it will die?", answer: "ice" },
+            { question: "What can be broken but never held?", answer: "promise" },
+            { question: "What has a bottom at the top?", answer: "leg" },
+            { question: "What has teeth but cannot bite?", answer: "comb" },
+            { question: "What has a head, a tail, but no body?", answer: "coin" },
+            { question: "What goes in hard, comes out soft, and is never the same?", answer: "gum" },
+            { question: "What is always hungry and must be fed, but if you give it water, it will surely die?", answer: "fire" },
+            { question: "What has six faces but does not wear makeup, has twenty-one eyes but cannot see?", answer: "dice" },
+            { question: "What runs all around a backyard yet never moves?", answer: "fence" },
+            { question: "What has a thumb and four fingers, but is not alive?", answer: "glove" },
+            { question: "What goes up but never comes down?", answer: "age" },
+            { question: "What has ears but cannot hear?", answer: "corn" },
+            { question: "What can be cracked, made, told, and played?", answer: "joke" },
+            { question: "What is cut on a table, but never eaten?", answer: "deck of cards" },
+            { question: "What begins with T and ends with T and has T in it?", answer: "teapot" },
+            { question: "You see a house with a black door and black windows. What color are the stairs?", answer: "there aren’t any" },
+            { question: "What has a ring but no finger?", answer: "phone" },
+            { question: "What belongs to you but others use it more than you do?", answer: "your name" },
+            { question: "What is so fragile that saying its name breaks it?", answer: "silence" },
+            { question: "What can’t be seen but is always present?", answer: "air" },
+            { question: "What is full of holes but still holds water?", answer: "sponge" },
+            { question: "What has a bed but never sleeps?", answer: "river" },
+            { question: "What can be seen in the water but not in the air?", answer: "reflection" },
+            { question: "What is easy to get into but hard to get out of?", answer: "trouble" },
+            { question: "What is always in front of you but can’t be seen?", answer: "the future" },
+            { question: "What can run but never walks, has a mouth but never talks?", answer: "river" },
+            { question: "What begins with an 'e' and only contains one letter?", answer: "envelope" },
+            { question: "What is light as a feather but even the world's strongest man couldn't hold it for long?", answer: "breath" },
+            { question: "What can you catch but not throw?", answer: "cold" },
+            { question: "What gets broken without being held?", answer: "promise" },
+            { question: "What has a face and two hands but no arms?", answer: "clock" },
+            { question: "I have branches, but no fruit, trunk or leaves. What am I?", answer: "bank" },
+            { question: "What is easier to get into than out of?", answer: "trouble" },
+            { question: "If I drink, I die. If I eat, I am fine. What am I?", answer: "fire" },
+            { question: "What begins when it ends and ends when it begins?", answer: "circle" },
+            { question: "You see a boat filled with people. It has not sunk, but when you look again you don’t see a single person on the boat. Why?", answer: "All the people were married" },
+            { question: "What kind of room has no doors or windows?", answer: "mushroom" },
+            { question: "What has many keys but can't open a single lock?", answer: "piano" },
+            { question: "What has to be broken before you can use it?", answer: "egg" },
+            { question: "What has a face and two hands, but no arms or legs?", answer: "clock" },
+            { question: "What has many teeth but cannot bite?", answer: "comb" },
+            { question: "What is so light that it can float, but so heavy that it can sink?", answer: "bread" },
+            { question: "What begins with T, ends with T, and has T in it?", answer: "teapot" },
+            { question: "The more you take, the more you leave behind. What am I?", answer: "footsteps" },
+            { question: "What gets higher the more you take away?", answer: "the temperature" },
+            { question: "What can you play but cannot touch?", answer: "music" },
+            { question: "What can you make that no one can see?", answer: "noise" },
+            { question: "What has one voice but is not a singer?", answer: "echo" },
+            { question: "What is always coming but never arrives?", answer: "tomorrow" },
+            { question: "What is round but not a sphere?", answer: "circle" },
+            { question: "What has an end but no beginning, a home but no family?", answer: "keyboard" },
+            { question: "What builds up castles, tears down mountains, makes some men blind, and helps others to see?", answer: "sand" },
+            { question: "What can be touched but cannot be seen?", answer: "thought" },
+            { question: "What is full of holes but still holds water?", answer: "sponge" },
+            { question: "What can go up and down but never moves?", answer: "stairs" },
+            { question: "What is three times the size of an elephant but weighs nothing?", answer: "shadow" },
+            { question: "What runs all around a backyard yet never moves?", answer: "fence" }
+        ];
+
+        const riddleElement = document.getElementById('riddle');
+        const answerInput = document.getElementById('answer');
+        const feedbackElement = document.getElementById('feedback');
+
+        function getRandomRiddle() {
+            const randomIndex = Math.floor(Math.random() * riddles.length);
+            return riddles[randomIndex];
+        }
+
+        let currentRiddle = getRandomRiddle();
+
+        function displayRiddle() {
+            riddleElement.innerText = currentRiddle.question;
+            feedbackElement.innerText = "";
+            answerInput.value = "";
+        }
+
+        document.getElementById('submit').addEventListener('click', () => {
+            const userAnswer = answerInput.value.trim().toLowerCase();
+
+            if (userAnswer === currentRiddle.answer.toLowerCase()) {
+                feedbackElement.innerText = "Correct! 🎉";
+            } else {
+                feedbackElement.innerText = `Wrong! The correct answer is "${currentRiddle.answer}".`;
+            }
+        });
+
+        document.getElementById('nextRiddle').addEventListener('click', () => {
+            currentRiddle = getRandomRiddle();
+            displayRiddle();
+        });
+
+        // Initial display
+        displayRiddle();
+    </script>
+</body>
+</html>
