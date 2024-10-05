@@ -8,7 +8,7 @@
     <meta name="description" content="Use Useful Vault – Your ultimate online toolbox for quick calculations and conversions. Simplify tasks effortlessly with our efficient tools!">
     <meta name="keywords" content="online calculator, basic calculator, scientific calculator, unit converter, length converter, weight converter, temperature converter, volume converter, area calculator, circumference calculator, age calculator, random password generator, stopwatch, clock tool, financial calculator, mortgage calculator, percent calculator, time conversion, metric unit calculator, imperial unit calculator, math calculator, quick calculations, calculations for students, engineering calculator, math resources, online tools, solve equations, math problems, instant results, productivity tools, educational calculators, personal finance calculator, travel calculator, cooking converter, recipe calculator, business calculator, finance tools, online measurement converter, unit analysis, length measurement, distance calculator, online math tools, interactive tools, useful utilities, fun with numbers, calculator app, easy calculator, specialized calculators, kids math games, educational games, learning tools, interactive learning, school resources, practical tools, test preparation, math quizzes, study aids, teacher resources, course calculators, home budgeting tools, loan calculator, payment calculator, interest rate calculator, savings calculator, investment return calculator, GPA calculator, fitness calculator, health calculator, nutritional calculator, volume measurement, distance measurement, home improvement tools, DIY calculators, gardening calculators, construction calculators, sports calculators, entertainment games, online quizzes, math games, guessing games, fun with math, brain teasers, number puzzles, rock paper scissors game, maze navigation game, number guessing game, clicker game, user-friendly interface, quick access to tools, reliable resources, how-to guides, tool tutorials, documentation, tips and tricks, maximize productivity, calculate efficiently, manage tasks, daily task helper, problem-solving tools, simplify calculations, versatile calculators, responsive utilities, technology-enhanced tools, advanced computation, fast calculations, user engagement, feedback tools, data tracking, report generation, printable tools, online inventory calculator, online advertising calculator, web-based tools, community support, contact support, frequently asked questions, tips for effective use, educational support, curriculum resources, math enrichment tools, detailed calculators">
     <link rel="canonical" href="https://yourdomain.com/">
-    
+
     <title>Useful Vault: Explore Essential Basic Online Tools</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:wght@100..900&display=swap" rel="stylesheet">
 
     <link rel="icon" href="logo3.png" type="image/png"> <!-- Favicon link -->
-    
+
     <style>
         /* Shared CSS styles */
         * {
@@ -26,6 +26,9 @@
             box-sizing: border-box;
             font-family: 'Lexend', sans-serif;
             text-decoration: none;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
         }
 
         body {
@@ -35,6 +38,7 @@
             align-items: center;
             color: white;
             transition: background-color 0.3s;
+            text-align: center;
         }
 
         .navbar {
@@ -120,6 +124,10 @@
             outline: none;
             transition: all 0.3s;
             width: 300px;
+            text-align: center;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Tooltip styling */
@@ -145,7 +153,7 @@
             opacity: 1;
         }
 
-        /* Changed background colors for boxes */
+        /* Lighter background colors for boxes */
         #box1 { background-color: #ede3b9; }
         #box2 { background-color: #e4af87; }
         #box3 { background-color: #f6cbad; }
@@ -162,29 +170,31 @@
         #box14 { background-color: #84c4ef;  }
         #box15{ background-color: #74e8b4;  }
         #box16 { background-color: #f7d794; }
-        #box17 { background-color: #f3a683; }
-        #box18 { background-color: #f8a5c2; }
-        #box19 { background-color: #63cdda; }
-        #box20 { background-color: #ea8685; }
-        #box21 { background-color: #596275; }
-        #box22 { background-color: #f5cd79; }
-        #box23 { background-color: #546de5; }
-        #box24 { background-color: #e15f41; }
-        #box25 { background-color: #c44569; }
-        #box26 { background-color: #786fa6; }
-        #box27 { background-color: #f19066; }
-        #box28 { background-color: #f5d6a1; }
-
+        #box17 { background-color: #f8e1d3; } /* Very light salmon */
+        #box18 { background-color: #f9c2d6; } /* Very light blush */
+        #box19 { background-color: #b3e5f1; } /* Very light baby blue */
+        #box20 { background-color: #f5c3c2; } /* Very light coral */
+        #box21 { background-color: #f2f2f2; } /* Very light gray */
+        #box22 { background-color: #f8e1b0; } /* Very light cream */
+        #box23 { background-color: #dde5fa; } /* Very light periwinkle */
+        #box24 { background-color: #f6a1a1; } /* Very light rose */
+        #box25 { background-color: #f5d29a; } /* Very light muted lavender */
+        #box26 { background-color: #e8dadb; } /* Very light pinkish hue */
+        #box27 { background-color: #ffe6d0; } /* Very light peach */
+        #box28 { background-color: #fdf2e2; } /* Very light ivory */
 
         .main,
         .settings,
         .games-section,
         .faq-section,
-        .fun-section { /* Add fun section */
-            display: flex;
+        .fun-section {
+            display: none;  /* Initially hidden */
             flex-direction: column;
             align-items: center;
             margin: 20px auto;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
         }
 
         .box:hover {
@@ -237,8 +247,25 @@
     <script>
         // This function will help you track page load time and optimize user experience.
         window.addEventListener('load', function() {
-            const loadTime = performance.now(); // can use this for metrics
-            console.log('Page load time is ' + loadTime + ' milliseconds');
+            const mainContent = document.getElementById('main-content');
+            const sectionsToHide = [
+                'contact-info', 
+                'settings', 
+                'faq', 
+                'random-section', 
+                'games-section'
+            ];
+
+            // Show the main content by default
+            mainContent.style.display = 'flex';
+
+            // Hide all other sections
+            sectionsToHide.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.style.display = 'none';
+                }
+            });
         });
     </script>
 </head>
@@ -270,7 +297,6 @@
         <p>Explore our diverse collection of calculators and conversion tools designed for your convenience:</p>
         
         <div id="toolboxes">
-            <!-- Existing tool boxes -->
             <a href="calculator.html" aria-label="Go to Calculator Tool">
                 <div id="box1" class="box">Calculator
                     <div class="tooltip">Perform arithmetic calculations easily!</div>
@@ -337,19 +363,19 @@
                 </div>
             </a>
             
-             <a href="bmi.html" aria-label="Go to BMI Calculator">
+            <a href="bmi.html" aria-label="Go to BMI Calculator">
                 <div id="box14" class="box">BMI Calculator
                     <div class="tooltip">Calculate Your BMI</div>
                 </div>
             </a>
             
-             <a href="currency.html" aria-label="Go to Currency Converter">
+            <a href="currency.html" aria-label="Go to Currency Converter">
                 <div id="box15" class="box">Currency Converter
                     <div class="tooltip">Convert Different Currency's </div>
                 </div>
             </a>
 
-             <a href="loan.html" aria-label="Loan Calculator">
+            <a href="loan.html" aria-label="Loan Calculator">
                 <div id="box16" class="box">Loan Calculator
                     <div class="tooltip">Calculate Loans</div>
                 </div>
@@ -438,35 +464,41 @@
             enjoyable. <br><br> Save time, simplify your tasks, and, most importantly, have fun along the way! 
             So, what are you waiting for? Let’s get started! <br><br>
         </p>
-       
     </div>
     
     <div class="conduct-info" id="contact-info">
-        Contact us at <a href="mailto:helpfulvault@gmail.com" style="color: cyan;">helpfulvault@gmail.com</a>.
-        Your feedback and suggestions are greatly appreciated!
+        <h2>Contact Us</h2>
+        <p>Your feedback and suggestions are greatly appreciated!</p>
+        <p>Feel free to reach out via email: <a href="mailto:helpfulvault@gmail.com" style="color: cyan;">helpfulvault@gmail.com</a>.</p>
+        <p>We respond to inquiries within 48 hours.</p>
     </div>
 
     <div class="settings" id="settings" style="display: none;">
         <h2>Settings</h2>
+        <p>Customize your experience:</p>
         <label for="searchToggle">Show Search Bar: </label>
         <input type="checkbox" id="searchToggle" checked />
+        <p>Use this option to toggle the visibility of the search bar.</p>
     </div>
 
-    
-    <div class="random-section" id="random-section" style="display: none;">
+    <div id="random-section" style="display: none;">
         <h2>Random</h2>
         <p>Explore fun activities and tools!</p>
-        
+        <p>Select from the options below to engage in something fun:</p>
         <div id="toolboxes">
             <a href="cooking.html" aria-label="Go to Cooking Recipes">
                 <div id="box18" class="box">Cooking Recipes
                     <div class="tooltip">Explore delicious recipes here!</div>
                 </div>
             </a>
-
-             <a href="reaction.html" aria-label="Go to Reaction Test">
+            <a href="reaction.html" aria-label="Go to Reaction Test">
                 <div id="box19" class="box">Reaction Test
                     <div class="tooltip">Find Out How Fast You Can React!</div>
+                </div>
+            </a>
+            <a href="jokes.html" aria-label="Go to Jokes Section">
+                <div id="box20" class="box">Jokes
+                    <div class="tooltip">Enjoy a good laugh with our jokes!</div>
                 </div>
             </a>
         </div>
@@ -476,8 +508,8 @@
     <div class="faq-section" id="faq" style="display: none;">
         <h2>Frequently Asked Questions (FAQ)</h2>
         <div>
-            <h3>1. What is UsefulVault?</h3>
-            <p>UsefulVault is an online toolbox with a variety of calculators and converters designed to simplify your tasks.</p>
+            <h3>1. What is Useful Vault?</h3>
+            <p>Useful Vault is an online toolbox with a variety of calculators and converters designed to simplify your tasks.</p>
         </div>
         <div>
             <h3>2. How can I use the tools?</h3>
@@ -487,35 +519,38 @@
             <h3>3. Is there a limit on the number of tools I can use?</h3>
             <p>No, you can use as many tools as necessary without restrictions.</p>
         </div>
+        <div>
+            <h3>4. Are the tools free to use?</h3>
+            <p>Yes, all tools on Useful Vault are free to use without any subscriptions or fees.</p>
+        </div>
+        <div>
+            <h3>5. How can I provide feedback?</h3>
+            <p>Your feedback is valuable! Please contact us via the Contact Us section to share your thoughts.</p>
+        </div>
     </div>
 
     <div id="games-section" style="display: none;">
         <h2>Games</h2>
+        <h3>Try playing these fun games!</h3>
         <div id="games">
             <a href="rockpaperscissors.html" aria-label="Play Rock Paper Scissors Game">
-                <div class="box">Rock Paper Scissors Game
+                <div id="box21" class="box">Rock Paper Scissors Game
                     <div class="tooltip">Choose rock, paper, or scissors and outsmart your opponent!</div>
                 </div>
             </a>
             <a href="maze.html" aria-label="Play Maze Game">
-                <div class="box">Maze Game
+                <div id="box22" class="box">Maze Game
                     <div class="tooltip">Find the exit in the quickest time!</div>
                 </div>
             </a>
             <a href="numberguessinggame.html" aria-label="Play Number Guessing Game">
-                <div class="box">Number Guessing Game
+                <div id="box23" class="box">Number Guessing Game
                     <div class="tooltip">Guess the number within the limited attempts!</div>
                 </div>
             </a>
             <a href="clickergame.html" aria-label="Play Clicker Game">
-                <div class="box">Clicker Game
+                <div id="box24" class="box">Clicker Game
                     <div class="tooltip">Click to earn points—how fast can you go?</div>
-                </div>
-            </a>
-
-            <a href="gravitybound.html" aria-label="Play Gravity Bound">
-                <div class="box">Gravity Bound
-                    <div class="tooltip">Collect all the coins and exit the level without the enemies getting you—how far can you make it?</div>
                 </div>
             </a>
         </div>
@@ -528,109 +563,58 @@
         const gamesSection = document.getElementById('games-section');
         const settingsSection = document.getElementById('settings');
         const faqSection = document.getElementById('faq');
-        const funSection = document.getElementById('fun-section'); // Fun section
+        const randomSection = document.getElementById('random-section');
 
-        const colors = [
-            '#ede3b9', '#e4af87', '#f6cbad',
-            '#e48686', '#b8f2fe', '#b8f0ba',
-            '#a5eae2', '#84c4ef', '#d6aee6',
-            '#c9eec1', '#A4E3D0'
-        ];
+        // Ensure it shows the main content on page load.
+        window.onload = function() {
+            mainContent.style.display = 'flex';  // Show main content by default
+            contactInfo.style.display = 'none';   // Hide contact info
+            settingsSection.style.display = 'none'; // Hide settings
+            faqSection.style.display = 'none';     // Hide FAQ
+            randomSection.style.display = 'none';  // Hide random activities
+            gamesSection.style.display = 'none';   // Hide games
+        };
 
-        const savedSearchToggleState = localStorage.getItem('searchToggle') === 'true';
-        const searchToggle = document.getElementById('searchToggle');
-
-        if (savedSearchToggleState === undefined) {
-            searchToggle.checked = true;
-            searchContainer.style.display = 'block'; 
-        } else {
-            searchToggle.checked = savedSearchToggleState;
-            searchContainer.style.display = savedSearchToggleState ? 'block' : 'none'; 
-        }
-
-        function setGameBoxBackgrounds() {
-            const gameBoxes = document.querySelectorAll('#games .box');
-            gameBoxes.forEach(box => {
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                box.style.backgroundColor = randomColor; 
-                box.style.color = '#24252a'; 
-            });
-        }
-
-        document.getElementById('homeLink').addEventListener('click', function () {
+        // Handler that hides all sections and shows selected one
+        function hideAllSections() {
+            mainContent.style.display = 'none';  
             contactInfo.style.display = 'none';  
             gamesSection.style.display = 'none';  
             settingsSection.style.display = 'none';  
-            faqSection.style.display = 'none'; 
-            funSection.style.display = 'none'; // Hide fun section
+            faqSection.style.display = 'none';  
+            randomSection.style.display = 'none';  
+        }
+
+        document.getElementById('homeLink').addEventListener('click', function () {
+            hideAllSections();
             mainContent.style.display = 'flex';   
         });
 
         document.getElementById('gamesLink').addEventListener('click', function () {
-            setGameBoxBackgrounds();
-            mainContent.style.display = 'none';  
-            contactInfo.style.display = 'none';  
-            settingsSection.style.display = 'none';  
-            faqSection.style.display = 'none';  
-            funSection.style.display = 'none'; // Hide fun section
+            hideAllSections();
             gamesSection.style.display = 'block'; 
         });
 
         document.getElementById('settingsLink').addEventListener('click', function () {
-            mainContent.style.display = 'none';  
-            gamesSection.style.display = 'none';  
-            contactInfo.style.display = 'none';  
-            faqSection.style.display = 'none';  
-            funSection.style.display = 'none'; // Hide fun section
+            hideAllSections();
             settingsSection.style.display = 'block'; 
         });
 
         document.getElementById('faqLink').addEventListener('click', function () {
-            mainContent.style.display = 'none';  
-            gamesSection.style.display = 'none';  
-            contactInfo.style.display = 'none';  
-            settingsSection.style.display = 'none';  
-            funSection.style.display = 'none'; // Hide fun section
-            faqSection.style.display = 'flex';     
+            hideAllSections();
+            faqSection.style.display = 'block';     
         });
 
         document.getElementById('contactLink').addEventListener('click', function () {
-            mainContent.style.display = 'none';  
-            gamesSection.style.display = 'none';  
-            settingsSection.style.display = 'none';  
-            faqSection.style.display = 'none';  
-            funSection.style.display = 'none'; // Hide fun section
+            hideAllSections();
             contactInfo.style.display = 'block';  
         });
 
-        document.getElementById('funLink').addEventListener('click', function () {
-            mainContent.style.display = 'none';  
-            gamesSection.style.display = 'none';  
-            settingsSection.style.display = 'none';  
-            faqSection.style.display = 'none';  
-            contactInfo.style.display = 'none'; 
-            funSection.style.display = 'flex'; // Show fun section
+        document.getElementById('randomLink').addEventListener('click', function () {
+            hideAllSections();
+            randomSection.style.display = 'block'; // Show random section
         });
 
-        searchToggle.addEventListener('change', function () {
-            const isChecked = searchToggle.checked;
-            localStorage.setItem('searchToggle', isChecked); 
-            searchContainer.style.display = isChecked ? 'block' : 'none'; 
-        });
-
-        const searchBar = document.getElementById('search');
-        searchBar.addEventListener('keyup', function (event) {
-            const query = event.target.value.toLowerCase();
-            const boxes = document.querySelectorAll('.box');
-
-            boxes.forEach(box => {
-                if (box.innerText.toLowerCase().includes(query)) {
-                    box.style.display = 'flex'; 
-                } else {
-                    box.style.display = 'none'; 
-                }
-            });
-        });
     </script>
 </body>
 
