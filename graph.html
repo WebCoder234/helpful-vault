@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphing Linear Equation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+    * { font-family: 'Nunito'}
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Nunito', sans-serif; /* Set font to Nunito */
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        #inputArea {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        canvas {
+            max-width: 600px;
+            width: 100%;
+            height: 400px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        #output {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        #error {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Graphing Linear Equation</h1>
+<div id="inputArea">
+    <input type="number" id="mInput" placeholder="m (slope)" step="any">
+    <input type="number" id="bInput" placeholder="b (intercept)" step="any">
+    <input type="number" id="xInput" placeholder="x value" step="any">
+    <button id="plotButton">Plot</button>
+    <div id="output"></div>
+    <div id="error"></div>
+</div>
+<canvas id="graphCanvas"></canvas>
+
+<script>
+    const ctx = document.getElementById('graphCanvas').getContext('2d');
+    const plotButton = document.getElementById('plotButton');
+    const mInput = document.getElementById('mInput');
+    const bInput = document.getElementById('bInput');
+    const xInput = document.getElementById('xInput');
+    const outputDiv = document.getElementById('output');
+    const errorDiv = document.getElementById('error');
+
+    plotButton.addEventListener('click', () => {
+        const m = parseFloat(mInput.value);
+        const b = parseFloat(bInput.value);
+        const x = parseFloat(xInput.value);
+        
+        errorDiv.innerText = ''; // Clear previous error messages
+        outputDiv.innerText = ''; // Clear previous output messages
+
+        // Check if m, b, and x values are provided
+        if (isNaN(m) || isNaN(b) || isNaN(x)) {
+            errorDiv.innerText = 'Please enter valid numbers for m, b, and x.';
+            return;
+        }
+
+        // Calculate y = mx + b for the given x
+        const y = m * x + b;
+        outputDiv.innerText = `For x = ${x}, y = ${m} * ${x} + ${b} = ${y}`;
+
+        // Plot the function
+        plotFunction(m, b);
+    });
+
+    function plotFunction(m, b) {
+        const xValues = [-10, 10]; // Fixed range for the x-values
+        const dataPoints = xValues.map(x => m * x + b); // Calculate y values for these x values
+
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: xValues,
+                datasets: [{
+                    label: `y = ${m}x + ${b}`,
+                    borderColor: '#007bff',
+                    backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                    borderWidth: 2,
+                    pointRadius: 0, // No points on the line
+                    data: dataPoints
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'X-axis'
+                        },
+                        grid: {
+                            color: '#e0e0e0'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Y-axis'
+                        },
+                        grid: {
+                            color: '#e0e0e0'
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
