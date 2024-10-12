@@ -9,13 +9,13 @@
     <meta name="keywords" content="online calculator, unit converter, best online calculator for mortgage payments, how to use a temperature converter online, age calculator for birthday planning, random password generator, stopwatch tool, temperature converter for students, length converter, volume calculator, BMI calculator, secure online random password generator">
     <link rel="canonical" href="https://yourdomain.com/">
 
-    <title>Useful Vault: Online Calculators & Tools</title> <!-- Maintained under 60 characters -->
+    <title>Useful Vault: Online Calculators & Tools</title> 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:wght@100..900&display=swap" rel="stylesheet">
 
-    <link rel="icon" href="logo3.png" type="image/png"> <!-- Favicon link -->
+    <link rel="icon" href="logo3.png" type="image/png"> 
 
     <style>
         /* Shared CSS styles */
@@ -63,9 +63,7 @@
             background-color: #575757;
         }
 
-        h1,
-        h2,
-        h3 {
+        h1, h2, h3 {
             color: white;
         }
 
@@ -75,15 +73,14 @@
         }
 
         h2 {
-            font-size: 2em; /* Adjusted size for H2 */
+            font-size: 2em; 
         }
 
         h3 {
-            font-size: 1.75em; /* Adjusted size for H3 */
+            font-size: 1.75em; 
         }
 
-        p,
-        li {
+        p, li {
             font-size: 18px;
             text-align: center;
             max-width: 800px;
@@ -178,25 +175,21 @@
         #box14 { background-color: #84c4ef; }
         #box15{ background-color: #74e8b4; }
         #box16 { background-color: #f7d794; }
-        #box17 { background-color: #f8e1d3; } /* Very light salmon */
-        #box18 { background-color: #f9c2d6; } /* Very light blush */
-        #box19 { background-color: #b3e5f1; } /* Very light baby blue */
-        #box20 { background-color: #f5c3c2; } /* Very light coral */
-        #box21 { background-color: #f2f2f2; } /* Very light gray */
-        #box22 { background-color: #f8e1b0; } /* Very light cream */
-        #box23 { background-color: #dde5fa; } /* Very light periwinkle */
-        #box24 { background-color: #f6a1a1; } /* Very light rose */
-        #box25 { background-color: #f5d29a; } /* Very light muted lavender */
-        #box26 { background-color: #e8dadb; } /* Very light pinkish hue */
-        #box27 { background-color: #ffe6d0; } /* Very light peach */
-        #box28 { background-color: #fdf2e2; } /* Very light ivory */
+        #box17 { background-color: #f8e1d3; }
+        #box18 { background-color: #f9c2d6; }
+        #box19 { background-color: #b3e5f1; }
+        #box20 { background-color: #f5c3c2; }
+        #box21 { background-color: #f2f2f2; }
+        #box22 { background-color: #f8e1b0; }
+        #box23 { background-color: #dde5fa; }
+        #box24 { background-color: #f6a1a1; }
+        #box25 { background-color: #f5d29a; }
+        #box26 { background-color: #e8dadb; }
+        #box27 { background-color: #ffe6d0; }
+        #box28 { background-color: #fdf2e2; }
 
-        .main,
-        .settings,
-        .games-section,
-        .faq-section,
-        .fun-section {
-            display: none;  /* Initially hidden */
+        .main, .settings, .games-section, .faq-section, .random-section {
+            display: none;  
             flex-direction: column;
             align-items: center;
             margin: 20px auto;
@@ -215,27 +208,39 @@
             color: #24252a;
         }
 
+        .cta-button {
+            display: inline-block;
+            background-color: #28a745; /* Green color for action */
+            color: white; 
+            text-decoration: none; 
+            padding: 15px 30px; 
+            border-radius: 5px; 
+            margin-top: 20px; 
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
         @media (max-width: 768px) {
             body {
                 font-size: 16px;
             }
-
             h1 {
                 font-size: 2em;
             }
-
             h2 {
                 font-size: 1.8em;
             }
-
             h3 {
                 font-size: 1.5em;
             }
-
             p {
                 font-size: 16px;
             }
-
             .box {
                 font-size: 18px;
             }
@@ -245,7 +250,6 @@
             .navbar a {
                 flex: 1 0 100%;
             }
-
             .search-bar {
                 width: 90%;
             }
@@ -254,12 +258,11 @@
         .faq-section h2,
         .faq-section h3,
         .faq-section p {
-            text-decoration: none; /* Remove text decoration for FAQ section */
+            text-decoration: none; 
         }
     </style>
 
     <script>
-        // This function will help you track page load time and optimize user experience.
         window.addEventListener('load', function() {
             const mainContent = document.getElementById('main-content');
             const sectionsToHide = [
@@ -270,10 +273,8 @@
                 'games-section'
             ];
 
-            // Show the main content by default
             mainContent.style.display = 'flex';
 
-            // Hide all other sections
             sectionsToHide.forEach(sectionId => {
                 const section = document.getElementById(sectionId);
                 if (section) {
@@ -290,9 +291,9 @@
             boxes.forEach(box => {
                 const text = box.textContent.toLowerCase();
                 if (text.includes(searchValue)) {
-                    box.parentElement.style.display = 'block'; // Show the box's parent (the anchor)
+                    box.parentElement.style.display = 'block'; 
                 } else {
-                    box.parentElement.style.display = 'none'; // Hide the box's parent
+                    box.parentElement.style.display = 'none'; 
                 }
             });
         });
@@ -316,6 +317,7 @@
             Our powerful tools include the <strong>age calculator</strong>, <strong>volume calculator</strong>, and more, designed to help you solve problems quickly and efficiently. If you need to <strong>calculate</strong>, <strong>convert</strong>, or simplify your daily tasks, you've come to the right place! <br>
             <span class="line2ofd">We're here to assist with all your <strong>calculation</strong> needs.</span>
         </p>
+        <a href="#toolboxes" class="cta-button">Start Using Our Tools Now!</a>
 
         <div class="search-container" id="search-container">
             <input type="text" id="search" class="search-bar" placeholder="Search for a tool..." aria-label="Search for a tool" />
@@ -451,6 +453,10 @@
             and engagement. Whether you want to calculate your <strong>BMI</strong> or convert different <strong>length</strong> units, our tools make 
             problem-solving an exhilarating experience. <br><br>
         </p>
+        
+        <h2>Ready to Maximize Your Productivity?</h2>
+        <p>Take full advantage of our tools to make calculations and conversions seamless.</p>
+        <a href="#toolboxes" class="cta-button">Explore All Our Tools!</a>
 
         <h2>Explore Our Treasure Trove of Tools!</h2>
         <p>
@@ -495,6 +501,7 @@
             Curiosity drives exploration. <br><br> Should you have questions while navigating our tools, check out our FAQ section. You’ll find answers to common queries and much more. <br><br> Your feedback is vital! 
             Reach out anytime at <a href="mailto:helpfulvault@gmail.com" style="color: cyan;">helpfulvault@gmail.com</a> with your suggestions or just to say hello. <br><br>
         </p>
+        <a href="mailto:helpfulvault@gmail.com" class="cta-button">Contact Us Today!</a>
 
         <h2>Ready to Start?</h2>
         <p>
@@ -628,17 +635,15 @@
         const faqSection = document.getElementById('faq');
         const randomSection = document.getElementById('random-section');
 
-        // Ensure it shows the main content on page load.
         window.onload = function() {
-            mainContent.style.display = 'flex';  // Show main content by default
-            contactInfo.style.display = 'none';   // Hide contact info
-            settingsSection.style.display = 'none'; // Hide settings
-            faqSection.style.display = 'none';     // Hide FAQ
-            randomSection.style.display = 'none';  // Hide random activities
-            gamesSection.style.display = 'none';   // Hide games
+            mainContent.style.display = 'flex';  
+            contactInfo.style.display = 'none';   
+            settingsSection.style.display = 'none'; 
+            faqSection.style.display = 'none';     
+            randomSection.style.display = 'none';  
+            gamesSection.style.display = 'none';   
         };
 
-        // Handler that hides all sections and shows selected one
         function hideAllSections() {
             mainContent.style.display = 'none';  
             contactInfo.style.display = 'none';  
@@ -675,10 +680,9 @@
 
         document.getElementById('randomLink').addEventListener('click', function () {
             hideAllSections();
-            randomSection.style.display = 'block'; // Show random section
+            randomSection.style.display = 'block'; 
         });
 
-        // Search Functionality
         document.getElementById('search').addEventListener('input', function() {
             const searchValue = this.value.toLowerCase();
             const boxes = document.querySelectorAll('#toolboxes .box');
@@ -686,13 +690,12 @@
             boxes.forEach(box => {
                 const text = box.textContent.toLowerCase();
                 if (text.includes(searchValue)) {
-                    box.parentElement.style.display = 'block'; // Show the box's parent (the anchor)
+                    box.parentElement.style.display = 'block'; 
                 } else {
-                    box.parentElement.style.display = 'none'; // Hide the box's parent
+                    box.parentElement.style.display = 'none'; 
                 }
             });
         });
     </script>
 </body>
-
 </html>
