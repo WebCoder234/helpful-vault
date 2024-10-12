@@ -273,6 +273,21 @@
                 }
             });
         });
+
+        // Search Functionality
+        document.getElementById('search').addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase();
+            const boxes = document.querySelectorAll('#toolboxes .box');
+
+            boxes.forEach(box => {
+                const text = box.textContent.toLowerCase();
+                if (text.includes(searchValue)) {
+                    box.parentElement.style.display = 'block'; // Show the box's parent (the anchor)
+                } else {
+                    box.parentElement.style.display = 'none'; // Hide the box's parent
+                }
+            });
+        });
     </script>
 </head>
 
@@ -592,8 +607,9 @@
                 <div id="box24" class="box">Clicker Game
                     <div class="tooltip">Click to earn points—how fast can you go?</div>
                 </div>
+            </a>
 
-                  <a href="gravitybound.html" aria-label="Play Gravity Bound">
+            <a href="gravitybound.html" aria-label="Play Gravity Bound">
                 <div id="box24" class="box">Gravity Bound
                     <div class="tooltip">How many levels can you get through?</div>
                 </div>
@@ -658,6 +674,21 @@
         document.getElementById('randomLink').addEventListener('click', function () {
             hideAllSections();
             randomSection.style.display = 'block'; // Show random section
+        });
+
+        // Search Functionality
+        document.getElementById('search').addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase();
+            const boxes = document.querySelectorAll('#toolboxes .box');
+
+            boxes.forEach(box => {
+                const text = box.textContent.toLowerCase();
+                if (text.includes(searchValue)) {
+                    box.parentElement.style.display = 'block'; // Show the box's parent (the anchor)
+                } else {
+                    box.parentElement.style.display = 'none'; // Hide the box's parent
+                }
+            });
         });
     </script>
 </body>
