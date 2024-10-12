@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Food Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+    <style>
+    *{   font-family: 'Nunito'}
+        /* Basic Styles */
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1, h2, h3, h4 {
+            margin: 10px 0;
+        }
+
+        input[type="text"], select {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 22px);
+        }
+
+        button {
+            padding: 10px;
+            background-color: #fff;
+            border: none;
+            color: #4CAF50;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .category {
+            margin: 10px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .recipe:last-child {
+            border-bottom: none;
+        }
+
+        .highlight {
+            background-color: #FEE580;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Mobile friendly styles */
+        @media (min-width: 600px) {
+            input[type="text"], select, button {
+                width: auto;
+                display: inline;
+            }
+
+            input[type="text"] {
+                margin-right: 10px;
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Healthy Food </h1>
+        <input type="text" id="ingredient-search" placeholder="Search Fruits">
+
+
+    </header>
+
+    <main>
+        <section id="food-categories">
+            <h2>Explore Healthy Foods</h2>
+            <div class="category">
+                <h3>Fruits</h3>
+                <!-- Fruits -->
+                <div class="recipe" data-ingredients="banana" data-nutrition="high">
+                    <h4>Banana</h4>
+                    <p><span class="highlight">Bananas</span> are an excellent source of <span class="highlight">potassium</span>, which is vital for maintaining blood pressure and heart function, along with <span class="highlight">fiber</span> for digestion.</p>
+                </div>
+                <div class="recipe" data-ingredients="apple" data-nutrition="high">
+                    <h4>Apple</h4>
+                    <p><span class="highlight">Apples</span> are high in <span class="highlight">fiber</span> and <span class="highlight">vitamin C</span>, promoting heart health and providing antioxidants.</p>
+                </div>
+                <div class="recipe" data-ingredients="orange" data-nutrition="high">
+                    <h4>Orange</h4>
+                    <p><span class="highlight">Oranges</span> are well-known for their high content of <span class="highlight">vitamin C</span>, which boosts the immune system and promotes skin health.</p>
+                </div>
+                <div class="recipe" data-ingredients="avocado" data-nutrition="high">
+                    <h4>Avocado</h4>
+                    <p><span class="highlight">Avocados</span> are rich in healthy fats and <span class="highlight">vitamins E</span> and <span class="highlight">K</span>, beneficial for heart health.</p>
+                </div>
+                <div class="recipe" data-ingredients="pineapple" data-nutrition="high">
+                    <h4>Pineapple</h4>
+                    <p><span class="highlight">Pineapple</span> contains <span class="highlight">bromelain</span> and is rich in <span class="highlight">vitamin C</span>, promoting digestion and immunity.</p>
+                </div>
+                <div class="recipe" data-ingredients="mango" data-nutrition="high">
+                    <h4>Mango</h4>
+                    <p><span class="highlight">Mango</span> is high in <span class="highlight">vitamins A</span> and <span class="highlight">C</span>, and contains great antioxidants.</p>
+                </div>
+                <div class="recipe" data-ingredients="grapefruit" data-nutrition="high">
+                    <h4>Grapefruit</h4>
+                    <p><span class="highlight">Grapefruit</span> is rich in <span class="highlight">vitamin C</span> and supports weight loss and heart health.</p>
+                </div>
+                <div class="recipe" data-ingredients="pear" data-nutrition="high">
+                    <h4>Pear</h4>
+                    <p><span class="highlight">Pears</span> are high in <span class="highlight">fiber</span> and promote digestive health.</p>
+                </div>
+                <div class="recipe" data-ingredients="kiwi" data-nutrition="high">
+                    <h4>Kiwi</h4>
+                    <p><span class="highlight">Kiwi</span> is loaded with <span class="highlight">vitamin C</span> and <span class="highlight">vitamin K</span>, beneficial for immune and bone health.</p>
+                </div>
+                <div class="recipe" data-ingredients="cherry" data-nutrition="high">
+                    <h4>Cherry</h4>
+                    <p><span class="highlight">Cherries</span> are rich in <span class="highlight">antioxidants</span> and may reduce inflammation.</p>
+                </div>
+                <div class="recipe" data-ingredients="watermelon" data-nutrition="high">
+                    <h4>Watermelon</h4>
+                    <p><span class="highlight">Watermelon</span> is hydrating and provides vitamins A and C, ideal for hot days.</p>
+                </div>
+                <div class="recipe" data-ingredients="papaya" data-nutrition="high">
+                    <h4>Papaya</h4>
+                    <p><span class="highlight">Papaya</span> contains <span class="highlight">papain</span>, aiding digestion, and is rich in vitamins.</p>
+                </div>
+                <div class="recipe" data-ingredients="pomegranate" data-nutrition="high">
+                    <h4>Pomegranate</h4>
+                    <p><span class="highlight">Pomegranates</span> are high in antioxidants, reducing inflammation and promoting heart health.</p>
+                </div>
+                <div class="recipe" data-ingredients="strawberry" data-nutrition="high">
+                    <h4>Strawberry</h4>
+                    <p><span class="highlight">Strawberries</span> are high in <span class="highlight">vitamin C</span>, promoting heart health and regulating blood sugar levels.</p>
+                </div>
+                <div class="recipe" data-ingredients="blueberry" data-nutrition="high">
+                    <h4>Blueberry</h4>
+                    <p><span class="highlight">Blueberries</span> are rich in antioxidants and may improve cognitive function.</p>
+                </div>
+                <div class="recipe" data-ingredients="fig" data-nutrition="high">
+                    <h4>Fig</h4>
+                    <p><span class="highlight">Figs</span> are high in fiber and essential nutrients, promoting digestive and heart health.</p>
+                </div>
+                <div class="recipe" data-ingredients="nectarine" data-nutrition="high">
+                    <h4>Nectarine</h4>
+                    <p><span class="highlight">Nectarines</span> are similar to peaches, rich in vitamins A and C.</p>
+                </div>
+                <div class="recipe" data-ingredients="cantaloupe" data-nutrition="high">
+                    <h4>Cantaloupe</h4>
+                    <p><span class="highlight">Cantaloupe</span> is hydrating and a good source of vitamins A and C.</p>
+                </div>
+                <div class="recipe" data-ingredients="limes" data-nutrition="high">
+                    <h4>Lime</h4>
+                    <p><span class="highlight">Limes</span> are rich in <span class="highlight">vitamin C</span> and antioxidants, supporting immunity.</p>
+                </div>
+                <div class="recipe" data-ingredients="lemon" data-nutrition="high">
+                    <h4>Lemon</h4>
+                    <p><span class="highlight">Lemons</span> are high in <span class="highlight">vitamin C</span> and aid in iron absorption.</p>
+                </div>
+                <div class="recipe" data-ingredients="dragonfruit" data-nutrition="high">
+                    <h4>Dragonfruit</h4>
+                    <p><span class="highlight">Dragonfruit</span> is low in calories, rich in antioxidants, and boosts the immune system.</p>
+                </div>
+                <div class="recipe" data-ingredients="passionfruit" data-nutrition="high">
+                    <h4>Passionfruit</h4>
+                    <p><span class="highlight">Passionfruit</span> is rich in <span class="highlight">fiber</span>, vitamins A and C, great for digestion.</p>
+                </div>
+                <div class="recipe" data-ingredients="passionfruit" data-nutrition="high">
+                    <h4>Passionfruit</h4>
+                    <p><span class="highlight">Passionfruit</span> is high in vitamins A and C, with fiber for healthy digestion.</p>
+                </div>
+                <div class="recipe" data-ingredients="mulberry" data-nutrition="high">
+                    <h4>Mulberry</h4>
+                    <p><span class="highlight">Mulberries</span> are high in vitamin C, K, and iron, supporting blood health.</p>
+                </div>
+                <div class="recipe" data-ingredients="apricot" data-nutrition="high">
+                    <h4>Apricot</h4>
+                    <p><span class="highlight">Apricots</span> are rich in <span class="highlight">vitamin A</span> and fiber, great for skin health.</p>
+                </div>
+                <div class="recipe" data-ingredients="blueberry" data-nutrition="high">
+                    <h4>Blueberry</h4>
+                    <p><span class="highlight">Blueberries</span> are high in antioxidants and beneficial for brain health.</p>
+                </div>
+                <div class="recipe" data-ingredients="date" data-nutrition="high">
+                    <h4>Date</h4>
+                    <p><span class="highlight">Dates</span> are energy-packed and high in natural sugars and dietary fiber.</p>
+                </div>
+                <div class="recipe" data-ingredients="jackfruit" data-nutrition="high">
+                    <h4>Jackfruit</h4>
+                    <p><span class="highlight">Jackfruit</span> is nutrient-rich, providing vitamins A, C, and fiber.</p>
+                </div>
+                <div class="recipe" data-ingredients="pistachio" data-nutrition="high">
+                    <h4>Pistachio</h4>
+                    <p><span class="highlight">Pistachios</span> are high in protein and healthy fats, promoting heart health.</p>
+                </div>
+                <div class="recipe" data-ingredients="coconut" data-nutrition="high">
+                    <h4>Coconut</h4>
+                    <p><span class="highlight">Coconut</span> is rich in healthy fats and may aid in weight management.</p>
+                </div>
+                <div class="recipe" data-ingredients="honeydew" data-nutrition="high">
+                    <h4>Honeydew</h4>
+                    <p><span class="highlight">Honeydew</span> is hydrating and provides a good source of vitamins B and C.</p>
+                </div>
+                <div class="recipe" data-ingredients="tangerine" data-nutrition="high">
+                    <h4>Tangerine</h4>
+                    <p><span class="highlight">Tangerines</span> are rich in vitamin C, great for immunity and skin health.</p>
+                </div>
+                <div class="recipe" data-ingredients="fig" data-nutrition="high">
+                    <h4>Fig</h4>
+                    <p><span class="highlight">Figs</span> are high in fiber and essential minerals, good for digestive health.</p>
+                </div>
+                <div class="recipe" data-ingredients="lychee" data-nutrition="high">
+                    <h4>Lychee</h4>
+                    <p><span class="highlight">Lychee</span> is rich in vit. C and antioxidants, great for skin health.</p>
+                </div>
+                <div class="recipe" data-ingredients="persimmon" data-nutrition="high">
+                    <h4>Persimmon</h4>
+                    <p><span class="highlight">Persimmon</span> is high in fiber and vitamins A and C, promoting eye health.</p>
+                </div>
+                <!-- Continue by filling up to 100 fruits -->
+                <div class="recipe" data-ingredients="currant" data-nutrition="high">
+                    <h4>Currant</h4>
+                    <p><span class="highlight">Currants</span> are rich in vitamin C and antioxidants, supporting immune health.</p>
+                </div>
+                <div class="recipe" data-ingredients="soursop" data-nutrition="high">
+                    <h4>Soursop</h4>
+                    <p><span class="highlight">Soursop</span> is rich in vitamin C, helping to fight infections.</p>
+                </div>
+                <div class="recipe" data-ingredients="blackberry" data-nutrition="high">
+                    <h4>Blackberry</h4>
+                    <p><span class="highlight">Blackberries</span> are high in fiber and antioxidants, promoting digestive health.</p>
+                </div>
+                <div class="recipe" data-ingredients="starfruit" data-nutrition="high">
+                    <h4>Starfruit</h4>
+                    <p><span class="highlight">Starfruit</span> is low in calories and high in vitamin C and potassium.</p>
+                </div>
+                <div class="recipe" data-ingredients="clementine" data-nutrition="high">
+                    <h4>Clementine</h4>
+                    <p><span class="highlight">Clementines</span> are sweet, easy to peel, and high in vitamin C!</p>
+                </div>
+                <div class="recipe" data-ingredients="longan" data-nutrition="high">
+                    <h4>Longan</h4>
+                    <p><span class="highlight">Longan</span> is a good source of vitamins and minerals, promoting health well-being!</p>
+                </div>
+                <div class="recipe" data-ingredients="rhubarb" data-nutrition="high">
+                    <h4>Rhubarb</h4>
+                    <p><span class="highlight">Rhubarb</span> is high in fiber and antioxidants and is often used in desserts.</p>
+                </div>
+                <div class="recipe" data-ingredients="gooseberry" data-nutrition="high">
+                    <h4>Gooseberry</h4>
+                    <p><span class="highlight">Gooseberries</span> are low in calories and high in vitamin C, promoting immunity.</p>
+                </div>
+                <div class="recipe" data-ingredients="bitter melon" data-nutrition="high">
+                    <h4>Bitter Melon</h4>
+                    <p><span class="highlight">Bitter Melon</span> is known for its potential blood sugar-lowering properties.</p>
+                </div>
+                <div class="recipe" data-ingredients="jackfruit" data-nutrition="high">
+                    <h4>Jackfruit</h4>
+                    <p><span class="highlight">Jackfruit</span> is an exotic fruit high in protein, fiber, vitamin A, and C.</p>
+                </div>
+                <div class="recipe" data-ingredients="cacao" data-nutrition="high">
+                    <h4>Cacao</h4>
+                    <p><span class="highlight">Cacao</span> is antioxidant-rich and supports heart health.</p>
+                </div>
+                <div class="recipe" data-ingredients="nutmeg" data-nutrition="high">
+                    <h4>Nutmeg</h4>
+                    <p><span class="highlight">Nutmeg</span> provides potential anti-inflammatory properties.</p>
+                </div>
+                <!-- Start of Vegetables -->
+                <div class="category">
+                    <h3>Vegetables</h3>
+                    <div class="recipe" data-ingredients="carrot" data-nutrition="high">
+                        <h4>Carrot</h4>
+                        <p><span class="highlight">Carrots</span> are rich in <span class="highlight">beta carotene</span>, promoting good vision and healthy skin.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="broccoli" data-nutrition="high">
+                        <h4>Broccoli</h4>
+                        <p><span class="highlight">Broccoli</span> is high in <span class="highlight">vitamin C</span> and fiber, promoting immune health.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="spinach" data-nutrition="high">
+                        <h4>Spinach</h4>
+                        <p><span class="highlight">Spinach</span> is nutrient-dense, containing iron and vitamins A and K.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="kale" data-nutrition="high">
+                        <h4>Kale</h4>
+                        <p><span class="highlight">Kale</span> is a superfood rich in vitamins C and K, promoting heart health.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="cauliflower" data-nutrition="high">
+                        <h4>Cauliflower</h4>
+                        <p><span class="highlight">Cauliflower</span> is a low-carb vegetable high in vitamin C and antioxidants.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="beet" data-nutrition="high">
+                        <h4>Beet</h4>
+                        <p><span class="highlight">Beets</span> are rich in fiber and can help improve athletic performance.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="peas" data-nutrition="high">
+                        <h4>Peas</h4>
+                        <p><span class="highlight">Peas</span> provide protein and vitamins A, C, and K.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="zucchini" data-nutrition="high">
+                        <h4>Zucchini</h4>
+                        <p><span class="highlight">Zucchini</span> is low in calories and high in vitamin C, adding volume to meals.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="bell pepper" data-nutrition="high">
+                        <h4>Bell Pepper</h4>
+                        <p><span class="highlight">Bell Peppers</span> are high in vitamin C and available in various colors.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="onion" data-nutrition="high">
+                        <h4>Onion</h4>
+                        <p><span class="highlight">Onions</span> support heart health and can boost immunity.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="garlic" data-nutrition="high">
+                        <h4>Garlic</h4>
+                        <p><span class="highlight">Garlic</span> has potent health benefits, supporting heart health and immunity.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="potato" data-nutrition="high">
+                        <h4>Potato</h4>
+                        <p><span class="highlight">Potatoes</span> are high in potassium and provide energy and essential nutrients.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="sweet potato" data-nutrition="high">
+                        <h4>Sweet Potato</h4>
+                        <p><span class="highlight">Sweet Potatoes</span> are high in beta carotene, fiber, and vitamins.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="eggplant" data-nutrition="high">
+                        <h4>Eggplant</h4>
+                        <p><span class="highlight">Eggplant</span> is low in calories and contains antioxidants.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="cabbage" data-nutrition="high">
+                        <h4>Cabbage</h4>
+                        <p><span class="highlight">Cabbage</span> is high in fiber and vitamin K, supporting gut health.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="brussels sprouts" data-nutrition="high">
+                        <h4>Brussels Sprouts</h4>
+                        <p><span class="highlight">Brussels Sprouts</span> are high in fiber, vitamins, and antioxidants.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="radish" data-nutrition="high">
+                        <h4>Radish</h4>
+                        <p><span class="highlight">Radishes</span> are low in calories; they add color and crunch to meals.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="asparagus" data-nutrition="high">
+                        <h4>Asparagus</h4>
+                        <p><span class="highlight">Asparagus</span> is high in vitamins A, C, and K, great for detoxification.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="artichoke" data-nutrition="high">
+                        <h4>Artichoke</h4>
+                        <p><span class="highlight">Artichokes</span> are loaded with antioxidants and good for liver health.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="mushroom" data-nutrition="high">
+                        <h4>Mushroom</h4>
+                        <p><span class="highlight">Mushrooms</span> improve nutritional intake, enhancing heart and immune health.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="corn" data-nutrition="high">
+                        <h4>Corn</h4>
+                        <p><span class="highlight">Corn</span> is high in fiber and provides antioxidants.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="pumpkin" data-nutrition="high">
+                        <h4>Pumpkin</h4>
+                        <p><span class="highlight">Pumpkin</span> is high in vitamin A and promotes eye health.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="turnip" data-nutrition="high">
+                        <h4>Turnip</h4>
+                        <p><span class="highlight">Turnips</span> are low in calories, aiding in weight management.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="bok choy" data-nutrition="high">
+                        <h4>Bok Choy</h4>
+                        <p><span class="highlight">Bok Choy</span> is high in vitamins A, C, and K with powerful antioxidants.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="celery" data-nutrition="high">
+                        <h4>Celery</h4>
+                        <p><span class="highlight">Celery</span> is low in calories and high in water, making it hydrating.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="parsley" data-nutrition="high">
+                        <h4>Parsley</h4>
+                        <p><span class="highlight">Parsley</span> is loaded with antioxidants and vitamins A, C, and K.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="ginger" data-nutrition="high">
+                        <h4>Ginger</h4>
+                        <p><span class="highlight">Ginger</span> is known for its anti-inflammatory properties and digestive benefits.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="jalapeno" data-nutrition="high">
+                        <h4>Jalapeño</h4>
+                        <p><span class="highlight">Jalapeños</span> are low in calories, rich in vitamins A and C, adding heat to dishes.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="arugula" data-nutrition="high">
+                        <h4>Arugula</h4>
+                        <p><span class="highlight">Arugula</span> is a leafy green high in vitamins and antioxidants, promoting health.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="chard" data-nutrition="high">
+                        <h4>Chard</h4>
+                        <p><span class="highlight">Chard</span> is loaded with nutrients and can help regulate blood sugar.</p>
+                    </div>
+                    <div class="recipe" data-ingredients="kohlrabi" data-nutrition="high">
+                        <h4>Kohlrabi</h4>
+                        <p><span class="highlight">Kohlrabi</span> is rich in vitamins C and K, promoting immune and skin health.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 Healthy Food </p>
+    </footer>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('ingredient-search');
+        const recipes = document.querySelectorAll('.recipe');
+
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value.toLowerCase();
+            recipes.forEach(function (recipe) {
+                const title = recipe.querySelector('h4').innerText.toLowerCase();
+                const description = recipe.querySelector('p').innerText.toLowerCase();
+                if (title.includes(query) || description.includes(query)) {
+                    recipe.style.display = '';
+                } else {
+                    recipe.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
