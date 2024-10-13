@@ -188,7 +188,7 @@
         #box27 { background-color: #ffe6d0; }
         #box28 { background-color: #fdf2e2; }
 
-        .main, .settings, .games-section, .faq-section, .random-section {
+        .main, .settings, .games-section, .faq-section, .discover-section {
             display: none;  
             flex-direction: column;
             align-items: center;
@@ -307,7 +307,7 @@
         <a href="#settings" id="settingsLink">Settings</a>
         <a href="#faq" id="faqLink">FAQ</a>
         <a href="#contact" id="contactLink">Contact Us</a>
-        <a href="#random" id="randomLink">Random</a>
+        <a href="#random" id="discoverLink">Discover</a>
     </div>
 
     <div class="main" id="main-content">
@@ -527,10 +527,10 @@
         <p>Use this option to toggle the visibility of the search bar.</p>
     </div>
 
-    <div id="random-section" style="display: none;">
-        <h2>Random</h2>
-        <p>Explore fun activities and tools!</p>
-        <p>Select from the options below to engage in something fun:</p>
+    <div id="discover-section" style="display: none;">
+        <h2>Discover</h2>
+        
+        
         <div id="toolboxes">
             <a href="cooking.html" aria-label="Go to Cooking Recipes">
                 <div id="box18" class="box">Cooking Recipes
@@ -633,14 +633,14 @@
         const gamesSection = document.getElementById('games-section');
         const settingsSection = document.getElementById('settings');
         const faqSection = document.getElementById('faq');
-        const randomSection = document.getElementById('random-section');
+        const randomSection = document.getElementById('discover-section');
 
         window.onload = function() {
             mainContent.style.display = 'flex';  
             contactInfo.style.display = 'none';   
             settingsSection.style.display = 'none'; 
             faqSection.style.display = 'none';     
-            randomSection.style.display = 'none';  
+            discoverSection.style.display = 'none';  
             gamesSection.style.display = 'none';   
         };
 
@@ -650,7 +650,7 @@
             gamesSection.style.display = 'none';  
             settingsSection.style.display = 'none';  
             faqSection.style.display = 'none';  
-            randomSection.style.display = 'none';  
+            discoverSection.style.display = 'none';  
         }
 
         document.getElementById('homeLink').addEventListener('click', function () {
@@ -678,7 +678,7 @@
             contactInfo.style.display = 'block';  
         });
 
-        document.getElementById('randomLink').addEventListener('click', function () {
+        document.getElementById('discoverLink').addEventListener('click', function () {
             hideAllSections();
             randomSection.style.display = 'block'; 
         });
