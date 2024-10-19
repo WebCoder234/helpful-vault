@@ -8,296 +8,10 @@
     <meta name="description" content="Use Useful Vault – Your ultimate toolbox for online calculations and conversions. Find the best online calculator for mortgage payments and more!">
     <meta name="keywords" content="online calculator, unit converter, best online calculator for mortgage payments, how to use a temperature converter online, age calculator for birthday planning, random password generator, stopwatch tool, temperature converter for students, length converter, volume calculator, BMI calculator, secure online random password generator">
     <link rel="canonical" href="https://yourdomain.com/">
-
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
     <title>Useful Vault: Online Calculators & Tools</title> 
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:wght@100..900&display=swap" rel="stylesheet">
-
     <link rel="icon" href="logo3.png" type="image/png"> 
-
-    <style>
-        /* Shared CSS styles */
-        * {
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Lexend', sans-serif;
-            text-decoration: none;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-        }
-
-        body {
-            background-color: #24252a;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: white;
-            transition: background-color 0.3s;
-            text-align: center;
-        }
-
-        .navbar {
-            background-color: #333;
-            width: 100%;
-            padding: 10px 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .navbar a {
-            color: white;
-            padding: 10px;
-            margin: 5px;
-            border-radius: 5px;
-            flex: 1;
-            transition: background-color 0.3s;
-        }
-
-        .navbar a:hover {
-            background-color: #575757;
-        }
-
-        h1, h2, h3 {
-            color: white;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-top: 20px;
-        }
-
-        h2 {
-            font-size: 2em; 
-        }
-
-        h3 {
-            font-size: 1.75em; 
-        }
-
-        p, li {
-            font-size: 18px;
-            text-align: center;
-            max-width: 800px;
-        }
-
-        .conduct-info {
-            display: none;
-            color: white;
-            font-size: 20px;
-            margin-top: 50px;
-        }
-
-        .line2ofd {
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .search-container {
-            margin: 20px;
-        }
-
-        .search-bar {
-            height: 40px;
-            width: 80%;
-            max-width: 300px;
-            font-size: 16px;
-            padding: 8px;
-            border: none;
-            border-radius: 5px;
-            outline: none;
-        }
-
-        .box {
-            margin: 10px;
-            max-width: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 150px;
-            border-radius: 10px;
-            color: #282A2D;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 20px;
-            position: relative;
-            outline: none;
-            transition: all 0.3s;
-            width: 300px;
-            text-align: center;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Tooltip styling */
-        .tooltip {
-            visibility: hidden;
-            width: 250px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 160%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .box:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        /* Box background colors */
-        #box1 { background-color: #ede3b9; }
-        #box2 { background-color: #e4af87; }
-        #box3 { background-color: #f6cbad; }
-        #box4 { background-color: #e48686; }
-        #box5 { background-color: #b8f2fe; }
-        #box6 { background-color: #b8f0ba; }
-        #box7 { background-color: #a5eae2; }
-        #box8 { background-color: #84c4ef; }
-        #box9 { background-color: #d6aee6; }
-        #box10 { background-color: #c9eec1; }
-        #box11 { background-color: #A4E3D0; }
-        #box12 { background-color: white; }
-        #box13 { background-color:  #e48686; }
-        #box14 { background-color: #84c4ef; }
-        #box15{ background-color: #74e8b4; }
-        #box16 { background-color: #f7d794; }
-        #box17 { background-color: #f8e1d3; }
-        #box18 { background-color: #f9c2d6; }
-        #box19 { background-color: #b3e5f1; }
-        #box20 { background-color: #f5c3c2; }
-        #box21 { background-color: #f2f2f2; }
-        #box22 { background-color: #f8e1b0; }
-        #box23 { background-color: #dde5fa; }
-        #box24 { background-color: #f6a1a1; }
-        #box25 { background-color: #f5d29a; }
-        #box26 { background-color: #e8dadb; }
-        #box27 { background-color: #ffe6d0; }
-        #box28 { background-color: #fdf2e2; }
-
-        .main, .settings, .games-section, .faq-section, .discover-section {
-            display: none;  
-            flex-direction: column;
-            align-items: center;
-            margin: 20px auto;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .box:hover {
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-            transform: scale(1.05);
-        }
-
-        /* Game box specific styles */
-        #games-section .box {
-            color: #24252a;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: #28a745; /* Green color for action */
-            color: white; 
-            text-decoration: none; 
-            padding: 15px 30px; 
-            border-radius: 5px; 
-            margin-top: 20px; 
-            font-size: 18px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .cta-button:hover {
-            background-color: #218838; /* Darker green on hover */
-            transform: scale(1.05); /* Slightly enlarge on hover */
-        }
-
-        @media (max-width: 768px) {
-            body {
-                font-size: 16px;
-            }
-            h1 {
-                font-size: 2em;
-            }
-            h2 {
-                font-size: 1.8em;
-            }
-            h3 {
-                font-size: 1.5em;
-            }
-            p {
-                font-size: 16px;
-            }
-            .box {
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .navbar a {
-                flex: 1 0 100%;
-            }
-            .search-bar {
-                width: 90%;
-            }
-        }
-
-        .faq-section h2,
-        .faq-section h3,
-        .faq-section p {
-            text-decoration: none; 
-        }
-    </style>
-
-    <script>
-        window.addEventListener('load', function() {
-            const mainContent = document.getElementById('main-content');
-            const sectionsToHide = [
-                'contact-info', 
-                'settings', 
-                'faq', 
-                'random-section', 
-                'games-section'
-            ];
-
-            mainContent.style.display = 'flex';
-
-            sectionsToHide.forEach(sectionId => {
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    section.style.display = 'none';
-                }
-            });
-        });
-
-        // Search Functionality
-        document.getElementById('search').addEventListener('input', function() {
-            const searchValue = this.value.toLowerCase();
-            const boxes = document.querySelectorAll('#toolboxes .box');
-
-            boxes.forEach(box => {
-                const text = box.textContent.toLowerCase();
-                if (text.includes(searchValue)) {
-                    box.parentElement.style.display = 'block'; 
-                } else {
-                    box.parentElement.style.display = 'none'; 
-                }
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -440,8 +154,7 @@
         <p>Discover clever ways to utilize our calculators and converters:</p>
         <ul>
             <li>Combine the <strong>Age Calculator</strong> with the Notes tool for <strong>birthday planning</strong>!</li>
-            <li>Utilize the <strong>Stopwatch</strong> for timing exercise intervals.</li>
-            <li>For secure logins, regularly generate unique passwords with our <strong>secure online random password generator</strong>!</li>
+            <li>Utilize the <strong>Stopwatch</strong> for timing exercise intervals.</li>             <li>For secure logins, regularly generate unique passwords with our <strong>secure online random password generator</strong>!</li>
             <li>When cooking, use the <strong>Volume Calculator</strong> to ensure recipe success!</li>
         </ul>
         <br><br>
@@ -513,10 +226,13 @@
     </div>
     
     <div class="conduct-info" id="contact-info">
-        <h2>Contact Us</h2>
-        <p>Your feedback and suggestions are greatly appreciated!</p>
-        <p>Feel free to reach out via email: <a href="mailto:helpfulvault@gmail.com" style="color: cyan;">helpfulvault@gmail.com</a>.</p>
-        <p>We respond to inquiries within 48 hours.</p>
+        
+        
+        <br>
+        <br>
+       <p>Feel free to reach out via email:helpfulvault@gmail.com. We respond to inquiries within 48 hours. Your feedback and suggestions are greatly appreciated! Your feedback and suggestions are greatly appreciated! </a></p>
+        <p></p>
+        <br>
     </div>
 
     <div class="settings" id="settings" style="display: none;">
@@ -528,9 +244,7 @@
     </div>
 
     <div id="discover-section" style="display: none;">
-        <h2>Discover</h2>
-        
-        
+      
         <div id="toolboxes">
             <a href="cooking.html" aria-label="Go to Cooking Recipes">
                 <div id="box18" class="box">Cooking Recipes
@@ -542,25 +256,21 @@
                     <div class="tooltip">Find Out How Fast You Can React!</div>
                 </div>
             </a>
-
             <a href="riddle.html" aria-label="Go to Riddles">
                 <div id="box20" class="box">Riddles
                     <div class="tooltip">Can you crack the riddles?</div>
                 </div>
             </a>
-            
             <a href="naturaldisasters.html" aria-label="Go to Natural Disaster">
                 <div id="box21" class="box">Natural Disaster
                     <div class="tooltip">Discover essential actions to take during natural disasters.</div>
                 </div>
             </a>
-            
             <a href="heightp.html" aria-label="Go to Height Predictor">
                 <div id="box23" class="box">Height Predictor
                     <div class="tooltip">Predict Your Child's Height</div>
                 </div>
             </a>
-            
             <a href="healthyfood.html" aria-label="Go to Healthy Food">
                 <div id="box27" class="box">Healthy Food
                 </div>
@@ -590,12 +300,11 @@
         <div>
             <h3>5. How can I provide feedback?</h3>
             <p>Your feedback is valuable! Please contact us via the Contact Us section to share your thoughts.</p>
-        </div>
+                   </div>
     </div>
 
     <div id="games-section" style="display: none;">
-        <h2>Games</h2>
-        <h3>Try playing these fun games!</h3>
+   
         <div id="games">
             <a href="rockpaperscissors.html" aria-label="Play Rock Paper Scissors Game">
                 <div id="box21" class="box">Rock Paper Scissors Game
@@ -617,85 +326,537 @@
                     <div class="tooltip">Click to earn points—how fast can you go?</div>
                 </div>
             </a>
-
             <a href="gravitybound.html" aria-label="Play Gravity Bound">
-                <div id="box24" class="box">Gravity Bound
+                <div id="box25" class="box">Gravity Bound
                     <div class="tooltip">How many levels can you get through?</div>
                 </div>
             </a>
         </div>
     </div>
 
-    <script>
-        const mainContent = document.getElementById('main-content');
-        const contactInfo = document.getElementById('contact-info');
-        const searchContainer = document.getElementById('search-container');
-        const gamesSection = document.getElementById('games-section');
-        const settingsSection = document.getElementById('settings');
-        const faqSection = document.getElementById('faq');
-        const randomSection = document.getElementById('discover-section');
-
-        window.onload = function() {
-            mainContent.style.display = 'flex';  
-            contactInfo.style.display = 'none';   
-            settingsSection.style.display = 'none'; 
-            faqSection.style.display = 'none';     
-            discoverSection.style.display = 'none';  
-            gamesSection.style.display = 'none';   
-        };
-
-        function hideAllSections() {
-            mainContent.style.display = 'none';  
-            contactInfo.style.display = 'none';  
-            gamesSection.style.display = 'none';  
-            settingsSection.style.display = 'none';  
-            faqSection.style.display = 'none';  
-            discoverSection.style.display = 'none';  
-        }
-
-        document.getElementById('homeLink').addEventListener('click', function () {
-            hideAllSections();
-            mainContent.style.display = 'flex';   
-        });
-
-        document.getElementById('gamesLink').addEventListener('click', function () {
-            hideAllSections();
-            gamesSection.style.display = 'block'; 
-        });
-
-        document.getElementById('settingsLink').addEventListener('click', function () {
-            hideAllSections();
-            settingsSection.style.display = 'block'; 
-        });
-
-        document.getElementById('faqLink').addEventListener('click', function () {
-            hideAllSections();
-            faqSection.style.display = 'block';     
-        });
-
-        document.getElementById('contactLink').addEventListener('click', function () {
-            hideAllSections();
-            contactInfo.style.display = 'block';  
-        });
-
-        document.getElementById('discoverLink').addEventListener('click', function () {
-            hideAllSections();
-            randomSection.style.display = 'block'; 
-        });
-
-        document.getElementById('search').addEventListener('input', function() {
-            const searchValue = this.value.toLowerCase();
-            const boxes = document.querySelectorAll('#toolboxes .box');
-
-            boxes.forEach(box => {
-                const text = box.textContent.toLowerCase();
-                if (text.includes(searchValue)) {
-                    box.parentElement.style.display = 'block'; 
-                } else {
-                    box.parentElement.style.display = 'none'; 
-                }
-            });
-        });
-    </script>
 </body>
 </html>
+<style>
+  /* Shared CSS styles */
+* {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend', sans-serif;
+    text-decoration: none;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: #24252a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.navbar {
+    background-color: #333;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    flex: 1;
+    transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #575757;
+}
+
+h1, h2, h3 {
+    color: white;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 2em; 
+}
+
+h3 {
+    font-size: 1.75em; 
+}
+
+p, li {
+    font-size: 18px;
+    text-align: center;
+    max-width: 800px;
+}
+
+.conduct-info {
+    display: none;
+    color: white;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+.line2ofd {
+    text-align: center;
+    font-size: 18px;
+}
+
+.search-container {
+    margin: 20px;
+}
+
+.search-bar {
+    height: 40px;
+    width: 80%;
+    max-width: 300px;
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.box {
+    margin: 10px;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    border-radius: 10px;
+    color: #282A2D;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+    position: relative;
+    outline: none;
+    transition: all 0.3s;
+    width: 300px;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tooltip styling */
+.tooltip {
+    visibility: hidden;
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 160%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.box:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Box background colors */
+#box1 { background-color: #ede3b9; }
+#box2 { background-color: #e4af87; }
+#box3 { background-color: #f6cbad; }
+#box4 { background-color: #e48686; }
+#box5 { background-color: #b8f2fe; }
+#box6 { background-color: #b8f0ba; }
+#box7 { background-color: #a5eae2; }
+#box8 { background-color: #84c4ef; }
+#box9 { background-color: #d6aee6; }
+#box10 { background-color: #c9eec1; }
+#box11 { background-color: #A4E3D0; }
+#box12 { background-color: white; }
+#box13 { background-color:  #e48686; }
+#box14 { background-color: #84c4ef; }
+#box15{ background-color: #74e8b4; }
+#box16 { background-color: #f7d794; }
+#box17 { background-color: #f8e1d3; }
+#box18 { background-color: #f9c2d6; }
+#box19 { background-color: #b3e5f1; }
+#box20 { background-color: #f5c3c2; }
+#box21 { background-color: #f2f2f2; }
+#box22 { background-color: #f8e1b0; }
+#box23 { background-color: #dde5fa; }
+#box24 { background-color: #f6a1a1; }
+#box25 { background-color: #f5d29a; }
+#box26 { background-color: #e8dadb; }
+#box27 { background-color: #ffe6d0; }
+#box28 { background-color: #fdf2e2; }
+
+.main, .settings, .games-section, .faq-section, .discover-section {
+    display: none;  
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.box:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    transform: scale(1.05);
+}
+
+/* Game box specific styles */
+#games-section .box {
+    color: #24252a;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #28a745; /* Green color for action */
+    color: white; 
+    text-decoration: none; 
+    padding: 15px 30px; 
+    border-radius: 5px; 
+    margin-top: 20px; 
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    p {
+        font-size: 16px;
+    }
+    .box {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar a {
+        flex: 1 0 100%;
+    }
+    .search-bar {
+        width: 90%;
+    }
+}
+
+.faq-section h2,
+.faq-section h3,
+.faq-section p {
+    text-decoration: none; 
+}
+
+/* Shared CSS styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend', sans-serif; /* Use Lexend font */
+}
+
+body {
+    background-color: #24252a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.navbar {
+    background-color: #333;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    color: white;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #575757;
+    transform: scale(1.05);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 2em; 
+}
+
+h3 {
+    font-size: 1.75em; 
+}
+
+p, li {
+    font-size: 18px;
+    max-width: 800px;
+}
+
+.conduct-info {
+    display: none;
+    color: white;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+.search-container {
+    margin: 20px;
+}
+
+.search-bar {
+    height: 40px;
+    width: 80%;
+    max-width: 300px;
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.box {
+    margin: 10px;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    border-radius: 10px;
+    color: #282A2D;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+    position: relative;
+    transition: all 0.3s;
+    width: 300px;
+    text-align: center;
+}
+
+/* Tooltip styling */
+.tooltip {
+    visibility: hidden;
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 160%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.box:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Box background colors */
+.box:nth-child(odd) { background-color: #ede3b9; }
+.box:nth-child(even) { background-color: #f6cbad; }
+
+.main, .settings, .games-section, .faq-section, .discover-section {
+    display: none;  
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.box:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    transform: scale(1.05);
+}
+
+/* Game box specific styles */
+#games-section .box {
+    color: #24252a;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #28a745; /* Green color for action */
+    color: white; 
+    text-decoration: none; 
+    padding: 15px 30px; 
+    border-radius: 5px; 
+    margin-top: 20px; 
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    p {
+        font-size: 16px;
+    }
+    .box {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar a {
+        flex: 1 0 100%;
+    }
+    .search-bar {
+        width: 90%;
+    }
+}
+
+.faq-section h2,
+.faq-section h3,
+.faq-section p {
+    text-decoration: none; 
+}
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const homeLink = document.getElementById('homeLink');
+    const gamesLink = document.getElementById('gamesLink');
+    const settingsLink = document.getElementById('settingsLink');
+    const faqLink = document.getElementById('faqLink');
+    const contactLink = document.getElementById('contactLink');
+    const discoverLink = document.getElementById('discoverLink');
+
+    const mainContent = document.getElementById('main-content');
+    const settingsContent = document.getElementById('settings');
+    const faqContent = document.getElementById('faq');
+    const contactContent = document.getElementById('contact-info');
+    const gamesContent = document.getElementById('games-section');
+    const discoverContent = document.getElementById('discover-section');
+
+    // Function to hide all sections
+    function hideAllSections() {
+        mainContent.style.display = 'none';
+        settingsContent.style.display = 'none';
+        faqContent.style.display = 'none';
+        contactContent.style.display = 'none';
+        gamesContent.style.display = 'none';
+        discoverContent.style.display = 'none';
+    }
+
+    // Show main content on page load
+    hideAllSections();
+    mainContent.style.display = 'flex';
+
+    // Event listeners for navigation links
+    homeLink.addEventListener('click', function () {
+        hideAllSections();
+        mainContent.style.display = 'flex';
+    });
+
+    gamesLink.addEventListener('click', function () {
+        hideAllSections();
+        gamesContent.style.display = 'flex';
+    });
+
+    settingsLink.addEventListener('click', function () {
+        hideAllSections();
+        settingsContent.style.display = 'flex';
+    });
+
+    faqLink.addEventListener('click', function () {
+        hideAllSections();
+        faqContent.style.display = 'flex';
+    });
+
+    contactLink.addEventListener('click', function () {
+        hideAllSections();
+        contactContent.style.display = 'flex';
+    });
+
+    discoverLink.addEventListener('click', function () {
+        hideAllSections();
+        discoverContent.style.display = 'flex';
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('search');
+    searchInput.addEventListener('input', function () {
+        const filter = searchInput.value.toLowerCase();
+        const tools = document.querySelectorAll('.box');
+
+        tools.forEach(function (tool) {
+            const toolText = tool.innerText.toLowerCase();
+            if (toolText.includes(filter)) {
+                tool.style.display = '';
+            } else {
+                tool.style.display = 'none';
+            }
+        });
+    });
+
+    // Settings toggle for search bar
+    const searchToggle = document.getElementById('searchToggle');
+    searchToggle.addEventListener('change', function () {
+        const searchContainer = document.getElementById('search-container');
+        searchContainer.style.display = searchToggle.checked ? 'block' : 'none';
+    });
+});
+</script>
