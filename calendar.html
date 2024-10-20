@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Calendar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Lexend', sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 450px;
+        }
+        .calendar, .home {
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: none;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .days-of-week {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background: #e0e0e0;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px; /* Add gap between days */
+        }
+        .days div {
+            padding: 10px;
+            border: 1px solid #ddd;
+            height: 60px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden; /* Prevent overflow */
+        }
+        .days div:hover {
+            background-color: #b0e0e6;
+        }
+        .selected {
+            background-color: #007bff;
+            color: white;
+        }
+        .today {
+            background-color: #ffecb3;
+            font-weight: bold;
+        }
+        .event-input {
+            margin-top: 10px;
+            display: none;
+        }
+        .loading-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+            display: none;
+        }
+        .loading-fill {
+            height: 100%;
+            width: 0;
+            background-color: #007bff;
+            transition: width 4s ease;
+        }
+        .event-list {
+            margin-top: 10px;
+            text-align: left;
+        }
+        @media (max-width: 400px) {
+            .days-of-week {
+                display: none; /* Hide days of the week on mobile */
+            }
+            .days div {
+                height: 50px; /* Adjust height for mobile */
+            }
+            header {
+                flex-direction: column; /* Stack header elements */
+                align-items: center;
+            }
+            button {
+                width: 100%; /* Full-width buttons on mobile */
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="home" id="homeMenu">
+            <h2>Welcome to the Calendar App</h2>
+            <button id="goToCalendar">Go to Calendar</button>
+        </div>
+
+        <div class="loading-bar" id="loadingBar">
+            <div class="loading-fill" id="loadingFill"></div>
+        </div>
+
+        <div class="calendar" id="calendar">
+            <header>
+                <button id="prev">Previous</button>
+                <h2 id="monthYear"></h2>
+                <button id="next">Next</button>
+            </header>
+            <div class="days-of-week">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div id="days" class="days"></div>
+            <button id="today">Today</button>
+            <div id="eventContainer" class="event-input">
+                <input type="text" id="eventTitle" placeholder="What is this event for?" />
+                <button id="addEvent">Add Event</button>
+            </div>
+            <div id="eventList" class="event-list"></div>
+        </div>
+    </div>
+
+    <script>
+        const homeMenu = document.getElementById('homeMenu');
+        const calendar = document.getElementById('calendar');
+        const monthYear = document.getElementById('monthYear');
+        const daysContainer = document.getElementById('days');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        const todayButton = document.getElementById('today');
+        const eventContainer = document.getElementById('eventContainer');
+        const eventTitleInput = document.getElementById('eventTitle');
+        const addEventButton = document.getElementById('addEvent');
+        const loadingBar = document.getElementById('loadingBar');
+        const loadingFill = document.getElementById('loadingFill');
+        const goToCalendarButton = document.getElementById('goToCalendar');
+
+        let currentDate = new Date();
+        let selectedDate = '';
+        let events = {};
+
+        // Load events from local storage
+        function loadEvents() {
+            const storedEvents = JSON.parse(localStorage.getItem('events')) || {};
+            return storedEvents;
+        }
+
+        events = loadEvents();
+
+        function renderCalendar() {
+            currentDate.setDate(1);
+            const month = currentDate.getMonth();
+            const year = currentDate.getFullYear();
+            monthYear.textContent = currentDate.toLocaleString('default', { month: 'long' }) + ' ' + year;
+
+            // Clear previous days
+            daysContainer.innerHTML = '';
+
+            // Get the first day of the month
+            const firstDayIndex = currentDate.getDay();
+            const lastDay = new Date(year, month + 1, 0).getDate();
+
+            // Create blank days for the start of the month
+            for (let i = 0; i < firstDayIndex; i++) {
+                const day = document.createElement('div');
+                daysContainer.appendChild(day);
+            }
+
+            // Create days of the month
+            for (let day = 1; day <= lastDay; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.textContent = day;
+                dayElement.setAttribute('data-date', `${year}-${month + 1}-${day}`);
+
+                // Highlight today
+                const today = new Date();
+                if (today.getDate() === day && today.getMonth() === month && today.getFullYear() === year) {
+                    dayElement.classList.add('today');
+                }
+
+                dayElement.addEventListener('click', () => {
+                    selectedDate = dayElement.getAttribute('data-date');
+                    highlightSelectedDay(dayElement);
+                    showEventInput();
+                    displayEventsForDay(dayElement);
+                });
+
+                daysContainer.appendChild(dayElement);
+            }
+        }
+
+        function highlightSelectedDay(selectedDay) {
+            const dayElements = daysContainer.children;
+            for (let day of dayElements) {
+                day.classList.remove('selected');
+            }
+            selectedDay.classList.add('selected');
+        }
+
+        function showEventInput() {
+            eventContainer.style.display = 'block';
+            eventTitleInput.value = ''; // Clear previous input
+            eventTitleInput.focus(); // Focus on the input field
+        }
+
+        function displayEventsForDay(dayElement) {
+            const dateKey = dayElement.getAttribute('data-date');
+                     const eventListContainer = document.getElementById('eventList');
+            eventListContainer.innerHTML = ''; // Clear previous events
+            if (events[dateKey]) {
+                events[dateKey].forEach(event => {
+                    const eventItem = document.createElement('div');
+                    eventItem.textContent = `Event: ${event}`;
+                    eventListContainer.appendChild(eventItem);
+                });
+            }
+        }
+
+        addEventButton.addEventListener('click', () => {
+            const eventTitle = eventTitleInput.value;
+            if (eventTitle && selectedDate) {
+                // Save event to local storage
+                if (!events[selectedDate]) {
+                    events[selectedDate] = [];
+                }
+                events[selectedDate].push(eventTitle);
+                localStorage.setItem('events', JSON.stringify(events));
+
+                // Notify user
+                alert(`Event saved: ${eventTitle} on ${selectedDate}`);
+                displayEventsForDay(document.querySelector(`div[data-date='${selectedDate}']`)); // Refresh event display
+            }
+        });
+
+        todayButton.addEventListener('click', () => {
+            currentDate = new Date();
+            renderCalendar();
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        // Home Menu Navigation
+        goToCalendarButton.addEventListener('click', () => {
+            homeMenu.style.display = 'none';
+            loadingBar.style.display = 'block';
+            loadingFill.style.width = '0%';
+
+            // Start loading animation
+            setTimeout(() => {
+                loadingFill.style.width = '100%';
+            }, 100);
+
+            // After 4 seconds, navigate to the calendar
+            setTimeout(() => {
+                loadingBar.style.display = 'none';
+                calendar.style.display = 'block';
+                renderCalendar();
+            }, 3000);
+        });
+
+        // Initial display
+        homeMenu.style.display = 'block';
+    </script>
+</body>
+</html>
