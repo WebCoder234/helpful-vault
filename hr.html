@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Amatic SC', cursive;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #search {
+            margin-top: 10px;
+            padding: 5px;
+            width: 300px;
+            border: none;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .recipe-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .recipe-details {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+
+        .recipe-title {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Amatic SC', cursive;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+        
+        * {font-family: 'Amatic SC'}
+        p { font-weight: bolder;}
+        
+        button { 
+          border: none;
+          font-weight: 700;
+          background-color:#272732 ;
+          border-radius: 6px;
+          height: 50px;
+          width: 50px;
+          font-size: 19px;
+   
+        }
+        
+        #big1 {font-size: 15px;
+        text-align: center;
+          
+        }
+    </style>
+    <title>Healthy Recipes</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Healthy Recipes</h1>
+        <nav>
+            <ul>
+                <button><a href="#home">Home</a></button>
+                
+                <button><a href="#blog">Blog</a></button>
+               
+                <button><a href="#contact">Contact</a></button>
+               
+            </ul>
+        </nav>
+    
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Featured Recipes</h2>
+            <div class="recipe-card" onclick="toggleDetails('recipe1Details')">
+                <div class="recipe-title">Quick Veggie Stir-Fry</div>
+                <p>Quick and healthy stir-fry with seasonal vegetables.</p>
+                <div id="recipe1Details" class="recipe-details hidden">
+                    <h3>Ingredients:</h3>
+                    <ul>
+                        <li>2 cups mixed vegetables</li>
+                        <li>1 tablespoon olive oil</li>
+                        <li>2 cloves garlic, minced</li>
+                        <li>1 tablespoon soy sauce</li>
+                        <li>Salt and pepper to taste</li>
+                    </ul>
+                    <h3>Instructions:</h3>
+                    <ol>
+                        <li>Heat olive oil in a pan over medium heat.</li>
+                        <li>Add garlic and sauté until fragrant.</li>
+                        <li>Add mixed vegetables and stir-fry for 5-7 minutes.</li>
+                        <li>Stir in soy sauce, salt, and pepper. Cook for another 2 minutes.</li>
+                        <li>Serve hot.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="recipe-card" onclick="toggleDetails('recipe2Details')">
+    <div class="recipe-title">Spicy Chickpea Curry</div>
+    <p>A hearty and spicy chickpea curry that's easy to make.</p>
+    <div id="recipe2Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>1 can chickpeas, drained</li>
+            <li>1 onion, chopped</li>
+            <li>2 cloves garlic, minced</li>
+            <li>1 tablespoon curry powder</li>
+            <li>1 can coconut milk</li>
+            <li>Salt to taste</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Sauté onion and garlic in a pan until soft.</li>
+            <li>Add curry powder and cook for 1 minute.</li>
+            <li>Add chickpeas and coconut milk, simmer for 15 minutes.</li>
+            <li>Season with salt and serve with rice.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe3Details')">
+    <div class="recipe-title">Mediterranean Quinoa Salad</div>
+    <p>A refreshing salad packed with Mediterranean flavors.</p>
+    <div id="recipe3Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>1 cup cooked quinoa</li>
+            <li>1 cucumber, diced</li>
+            <li>1 cup cherry tomatoes, halved</li>
+            <li>1/2 cup feta cheese, crumbled</li>
+            <li>2 tablespoons olive oil</li>
+            <li>Juice of 1 lemon</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>In a bowl, combine quinoa, cucumber, tomatoes, and feta.</li>
+            <li>Drizzle with olive oil and lemon juice.</li>
+            <li>Toss to combine and serve chilled.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe4Details')">
+    <div class="recipe-title">Garlic Lemon Chicken</div>
+    <p>Juicy chicken marinated in garlic and lemon.</p>
+    <div id="recipe4Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>4 chicken breasts</li>
+            <li>4 cloves garlic, minced</li>
+            <li>Juice of 2 lemons</li>
+            <li>2 tablespoons olive oil</li>
+            <li>Salt and pepper to taste</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Mix garlic, lemon juice, olive oil, salt, and pepper in a bowl.</li>
+            <li>Marinate chicken for at least 30 minutes.</li>
+            <li>Grill or bake chicken until cooked through.</li>
+            <li>Serve with vegetables or salad.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe5Details')">
+    <div class="recipe-title">Vegetable Fried Rice</div>
+    <p>A quick and easy fried rice loaded with vegetables.</p>
+    <div id="recipe5Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>2 cups cooked rice</li>
+            <li>1 cup mixed vegetables</li>
+            <li>2 eggs, beaten</li>
+            <li>3 tablespoons soy sauce</li>
+            <li>2 tablespoons sesame oil</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Heat sesame oil in a pan and scramble the eggs.</li>
+            <li>Add mixed vegetables and stir-fry for 3-4 minutes.</li>
+            <li>Add cooked rice and soy sauce, stir-fry until heated through.</li>
+            <li>Serve hot.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe6Details')">
+    <div class="recipe-title">Caprese Salad</div>
+    <p>A classic Italian salad with fresh mozzarella and tomatoes.</p>
+    <div id="recipe6Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>2 large tomatoes, sliced</li>
+            <li>1 ball fresh mozzarella, sliced</li>
+            <li>Fresh basil leaves</li>
+            <li>2 tablespoons balsamic vinegar</li>
+            <li>Salt and pepper to taste</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Layer tomato and mozzarella slices on a plate.</li>
+            <li>Top with fresh basil leaves.</li>
+            <li>Drizzle with balsamic vinegar and season with salt and pepper.</li>
+            <li>Serve immediately.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe7Details')">
+    <div class="recipe-title">Sweet Potato Mash</div>
+    <p>A creamy and healthy alternative to mashed potatoes.</p>
+    <div id="recipe7Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>2 large sweet potatoes, peeled and cubed</li>
+            <li>2 tablespoons butter</li>
+            <li>Salt and pepper to taste</li>
+            <li>1/4 cup milk</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Boil sweet potatoes until tender, about 15 minutes.</li>
+            <li>Drain and mash with butter, milk, salt, and pepper.</li>
+            <li>Serve warm.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe8Details')">
+    <div class="recipe-title">Banana Oatmeal Cookies</div>
+    <p>Healthy cookies made with bananas and oats.</p>
+    <div id="recipe8Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>2 ripe bananas, mashed</li>
+            <li>1 cup oats</li>
+            <li>1/2 cup chocolate chips</li>
+            <li>1 teaspoon vanilla extract</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Preheat oven to 350°F (175°C).</li>
+            <li>Mix all ingredients in a bowl until combined.</li>
+            <li>Drop spoonfuls onto a baking sheet.</li>
+            <li>Bake for 10-12 minutes until golden.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe9Details')">
+    <div class="recipe-title">Lentil Soup</div>
+    <p>A hearty and nutritious lentil soup.</p>
+    <div id="recipe9Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>1 cup lentils, rinsed</li>
+            <li>1 onion, chopped</li>
+            <li>2 carrots, diced</li>
+            <li>4 cups vegetable broth</li>
+            <li>1 teaspoon cumin</li>
+            <li>Salt and pepper to taste</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Sauté onion and carrots in a pot until soft.</li>
+            <li>Add lentils, broth, cumin, salt, and pepper.</li>
+            <li>Bring to a boil, then simmer for 30 minutes.</li>
+            <li>Serve hot.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe10Details')">
+    <div class="recipe-title">Chocolate Avocado Mousse</div>
+    <p>A rich and creamy dessert made with avocados.</p>
+    <div id="recipe10Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>2 ripe avocados</li>
+            <li>1/2 cup cocoa powder</li>
+            <li>1/4 cup honey or maple syrup</li>
+            <li>1 teaspoon vanilla extract</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Blend all ingredients in a food processor until smooth.</li>
+            <li>Chill in the refrigerator for 30 minutes.</li>
+            <li>Serve with fresh berries on top.</li>
+        </ol>
+    </div>
+</div>
+<div class="recipe-card" onclick="toggleDetails('recipe12Details')">
+    <div class="recipe-title">Zucchini Noodles with Pesto</div>
+    <p>A light and healthy alternative to pasta using zucchini noodles.</p>
+    <div id="recipe12Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>2 medium zucchinis, spiralized</li>
+            <li>1/2 cup pesto sauce</li>
+            <li>1/4 cup cherry tomatoes, halved</li>
+            <li>1 tablespoon olive oil</li>
+            <li>Salt and pepper to taste</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Heat olive oil in a pan over medium heat.</li>
+            <li>Add zucchini noodles and cook for 2-3 minutes.</li>
+            <li>Stir in pesto sauce and cherry tomatoes.</li>
+            <li>Cook for another 2 minutes, season with salt and pepper, and serve.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe13Details')">
+    <div class="recipe-title">Beef Tacos</div>
+    <p>Flavorful beef tacos topped with fresh ingredients.</p>
+    <div id="recipe13Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>1 lb ground beef</li>
+            <li>1 packet taco seasoning</li>
+            <li>8 taco shells</li>
+            <li>1 cup lettuce, shredded</li>
+            <li>1 cup diced tomatoes</li>
+            <li>1/2 cup shredded cheese</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Cook ground beef in a pan until browned, drain excess fat.</li>
+            <li>Add taco seasoning and water, simmer for 5 minutes.</li>
+            <li>Fill taco shells with beef and top with lettuce, tomatoes, and cheese.</li>
+            <li>Serve immediately.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe14Details')">
+    <div class="recipe-title">Chickpea Salad Sandwich</div>
+    <p>A protein-packed sandwich made with chickpeas and veggies.</p>
+    <div id="recipe14Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>1 can chickpeas, drained and mashed</li>
+            <li>1/4 cup mayonnaise</li>
+            <li>1 celery stalk, diced</li>
+            <li>1/4 cup red onion, diced</li>
+            <li>Salt and pepper to taste</li>
+            <li>4 slices whole grain bread</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>In a bowl, mix chickpeas, mayonnaise, celery, onion, salt, and pepper.</li>
+            <li>Spread mixture onto whole grain bread.</li>
+            <li>Top with additional veggies if desired, then close the sandwich.</li>
+            <li>Serve immediately.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe15Details')">
+    <div class="recipe-title">Baked Salmon with Dill</div>
+    <p>Healthy and flavorful salmon baked with fresh dill.</p>
+    <div id="recipe15Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>2 salmon fillets</li>
+            <li>2 tablespoons olive oil</li>
+            <li>1 tablespoon fresh dill, chopped</li>
+            <li>Salt and pepper to taste</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Preheat oven to 400°F (200°C).</li>
+            <li>Place salmon on a baking sheet, drizzle with olive oil, and sprinkle with dill.</li>
+            <li>Season with salt and pepper, then bake for 12-15 minutes.</li>
+            <li>Serve hot with a side of vegetables.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe16Details')">
+    <div class="recipe-title">Vegan Chili</div>
+    <p>A hearty chili packed with beans and vegetables.</p>
+    <div id="recipe16Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>1 can black beans</li>
+            <li>1 can kidney beans</li>
+            <li>1 onion, chopped</li>
+            <li>1 bell pepper, diced</li>
+            <li>2 cups diced tomatoes</li>
+            <li>2 tablespoons chili powder</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Sauté onion and bell pepper in a pot until soft.</li>
+            <li>Add black beans, kidney beans, tomatoes, and chili powder.</li>
+            <li>Simmer for 20 minutes, stirring occasionally.</li>
+            <li>Serve hot with your favorite toppings.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe17Details')">
+    <div class="recipe-title">Mango Smoothie</div>
+    <p>A refreshing smoothie made with ripe mangoes.</p>
+    <div id="recipe17Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>1 ripe mango, diced</li>
+            <li>1 banana</li>
+            <li>1 cup yogurt</li>
+            <li>1/2 cup orange juice</li>
+            <li>Ice cubes (optional)</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Blend mango, banana, yogurt, orange juice, and ice until smooth.</li>
+            <li>Pour into a glass and serve immediately.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe18Details')">
+    <div class="recipe-title">Roasted Brussels Sprouts</div>
+    <p>Crispy roasted Brussels sprouts with balsamic glaze.</p>
+    <div id="recipe18Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>1 lb Brussels sprouts, halved</li>
+            <li>2 tablespoons olive oil</li>
+            <li>Salt and pepper to taste</li>
+            <li>2 tablespoons balsamic glaze</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Preheat oven to 425°F (220°C).</li>
+            <li>Toss Brussels sprouts with olive oil, salt, and pepper.</li>
+            <li>Spread on a baking sheet and roast for 20-25 minutes.</li>
+            <li>Drizzle with balsamic glaze before serving.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe-card" onclick="toggleDetails('recipe19Details')">
+    <div class="recipe-title">Pasta Primavera</div>
+    <p>A colorful pasta dish loaded with fresh vegetables.</p>
+    <div id="recipe19Details" class="recipe-details hidden">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>8 oz pasta of choice</li>
+            <li>1 cup bell peppers, sliced</li>
+            <li>1 cup zucchini, sliced</li>
+            <li>1 cup cherry tomatoes, halved</li>
+            <li>2 tablespoons olive oil</li>
+            <li>Salt and pepper to taste</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Cook pasta according to package instructions, drain.</li>
+            <li>In a pan, heat olive oil and sauté vegetables until tender.</li>
+            <li>Add cooked pasta, salt, and pepper, toss to combine.</li>
+            <li>Serve hot with Parmesan cheese if desired.</li>
+        </ol>
+    </div>
+</div>
+            <!-- Add more featured recipes here -->
+        </section>
+
+        <section id="categories">
+            <h2>Recipe Categories</h2>
+            <div>
+                <h3>Quick Meals</h3>
+                <p>Delicious meals ready in under 30 minutes.</p>
+            </div>
+            <div>
+                <h3>Whole Food Recipes</h3>
+                <p>Nutritious recipes using whole ingredients.</p>
+            </div>
+            <div>
+                <h3>Gluten-Free Recipes</h3>
+                <p>Delicious recipes without gluten.</p>
+            </div>
+            <div>
+                <h3>Dessert Recipes</h3>
+                <p>Healthy desserts that satisfy your sweet tooth.</p>
+            </div>
+            <div>
+                <h3>Breakfast Recipes</h3>
+                <p>Start your day with these healthy breakfast options.</p>
+            </div>
+            <div>
+                <h3>Smoothie Recipes</h3>
+                <p>Refreshing and nutritious smoothies.</p>
+            </div>
+            <div>
+                <h3>Cocktail Recipes</h3>
+                <p>Delicious cocktails for any occasion.</p>
+            </div>
+        </section>
+
+        <section id="blog">
+            <h2>Cooking Tips & Nutrition Advice</h2>
+            <p>Check out our articles for helpful tips and advice on healthy cooking and nutrition!</p>
+        </section>
+
+     
+            
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>For inquiries, reach us at helpfulvault@gmail.com</p>
+        </section>
+
+
+           
+    </main>
+
+
+   
+
+    <script>
+        function toggleDetails(id) {
+            var details = document.getElementById(id);
+            if (details.style.display === "none" || details.style.display === "") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
