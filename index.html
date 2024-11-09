@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +41,7 @@
         <h2>Our Tools</h2>
         <p>Explore our diverse collection of <strong>calculators</strong> and <strong>conversion tools</strong> crafted for your convenience:</p>
         
-        <div id="toolboxes">
+        <div class="grid-container">
             <a href="calculator.html" aria-label="Go to Best Online Calculator for Mortgage Payments">
                 <div id="box1" class="box">Calculator
                     <div class="tooltip">Perform <strong>arithmetic calculations</strong> with ease!</div>
@@ -360,6 +361,7 @@
 </body>
 </html>
 <style>
+p {color: #29292D;}
   /* Shared CSS styles */
 * {
     text-align: center;
@@ -374,11 +376,11 @@
 }
 
 body {
-    background-color: #24252a;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
+    
     transition: background-color 0.3s;
     text-align: center;
 }
@@ -406,7 +408,7 @@ body {
 }
 
 h1, h2, h3 {
-    color: white;
+    color:#29292D;
 }
 
 h1 {
@@ -430,7 +432,7 @@ p, li {
 
 .conduct-info {
     display: none;
-    color: white;
+   color: #29292D;
     font-size: 20px;
     margin-top: 50px;
 }
@@ -453,6 +455,7 @@ p, li {
     border: none;
     border-radius: 5px;
     outline: none;
+    background-color: #DFF4F2;
 }
 
 .box {
@@ -512,7 +515,7 @@ p, li {
 #box9 { background-color: #d6aee6; }
 #box10 { background-color: #c9eec1; }
 #box11 { background-color: #A4E3D0; }
-#box12 { background-color: white; }
+#box12 { background-color: #e48686; }
 #box13 { background-color:  #e48686; }
 #box14 { background-color: #84c4ef; }
 #box15{ background-color: #74e8b4; }
@@ -611,15 +614,7 @@ p, li {
     font-family: 'Lexend', sans-serif; /* Use Lexend font */
 }
 
-body {
-    background-color: #24252a;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    transition: background-color 0.3s;
-    text-align: center;
-}
+
 
 .navbar {
     background-color: #333;
@@ -809,6 +804,38 @@ p, li {
     text-align: center;
         
     }
+    
+    .toolboxes {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping */
+  justify-content: center;
+}
+.box {
+  width: 3000%; /* Adjust the width as needed */
+  margin: 10px;
+  /* ... other styles ... */
+}
+
+@media (max-width: 768px) {
+  .toolboxes {
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+  .box {
+    width: 100%; /* Make each box full width on smaller screens */
+  }
+}
+
+.grid-container {
+    display: grid; /* Enables grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Creates three equal columns */
+    gap: 10px; /* Space between items */
+}
+
+.grid-item {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
