@@ -219,7 +219,7 @@
         <h2>Have Questions? Your Queries Matter!</h2>
         <p>
             Curiosity drives exploration. <br><br> Should you have questions while navigating our tools, check out our FAQ section. You’ll find answers to common queries and much more. <br><br> Your feedback is vital! 
-            Reach out anytime at <a href="mailto:helpfulvault@gmail.com" style="color: cyan;">helpfulvault@gmail.com</a> with your suggestions or just to say hello. <br><br>
+            Reach out anytime at <a href="mailto:helpfulvault@gmail.com" style="black">helpfulvault@gmail.com</a> with your suggestions or just to say hello. <br><br>
         </p>
         <a href="mailto:helpfulvault@gmail.com" class="cta-button">Contact Us Today!</a>
 
@@ -375,6 +375,8 @@ p {color: #29292D;}
     align-items: center;
 }
 
+
+
 body {
     
     display: flex;
@@ -432,7 +434,7 @@ p, li {
 
 .conduct-info {
     display: none;
-   color: #29292D;
+   
     font-size: 20px;
     margin-top: 50px;
 }
@@ -687,7 +689,7 @@ p, li {
     height: 150px;
     border-radius: 10px;
     color: #282A2D;
-    font-weight: bold;
+   
     cursor: pointer;
     font-size: 20px;
     position: relative;
@@ -836,6 +838,188 @@ p, li {
     padding: 20px;
     border: 1px solid #ccc;
 }
+
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: #007bff; /* Primary color */
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    
+}
+
+.navbar a {
+    color: white;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: scale(1.05);
+}
+
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #007bff; /* Primary color for headings */
+}
+
+h2 {
+    font-size: 2em;
+    margin: 20px 0;
+    color: #333;
+}
+
+h3 {
+    font-size: 1.75em;
+    margin: 15px 0;
+}
+
+p, li {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 10px auto;
+}
+
+/* Button Styles */
+.cta-button {
+    display: inline-block;
+    background-color: #28a745; /* Green color for action */
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    margin-top: 20px;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05);
+}
+
+/* Search Bar Styles */
+.search-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.search-bar {
+    height: 40px;
+    width: 80%;
+    max-width: 400px;
+    font-size: 16px;
+    padding: 8px;
+    border: 2px solid #007bff; /* Primary color border */
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+    background-color: white;
+    
+    
+}
+
+.search-bar:focus {
+    border-color: #0056b3; /* Darker shade on focus */
+}
+
+
+.box {
+    background-color: #ffffff; /* White background for boxes */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Tooltip Styles */
+.tooltip {
+    visibility: hidden;
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 160%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.box:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* FAQ Section Styles */
+.faq-section {
+    margin: 20px 0;
+}
+
+.faq-section h2 {
+    margin-bottom: 15px;
+}
+
+.faq-section h3 {
+    margin: 10px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+
+ .search-bar {
+        width: 90%;
+    }
+
+    .navbar a {
+        flex: 1 0 100%; /* Stack links on small screens */
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column; /* Stack navbar items vertically */
+    }
+}
+
+.box { font-weight: 400;}
+
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
