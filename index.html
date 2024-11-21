@@ -1093,6 +1093,31 @@ background-image: url('VIDEO GAMES.png');
 background-image: url('DISCOVER.png');
 
 
+#box1 {
+    background-color: rgba(237, 227, 185, 0.8); /* Slightly darker background for contrast */
+    position: relative;
+    overflow: hidden;
+}
+
+#box1::before {
+    content: '';
+    position: absolute; /* Position it absolutely within the box */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-image: url('CALCULATOR.png'); /* Path to your image */
+    background-size: cover; /* Cover the entire box */
+    background-position: center; /* Center the image */
+    opacity: 0.2; /* 20% opacity */
+    z-index: 1; /* Ensure it's below the text */
+}
+
+#box1 > div {
+    position: relative; /* Ensure the text is above the pseudo-element */
+    z-index: 2; /* Higher than the pseudo-element */
+}
+
 
 </style>
 <script>
