@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <h1>Speed Calculator</h1>
+
+        <div class="section">
+            <label for="distanceInput">Distance</label>
+            <input type="number" id="distanceInput" placeholder="Enter distance" step="any">
+            <select id="distanceUnit">
+                <option value="meters">Meters</option>
+                <option value="feet">Feet</option>
+                <option value="miles">Miles</option>
+                <option value="kilometers">Kilometers</option>
+                <option value="inches">Inches</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label for="timeInput">Time (seconds)</label>
+            <input type="number" id="timeInput" placeholder="Enter time in seconds" step="any">
+        </div>
+
+        <button onclick="calculateSpeed()">Calculate Speed</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateSpeed() {
+            const distance = parseFloat(document.getElementById('distanceInput').value);
+            const time = parseFloat(document.getElementById('timeInput').value);
+            const distanceUnit = document.getElementById('distanceUnit').value;
+            let result = "";
+
+            // Convert distance to meters
+            let distanceInMeters;
+            switch (distanceUnit) {
+                case 'meters':
+                    distanceInMeters = distance;
+                    break;
+                case 'feet':
+                    distanceInMeters = distance * 0.3048; // 1 foot = 0.3048 meters
+                    break;
+                case 'miles':
+                    distanceInMeters = distance * 1609.34; // 1 mile = 1609.34 meters
+                    break;
+                case 'kilometers':
+                    distanceInMeters = distance * 1000; // 1 kilometer = 1000 meters
+                    break;
+                case 'inches':
+                    distanceInMeters = distance * 0.0254; // 1 inch = 0.0254 meters
+                    break;
+                default:
+                    distanceInMeters = distance;
+                    break;
+            }
+
+            if (!isNaN(distanceInMeters) && !isNaN(time) && time > 0) {
+                const speed_mps = distanceInMeters / time; // Speed in m/s
+                const speed_kmph = (speed_mps * 3600) / 1000; // Speed in km/h
+                const speed_mph = (speed_kmph * 0.621371); // Speed in mph
+
+                result += `Speed = ${speed_mps.toFixed(2)} m/s\n`;
+                result += `Speed = ${speed_kmph.toFixed(2)} km/h\n`;
+                result += `Speed = ${speed_mph.toFixed(2)} mph`;
+            } else {
+                result = "Please enter valid distance and a positive time.";
+            }
+
+            document.getElementById('result').innerText = result.replace(/\n/g, '\n'); // To display new lines correctly
+        }
+    </script>
+</body>
+
+</html>
