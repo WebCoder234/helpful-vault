@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angle Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet"> <!-- Link to Lexend font -->
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px; /* Set a maximum width for large screens */
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column; /* Stack form elements vertically */
+            gap: 10px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%; /* Make fields stretch to full width */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #5bc0de;
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #31b0d5;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px; /* Bigger font size for result */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Angle Converter</h1>
+        <form id="converterForm">
+            <input type="number" id="angleValue" placeholder="Enter angle value" required>
+            <select id="fromUnit">
+                <option value="degrees">Degrees</option>
+                <option value="radians">Radians</option>
+                <option value="gradians">Gradians</option>
+            </select>
+            <span>to</span>
+            <select id="toUnit">
+                <option value="degrees">Degrees</option>
+                <option value="radians">Radians</option>
+                <option value="gradians">Gradians</option>
+            </select>
+            <button type="submit">Convert</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    
+    <script>
+        document.getElementById('converterForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            const value = parseFloat(document.getElementById('angleValue').value);
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+            
+            let result;
+
+            if (fromUnit === 'degrees') {
+                if (toUnit === 'radians') {
+                    result = value * (Math.PI / 180);
+                } else if (toUnit === 'gradians') {
+                    result = value * (10 / 9);
+                } else {
+                    result = value; // Degrees to Degrees
+                }
+            } else if (fromUnit === 'radians') {
+                if (toUnit === 'degrees') {
+                    result = value * (180 / Math.PI);
+                } else if (toUnit === 'gradians') {
+                    result = value * (200 / Math.PI);
+                } else {
+                    result = value; // Radians to Radians
+                }
+            } else if (fromUnit === 'gradians') {
+                if (toUnit === 'degrees') {
+                    result = value * (9 / 10);
+                } else if (toUnit === 'radians') {
+                    result = value * (Math.PI / 200);
+                } else {
+                    result = value; // Gradians to Gradians
+                }
+            }
+
+            // Display the result
+            document.getElementById('result').innerText = `Result: ${result.toFixed(4)} ${toUnit}`;
+        });
+    </script>
+</body>
+</html>
