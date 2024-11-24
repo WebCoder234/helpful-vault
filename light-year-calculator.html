@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Year Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .result {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .unit-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Light Year Calculator</h1>
+
+        <div class="section">
+            <label class="unit-label">Distance in Light Years (ly)</label>
+            <input type="number" id="lyInput" placeholder="Enter light years" step="any" oninput="calculateDistance()">
+        </div>
+
+        <div class="section">
+            <label class="unit-label">Distance in Kilometers (km)</label>
+            <input type="number" id="kmInput" placeholder="Enter kilometers" step="any" oninput="calculateDistance()">
+        </div>
+
+        <div class="section">
+            <label class="unit-label">Distance in Miles (mi)</label>
+            <input type="number" id="miInput" placeholder="Enter miles" step="any" oninput="calculateDistance()">
+        </div>
+
+        <div class="section">
+            <label class="unit-label">Distance in Astronomical Units (AU)</label>
+            <input type="number" id="auInput" placeholder="Enter astronomical units" step="any" oninput="calculateDistance()">
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const LIGHT_YEAR_IN_KM = 9.461e12; // 1 light year in kilometers
+        const LIGHT_YEAR_IN_MILES = 5.879e12; // 1 light year in miles
+        const AU_IN_KM = 1.496e8; // 1 AU in kilometers
+
+        function calculateDistance() {
+            let result = "";
+
+            // Light Years to Others
+            const lyInput = parseFloat(document.getElementById('lyInput').value);
+            if (!isNaN(lyInput)) {
+                result += `${lyInput} Light Year(s) is approximately:\n`;
+                result += `${(lyInput * LIGHT_YEAR_IN_KM).toFixed(2)} Kilometers\n`;
+                result += `${(lyInput * LIGHT_YEAR_IN_MILES).toFixed(2)} Miles\n`;
+                result += `${(lyInput * LIGHT_YEAR_IN_KM / AU_IN_KM).toFixed(10)} Astronomical Units\n`;
+            }
+
+            // Kilometers to Others
+            const kmInput = parseFloat(document.getElementById('kmInput').value);
+            if (!isNaN(kmInput)) {
+                result += `${kmInput} Kilometer(s) is approximately:\n`;
+                result += `${(kmInput / LIGHT_YEAR_IN_KM).toFixed(10)} Light Years\n`;
+                result += `${(kmInput / (LIGHT_YEAR_IN_KM / LIGHT_YEAR_IN_MILES)).toFixed(2)} Miles\n`;
+                result += `${(kmInput / AU_IN_KM).toFixed(10)} Astronomical Units\n`;
+            }
+
+            // Miles to Others
+            const miInput = parseFloat(document.getElementById('miInput').value);
+            if (!isNaN(miInput)) {
+                result += `${miInput} Mile(s) is approximately:\n`;
+                result += `${(miInput / LIGHT_YEAR_IN_MILES).toFixed(10)} Light Years\n`;
+                result += `${(miInput * (LIGHT_YEAR_IN_KM / LIGHT_YEAR_IN_MILES)).toFixed(2)} Kilometers\n`;
+                result += `${(miInput / (AU_IN_KM / LIGHT_YEAR_IN_MILES)).toFixed(10)} Astronomical Units\n`;
+            }
+
+            // Astronomical Units to Others
+            const auInput = parseFloat(document.getElementById('auInput').value);
+            if (!isNaN(auInput)) {
+                result += `${auInput} Astronomical Unit(s) is approximately:\n`;
+                result += `${(auInput * AU_IN_KM / LIGHT_YEAR_IN_KM).toFixed(10)} Light Years\n`;
+                result += `${(auInput * AU_IN_KM).toFixed(2)} Kilometers\n`;
+                result += `${(auInput * AU_IN_KM / LIGHT_YEAR_IN_MILES).toFixed(10)} Miles\n`;
+            }
+
+            document.getElementById('result').innerText = result ? result : "Please enter a value.";
+        }
+    </script>
+
+</body>
+</html>
