@@ -1,114 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Area Converter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <title>Area Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Lexend', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+    * {  font-family: 'Lexend'}
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Lexend', sans-serif;
             background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
         }
-        .converter {
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .calculator {
             background: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-        }
-        h1 {
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
             text-align: center;
-            margin-bottom: 20px;
         }
-        input[type="number"], select {
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 8px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
         }
+
         button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
             width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: #218838;
         }
+
         .result {
             margin-top: 20px;
-            text-align: left;
+            font-size: 1.2em;
         }
     </style>
 </head>
+
 <body>
-    <div class="converter">
-        <h1>Area Converter</h1>
-
-        <input type="number" id="areaValue" placeholder="Area Value">
-        <select id="fromUnit">
-            <option value="sqm">Square Meters (m²)</option>
-            <option value="sqkm">Square Kilometers (km²)</option>
-            <option value="acre">Acres</option>
-            <option value="hectare">Hectares</option>
-        </select>
-
-        <select id="toUnit">
-            <option value="sqm">Square Meters (m²)</option>
-            <option value="sqkm">Square Kilometers (km²)</option>
-            <option value="acre">Acres</option>
-            <option value="hectare">Hectares</option>
-        </select>
-
-        <button onclick="convertArea()">Convert</button>
-
+    <h1>Area Calculator</h1>
+    <div class="calculator">
+        <div class="form-group">
+            <label for="shape">Select a shape:</label>
+            <select id="shape" onchange="toggleInputs()">
+                <option value="">Choose a shape</option>
+                <option value="rectangle">Rectangle</option>
+                <option value="square">Square</option>
+                <option value="circle">Circle</option>
+                <option value="triangle">Triangle</option>
+            </select>
+        </div>
+        <div id="inputs">
+            <!-- Input fields will be generated here -->
+        </div>
+        <button onclick="calculateArea()">Calculate Area</button>
         <div class="result" id="result"></div>
     </div>
 
     <script>
-        const conversionRates = {
-            sqm: 1, // Square meters
-            sqkm: 1000000, // Square kilometers
-            acre: 4046.86, // Acres
-            hectare: 10000 // Hectares
-        };
+        function toggleInputs() {
+            const shape = document.getElementById('shape').value;
+            const inputsDiv = document.getElementById('inputs');
+            inputsDiv.innerHTML = ''; // Clear existing inputs
 
-        function convertArea() {
-            const areaValue = parseFloat(document.getElementById('areaValue').value);
-            const fromUnit = document.getElementById('fromUnit').value;
-            const toUnit = document.getElementById('toUnit').value;
+            if (shape === 'rectangle') {
+                inputsDiv.innerHTML = `
+                    <div class="form-group">
+                        <label for="length">Length:</label>
+                        <input type="number" id="length" placeholder="Enter length" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="width">Width:</label>
+                        <input type="number" id="width" placeholder="Enter width" required>
+                    </div>`;
+            } else if (shape === 'square') {
+                inputsDiv.innerHTML = `
+                    <div class="form-group">
+                        <label for="side">Side Length:</label>
+                        <input type="number" id="side" placeholder="Enter side length" required>
+                    </div>`;
+            } else if (shape === 'circle') {
+                inputsDiv.innerHTML = `
+                    <div class="form-group">
+                        <label for="radius">Radius:</label>
+                        <input type="number" id="radius" placeholder="Enter radius" required>
+                    </div>`;
+            } else if (shape === 'triangle') {
+                inputsDiv.innerHTML = `
+                    <div class="form-group">
+                        <label for="base">Base:</label>
+                        <input type="number" id="base" placeholder="Enter base length" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Height:</label>
+                        <input type="number" id="height" placeholder="Enter height" required>
+                    </div>`;
+            }
+        }
 
-            // Validate input
-            if (isNaN(areaValue) || areaValue < 0) {
-                document.getElementById('result').innerText = "Please enter a valid area value.";
-                return;
+        function calculateArea() {
+            const shape = document.getElementById('shape').value;
+            let area = 0;
+
+            if (shape === 'rectangle') {
+                const length = parseFloat(document.getElementById('length').value);
+                const width = parseFloat(document.getElementById('width').value);
+                area = length * width;
+            } else if (shape === 'square') {
+                const side = parseFloat(document.getElementById('side').value);
+                area = side * side;
+            } else if (shape === 'circle') {
+                const radius = parseFloat(document.getElementById('radius').value);
+                area = Math.PI * radius * radius;
+            } else if (shape === 'triangle') {
+                const base = parseFloat(document.getElementById('base').value);
+                const height = parseFloat(document.getElementById('height').value);
+                area = 0.5 * base * height;
             }
 
-            // Convert to square meters
-            const areaInSqm = areaValue * conversionRates[fromUnit];
-
-            // Convert to desired unit
-            const convertedArea = areaInSqm / conversionRates[toUnit];
-
-            document.getElementById('result').innerHTML = `
-                <strong>Converted Area:</strong><br>
-                ${convertedArea.toFixed(2)} ${toUnit === 'sqkm' ? 'km²' : toUnit === 'acre' ? 'acres' : 'hectares'}
-            `;
+            document.getElementById('result').innerText = `Area: ${area.toFixed(2)}`;
         }
     </script>
 </body>
+
 </html>
