@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubic Meter Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .result {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .unit-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Cubic Meter Calculator</h1>
+
+        <div class="section">
+            <label class="unit-label">Volume in Cubic Meters (m³)</label>
+            <input type="number" id="cumInput" placeholder="Enter cubic meters" step="any" oninput="calculateVolume()">
+        </div>
+
+        <div class="section">
+            <label class="unit-label">Volume in Cubic Feet (ft³)</label>
+            <input type="number" id="cuftInput" placeholder="Enter cubic feet" step="any" oninput="calculateVolume()">
+        </div>
+
+        <div class="section">
+            <label class="unit-label">Volume in Liters (L)</label>
+            <input type="number" id="litersInput" placeholder="Enter liters" step="any" oninput="calculateVolume()">
+        </div>
+
+        <div class="section">
+            <label class="unit-label">Volume in Gallons (gal)</label>
+            <input type="number" id="gallonsInput" placeholder="Enter gallons" step="any" oninput="calculateVolume()">
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const CUBIC_METER_TO_CUBIC_FEET = 35.3147; // 1 m³ to ft³
+        const CUBIC_METER_TO_LITERS = 1000; // 1 m³ to L
+        const CUBIC_METER_TO_GALLONS = 264.172; // 1 m³ to gallons
+
+        function calculateVolume() {
+            let result = "";
+
+            // Cubic Meters to Others
+            const cumInput = parseFloat(document.getElementById('cumInput').value);
+            if (!isNaN(cumInput)) {
+                result += `${cumInput} Cubic Meters (m³) is approximately:\n`;
+                result += `${(cumInput * CUBIC_METER_TO_CUBIC_FEET).toFixed(5)} Cubic Feet (ft³)\n`;
+                result += `${(cumInput * CUBIC_METER_TO_LITERS).toFixed(2)} Liters (L)\n`;
+                result += `${(cumInput * CUBIC_METER_TO_GALLONS).toFixed(2)} Gallons (gal)\n`;
+            }
+
+            // Cubic Feet to Others
+            const cuftInput = parseFloat(document.getElementById('cuftInput').value);
+            if (!isNaN(cuftInput)) {
+                result += `${cuftInput} Cubic Feet (ft³) is approximately:\n`;
+                result += `${(cuftInput / CUBIC_METER_TO_CUBIC_FEET).toFixed(5)} Cubic Meters (m³)\n`;
+                result += `${(cuftInput * 28.3168).toFixed(2)} Liters (L)\n`;
+                result += `${(cuftInput * 7.48052).toFixed(2)} Gallons (gal)\n`;
+            }
+
+            // Liters to Others
+            const litersInput = parseFloat(document.getElementById('litersInput').value);
+            if (!isNaN(litersInput)) {
+                result += `${litersInput} Liters (L) is approximately:\n`;
+                result += `${(litersInput / CUBIC_METER_TO_LITERS).toFixed(5)} Cubic Meters (m³)\n`;
+                result += `${(litersInput / 28.3168).toFixed(5)} Cubic Feet (ft³)\n`;
+                result += `${(litersInput / 3.78541).toFixed(2)} Gallons (gal)\n`;
+            }
+
+            // Gallons to Others
+            const gallonsInput = parseFloat(document.getElementById('gallonsInput').value);
+            if (!isNaN(gallonsInput)) {
+                result += `${gallonsInput} Gallons (gal) is approximately:\n`;
+                result += `${(gallonsInput / CUBIC_METER_TO_GALLONS).toFixed(5)} Cubic Meters (m³)\n`;
+                result += `${(gallonsInput / 0.264172).toFixed(5)} Cubic Feet (ft³)\n`;
+                result += `${(gallonsInput * 3.78541).toFixed(5)} Liters (L)\n`;
+            }
+
+            document.getElementById('result').innerText = result ? result : "Please enter a value.";
+        }
+    </script>
+</body>
+</html>
