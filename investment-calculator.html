@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="number"], input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Investment Calculator</h1>
+        
+        <input type="number" id="principal" placeholder="Principal Amount ($)" step="0.01" min="0">
+        
+        <input type="number" id="annualRate" placeholder="Annual Interest Rate (%)" step="0.01" min="0">
+        
+        <input type="number" id="years" placeholder="Number of Years" min="1">
+        
+        <select id="compoundingFrequency">
+            <option value="1">Annually</option>
+            <option value="2">Semi-Annually</option>
+            <option value="4">Quarterly</option>
+            <option value="12">Monthly</option>
+        </select>
+
+        <button onclick="calculateInvestment()">Calculate Future Value</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateInvestment() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const annualRate = parseFloat(document.getElementById('annualRate').value) / 100; // Convert percentage to decimal
+            const years = parseInt(document.getElementById('years').value);
+            const frequency = parseInt(document.getElementById('compoundingFrequency').value);
+
+            if (isNaN(principal) || isNaN(annualRate) || isNaN(years) || isNaN(frequency) || principal <= 0 || annualRate < 0 || years < 1) {
+                document.getElementById('result').innerText = "Please fill out all fields correctly.";
+                return;
+            }
+
+            // Future Value (FV) formula: FV = P * (1 + r/n)^(nt)
+            const futureValue = principal * Math.pow((1 + annualRate / frequency), (frequency * years));
+
+            document.getElementById('result').innerHTML = `
+                <strong>Future Value of Investment:</strong><br>
+                $${futureValue.toFixed(2)}
+            `;
+        }
+    </script>
+</body>
+</html>
