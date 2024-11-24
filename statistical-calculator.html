@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistical Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Statistical Calculator</h1>
+        
+        <textarea id="numbers" placeholder="Enter numbers separated by commas (e.g. 1, 2, 3, 4, 5)"></textarea>
+        
+        <button onclick="calculateStats()">Calculate Statistics</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateStats() {
+            const input = document.getElementById('numbers').value;
+            const numbers = input.split(',').map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
+
+            if (numbers.length === 0) {
+                document.getElementById('result').innerText = "Please enter valid numbers.";
+                return;
+            }
+
+            const mean = calculateMean(numbers);
+            const median = calculateMedian(numbers);
+            const mode = calculateMode(numbers);
+            const variance = calculateVariance(numbers, mean);
+            const stdDev = Math.sqrt(variance);
+
+            document.getElementById('result').innerHTML = `
+                <strong>Statistics:</strong><br>
+                Mean: ${mean.toFixed(2)}<br>
+                Median: ${median}<br>
+                Mode: ${mode.join(', ')}<br>
+                Variance: ${variance.toFixed(2)}<br>
+                Standard Deviation: ${stdDev.toFixed(2)}
+            `;
+        }
+
+        function calculateMean(numbers) {
+            const total = numbers.reduce((sum, num) => sum + num, 0);
+            return total / numbers.length;
+        }
+
+        function calculateMedian(numbers) {
+            numbers.sort((a, b) => a - b);
+            const middle = Math.floor(numbers.length / 2);
+            if (numbers.length % 2 === 0) {
+                return (numbers[middle - 1] + numbers[middle]) / 2;
+            } else {
+                return numbers[middle];
+            }
+        }
+
+        function calculateMode(numbers) {
+            const frequency = {};
+            numbers.forEach(num => {
+                frequency[num] = (frequency[num] || 0) + 1;
+            });
+            const maxFreq = Math.max(...Object.values(frequency));
+            return Object.keys(frequency).filter(num => frequency[num] === maxFreq).map(Number);
+        }
+
+        function calculateVariance(numbers, mean) {
+            const squaredDifferences = numbers.map(num => Math.pow(num - mean, 2));
+            const variance = squaredDifferences.reduce((sum, diff) => sum + diff, 0) / numbers.length;
+            return variance;
+        }
+    </script>
+</body>
+</html>
