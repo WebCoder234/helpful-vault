@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decimal & Fraction Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .converter {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h1>Decimal & Fraction Converter</h1>
+        <div>
+            <h2>Decimal to Fraction</h2>
+            <input type="number" id="decimalInput" placeholder="Enter a decimal" step="any" oninput="convertDecimalToFraction()">
+        </div>
+        <div>
+            <h2>Fraction to Decimal</h2>
+            <input type="text" id="fractionInput" placeholder="Enter a fraction (e.g., 3/4)" oninput="convertFractionToDecimal()">
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function convertDecimalToFraction() {
+            const decimal = parseFloat(document.getElementById('decimalInput').value);
+            if (isNaN(decimal)) {
+                document.getElementById('result').innerHTML = "";
+                return;
+            }
+            
+            // Convert decimal to fraction
+            let numerator = decimal;
+            let denominator = 1;
+            while (numerator % 1 !== 0) {
+                numerator *= 10;
+                denominator *= 10;
+            }
+            // Simplifying the fraction
+            const gcdValue = gcd(numerator, denominator);
+            numerator /= gcdValue;
+            denominator /= gcdValue;
+
+            document.getElementById('result').innerHTML = `Fraction: ${numerator}/${denominator}`;
+        }
+
+        function convertFractionToDecimal() {
+            const fraction = document.getElementById('fractionInput').value;
+            const parts = fraction.split('/');
+            if (parts.length !== 2) {
+                document.getElementById('result').innerHTML = "";
+                return;
+            }
+
+            const numerator = parseFloat(parts[0]);
+            const denominator = parseFloat(parts[1]);
+            if (denominator === 0) {
+                document.getElementById('result').innerText = "Denominator cannot be zero.";
+                return;
+            }
+            const decimal = numerator / denominator;
+            document.getElementById('result').innerHTML = `Decimal: ${decimal}`;
+        }
+
+        function gcd(a, b) {
+            return b === 0 ? a : gcd(b, a % b);
+        }
+    </script>
+</body>
+</html>
