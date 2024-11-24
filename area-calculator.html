@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .converter {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h1>Area Converter</h1>
+
+        <input type="number" id="areaValue" placeholder="Area Value">
+        <select id="fromUnit">
+            <option value="sqm">Square Meters (m²)</option>
+            <option value="sqkm">Square Kilometers (km²)</option>
+            <option value="acre">Acres</option>
+            <option value="hectare">Hectares</option>
+        </select>
+
+        <select id="toUnit">
+            <option value="sqm">Square Meters (m²)</option>
+            <option value="sqkm">Square Kilometers (km²)</option>
+            <option value="acre">Acres</option>
+            <option value="hectare">Hectares</option>
+        </select>
+
+        <button onclick="convertArea()">Convert</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const conversionRates = {
+            sqm: 1, // Square meters
+            sqkm: 1000000, // Square kilometers
+            acre: 4046.86, // Acres
+            hectare: 10000 // Hectares
+        };
+
+        function convertArea() {
+            const areaValue = parseFloat(document.getElementById('areaValue').value);
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+
+            // Validate input
+            if (isNaN(areaValue) || areaValue < 0) {
+                document.getElementById('result').innerText = "Please enter a valid area value.";
+                return;
+            }
+
+            // Convert to square meters
+            const areaInSqm = areaValue * conversionRates[fromUnit];
+
+            // Convert to desired unit
+            const convertedArea = areaInSqm / conversionRates[toUnit];
+
+            document.getElementById('result').innerHTML = `
+                <strong>Converted Area:</strong><br>
+                ${convertedArea.toFixed(2)} ${toUnit === 'sqkm' ? 'km²' : toUnit === 'acre' ? 'acres' : 'hectares'}
+            `;
+        }
+    </script>
+</body>
+</html>
