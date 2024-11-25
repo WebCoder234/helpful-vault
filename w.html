@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mass Conversion</title>
+    <title>Mass & Kitchen Conversion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+    input {        border: 1.7px solid black;}
         * {
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
@@ -15,78 +16,80 @@
 
         body {
             text-align: center;
-            background-color: #e3f2fd;
+            background-color: #f0f4ff;
             color: #333;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             height: 100vh;
         }
 
         h1 {
-            margin-bottom: 30px;
-            font-weight: 700;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 2.5rem;
+            color: #3f51b5;
         }
 
         .container {
             background: #ffffff;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            padding: 20px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 30px;
             width: 90%;
-            max-width: 400px;
-            margin: 0 auto;
+            max-width: 450px;
+            transition: transform 0.3s;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
         }
 
         label {
             margin-bottom: 10px;
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 1.1rem;
             display: block;
+            color: #555;
         }
 
-        input {
-            border: 2px solid #64b5f6;
+        input, select {
+            border: 2px solid #23252E;
             border-radius: 10px;
-            padding: 10px;
+            padding: 12px;
             width: 100%;
             font-size: 1rem;
             outline: none;
             margin-bottom: 20px;
             transition: border-color 0.3s, box-shadow 0.3s;
+          
         }
 
-        input:focus {
-            border-color: #1e88e5;
-            box-shadow: 0 0 5px rgba(30, 136, 229, 0.5);
-        }
-
-        select {
-            border: 2px solid #64b5f6;
-            border-radius: 10px;
-            padding: 10px;
-            width: 100%;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            outline: none;
-            background-color: white;
-            transition: border-color 0.3s;
+        input:focus, select:focus {
+            border-color: #00bcd4;
+            box-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
         }
 
         button {
-            background-color: #64b5f6;
+            background-color: #3f51b5;
             color: white;
             border: none;
             border-radius: 10px;
-            padding: 10px;
-            font-size: 1rem;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
+            width: 100%;
         }
 
         button:hover {
-            background-color: #42a5f5;
+            background-color: #303f9f;
+            transform: translateY(-1px);
         }
 
         p {
@@ -98,7 +101,7 @@
 
         @media (max-width: 480px) {
             h1 {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
             button, input, select {
                 font-size: 0.9rem;
@@ -108,25 +111,51 @@
 </head>
 <body>
     <div class="container">
-        <h1>Mass Conversion</h1>
+        <h2>Mass & Kitchen Conversion</h2>
         <form>
             <label for="input">Enter value:</label>
-            <input type="number" id="input" value="0">
+            <input type="number" id="input" value="0" step="any">
             <label for="unit-from">From:</label>
             <select id="unit-from">
-                <option value="lbs">Pounds</option>
-                <option value="kg">Kilograms</option>
-                <option value="g">Grams</option>
-                <option value="mg">Milligrams</option>
-                <option value="t">Tons</option>
+                <option value="lbs">Pounds (lbs)</option>
+                <option value="kg">Kilograms (kg)</option>
+                <option value="g">Grams (g)</option>
+                <option value="mg">Milligrams (mg)</option>
+                <option value="t">Tons (t)</option>
+                <option value="cups">Cups</option>
+                <option value="tbsp">Tablespoons (tbsp)</option>
+                <option value="tsp">Teaspoons (tsp)</option>
+                <option value="oz">Ounces (oz)</option>
+                <option value="pints">Pints</option>
+                <option value="quarts">Quarts</option>
+                <option value="gallons">Gallons</option>
+                <option value="ml">Milliliters (mL)</option>
+                <option value="l">Liters (L)</option>
+                <option value="stones">Stones (st)</option>
+                <option value="carats">Carats (ct)</option>
+                <option value="mgm">Micrograms (mcg)</option>
+                <option value="nanograms">Nanograms (ng)</option>
             </select>
             <label for="unit-to">To:</label>
             <select id="unit-to">
-                <option value="lbs">Pounds</option>
-                <option value="kg">Kilograms</option>
-                <option value="g">Grams</option>
-                <option value="mg">Milligrams</option>
-                <option value="t">Tons</option>
+                <option value="lbs">Pounds (lbs)</option>
+                <option value="kg">Kilograms (kg)</option>
+                <option value="g">Grams (g)</option>
+                <option value="mg">Milligrams (mg)</option>
+                <option value="t">Tons (t)</option>
+                <option value="cups">Cups</option>
+                <option value="tbsp">Tablespoons (tbsp)</option>
+                <option value="tsp">Teaspoons (tsp)</option>
+                <option value="oz">Ounces (oz)</option>
+                <option value="pints">Pints</option>
+                <option value="quarts">Quarts</option>
+                <option value="gallons">Gallons</option>
+                <option value="ml">Milliliters (mL)</option>
+                <option value="l">Liters (L)</option>
+                <option value="stones">Stones (st)</option>
+                <option value="carats">Carats (ct)</option>
+                <option value="mgm">Micrograms (mcg)</option>
+                <option value="nanograms">Nanograms (ng)</option>
             </select>
             <button type="button" id="convert">Convert</button>
             <p id="result"></p>
@@ -136,63 +165,41 @@
     <script>
         // Define the conversion factors
         const conversionFactors = {
-            lbs: {
-                kg: 0.453592,
-                g: 453.592,
-                mg: 453592,
-                t: 0.000454545
-            },
-            kg: {
-                lbs: 2.20462,
-                g: 1000,
-                mg: 1000000,
-                t: 0.001
-            },
-            g: {
-                lbs: 0.00220462,
-                kg: 0.001,
-                mg: 1000,
-                t: 0.000001
-            },
-            mg: {
-                lbs: 0.00000220462,
-                kg: 0.000001,
-                g: 0.001,
-                t: 0.000000001
-            },
-            t: {
-                lbs: 2204.62,
-                kg: 1000,
-                g: 1000000,
-                mg: 1000000000
-            }
+            lbs: { kg: 0.453592, g: 453.592, mg: 453592, t: 0.000454545, cups: 2.365, tbsp: 38.8, tsp: 115.2, oz: 16, pints: 0.5, quarts: 0.25, gallons: 0.0625, ml: 453.592, l: 0.453592, stones: 0.0714286, carats: 226.796, mgm: 453592000, nanograms: 453592000000 },
+            kg: { lbs: 2.20462, g: 1000, mg: 1000000, t: 0.001, cups: 4.22675, tbsp: 67.628, tsp: 202.884, oz: 35.274, pints: 2.11338, quarts: 1.05669, gallons: 0.264172, ml: 1000, l: 1, stones: 0.157473, carats: 5000, mgm: 1000000000, nanograms: 1000000000000 },
+            g: { lbs: 0.00220462, kg: 0.001, mg: 1000, t: 0.000001, cups: 0.00422675, tbsp: 0.067628, tsp: 0.202884, oz: 0.035274, pints: 0.00211338, quarts: 0.00105669, gallons: 0.000264172, ml: 1, l: 0.001, stones: 0.000157473, carats: 5, mgm: 1000000, nanograms: 1000000000 },
+            mg: { lbs: 0.00000220462, kg: 0.000001, g: 0.001, t: 0.000000001, cups: 0.00000422675, tbsp: 0.000067628, tsp: 0.000202884, oz: 0.000035274, pints: 0.00000211338, quarts: 0.00000105669, gallons: 0.000000264172, ml: 0.001, l: 0.000001, stones: 0.000000157473, carats: 0.000005, mgm: 1000, nanograms: 1000000 },
+            t: { lbs: 2204.62, kg: 1000, g: 1000000, mg: 1000000000, cups: 4426.75, tbsp: 70765.4, tsp: 212884, oz: 35274, pints: 220.462, quarts: 110.231, gallons: 27.4409, ml: 1000000, l: 1, stones: 157.473, carats: 5000000, mgm: 1000000000000, nanograms: 1000000000000000 },
+            cups: { lbs: 0.421875, kg: 0.096, g: 240, mg: 240000, t: 0.000421875, tbsp: 16, tsp: 48, oz: 8, pints: 0.5, quarts: 0.25, gallons: 0.0625, ml: 236.588, l: 0.236588, stones: 0.03125, carats: 1200, mgm: 240000, nanograms: 240000000 },
+            tbsp: { lbs: 0.0625, kg: 0.0142, g: 14.3, mg: 14300, t: 0.0000625, cups: 0.0625, tsp: 3, oz: 0.5, pints: 0.03125, quarts: 0.015625, gallons: 0.00390625, ml: 14.787, l: 0.014787, stones: 0.000022, carats: 70.78, mgm: 14300, nanograms: 14300000 },
+            tsp: { lbs: 0.02083, kg: 0.00476, g: 4.93, mg: 4930, t: 0.00002083, cups: 0.02083, tbsp: 0.3333, oz: 0.02083, pints: 0.01042, quarts: 0.005208, gallons: 0.001302, ml: 4.92892, l: 0.00492892, stones: 0.0000065, carats: 24.69, mgm: 4930, nanograms: 4930000 },
+            oz: { lbs: 0.0625, kg: 0.02835, g: 28.3495, mg: 28349.5, t: 0.0000625, cups: 0.125, tbsp: 2, tsp: 6, pints: 0.03125, quarts: 0.015625, gallons: 0.00390625, ml: 29.5735, l: 0.0295735, stones: 0.000016, carats: 14.17, mgm: 28349.5, nanograms: 28349500 },
+            pints: { lbs: 2, kg: 0.907185, g: 453.592, mg: 453592, t: 0.0005, cups: 2, tbsp: 32, tsp: 96, oz: 16, quarts: 0.5, gallons: 0.125, ml: 473.176, l: 0.473176, stones: 0.142857, carats: 1000, mgm: 453592, nanograms: 453592000 },
+            quarts: { lbs: 4, kg: 1.81437, g: 907.185, mg: 907185, t: 0.001, cups: 4, tbsp: 64, tsp: 192, oz: 32, pints: 2, gallons: 0.25, ml: 946.353, l: 0.946353, stones: 0.285714, carats: 2000, mgm: 907185, nanograms: 907185000 },
+            gallons: { lbs: 8, kg: 3.62874, g: 1814.37, mg: 1814370, t: 0.002, cups: 16, tbsp: 256, tsp: 768, oz: 128, pints: 8, quarts: 4, ml: 3785.41, l: 3.78541, stones: 0.571429, carats: 4000, mgm: 1814370, nanograms: 1814370000 },
+            ml: { lbs: 0.00220462, kg: 0.000001, g: 0.001, mg: 1000, t: 0.000000001, cups: 0.00422675, tbsp: 0.067628, tsp: 0.202884, oz: 0.000035274, pints: 0.00000211338, quarts: 0.00000105669, gallons: 0.000000264172, l: 0.001, stones: 0.000000157473, carats: 0.0005, mgm: 1000, nanograms: 1000000 },
+            l: { lbs: 2.20462, kg: 1, g: 1000, mg: 1000000, t: 0.001, cups: 4.22675, tbsp: 67.628, tsp: 202.884, oz: 35.274, pints: 2.11338, quarts: 1, gallons: 0.264172, ml: 1000, stones: 0.157473, carats: 5000, mgm: 1000000, nanograms: 1000000000 },
+            stones: { lbs: 14, kg: 6.35029, g: 6350.29, mg: 6350290, t: 0.00635029, cups: 2.8, tbsp: 44.8, tsp: 134.4, oz: 24, pints: 1.6, quarts: 0.8, gallons: 0.2, ml: 396.893, l: 0.396893, carats: 14000, mgm: 6350290, nanograms: 6350290000 },
+            carats: { lbs: 0.00044092452, kg: 0.0002, g: 0.2, mg: 200, t: 0.0000002, cups: 0.000845, tbsp: 0.0135, tsp: 0.0405, oz: 0.00706, pints: 0.00044, quarts: 0.00022, gallons: 0.000055, ml: 0.2, l: 0.0002, stones: 0.0000714286, mgm: 200, nanograms: 200000 },
+            mgm: { lbs: 0.00000220462, kg: 0.000001, g: 0.001, t: 0.000000001, cups: 0.00000422675, tbsp: 0.000067628, tsp: 0.000202884, oz: 0.000035274, pints: 0.00000211338, quarts: 0.00000105669, gallons: 0.000000264172, ml: 0.001, l: 0.000001, stones: 0.000000157473, carats: 0.0005, nanograms: 1000 },
+            nanograms: { lbs: 0.00000000000220462, kg: 0.000000000001, g: 0.000000001, t: 0.000000000000001, cups: 0.00000000000422675, tbsp: 0.000000000067628, tsp: 0.000000000202884, oz: 0.000000000035274, pints: 0.00000000000211338, quarts: 0.00000000000105669, gallons: 0.000000000000264172, ml: 0.000001, l: 0.000000001, stones: 0.000000000000157473, carats: 0.0000000005, mgm: 0.001 }
         };
-    
+
         // Get the input and conversion select elements
         const input = document.getElementById('input');
         const unitFrom = document.getElementById('unit-from');
         const unitTo = document.getElementById('unit-to');
         const convertButton = document.getElementById('convert');
         const resultElement = document.getElementById('result');
-    
-        // Set the initial values
-        let fromUnitValue = 'lbs';
-        let toUnitValue = 'lbs';
-    
-        // Add event listeners to the conversion select elements
-        unitFrom.addEventListener('change', (e) => {
-            fromUnitValue = e.target.value;
-        });
-    
-        unitTo.addEventListener('change', (e) => {
-            toUnitValue = e.target.value;
-        });
-    
+
         // Add event listener to the convert button
         convertButton.addEventListener('click', () => {
             const inputValue = parseFloat(input.value);
-        
+
             if (!isNaN(inputValue)) {
+                const fromUnitValue = unitFrom.value;
+                const toUnitValue = unitTo.value;
+
                 const convertedValue = inputValue * conversionFactors[fromUnitValue][toUnitValue];
                 resultElement.textContent = `${inputValue} ${fromUnitValue} is equal to ${convertedValue.toFixed(4)} ${toUnitValue}`;
             } else {
