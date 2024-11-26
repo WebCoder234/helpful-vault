@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +18,7 @@
     <div class="navbar">
         <a href="#" id="homeLink">Home</a>
         <a href="#games" id="gamesLink">Games</a>
-        <a href="#settings" id="settingsLink">Settings</a>
+        <a href="#settings" id="settingsLink">Math Calculators</a>
         <a href="#faq" id="faqLink">FAQ</a>
         <a href="#contact" id="contactLink">Contact Us</a>
         <a href="#random" id="discoverLink">Discover</a>
@@ -370,11 +369,81 @@
     </div>
 
     <div class="settings" id="settings" style="display: none;">
-        <h2>Settings</h2>
-        <p>Customize your experience:</p>
-        <label for="searchToggle">Show Search Bar: </label>
-        <input type="checkbox" id="searchToggle" checked />
-        <p>Use this option to toggle the visibility of the search bar.</p>
+      <h1>Math Calculators</h1>
+    
+<div class="grid-container">
+    <a href="calculator.html" aria-label="Go to Best Online Calculator for Mortgage Payments">
+        <div id="box1" class="box">Calculator
+            <div class="tooltip">Perform <strong>arithmetic calculations</strong> with ease!</div>
+        </div>
+    </a>
+    <br>
+    <a href="project3.html" aria-label="Go to Circumference Calculator">
+        <div id="box2" class="box">Circumference Calculator
+            <div class="tooltip">Calculate <strong>circle circumference</strong> rapidly.</div>
+        </div>
+    </a>
+    <br>
+    <a href="project2.html" aria-label="Go to Age Calculator">
+        <div id="box3" class="box">Age Calculator
+            <div class="tooltip">Discover your exact <strong>age</strong> in seconds!</div>
+        </div>
+    </a>
+    <br>
+    <a href="m.html" aria-label="Go to Length Converter">
+        <div id="box4" class="box">Length Converter
+            <div class="tooltip">Easily convert <strong>length</strong> units!</div>
+        </div>
+    </a>
+    <br>
+    <br>
+     <a href="fraction-calculator.html" aria-label="Go to Fraction Calculator">
+                <div id="box43" class="box">Fraction Calculator
+                 
+                    
+                </div>
+            </a>
+            
+          <br>
+    <!-- Add more boxes as needed -->
+    <a href="tip-calculator.html" aria-label="Go to Tip Calculator">
+                <div id="box40" class="box">Tip Calculator
+                    
+                    
+                </div>
+            </a>
+            <br>
+               <a href="area-calculator.html" aria-label="Go to Area Calculator">
+                <div id="box44" class="box">Area Calculator
+                 
+                    
+                </div>
+            </a>
+            <br>
+              <a href="investment-calculator.html" aria-label="Go to Investing Calculator">
+                <div id="box47" class="box">Investement Calculator
+                 
+                    
+                </div>
+            </a>
+            
+            <br>
+               <a href="statistical-calculator.html" aria-label="Go to Statistical Calculator">
+                <div id="box48" class="box">Statistical Calculator
+                 
+                    
+                </div>
+            </a>
+            <BR>
+              <a href="decimal-to-fraction-calculator.html" aria-label="Go to Decimal to Fraction Converter">
+                <div id="box49" class="box">Decimal to Fraction Converter
+                 
+                    
+                </div>
+            </a>
+            
+            
+</div>
     </div>
 
     <div id="discover-section" style="display: none;">
@@ -1073,13 +1142,13 @@ p, li {
 }
 
 .search-bar {
-    height: 40px;
-    width: 80%;
+    height: 50px;
+    width: 100%;
     max-width: 400px;
     font-size: 16px;
     padding: 8px;
     border: 2px solid #007bff; /* Primary color border */
-    border-radius: 5px;
+    border-radius: 30px;
     outline: none;
     transition: border-color 0.3s;
     background-color: white;
@@ -1146,6 +1215,7 @@ p, li {
 @media (max-width: 768px) {
     h1 {
         font-size: 2em;
+
     }
 
     h2 {
@@ -1178,6 +1248,7 @@ p, li {
 }
 
 .box { font-weight: 400;}
+h1 {        color: #DB4C4C;}
 
 #games-section {
     position: fixed; /* Fixes the section to the viewport */
@@ -1251,12 +1322,22 @@ background-image: url('VIDEO GAMES.png');
 background-image: url('DISCOVER.png');
 
 
-#box1 {
-    background-color: rgba(237, 227, 185, 0.8); /* Slightly darker background for contrast */
-    position: relative;
-    overflow: hidden;
+
+
+/* Ensure your grid container is styled correctly */
+.grid-container {
+    display: flex; /* Switch to flex for alignment */
+    flex-wrap: wrap; /* Allow items to wrap into multiple rows */
+    justify-content: center; /* Center items */
+    gap: 20px; /* Space between items */
 }
 
+.box {
+    flex: 0 0 calc(50% - 20px); /* Makes each box take up 50% of the parent's width, minus margin */
+    margin: 10px; /* Adds some margin around the boxes */
+    max-width: 200px; /* Set a max-width if needed */
+    /* Other existing styles for the boxes */
+}
 
 
 </style>
