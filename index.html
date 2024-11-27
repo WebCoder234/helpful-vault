@@ -9,21 +9,30 @@
     <meta name="keywords" content="online calculator, unit converter, best online calculator for mortgage payments, how to use a temperature converter online, age calculator for birthday planning, random password generator, stopwatch tool, temperature converter for students, length converter, volume calculator, BMI calculator, secure online random password generator">
     <link rel="canonical" href="https://yourdomain.com/">
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <title>Useful Vault: Online Calculators & Tools</title> 
 
     <link rel="icon" href="logo3.png" type="image/png"> 
 </head>
 
 <body>
-    <div class="navbar">
-        <a href="#" id="homeLink">Home</a>
-        <a href="#games" id="gamesLink">Games</a>
-        <a href="#settings" id="settingsLink">Math Calculators</a>
-        <a href="#faq" id="faqLink">FAQ</a>
-        <a href="#contact" id="contactLink">Contact Us</a>
-        <a href="#random" id="discoverLink">Discover</a>
-    </div>
+   <!-- Existing navbar -->
+<div class="navbar">
+    <img src="logo3.png" type="png" alt="LOGO" />
+    <a href="#" id="homeLink">Home</a>
+    <a href="#games" id="gamesLink">Games</a>
+    <a href="#settings" id="settingsLink">Math Calculators</a>
+    <a href="#faq" id="faqLink">FAQ</a>
+    <a href="#contact" id="contactLink">Contact Us</a>
+    <a href="#random" id="discoverLink">Discover</a>
+    <button id="search1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="undefined"><path d="M781.69-136.92 530.46-388.16q-30 24.77-69 38.77-39 14-80.69 14-102.55 0-173.58-71.01-71.03-71.01-71.03-173.54 0-102.52 71.01-173.6 71.01-71.07 173.54-71.07 102.52 0 173.6 71.03 71.07 71.03 71.07 173.58 0 42.85-14.38 81.85-14.39 39-38.39 67.84l251.23 251.23-42.15 42.16ZM380.77-395.38q77.31 0 130.96-53.66 53.66-53.65 53.66-130.96t-53.66-130.96q-53.65-53.66-130.96-53.66t-130.96 53.66Q196.15-657.31 196.15-580t53.66 130.96q53.65 53.66 130.96 53.66Z"/></svg></button>
+</div>
 
+<!-- Search container initially hidden -->
+<div class="search-container" id="search-container" style="display: none;">
+    <input type="text" id="search" class="search-bar" placeholder="Search for a tool..." aria-label="Search for a tool" />
+    <button id="search-button">Search</button>
+</div>
     <div class="main" id="main-content">
         <h1>Welcome to Useful Vault</h1>
         <p>
@@ -330,6 +339,7 @@
             3. Instant Results: Click calculate and watch the magic happen. Whether it’s a number, a conversion, 
             or a time measurement, the results are right at your fingertips! <br><br>
         </p>
+        
 
         <h2>Unleash Your Inner Innovator: Tips for Effective Tool Use!</h2>
         <p>
@@ -369,34 +379,39 @@
     </div>
 
     <div class="settings" id="settings" style="display: none;">
-      <h1>Math Calculators</h1>
-    
+
+      <h2>Math Calculators</h2>
+<p>
+    Simplify your math challenges with our comprehensive suite of <strong>Math Calculators</strong>. 
+    From <strong>Age Calculator</strong> to <strong>Fraction Calculator</strong>, our tools offer accuracy and user-friendly interfaces for effortless calculations.
+</p>
+
 <div class="grid-container">
-    <a href="calculator.html" aria-label="Go to Best Online Calculator for Mortgage Payments">
+  
+    
+       <a href="calculator.html" aria-label="Go to Best Online Calculator for Mortgage Payments">
         <div id="box1" class="box">Calculator
             <div class="tooltip">Perform <strong>arithmetic calculations</strong> with ease!</div>
         </div>
     </a>
-    <br>
-    <a href="project3.html" aria-label="Go to Circumference Calculator">
+
+     <a href="project3.html" aria-label="Go to Circumference Calculator">
         <div id="box2" class="box">Circumference Calculator
             <div class="tooltip">Calculate <strong>circle circumference</strong> rapidly.</div>
         </div>
     </a>
-    <br>
-    <a href="project2.html" aria-label="Go to Age Calculator">
+            <a href="project2.html" aria-label="Go to Age Calculator">
         <div id="box3" class="box">Age Calculator
             <div class="tooltip">Discover your exact <strong>age</strong> in seconds!</div>
         </div>
     </a>
-    <br>
+   
     <a href="m.html" aria-label="Go to Length Converter">
         <div id="box4" class="box">Length Converter
             <div class="tooltip">Easily convert <strong>length</strong> units!</div>
         </div>
     </a>
-    <br>
-    <br>
+    
      <a href="fraction-calculator.html" aria-label="Go to Fraction Calculator">
                 <div id="box43" class="box">Fraction Calculator
                  
@@ -404,7 +419,7 @@
                 </div>
             </a>
             
-          <br>
+        
     <!-- Add more boxes as needed -->
     <a href="tip-calculator.html" aria-label="Go to Tip Calculator">
                 <div id="box40" class="box">Tip Calculator
@@ -412,37 +427,34 @@
                     
                 </div>
             </a>
-            <br>
+           
                <a href="area-calculator.html" aria-label="Go to Area Calculator">
                 <div id="box44" class="box">Area Calculator
                  
                     
                 </div>
             </a>
-            <br>
+            
               <a href="investment-calculator.html" aria-label="Go to Investing Calculator">
                 <div id="box47" class="box">Investement Calculator
                  
                     
                 </div>
             </a>
-            
-            <br>
+          
                <a href="statistical-calculator.html" aria-label="Go to Statistical Calculator">
                 <div id="box48" class="box">Statistical Calculator
                  
                     
                 </div>
             </a>
-            <BR>
+           
               <a href="decimal-to-fraction-calculator.html" aria-label="Go to Decimal to Fraction Converter">
                 <div id="box49" class="box">Decimal to Fraction Converter
                  
                     
                 </div>
             </a>
-            
-            
 </div>
     </div>
 
@@ -634,6 +646,14 @@ p, li {
     font-size: 20px;
     margin-top: 50px;
 }
+
+#search1{ border: none;
+  border-radius: 20px;
+  height: 60px;
+  width: 60px;
+  background-color: white;
+}
+
 
 .line2ofd {
     text-align: center;
@@ -846,14 +866,6 @@ p, li {
 
 
 
-.navbar {
-    background-color: #333;
-    width: 100%;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
 
 .navbar a {
     color: white;
@@ -958,6 +970,7 @@ p, li {
     flex-direction: column;
     align-items: center;
     margin: 20px auto;
+    
 }
 
 .box:hover {
@@ -1057,7 +1070,7 @@ p, li {
 
 .grid-container {
     display: grid; /* Enables grid layout */
-    grid-template-columns: repeat(2, 1fr); /* Creates three equal columns */
+    grid-template-columns: repeat(3, 1fr); /* Creates three equal columns */
     gap: 10px; /* Space between items */
 }
 
@@ -1077,6 +1090,7 @@ p, li {
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    font-size: 16px;
     
 }
 
@@ -1232,7 +1246,7 @@ p, li {
 
 
  .search-bar {
-        width: 90%;
+        width: 100%;
     }
 
     .navbar a {
@@ -1242,8 +1256,10 @@ p, li {
 }
 
 @media (max-width: 480px) {
+  
     .navbar {
         flex-direction: column; /* Stack navbar items vertically */
+        
     }
 }
 
@@ -1284,7 +1300,45 @@ background-image: url('VIDEO GAMES.png');
 
 
 
+.grid-container {
+    display: grid; /* Let’s keep grid, but adjust behavior */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 10px; /* Space between items */
+    margin: 20px; /* Margin around the container */
+}
 
+.box {
+    background-color: #ffffff; /* White background */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1 1 auto; /* Allow boxes to grow and shrink */
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Show two columns on smaller screens */
+    }
+
+    /* Optionally, adjust box padding or font sizes for better fit */
+    .box {
+        padding: 15px; /* Adjust padding if necessary */
+        font-size: 16px; /* Make text smaller if needed */
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Show one column on very small screens */
+    }
+}
 
 
 
@@ -1335,11 +1389,81 @@ background-image: url('DISCOVER.png');
 .box {
     flex: 0 0 calc(50% - 20px); /* Makes each box take up 50% of the parent's width, minus margin */
     margin: 10px; /* Adds some margin around the boxes */
-    max-width: 200px; /* Set a max-width if needed */
+    max-width: 300px; /* Set a max-width if needed */
     /* Other existing styles for the boxes */
+    height: 150px;
+    width: 300px;
 }
 
 
+.grid-container {
+    display: grid; /* Enable grid layout */
+    grid-template-columns: repeat(3, 1fr); /* Default to 3 columns */
+    gap: 10px; /* Space between items */
+    margin: 20px; /* Margin around the container */
+}
+
+.box {
+    background-color: #ffffff; /* White background for boxes */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+}
+
+/* Make sure this CSS is included in your existing styles */
+
+.grid-container {
+    display: grid; /* Use CSS Grid layout */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
+    gap: 20px; /* Space between items */
+    margin: 20px; /* Margin around the container */
+}
+
+@media (max-width: 1024px) { /* Tablets and smaller */
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+}
+
+@media (max-width: 768px) { /* Mobile devices */
+    .grid-container {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+}
+
+
+
+
+.navbar {
+    background-color: #333;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: Montserrat;
+}
+p { color: #3D4252;}
+
+.navbar a:hover {
+    background-color: #575757;
+    transform: scale(1.05);
+}
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -1423,6 +1547,135 @@ background-image: url('DISCOVER.png');
     searchToggle.addEventListener('change', function () {
         const searchContainer = document.getElementById('search-container');
         searchContainer.style.display = searchToggle.checked ? 'block' : 'none';
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Existing variables
+    const homeLink = document.getElementById('homeLink');
+    const gamesLink = document.getElementById('gamesLink');
+    const settingsLink = document.getElementById('settingsLink');
+    const faqLink = document.getElementById('faqLink');
+    const contactLink = document.getElementById('contactLink');
+    const discoverLink = document.getElementById('discoverLink');
+    const searchButton = document.getElementById('search1'); // Search button
+
+    const mainContent = document.getElementById('main-content');
+    const settingsContent = document.getElementById('settings');
+    const faqContent = document.getElementById('faq');
+    const contactContent = document.getElementById('contact-info');
+    const gamesContent = document.getElementById('games-section');
+    const discoverContent = document.getElementById('discover-section');
+
+    function hideAllSections() {
+        mainContent.style.display = 'none';
+        settingsContent.style.display = 'none';
+        faqContent.style.display = 'none';
+        contactContent.style.display = 'none';
+        gamesContent.style.display = 'none';
+        discoverContent.style.display = 'none';
+    }
+
+    // Show main content on page load
+    hideAllSections();
+    mainContent.style.display = 'flex';
+
+    // Event listeners for navigation links
+    homeLink.addEventListener('click', function () {
+        hideAllSections();
+        mainContent.style.display = 'flex';
+    });
+
+    gamesLink.addEventListener('click', function () {
+        hideAllSections();
+        gamesContent.style.display = 'flex';
+    });
+
+    settingsLink.addEventListener('click', function () {
+        hideAllSections();
+        settingsContent.style.display = 'flex';
+    });
+
+    faqLink.addEventListener('click', function () {
+        hideAllSections();
+        faqContent.style.display = 'flex';
+    });
+
+    contactLink.addEventListener('click', function () {
+        hideAllSections();
+        contactContent.style.display = 'flex';
+    });
+
+    discoverLink.addEventListener('click', function () {
+        hideAllSections();
+        discoverContent.style.display = 'flex';
+    });
+
+    // Search functionality on search button click
+    searchButton.addEventListener('click', function () {
+        const searchInput = document.getElementById('search');
+        const query = searchInput.value.toLowerCase();
+        const tools = document.querySelectorAll('.box'); // All tools and games boxes
+
+        let found = false;
+
+        // Hide all sections first
+        hideAllSections(); 
+
+        // Search through each tool in the main section
+        tools.forEach(function (tool) {
+            const toolText = tool.innerText.toLowerCase();
+            if (toolText.includes(query)) {
+                found = true; // If at least one tool is found
+                // Display the main section and show the matching tool
+                mainContent.style.display = 'flex'; 
+                tool.style.display = '';
+            } else {
+                tool.style.display = 'none'; // Hide non-matching tools
+            }
+        });
+
+        // Check for matches in the games section as well
+        const gameTools = document.querySelectorAll('#games-section .box');
+        gameTools.forEach(function (gameTool) {
+            const gameText = gameTool.innerText.toLowerCase();
+            if (gameText.includes(query)) {
+                found = true; 
+                gamesContent.style.display = 'flex'; // Show games section
+                gameTool.style.display = '';
+            } else {
+                gameTool.style.display = 'none'; // Hide non-matching game tools
+            }
+        });
+
+        // Check for matches in the discover section as well
+        const discoverTools = document.querySelectorAll('#discover-section .box');
+        discoverTools.forEach(function (discoverTool) {
+            const discoverText = discoverTool.innerText.toLowerCase();
+            if (discoverText.includes(query)) {
+                found = true; 
+                discoverContent.style.display = 'flex'; // Show discover section
+                discoverTool.style.display = '';
+            } else {
+                discoverTool.style.display = 'none'; // Hide non-matching discover tools
+            }
+        });
+
+        // If no results were found, you might want to show a message or another section.
+        if (!found) {
+            alert('No matching tools found.');
+            // Optionally, show the main content with all tools again.
+            hideAllSections();
+            mainContent.style.display = 'flex'; // or whatever default section you'd like to show
+        }
+    });
+
+    // Optional: Allow pressing Enter key to search
+    const searchInput = document.getElementById('search');
+    searchInput.addEventListener('keyup', function (event) {
+        if (event.key === 'Enter') {
+            searchButton.click(); // Trigger the button click event
+        }
     });
 });
 </script>
