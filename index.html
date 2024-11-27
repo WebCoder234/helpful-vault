@@ -1344,35 +1344,7 @@ background-image: url('VIDEO GAMES.png');
 
 
 
-#discover-section {
-    position: fixed; /* Fixes the section to the viewport */
-    top: 0; /* Aligns to the top */
-    left: 0; /* Aligns to the left */
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-image: url('DISCOVER.png'); /* Path to your image */
-    background-size: cover; /* Cover the entire section */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    z-index: 1; /* Ensure it sits below the overlay */
-}
 
-#discover-section::before {
-    content: ''; /* Empty content for the overlay */
-    position: absolute; /* Position it absolutely */
-    top: 0; /* Cover the entire section */
-    left: 0; /* Cover the entire section */
-    right: 0; /* Cover the entire section */
-    bottom: 0; /* Cover the entire section */
-
-    z-index: 2; /* Ensure it sits above the background image */
-}
-
-#discover {
-    position: relative; /* Position relative to stack content above the overlay */
-    z-index: 3; /* Ensure content is above the overlay */
-    color: white; /* Optional: Change text color for better visibility */
-}
 
 background-image: url('DISCOVER.png');
 
