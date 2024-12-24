@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Root Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Lexend', sans-serif;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            background-color: #f5f5f5; /* Light gray background */
+            color: #333; /* Dark text color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+            background-color: #fff; /* White background */
+            text-align: center;
+            border: 2px solid #d9534f; /* Red border */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #d9534f; /* Red text for headline */
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #d9534f; /* Red border */
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            background-color: #f9f9f9; /* Light gray input background */
+            color: #333; /* Dark text in input */
+        }
+
+        input[type="number"]:focus {
+            border-color: #5bc0de; /* Blue border on focus */
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #d9534f; /* Red button */
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c9302c; /* Darker red on hover */
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #5bc0de; /* Blue color for result */
+        }
+
+        .theme-toggle {
+            width: 100%;
+            padding: 10px;
+            background-color: #5bc0de; /* Blue toggle button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .theme-toggle:hover {
+            background-color: #31b0d5; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Square Root Calculator</h1>
+        <input type="number" id="number" placeholder="Enter a number" />
+        <button onclick="calculateSquareRoot()">Calculate Square Root</button>
+      
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateSquareRoot() {
+            const num = parseFloat(document.getElementById("number").value);
+            const resultDiv = document.getElementById("result");
+
+            if (isNaN(num) || num < 0) {
+                resultDiv.innerHTML = "Please enter a valid non-negative number.";
+                return;
+            }
+
+            const squareRoot = Math.sqrt(num);
+            resultDiv.innerHTML = `Square root of ${num} is ${squareRoot.toFixed(2)}.`;
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle("dark");
+        }
+    </script>
+</body>
+</html>
