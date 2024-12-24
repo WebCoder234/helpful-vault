@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Number Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Lexend', sans-serif;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            background-color: #eaeaea;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        body.dark {
+            background-color: #1c1c1c;
+            color: #eaeaea;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #4a90e2;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #4a90e2;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #2980b9;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4a90e2;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #27ae60; /* Color for prime number */
+        }
+
+        .result.not-prime {
+            color: #e74c3c; /* Color for non-prime number */
+        }
+
+        .theme-toggle {
+            width: 100%;
+            padding: 10px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prime Number Calculator</h1>
+        <input type="number" id="number" placeholder="Enter a number" />
+        <button onclick="checkPrime()">Check Prime</button>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function checkPrime() {
+            const number = parseInt(document.getElementById("number").value);
+            const resultDiv = document.getElementById("result");
+
+            if (isNaN(number) || number < 1) {
+                resultDiv.innerHTML = "Please enter a valid positive number.";
+                resultDiv.className = "result";
+                return;
+            }
+
+            let isPrime = true;
+
+            if (number === 1) {
+                isPrime = false; // 1 is not a prime number
+            } else {
+                for (let i = 2; i <= Math.sqrt(number); i++) {
+                    if (number % i === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+
+            resultDiv.innerHTML = isPrime 
+                ? `${number} is a prime number.` 
+                : `${number} is not a prime number.`;
+            resultDiv.className = `result ${isPrime ? '' : 'not-prime'}`;
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle("dark");
+        }
+    </script>
+</body>
+</html>
