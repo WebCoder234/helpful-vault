@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rounding Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Lexend', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark {
+            background-color: #333;
+            color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 500px; /* Set a max width for the container */
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: background-color 0.3s;
+            display: flex;
+            flex-direction: column; /* Stack the children in a column */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+        }
+
+        body.dark .container {
+            background-color: #444;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input[type="text"], select {
+            width: calc(100% - 20px); /* Make input fields take full width */
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        .theme-toggle {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rounding Calculator</h1>
+        <input type="text" id="number" placeholder="Enter a number (e.g. 3.578)" />
+        <select id="precision">
+            <option value="0">Nearest Whole</option>
+            <option value="1">Nearest Tenth</option>
+            <option value="2">Nearest Hundredth</option>
+            <option value="3">Nearest Thousandth</option>
+        </select>
+        <button onclick="roundNumber()">Round Number</button>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function roundNumber() {
+            const number = parseFloat(document.getElementById("number").value);
+            const precision = parseInt(document.getElementById("precision").value);
+
+            if (isNaN(number)) {
+                document.getElementById("result").innerHTML = "Please enter a valid number.";
+                return;
+            }
+
+            // Round the number based on selected precision
+            const multiplier = Math.pow(10, precision);
+            const rounded = Math.round(number * multiplier) / multiplier;
+
+            document.getElementById("result").innerHTML = `Rounded Result: ${rounded}`;
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle("dark");
+        }
+    </script>
+</body>
+</html>
