@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixed Number Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Lexend', sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark {
+            background-color: #333;
+            color: #f9f9f9;
+        }
+        .container {
+            max-width: 500px; /* Set a max width for the container */
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: background-color 0.3s;
+            display: flex;
+            flex-direction: column; /* Stack the children in a column */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+        }
+        body.dark .container {
+            background-color: #444;
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="text"], select {
+            width: calc(100% - 20px); /* Make input fields take full width */
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            text-align: center;
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        .theme-toggle {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mixed Number Calculator</h1>
+        <input type="text" id="mixed1" placeholder="First Mixed Number (e.g. 1 1/2)" />
+        <input type="text" id="mixed2" placeholder="Second Mixed Number (e.g. 2 3/4)" />
+        <select id="operation">
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+            <option value="multiply">Multiply</option>
+            <option value="divide">Divide</option>
+        </select>
+        <button onclick="calculate()">Calculate</button>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function gcd(a, b) {
+            return b ? gcd(b, a % b) : a;
+        }
+
+        function mixedToFraction(mixed) {
+            let parts = mixed.split(' ');
+            let whole = parseInt(parts[0], 10) || 0;
+            let fraction = parts[1] ? parts[1].split('/') : [0, 1];
+            let numerator = parseInt(fraction[0], 10) || 0;
+            let denominator = parseInt(fraction[1], 10) || 1;
+            return [(whole * denominator) + numerator, denominator];
+        }
+
+        function fractionToMixed(num, den) {
+            if (num === 0) return "0";
+            const divisor = gcd(Math.abs(num), den);
+            num /= divisor;
+            den /= divisor;
+
+            let whole = Math.floor(num / den);
+            num = Math.abs(num % den);
+            return `${whole}${num ? ' ' + Math.abs(num) + '/' + Math.abs(den) : ''}`;
+        }
+
+        function calculate() {
+            let mixed1 = document.getElementById("mixed1").value;
+            let mixed2 = document.getElementById("mixed2").value;
+            let operation = document.getElementById("operation").value;
+
+            let [num1, den1] = mixedToFraction(mixed1);
+            let [num2, den2] = mixedToFraction(mixed2);
+
+            let resultNum = 0;
+            let resultDen = 1;
+
+            switch (operation) {
+                case 'add':
+                    resultNum = (num1 * den2) + (num2 * den1);
+                    resultDen = den1 * den2;
+                    break;
+                case 'subtract':
+                    resultNum = (num1 * den2) - (num2 * den1);
+                    resultDen = den1 * den2;
+                    break;
+                case 'multiply':
+                    resultNum = num1 * num2;
+                    resultDen = den1 * den2;
+                    break;
+                case 'divide':
+                    resultNum = num1 * den2;
+                    resultDen = den1 * num2;
+                    break;
+            }
+
+            let result = fractionToMixed(resultNum, resultDen);
+            document.getElementById("result").innerHTML = `Result: ${result}`;
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle("dark");
+        }
+    </script>
+</body>
+</html>
