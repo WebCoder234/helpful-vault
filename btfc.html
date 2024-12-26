@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trigonometric Function Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Lexend', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #d9534f;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 12px;
+            width: 100%;
+            margin-top: 10px;
+            background-color: #d9534f;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c9302c;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trigonometric Function Calculator</h1>
+        <input type="number" id="angleInput" placeholder="Enter angle (degrees)">
+        <button onclick="calculateTrigFunctions()">Calculate</button>
+        <div class="result" id="resultOutput"></div>
+    </div>
+
+    <script>
+        function calculateTrigFunctions() {
+            const angleDegrees = parseFloat(document.getElementById("angleInput").value);
+            
+            if (isNaN(angleDegrees)) {
+                alert('Please enter a valid numerical value for the angle.');
+                return;
+            }
+
+            const angleRadians = angleDegrees * (Math.PI / 180); // Convert degrees to radians
+
+            const sine = Math.sin(angleRadians);
+            const cosine = Math.cos(angleRadians);
+            const tangent = Math.tan(angleRadians);
+
+            // Prepare results
+            const resultOutput = document.getElementById("resultOutput");
+            resultOutput.innerHTML = `
+                <strong>Results for ${angleDegrees}°:</strong><br>
+                Sine: ${sine.toFixed(4)}<br>
+                Cosine: ${cosine.toFixed(4)}<br>
+                Tangent: ${tangent.toFixed(4)}<br>
+            `;
+        }
+    </script>
+</body>
+</html>
