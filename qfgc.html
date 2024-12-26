@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Function Graphing Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Lexend', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+
+        #equationInput {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #d9534f;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 12px;
+            width: 100%;
+            margin-top: 10px;
+            background-color: #d9534f;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c9302c;
+        }
+
+        #graph {
+            margin-top: 20px;
+            width: 100%;
+            height: 400px;
+            border: 1px solid #d9534f;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, #e0e0e0 1px, transparent 1px),
+                              linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
+            background-size: 10px 10px; /* Square grid */
+        }
+
+        .x-axis {
+            position: absolute;
+            bottom: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #333;
+            z-index: 1;
+        }
+
+        .y-axis {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #333;
+            z-index: 1;
+        }
+
+        .axis-label {
+            position: absolute;
+            font-size: 12px;
+            color: #333;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quadratic Function Graphing Calculator</h1>
+        <input type="text" id="equationInput" placeholder="Enter equation (e.g., y = 1x^2 - 2x + 1)">
+        <button onclick="graphFunction()">Graph Function</button>
+        <div id="graph">
+            <div class="grid"></div>
+            <div class="x-axis"></div>
+            <div class="y-axis"></div>
+            <canvas id="canvas" width="600" height="400" style="position: absolute; top: 0; left: 0;"></canvas>
+        </div>
+    </div>
+
+    <script>
+        function graphFunction() {
+            clearGraph();
+            const equation = document.getElementById("equationInput").value.trim();
+            const regex = /y\s*=\s*([+-]?\d*\.?\d*)x\^2\s*([+-]\s*\d*\.?\d*)x?\s*([+-]\s*\d*\.?\d*)?/;
+            const match = equation.match(regex);
+
+            if (!match) {
+                alert('Invalid equation format. Please enter an equation in the form: y = ax^2 + bx + c');
+                return;
+            }
+
+            const a = parseFloat(match[1]) || 1;
+            const b = parseFloat(match[2].replace(/\s+/g, '')) || 0;
+            const c = parseFloat(match[3].replace(/\s+/g, '')) || 0;
+
+            drawGraph(a, b, c);
+        }
+
+        function clearGraph() {
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous drawings
+            drawAxesLabels();
+        }
+
+        function drawAxesLabels() {
+            const graph = document.getElementById("graph");
+            const labelOffset = 10;
+            const canvasWidth = graph.offsetWidth;
+            const canvasHeight = graph.offsetHeight;
+
+            for (let i = -25; i <= 25; i += 5) {
+                // X-axis labels
+                const xLabel = document.createElement("div");
+                xLabel.className = "axis-label";
+                xLabel.innerText = i;
+                xLabel.style.left = `${(i + 25) * 10 + labelOffset}px`; // Shift to center of the graph
+                xLabel.style.bottom = `-20px`; // Position label under x-axis
+                graph.appendChild(xLabel);
+
+                // Y-axis labels
+                const yLabel = document.createElement("div");
+                yLabel.className = "axis-label";
+                yLabel.innerText = i;
+                yLabel.style.left = `${-35}px`; // Position label to the left of y-axis
+                yLabel.style.bottom = `${(i + 25) * 10}px`; // Shift to center of the graph
+                graph.appendChild(yLabel);
+            }
+        }
+
+        function drawGraph(a, b, c) {
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            const graphHeight = 400;
+            const graphWidth = 600;
+
+            ctx.beginPath();
+            for (let x = -25; x <= 25; x += 0.5) {
+                const y = a * x * x + b * x + c;
+                const scaledX = (x + 25) * 10; // Translating x to the center
+                const scaledY = (25 - y) * 10; // Inverting y to go up, scale to pixels
+
+                if (scaledY >= 0 && scaledY <= graphHeight) {
+                    const canvasX = scaledX;
+                    const canvasY = scaledY;
+
+                    if (x === -25) {
+                        ctx.moveTo(canvasX, canvasY); // Move to the first point
+                    } else {
+                        ctx.lineTo(canvasX, canvasY); // Draw line to the next point
+                    }
+                }
+            }
+            ctx.strokeStyle = '#5bc0de'; // Set color for the line
+            ctx.lineWidth = 2; // Set line width
+            ctx.stroke(); // Draw the path
+        }
+    </script>
+</body>
+</html>
