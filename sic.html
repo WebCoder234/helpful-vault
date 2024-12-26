@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Lexend', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 12px;
+            width: 100%;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Interest Calculator</h1>
+        <h3>Calculate Your Interest</h3>
+        <input type="number" id="principal" placeholder="Enter principal amount" required>
+        <input type="number" id="rate" placeholder="Enter rate of interest (%)" required>
+        <input type="number" id="time" placeholder="Enter time (in years)" required>
+        
+        <button onclick="calculateInterest()">Calculate Interest</button>
+        
+        <div class="result" id="resultOutput"></div>
+    </div>
+
+    <script>
+        function calculateInterest() {
+            const principal = parseFloat(document.getElementById("principal").value);
+            const rate = parseFloat(document.getElementById("rate").value);
+            const time = parseFloat(document.getElementById("time").value);
+
+            let resultOutput = document.getElementById("resultOutput");
+            resultOutput.innerHTML = '';
+
+            if (!isNaN(principal) && !isNaN(rate) && !isNaN(time)) {
+                // Simple Interest Formula: SI = (P * R * T) / 100
+                const interest = (principal * rate * time) / 100;
+                resultOutput.innerHTML = `Simple Interest: $${interest.toFixed(2)}`;
+            } else {
+                resultOutput.innerHTML = "Please enter valid numbers.";
+            }
+        }
+    </script>
+</body>
+</html>
