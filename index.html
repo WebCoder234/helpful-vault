@@ -28,6 +28,7 @@
 </head>
 
 <body>
+   
    <!-- Existing navbar -->
 <div class="navbar">
   <div id="blockspace0">d</div>
@@ -45,6 +46,21 @@
 
 </div>
   <h1>UsefulVault: Math Solvers, Fun Games, & Useful Articles</h1>
+   <div class="container">
+        <h1 id="Countdown">Countdown to New Year 2025!</h1>
+        <div class="countdown">
+            <div class="time" id="days"></div>
+            <div class="time" id="hours"></div>
+            <div class="time" id="minutes"></div>
+            <div class="time" id="seconds"></div>
+        </div>
+        <div class="labels">
+            <div class="label">Days</div>
+            <div class="label">Hours</div>
+            <div class="label">Minutes</div>
+            <div class="label">Seconds</div>
+        </div>
+    </div>
 
 <!-- Search container initially hidden -->
 <div class="search-container" id="search-container" style="display: none;">
@@ -1749,6 +1765,79 @@ p { color: #3D4252;}
 h1 { font-size: 44px;}
 
 
+.container {
+            position: relative;
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1; /* Ensure this is above the confetti */
+            background-color: #E75E5E;
+            max-width: 90%;  /* Mobile-friendly width */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em; /* Slightly smaller font size for mobile */
+        }
+
+        .countdown {
+            display: flex;
+            flex-wrap: wrap; /* Allows stacking on smaller screens */
+            justify-content: center;
+            font-size: 2em; /* Slightly smaller font size for mobile */
+            margin-bottom: 20px;
+        }
+
+        .time {
+            background: rgba(255, 215, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            animation: bounce 1s infinite alternate;
+            margin: 5px; /* Added margin for spacing */
+            flex-grow: 1; /* Allow the time blocks to grow equally */
+            min-width: 80px; /* Minimum width for responsiveness */
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .labels {
+            display: flex;
+            justify-content: space-around;
+            font-size: 1.2em; /* Smaller font size for mobile */
+        }
+
+        .label {
+            margin-top: 10px;
+            flex-grow: 1; /* Allow labels to grow equally */
+        }
+
+        /* Confetti Styles */
+        .confetti-piece {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            opacity: 0.9;
+            animation-name: fall;
+        }
+
+        /* Blue and Red Theme */
+        .confetti-piece {
+            background-color: red; /* Default to red */
+        }
+        .confetti-piece:nth-child(odd) { background-color: blue; } /* Change every odd confetti to blue */
+
+        @keyframes fall {
+            from { transform: translateY(-100vh) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(720deg); }
+        }
+
+
+#Countdown { color: white;}
 
 
 </style>
@@ -1965,4 +2054,41 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+  const countdownDate = new Date("January 1, 2025 00:00:00").getTime();
+
+        const countdownFunction = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.querySelector('.container').innerHTML = "<h1>Happy New Year 2025!</h1>";
+                // Create confetti effect
+                const createConfetti = () => {
+                    const numberOfConfetti = 100;
+                    const confettiContainer = document.body;
+
+                    for (let i = 0; i < numberOfConfetti; i++) {
+                        const confettiPiece = document.createElement('div');
+                        confettiPiece.className = 'confetti-piece';
+                        confettiPiece.style.left = Math.random() * window.innerWidth + 'px';
+                        confettiPiece.style.top = Math.random() * -100 + 'vh'; // Start above the viewport
+                        confettiContainer.appendChild(confettiPiece);
+                    }
+                };
+
+                createConfetti();
+            }
+        }, 1000);
 </script>
