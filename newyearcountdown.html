@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Countdown 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lexend', sans-serif;
+            background-color: #557BCC;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative; /* Added to allow absolute positioning of confetti */
+        }
+
+        .container {
+            position: relative;
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1; /* Ensure this is above the confetti */
+            background-color: #E75E5E;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 3em;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: space-around;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .time {
+            background: rgba(255, 215, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+
+        .labels {
+            display: flex;
+            justify-content: space-around;
+            font-size: 1.5em;
+        }
+
+        .label {
+            margin-top: 10px;
+        }
+
+        /* Confetti Styles */
+        .confetti {
+            position: absolute;
+            pointer-events: none;
+            animation: fall 3s infinite;
+        }
+
+        .confetti-piece {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            opacity: 0.9;
+            animation-name: fall;
+        }
+
+        /* Blue and Red Theme */
+        .confetti-piece {
+            background-color: red; /* Default to red */
+        }
+        .confetti-piece:nth-child(odd) { background-color: blue; } /* Change every odd confetti to blue */
+
+        @keyframes fall {
+            from { transform: translateY(-100vh) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(720deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Countdown to New Year 2025!</h1>
+        <div class="countdown">
+            <div class="time" id="days"></div>
+            <div class="time" id="hours"></div>
+            <div class="time" id="minutes"></div>
+            <div class="time" id="seconds"></div>
+        </div>
+        <div class="labels">
+            <div class="label">Days</div>
+            <div class="label">Hours</div>
+            <div class="label">Minutes</div>
+            <div class="label">Seconds</div>
+        </div>
+    </div>
+
+    <script>
+        const countdownDate = new Date("January 1, 2025 00:00:00").getTime();
+
+        const countdownFunction = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.querySelector('.container').innerHTML = "<h1>Happy New Year 2025!</h1>";
+                // Create confetti effect
+                const createConfetti = () => {
+                    const numberOfConfetti = 100;
+                    const confettiContainer = document.body;
+
+                    for (let i = 0; i < numberOfConfetti; i++) {
+                        const confettiPiece = document.createElement('div');
+                        confettiPiece.className = 'confetti-piece';
+                        confettiPiece.style.left = Math.random() * window.innerWidth + 'px';
+                        confettiPiece.style.top = Math.random() * -100 + 'vh';
+                        confettiContainer.appendChild(confettiPiece);
+                    }
+                };
+
+                createConfetti();
+                // Animate the confetti
+                for (let i = 1; i <= numberOfConfetti; i++) {
+                    const confettiPiece = document.querySelector('.confetti-piece:nth-child(' + i + ')');
+                    confettiPiece.style.animationDelay = Math.random() * 2 + 's';
+                }
+                // Make the confetti fall
+                for (let i = numberOfConfetti; i >= 1; i--) {
+                    const confettiPiece = document.querySelector('.confetti-piece:nth-child(' + i + ')');
+                    confettiPiece.style.top = Math.random() * window.innerHeight + 'px';
+                }
+                // Animate the confetti falling
+                setTimeout(() => {
+                    for (let i = numberOfConfetti; i >= 1; i--) {
+                        const confettiPiece = document.querySelector('.confetti-piece:nth-child(' + i + ')');
+                        confettiPiece.style.animationDelay = Math.random() * (numberOfConfetti - i) + 's';
+                    }
+                }, 2000);
+                // Remove the confetti after a while
+                setTimeout(() => {
+                    for (let i = numberOfConfetti; i >= 1; i--) {
+                        const confettiPiece = document.querySelector('.confetti-piece:nth-child(' + i + ')');
+                        confettiPiece.style.animationDelay = 'unset';
+                        setTimeout(() => {
+                            confettiPiece.remove();
+                        }, (numberOfConfetti - i) * 100);
+                    }
+                }, 8000);
+                setTimeout(() => {
+                    for (let i = numberOfConfetti; i >= 1; i--) {
+                        const confettiPiece = document.querySelector('.confetti-piece:nth-child(' + i + ')');
+                        confettiPiece.remove();
+                    }
+                }, 10000);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
