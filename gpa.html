@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Lexend', sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #28A745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            width: 100%; /* Make buttons full width */
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .switch-button {
+            background-color: #007BFF;
+            margin: 20px 0;
+        }
+        .switch-button:hover {
+            background-color: #0056b3;
+        }
+        #gpaResult {
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            th, td {
+                font-size: 14px; /* Slightly smaller font for smaller screens */
+            }
+            button {
+                font-size: 14px; /* Reduce button font size */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>GPA Calculator</h1>
+<div style="text-align: center;">
+    <button class="switch-button" onclick="toggleGPAType()">Switch to High School</button>
+</div>
+<table id="gradeTable">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Grade Earned</th>
+            <th>Credit Hours</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="text" class="courseName" placeholder="Course Name"></td>
+            <td><input type="text" class="gradeEarned" placeholder="Grade (A, B+, etc.)"></td>
+            <td><input type="number" class="creditHours" placeholder="Credit Hours" min="1"></td>
+            <td><button onclick="addCourse()">Add Course</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 style="text-align: center;">My GPA: <span id="gpaResult">0.00</span></h2>
+<div style="text-align: center;">
+    <button onclick="calculateGPA()">Calculate GPA</button>
+</div>
+
+<script>
+    let gradePointsHighSchool = {
+        'A': 4.0,
+        'B': 3.0,
+        'C': 2.0,
+        'D': 1.0,
+        'F': 0.0
+    };
+
+    let gradePointsCollege = {
+        'A': 4.0,
+        'A-': 3.7,
+        'B+': 3.3,
+        'B': 3.0,
+        'B-': 2.7,
+        'C+': 2.3,
+        'C': 2.0,
+        'C-': 1.7,
+        'D+': 1.3,
+        'D': 1.0,
+        'D-': 0.7,
+        'F': 0.0
+    };
+
+    let currentGPAType = 'College'; // Default to College
+    let gradePoints = gradePointsCollege; // Set initial grading scale
+
+    function toggleGPAType() {
+        currentGPAType = currentGPAType === 'College' ? 'High School' : 'College';
+        gradePoints = currentGPAType === 'High School' ? gradePointsHighSchool : gradePointsCollege;
+        document.querySelector('.switch-button').innerText = `Switch to ${currentGPAType === 'College' ? 'High School' : 'College'}`;
+    }
+
+    function addCourse() {
+        const table = document.getElementById('gradeTable').getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow();
+        newRow.innerHTML = `
+            <td><input type="text" class="courseName" placeholder="Course Name"></td>
+            <td><input type="text" class="gradeEarned" placeholder="Grade"></td>
+            <td><input type="number" class="creditHours" placeholder="Credit Hours" min="1"></td>
+            <td><button onclick="removeCourse(this)">Remove</button></td>
+        `;
+    }
+
+    function removeCourse(button) {
+        const row = button.parentNode.parentNode; // Get the row of the button
+        row.parentNode.removeChild(row); // Remove the row
+    }
+
+    function calculateGPA() {
+        const rows = document.querySelectorAll('#gradeTable tbody tr');
+        let totalPoints = 0;
+        let totalCredits = 0;
+
+        rows.forEach(row => {
+            const gradeInput = row.querySelector('.gradeEarned').value.toUpperCase();
+            const creditInput = row.querySelector('.creditHours').value;
+
+            if (gradePoints[gradeInput] && creditInput) {
+                totalPoints += gradePoints[gradeInput] * creditInput;
+                totalCredits += Number(creditInput);
+            }
+        });
+
+        const gpa = totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : 0.00;
+        document.getElementById('gpaResult').innerText = gpa;
+    }
+</script>
+
+</body>
+</html>
