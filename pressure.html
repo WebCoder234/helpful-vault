@@ -3,109 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Quick and Accurate Pressure Calculator - Get instant, reliable results for any application. Perfect for engineers, students, and hobbyists."> <meta name="keywords" content="Pressure Calculator, Accurate Pressure Results, Pressure Measurement Tool"> <meta name="author" content="Useful Vault"> <link rel="canonical" href="https://usefulvault.com/pressure.html">
-<title>Quick and Accurate Pressure Calculator - Instant Results You Can Trust</title>
-    <meta name="description" content="Quick and Accurate Pressure Calculator - Get instant, reliable results for any application. Perfect for engineers, students, and hobbyists.">
-
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <meta name="description" content="An advanced Pressure Calculator with dynamic visual outputs, unit conversions, and an engaging user experience.">
+    <meta name="keywords" content="Pressure Calculator, Fluid Dynamics, Physics">
+    <meta name="author" content="Helpful Vault">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta http-equiv="refresh" content="30">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <title>Advanced Pressure Calculator</title>
+    
     <style>
         * {
             box-sizing: border-box;
             font-family: 'Lexend', sans-serif;
             margin: 0;
             padding: 0;
+            transition: all 0.3s ease;
         }
 
         body {
+            background-color: #f9f9f9;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            padding: 20px;
+            color: #333;
         }
 
         .calculator {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
         }
 
         h1 {
-            text-align: center;
             margin-bottom: 20px;
+            font-size: 2em; /* Increased size for better visibility */
+            color: #007bff; /* Change the color to make it stand out */
+            text-align: center; /* Centered the heading */
         }
 
         .section {
-            margin-bottom: 20px;
+            margin-top: 20px;
         }
 
-        input[type="number"] {
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="number"], select {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 1em;
+        }
+
+        input[type="number"]:focus, select:focus {
+            border-color: #007bff;
+            outline: none;
         }
 
         button {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         button:hover {
             background-color: #0056b3;
+            transform: translateY(-1px);
+        }
+
+        .result, .error {
+            background-color: rgba(231, 240, 254, 0.8);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none; 
         }
 
         .result {
-            background-color: #f0f8ff;
-            padding: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            background-color: rgba(255, 230, 230, 1);
+        }
+
+        .history {
+            margin-top: 20px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            margin-top: 10px;
-            text-align: center;
+            padding: 10px;
+            overflow-y: auto;
+            max-height: 200px;
+            background-color: #fafafa;
+        }
+
+        .history-item {
+            margin: 5px 0;
+            padding: 8px;
+            background-color: #e9f7ef;
+            border-left: 5px solid #28a745;
+        }
+
+        .chart-container {
+            margin-top: 30px;
+            display: none; 
+            position: relative;
+        }
+
+        canvas {
+            width: 100%!important; 
+            height: 250px!important; 
+        }
+
+        /* Responsive design adjustments */
+        @media (max-width: 600px) {
+            .calculator {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.2em; /* Adjust font size on smaller screens */
+            }
         }
     </style>
 </head>
 <body>
-    <div class="calculator">
-    <h1>Quick and Accurate Pressure Calculator - Instant Results You Can Trust</h1>
+    <div class="calculator" role="form" aria-labelledby="calculatorTitle">
 
+        <p>Calculate pressure with the formula: <strong>P = F / A</strong></p>
+        <h1 id="calculatorTitle">Quick and Accurate Pressure Calculator - Instant Results You Can Trust</h1>
 
         <div class="section">
-            <label for="forceInput">Force (N)</label>
-            <input type="number" id="forceInput" placeholder="Enter force in N" step="any">
+            <label for="forceInput">Force</label>
+            <input type="number" id="forceInput" placeholder="Enter force" step="any" aria-required="true">
+            <select id="forceUnit" aria-label="Force unit selection">
+                <option value="N">Newtons (N)</option>
+                <option value="kg">Kilograms (kg)</option>
+                <option value="lb">Pounds (lb)</option>
+            </select>
         </div>
 
         <div class="section">
-            <label for="areaInput">Area (m²)</label>
-            <input type="number" id="areaInput" placeholder="Enter area in m²" step="any">
+            <label for="areaInput">Area</label>
+            <input type="number" id="areaInput" placeholder="Enter area" step="any" aria-required="true">
+            <select id="areaUnit" aria-label="Area unit selection">
+                <option value="m2">Square Meters (m²)</option>
+                <option value="cm2">Square Centimeters (cm²)</option>
+                <option value="ft2">Square Feet (ft²)</option>
+            </select>
         </div>
 
         <button onclick="calculatePressure()">Calculate Pressure</button>
+        <p>Calculate pressure with the formula: <strong>P = F / A</strong></p>
 
         <div class="result" id="result"></div>
+        <div class="error" id="error"></div>
+
+        <h2>Calculation History</h2>
+        <ul class="history" id="history"></ul>
+
+        <div class="chart-container">
+            <canvas id="chart"></canvas>
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        let chartInstance;
+
+        function convertForce(force, unit) {
+            switch (unit) {
+                case 'kg':
+                    return force * 9.81; // Convert kg to N
+                case 'lb':
+                    return force * 4.44822; // Convert lb to N
+                default:
+                    return force; // Already in Newtons
+            }
+        }
+
+        function convertArea(area, unit) {
+            switch (unit) {
+                case 'cm2':
+                    return area / 10000; // Convert cm² to m²
+                case 'ft2':
+                    return area / 10.764; // Convert ft² to m²
+                default:
+                    return area; // Already in m²
+            }
+        }
+
+        function displayResult(message) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerText = message;
+            resultDiv.style.display = 'block'; // Show result
+        }
+
+        function displayError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.innerText = message;
+            errorDiv.style.display = 'block'; // Show error
+        }
+
+        function addHistoryEntry(entry) {
+            const historyList = document.getElementById('history');
+            const listItem = document.createElement('li');
+            listItem.className = 'history-item';
+            listItem.innerText = entry;
+            historyList.appendChild(listItem);
+        }
+
+        function createChart(pressure) {
+            const ctx = document.getElementById('chart').getContext('2d');
+            if (chartInstance) {
+                chartInstance.destroy(); // Destroy previous instance
+            }
+            document.querySelector('.chart-container').style.display = 'block'; // Show chart
+
+            // Create new chart
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Calculated Pressure'],
+                    datasets: [{
+                        label: 'Pressure (Pa)',
+                        data: [pressure],
+                        backgroundColor: ['rgba(75, 192, 192, 0.5)'],
+                        borderColor: ['rgba(75, 192, 192, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Pressure (Pa)',
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Calculation',
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
         function calculatePressure() {
             const force = parseFloat(document.getElementById('forceInput').value);
             const area = parseFloat(document.getElementById('areaInput').value);
-            let result = "";
+            const forceUnit = document.getElementById('forceUnit').value;
+            const areaUnit = document.getElementById('areaUnit').value;
 
-            if (!isNaN(force) && !isNaN(area) && area > 0) {
-                const pressure = force / area; // P = F / A
-                result += `Pressure = ${pressure.toFixed(2)} Pascals (Pa)`;
-            } else {
-                result = "Please enter valid force and area values (area must be greater than 0).";
+            // Clear previous error messages
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+
+            // Validate inputs
+            if (isNaN(force) || force < 0) {
+                displayError("Error: Please enter a valid force.");
+                return;
+            }
+            if (isNaN(area) || area <= 0) {
+                displayError("Error: Area must be greater than 0.");
+                return;
             }
 
-            document.getElementById('result').innerText = result;
+            const convertedForce = convertForce(force, forceUnit);
+            const convertedArea = convertArea(area, areaUnit);
+            const pressure = convertedForce / convertedArea; // P = F / A
+            
+            const message = `Pressure = ${pressure.toFixed(2)} Pascals (Pa)`;
+            displayResult(message);
+            createChart(pressure); // Create chart
+
+            addHistoryEntry(message); // Add to history
         }
     </script>
 </body>
