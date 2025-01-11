@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angle Converter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet"> <!-- Link to Lexend font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -28,7 +28,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 400px; /* Set a maximum width for large screens */
+            max-width: 400px;
             text-align: center;
         }
 
@@ -39,14 +39,14 @@
 
         form {
             display: flex;
-            flex-direction: column; /* Stack form elements vertically */
+            flex-direction: column;
             gap: 10px;
         }
 
         input, select, button {
             padding: 10px;
             font-size: 16px;
-            width: 100%; /* Make fields stretch to full width */
+            width: 100%;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
@@ -66,7 +66,7 @@
         #result {
             margin-top: 20px;
             font-weight: bold;
-            font-size: 18px; /* Bigger font size for result */
+            font-size: 18px;
         }
     </style>
 </head>
@@ -89,46 +89,69 @@
             <button type="submit">Convert</button>
         </form>
         <div id="result"></div>
+        <div id="workingSteps"></div>
     </div>
     
     <script>
         document.getElementById('converterForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting
-
+            event.preventDefault();
+            
             const value = parseFloat(document.getElementById('angleValue').value);
             const fromUnit = document.getElementById('fromUnit').value;
             const toUnit = document.getElementById('toUnit').value;
-            
-            let result;
+
+            let resultSteps = "";
 
             if (fromUnit === 'degrees') {
                 if (toUnit === 'radians') {
+                    resultSteps += "Convert the angle from degrees to radians...\n";
+                    resultSteps += `Degrees × (π/180) = ${value} × (π/180) = ${value * (Math.PI / 180)} radians\n`;
+                    resultSteps += `Result: ${value * (Math.PI / 180).toFixed(4)} radians`;
                     result = value * (Math.PI / 180);
                 } else if (toUnit === 'gradians') {
+                    resultSteps += "Convert the angle from degrees to gradians...\n";
+                    resultSteps += `Degrees × (10/9) = ${value} × (10/9) = ${value * (10 / 9)} gradians\n`;
+                    resultSteps += `Result: ${value * (10 / 9).toFixed(4)} gradians`;
                     result = value * (10 / 9);
                 } else {
-                    result = value; // Degrees to Degrees
+                    resultSteps += `Result: ${value.toFixed(4)} degrees`;
+                    result = value;
                 }
             } else if (fromUnit === 'radians') {
                 if (toUnit === 'degrees') {
+                    resultSteps += "Convert the angle from radians to degrees...\n";
+                    resultSteps += `Radians × (180/π) = ${value} × (180/π) = ${value * (180 / Math.PI)} degrees\n`;
+                    resultSteps += `Result: ${value * (180 / Math.PI).toFixed(4)} degrees`;
                     result = value * (180 / Math.PI);
                 } else if (toUnit === 'gradians') {
+                    resultSteps += "Convert the angle from radians to gradians...\n";
+                    resultSteps += `Radians × (200/π) = ${value} × (200/π) = ${value * (200 / Math.PI)} gradians\n`;
+                    resultSteps += `Result: ${value * (200 / Math.PI).toFixed(4)} gradians`;
                     result = value * (200 / Math.PI);
                 } else {
-                    result = value; // Radians to Radians
+                    resultSteps += `Result: ${value.toFixed(4)} radians`;
+                    result = value;
                 }
             } else if (fromUnit === 'gradians') {
                 if (toUnit === 'degrees') {
+                    resultSteps += "Convert the angle from gradians to degrees...\n";
+                    resultSteps += `Gradians × (9/10) = ${value} × (9/10) = ${value * (9 / 10)} degrees\n`;
+                    resultSteps += `Result: ${value * (9 / 10).toFixed(4)} degrees`;
                     result = value * (9 / 10);
                 } else if (toUnit === 'radians') {
+                    resultSteps += "Convert the angle from gradians to radians...\n";
+                    resultSteps += `Gradians × (π/200) = ${value} × (π/200) = ${value * (Math.PI / 200)} radians\n`;
+                    resultSteps += `Result: ${value * (Math.PI / 200).toFixed(4)} radians`;
                     result = value * (Math.PI / 200);
                 } else {
-                    result = value; // Gradians to Gradians
+                    resultSteps += `Result: ${value.toFixed(4)} gradians`;
+                    result = value;
                 }
             }
 
-            // Display the result
+            // Display the steps
             document.getElementById('result').innerText = `Result: ${result.toFixed(4)} ${toUnit}`;
+            document.getElementById('workingSteps').innerText = "Working steps:" + "\n\n" + resultSteps;
         });
     </script>
 </body>
