@@ -67,7 +67,17 @@
             padding: 10px;
             border-radius: 5px;
             margin-top: 10px;
-            text-align: center;
+            text-align: left; /* Align text to the left */
+            white-space: pre-wrap; /* Keep new lines */
+        }
+
+        .work {
+            background-color: #e9f7ef;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: left; /* Align text to the left */
+            white-space: pre-wrap; /* Keep new lines */
         }
     </style>
 </head>
@@ -78,7 +88,7 @@
 
         <div class="section">
             <label for="distanceInput">Distance</label>
-            <input type="number" id="distanceInput" placeholder="Enter distance" step="any">
+            <input type="number" id="distanceInput" placeholder="Enter distance" step="any" required>
             <select id="distanceUnit">
                 <option value="meters">Meters</option>
                 <option value="feet">Feet</option>
@@ -90,12 +100,13 @@
 
         <div class="section">
             <label for="timeInput">Time (seconds)</label>
-            <input type="number" id="timeInput" placeholder="Enter time in seconds" step="any">
+            <input type="number" id="timeInput" placeholder="Enter time in seconds" step="any" required>
         </div>
 
         <button onclick="calculateSpeed()">Calculate Speed</button>
 
         <div class="result" id="result"></div>
+        <div class="work" id="work"></div>
     </div>
 
     <script>
@@ -103,28 +114,32 @@
             const distance = parseFloat(document.getElementById('distanceInput').value);
             const time = parseFloat(document.getElementById('timeInput').value);
             const distanceUnit = document.getElementById('distanceUnit').value;
-            let result = "";
 
-            // Convert distance to meters
+            let result = "";
+            let workSteps = "";
             let distanceInMeters;
+
+            // Convert distance to meters and build work steps
             switch (distanceUnit) {
                 case 'meters':
                     distanceInMeters = distance;
+                    workSteps += `Distance = ${distance} meters\n`;
                     break;
                 case 'feet':
                     distanceInMeters = distance * 0.3048; // 1 foot = 0.3048 meters
+                    workSteps += `Distance = ${distance} feet × 0.3048 = ${distanceInMeters.toFixed(2)} meters\n`;
                     break;
                 case 'miles':
                     distanceInMeters = distance * 1609.34; // 1 mile = 1609.34 meters
+                    workSteps += `Distance = ${distance} miles × 1609.34 = ${distanceInMeters.toFixed(2)} meters\n`;
                     break;
                 case 'kilometers':
                     distanceInMeters = distance * 1000; // 1 kilometer = 1000 meters
+                    workSteps += `Distance = ${distance} kilometers × 1000 = ${distanceInMeters.toFixed(2)} meters\n`;
                     break;
                 case 'inches':
                     distanceInMeters = distance * 0.0254; // 1 inch = 0.0254 meters
-                    break;
-                default:
-                    distanceInMeters = distance;
+                    workSteps += `Distance = ${distance} inches × 0.0254 = ${distanceInMeters.toFixed(2)} meters\n`;
                     break;
             }
 
@@ -135,12 +150,24 @@
 
                 result += `Speed = ${speed_mps.toFixed(2)} m/s\n`;
                 result += `Speed = ${speed_kmph.toFixed(2)} km/h\n`;
-                result += `Speed = ${speed_mph.toFixed(2)} mph`;
+                result += `Speed = ${speed_mph.toFixed(2)} mph\n`;
+
+                workSteps += `\nSteps:\n`;
+                workSteps += `1. Calculate speed (m/s) using the formula:\n`;
+                workSteps += `   Speed = Distance / Time\n`;
+                workSteps += `   Speed = ${distanceInMeters.toFixed(2)} meters / ${time} seconds = ${speed_mps.toFixed(2)} m/s\n\n`;
+                workSteps += `2. Convert speed to kilometers per hour:\n`;
+                workSteps += `   Speed = ${speed_mps.toFixed(2)} m/s × (3600 / 1000) = ${speed_kmph.toFixed(2)} km/h\n\n`;
+                workSteps += `3. Convert speed to miles per hour:\n`;
+                workSteps += `   Speed = ${speed_kmph.toFixed(2)} km/h × 0.621371 = ${speed_mph.toFixed(2)} mph`;
             } else {
                 result = "Please enter valid distance and a positive time.";
+                workSteps = ""; // Clear work steps if input is invalid
             }
 
-            document.getElementById('result').innerText = result.replace(/\n/g, '\n'); // To display new lines correctly
+            // Display the results
+            document.getElementById('result').innerText = result;
+            document.getElementById('work').innerText = workSteps;
         }
     </script>
 </body>
