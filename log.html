@@ -10,12 +10,11 @@
     <meta name="robots" content="index, follow">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
     <style>
-  
-        * { box-sizing: border-box; 
-          font-family: 'Lexend';
+        * { 
+            box-sizing: border-box; 
+            font-family: 'Lexend', sans-serif;
         }
         body {
-            font-family: 'Lexend', sans-serif;
             background-color: #f4f4f4;
             color: #333;
             padding: 20px;
@@ -71,6 +70,15 @@
             font-size: 20px; /* Increased font size */
             font-weight: bold;
         }
+        
+        .steps {
+            margin-top: 20px;
+            text-align: left; /* Align steps to the left */
+            padding: 10px;
+            background-color: #e8e8e8;
+            border-radius: 5px;
+            font-size: 16px; /* Smaller font size for steps */
+        }
     </style>
 </head>
 <body>
@@ -81,6 +89,7 @@
     <input type="number" id="value" placeholder="Enter value" required>
     <button onclick="calculateLog()">Calculate Log</button>
     <div class="result" id="result"></div>
+    <div class="steps" id="steps" style="display: none;"></div> <!-- Steps container -->
 </div>
 
 <script>
@@ -90,11 +99,29 @@
         
         if (base <= 0 || base === 1 || value <= 0) {
             document.getElementById('result').innerText = 'Invalid input. Base must be > 0 and ≠ 1, value must be > 0.';
+            document.getElementById('steps').style.display = 'none'; // Hide steps if invalid input
             return;
         }
 
         const result = Math.log(value) / Math.log(base);
+        
+        // Display the result
         document.getElementById('result').innerText = `Log_${base}(${value}) = ${result.toFixed(4)}`;
+        
+        // Show the work (steps)
+        const steps = `
+        Steps to calculate Logarithm:
+        1. Use the change of base formula: Log base b of a = Log a / Log b.
+        2. Therefore, Log_${base}(${value}) = Log(${value}) / Log(${base}).
+        3. Calculate: 
+            Log(${value}) = ${Math.log(value).toFixed(4)} and 
+            Log(${base}) = ${Math.log(base).toFixed(4)}.
+        4. Finally, Log_${base}(${value}) = ${Math.log(value).toFixed(4)} / ${Math.log(base).toFixed(4)} = ${result.toFixed(4)}.
+        `;
+        
+        // Display the steps in the designated div
+        document.getElementById('steps').innerText = steps;
+        document.getElementById('steps').style.display = 'block'; // Show steps
     }
 </script>
 
