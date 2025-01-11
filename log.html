@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logarithm Calculator</title>
+    <meta name="description" content="An online logarithm calculator that allows you to calculate logarithms with any base. Perfect for students and professionals needing quick logarithmic calculations.">
+    <meta name="keywords" content="logarithm calculator, math calculator, base logarithm, online calculator, educational tool, math tools">
+    <meta name="author" content="Your Name">
+    <meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+  
+        * { box-sizing: border-box; 
+          font-family: 'Lexend';
+        }
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 400px; /* Increased width */
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        h1 {
+            font-size: 28px; /* Increased font size */
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 15px; /* Increased padding */
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px; /* Increased font size */
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px; /* Increased padding */
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 18px; /* Increased font size */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 30px; /* Increased margin */
+            font-size: 20px; /* Increased font size */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h1>Logarithm Calculator</h1>
+    <input type="number" id="base" placeholder="Enter base" required>
+    <input type="number" id="value" placeholder="Enter value" required>
+    <button onclick="calculateLog()">Calculate Log</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function calculateLog() {
+        const base = parseFloat(document.getElementById('base').value);
+        const value = parseFloat(document.getElementById('value').value);
+        
+        if (base <= 0 || base === 1 || value <= 0) {
+            document.getElementById('result').innerText = 'Invalid input. Base must be > 0 and ≠ 1, value must be > 0.';
+            return;
+        }
+
+        const result = Math.log(value) / Math.log(base);
+        document.getElementById('result').innerText = `Log_${base}(${value}) = ${result.toFixed(4)}`;
+    }
+</script>
+
+</body>
+</html>
