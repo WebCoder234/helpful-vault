@@ -97,37 +97,58 @@
             // Cubic Feet to Others
             const cuftInput = parseFloat(document.getElementById('cuftInput').value);
             if (!isNaN(cuftInput)) {
-                result += `${cuftInput} Cubic Feet (ft³) is approximately:\n`;
-                result += `${(cuftInput * CUBIC_FEET_TO_CUBIC_METERS).toFixed(5)} Cubic Meters (m³)\n`;
-                result += `${(cuftInput * CUBIC_FEET_TO_LITERS).toFixed(2)} Liters (L)\n`;
-                result += `${(cuftInput * CUBIC_FEET_TO_GALLONS).toFixed(2)} Gallons (gal)\n`;
+                result += `${cuftInput} Cubic Feet (ft³) is equal to:\n`;
+                result += `1 ft³ = ${CUBIC_FEET_TO_CUBIC_METERS} m³. Therefore:\n` +
+                    ` ${cuftInput} ft³ = ${cuftInput * CUBIC_FEET_TO_CUBIC_METERS} m³\n`;
+
+                result += "To convert to liters, we use the conversion factor 1 ft³ = " + CUBIC_FEET_TO_LITERS + " L.\n";
+                result += ` ${cuftInput} ft³ = ${cuftInput * CUBIC_FEET_TO_LITERS} L\n`;
+
+                result += "To convert to gallons, we use the conversion factor 1 ft³ = " + CUBIC_FEET_TO_GALLONS + " gal.\n";
+                result += ` ${cuftInput} ft³ = ${cuftInput * CUBIC_FEET_TO_GALLONS} gal\n`;
             }
 
             // Cubic Meters to Others
             const cumInput = parseFloat(document.getElementById('cumInput').value);
             if (!isNaN(cumInput)) {
-                result += `${cumInput} Cubic Meters (m³) is approximately:\n`;
-                result += `${(cumInput / CUBIC_FEET_TO_CUBIC_METERS).toFixed(5)} Cubic Feet (ft³)\n`;
-                result += `${(cumInput * 1000).toFixed(2)} Liters (L)\n`;
-                result += `${(cumInput * 264.172).toFixed(2)} Gallons (gal)\n`;
+                result += `${cumInput} Cubic Meters (m³) is equal to:\n`;
+                result += "1 m³ = " + 1 / CUBIC_FEET_TO_CUBIC_METERS + " ft³. Therefore:\n";
+                result += `${cumInput} m³ = ${(cumInput / CUBIC_FEET_TO_CUBIC_METERS).toFixed(5)} ft³\n`;
+
+                result += "To convert to liters, we use the conversion factor 1 m³ = 1000 L.\n";
+                result += `${cumInput} m³ = ${cumInput * 1000} L\n`;
+
+                result += "To convert to gallons, we use the conversion factor 1 m³ = " + 264.172 + " gal.\n";
+                result += `${cumInput} m³ = ${cumInput * 264.172} gal\n`;
             }
 
             // Liters to Others
             const litersInput = parseFloat(document.getElementById('litersInput').value);
             if (!isNaN(litersInput)) {
-                result += `${litersInput} Liters (L) is approximately:\n`;
-                result += `${(litersInput / CUBIC_FEET_TO_LITERS).toFixed(5)} Cubic Feet (ft³)\n`;
-                result += `${(litersInput / 1000).toFixed(5)} Cubic Meters (m³)\n`;
-                result += `${(litersInput / 3.78541).toFixed(2)} Gallons (gal)\n`;
+                result += `${litersInput} Liters (L) is equal to:\n`;
+                result += "1 L = " + 1 / CUBIC_FEET_TO_LITERS + " ft³. Therefore:\n";
+                result += `${litersInput} L = ${(litersInput / CUBIC_FEET_TO_LITERS).toFixed(5)} ft³\n`;
+
+                result += "To convert to cubic meters, we use the conversion factor 1 L = " + 1 / 1000 + " m³.\n";
+                result += `${litersInput} L = $(litersInput / 1000) m³\n`;
+
+                result += "To convert to gallons, we use the conversion factor 1 L = " + 1 / 3.78541 + " gal.\n";
+                result += `${litersInput} L = ${(litersInput / 3.78541).toFixed(2)} gal\n`;
             }
 
             // Gallons to Others
             const gallonsInput = parseFloat(document.getElementById('gallonsInput').value);
             if (!isNaN(gallonsInput)) {
-                result += `${gallonsInput} Gallons (gal) is approximately:\n`;
-                result += `${(gallonsInput / CUBIC_FEET_TO_GALLONS).toFixed(5)} Cubic Feet (ft³)\n`;
-                result += `${(gallonsInput / 264.172).toFixed(5)} Cubic Meters (m³)\n`;
-                result += `${(gallonsInput * 3.78541).toFixed(5)} Liters (L)\n`;
+                result += `${gallonsInput} Gallons (gal) is equal to:\n`;
+                result += "1 gal = " + 1 / CUBIC_FEET_TO_GALLONS + " ft³. Therefore:\n";
+                result += `${gallonsInput} gal = ${(gallonsInput / CUBIC_FEET_TO_GALLONS).toFixed(5)} ft³\n`;
+
+                result += "To convert to cubic meters, we use the conversion factor 1 gal = " + 1 / 264.172 + " m³.\n";
+                result += `${gallonsInput} gal = ${(gallonsInput / 264.172).toFixed(5)} m³\n`;
+
+                result += "To convert to liters, we use the conversion factor 1 gal = " + 3.78541 + " L.\n";
+                result += `${gallonsInput} gal = ${(gallonsInput * 3.78541).toFixed(2)} L\n`;
+                result = result.replace(/\.$/g, '').replace(/gal/g, 'galon').replace(/ft³/g, 'cubic ft').replace(/ m³/g, ' cub m');
             }
 
             document.getElementById('result').innerText = result ? result : "Please enter a value.";
