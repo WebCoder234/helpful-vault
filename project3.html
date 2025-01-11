@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- Character encoding -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Compatibility with IE -->
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
     <meta name="description" content="A simple circumference calculator that computes the circumference based on the given radius.">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Circumference Calculator</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -129,7 +127,7 @@
             width: 30%;
         }
 
-.reset-button {
+        .reset-button {
             margin-top: 15px;
             cursor: pointer;
             padding: 10px;
@@ -140,6 +138,7 @@
             transition: background-color 0.3s, transform 0.2s;
             width: 30%;
         }
+
         .theme-toggle:hover, .reset-button:hover {
             background-color: #495057;
             transform: scale(1.05);
@@ -181,7 +180,6 @@
                 transform: translateY(-5px);
             }
         }
-        
     </style>
 </head>
 <body>
@@ -194,7 +192,6 @@
             <option value="in">Inches</option>
             <option value="ft">Feet</option>
         </select>
-     
         <button type="button" class="reset-button">Reset</button>
     </form>
     
@@ -217,6 +214,10 @@
                 const unit = unitSelector.value;
                 resultDiv.innerHTML = `Circumference: ${circumference.toFixed(2)} ${unit}`;
                 resultDiv.classList.add('show'); // Show result with animation
+
+                // Show working calculation
+                const calculationWork = `Working: Circumference = 2 × π × ${radius} ${unit} = ${circumference.toFixed(2)} ${unit}`;
+                resultDiv.innerHTML += `<br>${calculationWork}`; // Append working
             } else {
                 resultDiv.classList.remove('show'); // Hide result if input is cleared
             }
@@ -258,5 +259,3 @@
     </script>
 </body>
 </html>
-
-
