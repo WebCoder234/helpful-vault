@@ -65,7 +65,7 @@
             padding: 10px;
             border-radius: 5px;
             margin-top: 10px;
-            text-align: center;
+            text-align: left;
         }
     </style>
 </head>
@@ -95,8 +95,24 @@
             let result = "";
 
             if (!isNaN(mass) && !isNaN(volume) && volume > 0) {
+                // Calculate density
                 const density = mass / volume; // Density = mass / volume
-                result += `Density = ${density.toFixed(2)} kg/m³`;
+
+                // Show the working steps
+                result += `Given:\n`;
+                result += `Mass (m) = ${mass} kg\n`;
+                result += `Volume (V) = ${volume} m³\n\n`;
+
+                result += `Step 1: Density Formula\n`;
+                result += `Density (ρ) = Mass (m) / Volume (V)\n\n`;
+
+                result += `Step 2: Substitute the known values\n`;
+                result += `ρ = ${mass} kg / ${volume} m³\n\n`;
+
+                result += `Step 3: Perform the calculation\n`;
+                result += `ρ = ${density.toFixed(2)} kg/m³\n\n`;
+
+                result += `Final Result: Density = ${density.toFixed(2)} kg/m³`;
             } else {
                 result = "Please enter valid mass and a positive volume.";
             }
