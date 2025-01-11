@@ -68,6 +68,7 @@
             margin-top: 20px;
             font-size: 18px;
             color: #333;
+            text-align: left;
         }
     </style>
 </head>
@@ -93,7 +94,16 @@
             if (!isNaN(sideA) && !isNaN(sideB)) {
                 // Calculate hypotenuse (C)
                 const calculatedC = Math.sqrt(sideA ** 2 + sideB ** 2).toFixed(4);
-                resultOutput.innerHTML = `Hypotenuse (C): ${calculatedC}`;
+                const steps = `
+                    Step 1: Square the lengths of sides A and B:
+                    A² = ${sideA}² = ${sideA ** 2}<br>
+                    B² = ${sideB}² = ${sideB ** 2}<br><br>
+                    Step 2: Add the squares:
+                    A² + B² = ${sideA ** 2} + ${sideB ** 2} = ${sideA ** 2 + sideB ** 2}<br><br>
+                    Step 3: Take the square root:
+                    C = √(${sideA ** 2 + sideB ** 2}) = ${calculatedC}
+                `;
+                resultOutput.innerHTML = `Hypotenuse (C): ${calculatedC}<br><br>${steps}`;
                 
             } else if (!isNaN(sideA)) {
                 // Calculate side B (opposite) assuming user knows hypotenuse
