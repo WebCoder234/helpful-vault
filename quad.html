@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Equation Solver</title>
+    <meta name="description" content="An online tool to solve quadratic equations. Enter the coefficients and calculate the roots.">
+    <meta name="keywords" content="quadratic equation solver, online calculator, math solver, educational tool">
+    <meta name="author" content="Your Name">
+    <meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box;  font-family: 'Lexend';}
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            white-space: pre-wrap; /* Preserve whitespace for detailed output */
+        }
+
+        .step {
+            margin: 5px 0;
+            font-size: 16px;
+            font-weight: normal;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h1>Quadratic Equation Solver</h1>
+    <input type="number" id="a" placeholder="Enter coefficient a" step="any" required>
+    <input type="number" id="b" placeholder="Enter coefficient b" step="any" required>
+    <input type="number" id="c" placeholder="Enter coefficient c" step="any" required>
+    <button onclick="solveQuadratic()">Solve Equation</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function solveQuadratic() {
+        const a = parseFloat(document.getElementById('a').value);
+        const b = parseFloat(document.getElementById('b').value);
+        const c = parseFloat(document.getElementById('c').value);
+
+        // Check if a is not zero
+        if (a === 0) {
+            document.getElementById('result').innerText = "Coefficient 'a' cannot be zero.";
+            return;
+        }
+
+        const discriminant = b * b - 4 * a * c;
+        let resultHtml = '';
+
+        // Show the steps
+        resultHtml += `Given Equation: ${a}x² + ${b}x + ${c} = 0\n\n`;
+        resultHtml += `Step 1: Calculate the Discriminant (D)\n`;
+        resultHtml += `D = b² - 4ac\n`;
+        resultHtml += `  = ${b}² - 4 * ${a} * ${c}\n`;
+        resultHtml += `  = ${discriminant}\n\n`;
+
+        if (discriminant > 0) {
+            resultHtml += `Since D > 0, there are two distinct real roots.\n`;
+            const root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+            const root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+            resultHtml += `Step 2: Calculate the Roots using the quadratic formula:\n`;
+            resultHtml += `x = (-b ± √D) / (2a)\n`;
+            resultHtml += `  x₁ = (-(${b}) + √(${discriminant})) / (2 * ${a})\n`;
+            resultHtml += `      = (-${b} + ${Math.sqrt(discriminant).toFixed(2)}) / (${2 * a})\n`;
+            resultHtml += `      = ${root1.toFixed(2)}\n\n`;
+            resultHtml += `  x₂ = (-(${b}) - √(${discriminant})) / (2 * ${a})\n`;
+            resultHtml += `      = (-${b} - ${Math.sqrt(discriminant).toFixed(2)}) / (${2 * a})\n`;
+            resultHtml += `      = ${root2.toFixed(2)}\n`;
+        } else if (discriminant === 0) {
+            resultHtml += `Since D = 0, there is one real root (a double root).\n`;
+            resultHtml += `Step 2: Calculate the Root using the quadratic formula:\n`;
+            resultHtml += `x = (-b) / (2a)\n`;
+            resultHtml += `  x = (-(${b})) / (2 * ${a})\n`;
+            const root = -b / (2 * a);
+            resultHtml += `      = ${root.toFixed(2)}\n`;
+        } else {
+            resultHtml += `Since D < 0, there are two complex roots.\n`;
+            const realPart = (-b / (2 * a)).toFixed(2);
+            const imaginaryPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
+            resultHtml += `Step 2: Calculate the Complex Roots using the quadratic formula:\n`;
+            resultHtml += `x₁ = ${realPart} + ${imaginaryPart}i\n`;
+            resultHtml += `x₂ = ${realPart} - ${imaginaryPart}i\n`;
+        }
+
+        // Display the result
+        document.getElementById('result').innerText = resultHtml;
+    }
+</script>
+
+</body>
+</html>
