@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Equation Solver</title>
+    <style>
+        * {
+            font-family: 'Lexend', sans-serif; /* Apply Lexend font to all elements */
+        }
+
+        body {
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            font-size: 16px; /* Default font size */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        pre {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap; /* Allows line breaks */
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Linear Equation Solver</h1>
+        <p>Input a linear equation (e.g., 3(2x - 4) + 5 = 4(x + 1) + 3):</p>
+        <input type="text" id="equation" placeholder="Enter your equation here" />
+        <button onclick="solveEquation()">Solve</button>
+        <h2 id="result"></h2>
+        <pre id="steps"></pre>
+    </div>
+
+    <script>
+        function solveEquation() {
+            const equ = document.getElementById('equation').value;
+            const resultElement = document.getElementById('result');
+            const stepsElement = document.getElementById('steps');
+            const equationParts = equ.split('=');
+
+            if (equationParts.length !== 2) {
+                resultElement.textContent = "Please enter a valid equation.";
+                stepsElement.textContent = "";
+                return;
+            }
+
+            const leftSide = equationParts[0].trim();
+            const rightSide = equationParts[1].trim();
+
+            const leftCoefficients = parseEquation(leftSide);
+            const rightCoefficients = parseEquation(rightSide);
+
+            const leftX = leftCoefficients.x - rightCoefficients.x; // Adjusted coefficients
+            const leftConstant = rightCoefficients.c - leftCoefficients.c;
+
+            if (leftX === 0) {
+                if (leftConstant === 0) {
+                    resultElement.textContent = "Infinite solutions.";
+                    stepsElement.textContent = "";
+                } else {
+                    resultElement.textContent = "No solution.";
+                    stepsElement.textContent = "";
+                }
+            } else {
+                const solution = leftConstant / leftX;
+                resultElement.textContent = `The solution is: x = ${solution.toFixed(2)}`;
+                stepsElement.textContent = `Steps:\n1. Combine like terms:\n   ${leftCoefficients.x}x + ${leftCoefficients.c} = ${rightCoefficients.c}\n2. Solve for x:\n   x = ${leftConstant} / ${leftX} = ${solution.toFixed(2)}`;
+            }
+        }
+
+        function parseEquation(eq) {
+            const regex = /([+-]?\s*\d*\.*\d*)x|([+-]?\s*\d+)/g;
+            let match;
+            let xCoefficient = 0;
+            let constant = 0;
+
+            while ((match = regex.exec(eq)) !== null) {
+                if (match[1]) { // Matched x term
+                    const coef = match[1].replace(/\s/g, ''); // Remove spaces
+                    xCoefficient += coef === '' || coef === '+' ? 1 : coef === '-' ? -1 : parseFloat(coef);
+                } else if (match[2]) { // Matched constant term
+                    constant += parseFloat(match[2].replace(/\s/g, ''));
+                }
+            }
+            return { x: xCoefficient, c: constant };
+        }
+    </script>
+</body>
+</html>
