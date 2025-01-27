@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slope-Intercept Form Calculator</title>
+    <meta name="description" content="Master linear equations with our intuitive Slope-Intercept Form Calculator. Easily graph your slope and y-intercept and explore the world of algebra!">
+    <meta name="keywords" content="slope-intercept form, calculator, graph, math, algebra, educational tool">
+    <meta name="robots" content="index, follow">
+    <title>Slope-Intercept Form Calculator - Graph Your Linear Equations Easily</title>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -84,23 +87,24 @@
             background-size: 10px 10px; /* Square grid */
         }
 
-        .x-axis {
+        .x-axis, .y-axis {
             position: absolute;
+            background-color: #333;
+        }
+
+        .x-axis {
             bottom: 50%;
             left: 0;
             right: 0;
             height: 2px;
-            background-color: #333;
             z-index: 1;
         }
 
         .y-axis {
-            position: absolute;
             left: 50%;
             top: 0;
             bottom: 0;
             width: 2px;
-            background-color: #333;
             z-index: 1;
         }
 
@@ -109,6 +113,28 @@
             font-size: 12px;
             color: #333;
             z-index: 1;
+        }
+
+        .explanation {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .output {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            #slopeInput, #interceptInput {
+                width: 90%;
+            }
+            .output, .explanation {
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
@@ -124,6 +150,28 @@
             <div class="y-axis"></div>
             <canvas id="canvas" width="600" height="400" style="position: absolute; top: 0; left: 0;"></canvas>
         </div>
+
+        <p>If you found this tool helpful, share it with your classmates or teachers!</p>
+        <button onclick="shareOnSocialMedia()">Share</button>
+        
+        <div class="output" id="output"></div>
+    </div>
+
+    <!-- Explanatory Content Section -->
+    <div class="explanation">
+        <h2>Understanding Slope-Intercept Form</h2>
+        <p>The slope-intercept form of a linear equation is expressed as <em>y = mx + b</em>, where <em>m</em> is the slope and <em>b</em> is the y-intercept. This calculator allows you to quickly graph a line and understand its components. Explore the various slopes and intercepts to master linear equations!</p>
+        
+        <h3>Applications of Slope-Intercept Form</h3>
+        <ul>
+            <li><strong>Graphing Linear Equations:</strong> Quickly graph a line by starting at the y-intercept and moving according to the slope.</li>
+            <li><strong>Real-World Applications:</strong> Used in fields like economics and physics to model relationships between two variables.</li>
+            <li><strong>Statistical Analysis:</strong> Helps in regression analysis to understand how independent variables impact a dependent variable.</li>
+        </ul>
+
+        <h3>Why It's Important</h3>
+        <p>Understanding slope-intercept form is essential in algebra and beyond. It allows you to easily represent and analyze linear relationships, laying the groundwork for advanced studies in mathematics.</p>
+        <p>For more information on linear equations, visit the <a href="https://www.khanacademy.org/math/algebra/x2b8aaa3f8b2f0b3cb7f11f8b8d94d5d7a2" target="_blank">Khan Academy</a>.</p>
     </div>
 
     <script>
@@ -131,12 +179,16 @@
             clearGraph();
             const m = parseFloat(document.getElementById("slopeInput").value);
             const b = parseFloat(document.getElementById("interceptInput").value);
+            const outputDiv = document.getElementById("output");
 
             if (isNaN(m) || isNaN(b)) {
                 alert('Please enter valid numerical values for slope and y-intercept.');
+                outputDiv.innerHTML = ""; // Clear output on invalid input
                 return;
             }
-
+            
+            // Display the equation and calculated points
+            outputDiv.innerHTML = `Equation: y = ${m}x + ${b}`;
             drawGraph(m, b);
         }
 
@@ -150,8 +202,6 @@
         function drawAxesLabels() {
             const graph = document.getElementById("graph");
             const labelOffset = 10;
-            const canvasWidth = graph.offsetWidth;
-            const canvasHeight = graph.offsetHeight;
 
             for (let i = -25; i <= 25; i += 5) {
                 // X-axis labels
@@ -194,6 +244,11 @@
             ctx.strokeStyle = '#5bc0de'; // Set color for the line
             ctx.lineWidth = 2; // Set line width
             ctx.stroke(); // Draw the path
+        }
+
+        function shareOnSocialMedia() {
+            const url = window.location.href;
+            alert('Share this link: ' + url);
         }
     </script>
 </body>
